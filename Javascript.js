@@ -6,7 +6,7 @@ var BG = document.createElement("img");
 BG.src = "Sum of Like fracions/Elements/BG1.png";
 background.append(BG);
 
-window.onload = function{
+window.onload = function(){
 var instructionArea = document.createElement('div');
 background.append(instructionArea);
 instructionArea.id = 'instructionArea';
