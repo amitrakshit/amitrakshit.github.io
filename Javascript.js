@@ -3,7 +3,7 @@ var background = document.createElement("section");
 Object.assign(background, {id:"background"})
 document.body.append(background);
 var BG = document.createElement("img");
-BG.src = "Sum of Like fracions/Elements/BG2.png";
+BG.src = "Sum of Like fracions/Elements/BG1.png";
 background.append(BG);
 
 var instructionArea = document.createElement('div');
