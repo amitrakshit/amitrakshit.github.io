@@ -6,6 +6,20 @@ var BG = document.createElement("img");
 BG.src = "Sum of Like fracions/Elements/BG1.png";
 background.append(BG);
 
+//Navigation Bar
+var navigation_bar = document.createElement('div');
+background.append(navigation_bar);
+navigation_bar.className = 'navigation_bar';
+var observation_bar = document.createElement('div');
+navigation_bar.append(observation_bar);
+observation_bar.className = 'observation_bar';
+observation_bar.innerHTML = 'Observation';
+var question_bar = document.createElement('div');
+question_bar.className = 'question_bar';
+navigation_bar.append(question_bar);
+question_bar.innerHTML = 'Question';
+
+//Intruction Area
 var instructionArea = document.createElement('div');
 background.append(instructionArea);
 instructionArea.id = 'instructionArea';
@@ -20,26 +34,17 @@ var VisualArea = document.createElement("canvas");
 VisualArea.height = '515';
 VisualArea.width = '984';
 VisualArea.id = 'BackCanvas';
-VisualArea.style =
-"position: absolute;\
-border-radius: 20px;\
-top: 560px;";
+
 
 var VisualArea2 = document.createElement("canvas");
 VisualArea2.height = '515';
 VisualArea2.width = '984';
-VisualArea2.style =
-"position: absolute;\
-border-radius: 20px;\
-top: 560px;";
+
 
 var VisualArea3 = document.createElement("canvas");
 VisualArea3.height = '515';
 VisualArea3.width = '984';
-VisualArea3.style =
-"position: absolute;\
-border-radius: 20px;\
-top: 560px;";
+
 var ctx3 = VisualArea3.getContext('2d');
 var ctx2 = VisualArea2.getContext('2d');
 background.append(VisualArea);
@@ -50,7 +55,7 @@ background.append(VisualArea3);
 var box1 = document.createElement('img');
 box1.src = "Sum of Like fracions/Elements/Box 01.png";
 background.append(box1);
-box1.style = "position:absolute; width: 100%; top: -30px;";
+box1.style = "position:absolute; width: 100%; top: -1.56%;";
 box1DenominatorDiv = document.createElement('div'); // Div for the denominator of first number
 box1DenominatorDiv.className = 'Number';
 background.append(box1DenominatorDiv);
@@ -60,7 +65,7 @@ box1DenominatorDiv.style = "left: 160px;"
 var box2 = document.createElement('img');
 box2.src = "Sum of Like fracions/Elements/Box 02.png";
 background.append(box2);
-box2.style = "position:absolute; width: 100%; top: -30px;";
+box2.style = "position:absolute; width: 100%; top: -1.56%;";
 box2DenominatorDiv = document.createElement('div'); // Div for the denominator of the second number
 box2DenominatorDiv.className = 'Number';
 background.append(box2DenominatorDiv);
@@ -87,7 +92,7 @@ box3NumeratorDiv = document.createElement('div');
 box3NumeratorDiv.className = 'Number';
 background.append(box3NumeratorDiv);
 box3NumeratorDiv.style = "left: 843px; top:882px;";
-box3DenominatorDiv = document.createElement('div'); // Div for the denominator of the second number
+box3DenominatorDiv = document.createElement('div'); // Div for the denominator of the third number
 box3DenominatorDiv.className = 'Number';
 background.append(box3DenominatorDiv);
 box3DenominatorDiv.style = "left: 843px;"
@@ -108,6 +113,7 @@ var feedbackArea = document.createElement('div');
 background.append(feedbackArea);
 feedbackArea.id = 'feedbackArea';
 feedbackArea.innerText = "Set the denominator of the fractions."
+
 
 //The Initial Circle 1
 var ctx = VisualArea.getContext("2d");
@@ -133,6 +139,8 @@ ctx.stroke();
 function set_denominator(number) {
     box1DenominatorDiv.innerHTML = number_slider.value;
     box2DenominatorDiv.innerHTML = number_slider.value;
+    numerical_pointer.style.left = (3.85 + 77/(number_slider.max - number_slider.min)*(number_slider.value-1)).toString() + '%';
+    numerical_pointer.innerHTML = number_slider.value;
     ctx3.clearRect(0,0, VisualArea2.width, VisualArea2.height);
     sector_angle = (2*Math.PI/number);
     for (let i = 0; i <= number; i++) {
@@ -159,13 +167,20 @@ function set_denominator(number) {
 //Slider for changing the values
 var number_slider = document.createElement('input');
 Object.assign(number_slider, {type:'range', min: '1', max: '8', step: '1', value: '1', className: 'Slider'});
-number_slider.oninput
 number_slider.oninput = function() {
-set_denominator(number_slider.value)};
-number_slider.style = "position: absolute; width: 85%; top: 78%;";
+    numerical_pointer.style.left = (3.85 + 77/(number_slider.max - number_slider.min)*(number_slider.value-1)).toString() + '%';
+    numerical_pointer.innerHTML = number_slider.value;
+    set_denominator(number_slider.value)};
 background.append(number_slider);
 box1DenominatorDiv.innerHTML = number_slider.value;  //For showing the default value
 box2DenominatorDiv.innerHTML = number_slider.value;  //For showing the default value
+
+//Numerical pointer
+var numerical_pointer = document.createElement('div');
+numerical_pointer.className = 'numerical_pointer';
+numerical_pointer.style.left = '3.85%';
+numerical_pointer.innerHTML = number_slider.value;
+background.append(numerical_pointer);
 
 //Div for showing the min and max value of the range slider
 var minValue = document.createElement('div');
@@ -178,9 +193,17 @@ minValue.innerHTML = number_slider.min;
 maxValue.innerHTML = number_slider.max;
 background.append(minValue, maxValue);
 
+//Div for creating the numerical slider
+// var custom_slider_thumb = document.createElement('div');
+// custom_slider_thumb.id = 'custom_slider_thumb';
+// background.append(custom_slider_thumb);
+
+
 //function for changing numerator of first number
 function set_numeratorOne(number, denominator) {
     box1NumeratorDiv.innerHTML = number_slider.value;
+    numerical_pointer.style.left = (3.85 + 77/(number_slider.max - number_slider.min)*(number_slider.value)).toString() + '%';
+    numerical_pointer.innerHTML = number_slider.value;
     sector_angle = 2*Math.PI/denominator;
     ctx2.clearRect(50,80, 200, 200);
     ctx2.beginPath();
@@ -193,6 +216,8 @@ function set_numeratorOne(number, denominator) {
 //function for changing numerator of the second number
 function set_numeratorTwo(number, denominator) {
     box2NumeratorDiv.innerHTML = number_slider.value;
+    numerical_pointer.style.left = (3.85 + 77/(number_slider.max - number_slider.min)*(number_slider.value)).toString() + '%';
+    numerical_pointer.innerHTML = number_slider.value;
     sector_angle = 2*Math.PI/denominator;
     ctx2.clearRect(392,80, 200, 200);
     ctx2.beginPath();
@@ -301,6 +326,8 @@ NextButton.onclick = function() {
         box1NumeratorDiv.innerHTML = number_slider.value;
         minValue.innerHTML = number_slider.min;
         maxValue.innerHTML = number_slider.max;
+        numerical_pointer.style.left = (3.85 + 77/(number_slider.max - number_slider.min)*(number_slider.value)).toString() + '%';
+        numerical_pointer.innerHTML = number_slider.min;
         number_slider.oninput = function (){
             set_numeratorOne(number_slider.value, denominator);
         }
@@ -312,6 +339,8 @@ NextButton.onclick = function() {
         number1.numerator = number_slider.value;
         number_slider.value = 0;
         box2NumeratorDiv.innerHTML = number_slider.value;
+        numerical_pointer.style.left = (3.85 + 77/(number_slider.max - number_slider.min)*(number_slider.value)).toString() + '%';
+        numerical_pointer.innerHTML = number_slider.min;
         number_slider.oninput = function (){
             set_numeratorTwo(number_slider.value, number_slider.max);
             NextButton.textContent = 'Add numbers';
@@ -324,10 +353,11 @@ NextButton.onclick = function() {
         AddedResult(number1.numerator, number2.numerator, number1.denominator);
         feedbackArea.innerHTML = 'Check the result.';
         NextButton.innerHTML = 'Reset';
+        number_slider.oninput = function(){
+        };
     }
     else{
         window.location.reload();
     }
 }
 background.append(NextButton);
-
