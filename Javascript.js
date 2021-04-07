@@ -1,8 +1,8 @@
 var devicePixelRatio = window.devicePixelRatio;
-console.log(devicePixelRatio);
+//console.log(devicePixelRatio);
 var metaData = document.getElementsByName('viewport');
 metaData[0].content = "width=device-width, initial-scale=" + 1/devicePixelRatio.toString();
-console.log(metaData[0].content);
+//console.log(metaData[0].content);
 
 //This is the main background
 var background = document.createElement("section");
@@ -392,4 +392,3 @@ NextButton.onclick = function() {
     }
 }
 background.append(NextButton);
-console.log(bar3.style);
