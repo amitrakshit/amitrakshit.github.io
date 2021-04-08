@@ -253,53 +253,58 @@ function AddedResult(num1, num2, denom) {
     box3DenominatorDiv.innerHTML = denom;
     if (num1+num2 > denom) {
         feedbackArea.innerHTML = "The result is an improper fraction.";
-        equalSymbolDiv.innerHTML = '=';
-            sector_angle = 2*Math.PI/denom;
-            ctx3.beginPath();// The outline of the answer circle 1
-            ctx3.arc(750, 180, 70, 0, 2*Math.PI);
-            ctx3.strokeStyle = 'white';
-            ctx3.lineWidth = '3';
-            ctx3.stroke();
-            ctx3.beginPath();// Outline of the answer circle 2
-            ctx3.arc(900, 180, 70, 0, 2*Math.PI);
-            ctx3.strokeStyle = 'white';
-            ctx3.lineWidth = '2';
-            ctx3.stroke();
+        // equalSymbolDiv.innerHTML = '=';
+        //     sector_angle = 2*Math.PI/denom;
+        //     ctx3.beginPath();// The outline of the answer circle 1
+        //     ctx3.arc(750, 180, 70, 0, 2*Math.PI);
+        //     ctx3.strokeStyle = 'white';
+        //     ctx3.lineWidth = '3';
+        //     ctx3.stroke();
+        //     ctx3.beginPath();// Outline of the answer circle 2
+        //     ctx3.arc(900, 180, 70, 0, 2*Math.PI);
+        //     ctx3.strokeStyle = 'white';
+        //     ctx3.lineWidth = '2';
+        //     ctx3.stroke();
 
-            //background fill for the answer circle 2
-            ctx.beginPath();
-            ctx.arc(900, 180, 70, 0, 2*Math.PI);
-            ctx.fillStyle = '#06b2bc';
-            ctx.fill();
+        //     //background fill for the answer circle 2
+        //     ctx.beginPath();
+        //     ctx.arc(900, 180, 70, 0, 2*Math.PI);
+        //     ctx.fillStyle = '#06b2bc';
+        //     ctx.fill();
 
-                //The code for filling the first answer circle
-            ctx2.beginPath();
-            ctx2.arc(750, 180, 70, 0, num1*sector_angle);
-            ctx2.lineTo(750, 180);
-            ctx2.fillStyle = '#fed219';
-            ctx2.fill();
-            ctx2.beginPath();
-            ctx2.arc(750, 180, 70, num1*sector_angle, (denom)*sector_angle);
-            ctx2.lineTo(750, 180);
-            ctx2.fillStyle = '#fed219';
-            ctx2.fill();
-                //code for filling up the second answer circle
-            ctx2.beginPath();
-            ctx2.arc(900, 180, 70, 0, (num1+num2-denom)*sector_angle);
-            ctx2.lineTo(900, 180);
-            ctx2.fillStyle = '#fed219';
-            ctx2.fill();
-            for (let i = 0; i <= denom; i++) {
-                ctx3.beginPath();
-                ctx3.arc(900, 180, 70, i*sector_angle, (i+1)*sector_angle);
-                ctx3.lineTo(900, 180);
-                ctx3.strokeStyle = 'white';
-                ctx3.lineWidth = '3';
-                ctx3.stroke();
-                }
+        //         //The code for filling the first answer circle
+        //     ctx2.beginPath();
+        //     ctx2.arc(750, 180, 70, 0, num1*sector_angle);
+        //     ctx2.lineTo(750, 180);
+        //     ctx2.fillStyle = '#fed219';
+        //     ctx2.fill();
+        //     ctx2.beginPath();
+        //     ctx2.arc(750, 180, 70, num1*sector_angle, (denom)*sector_angle);
+        //     ctx2.lineTo(750, 180);
+        //     ctx2.fillStyle = '#fed219';
+        //     ctx2.fill();
+        //         //code for filling up the second answer circle
+        //     ctx2.beginPath();
+        //     ctx2.arc(900, 180, 70, 0, (num1+num2-denom)*sector_angle);
+        //     ctx2.lineTo(900, 180);
+        //     ctx2.fillStyle = '#fed219';
+        //     ctx2.fill();
+        //     for (let i = 0; i <= denom; i++) {
+        //         ctx3.beginPath();
+        //         ctx3.arc(900, 180, 70, i*sector_angle, (i+1)*sector_angle);
+        //         ctx3.lineTo(900, 180);
+        //         ctx3.strokeStyle = 'white';
+        //         ctx3.lineWidth = '3';
+        //         ctx3.stroke();
+        //         }
 
     }
     else {
+        feedbackArea.innerHTML = 'Check the result.';
+        bar3.style.display = 'flex';
+        box3NumeratorDiv.style.display = 'flex';
+        box3DenominatorDiv.style.display = 'flex';
+
         equalSymbolDiv.innerHTML = '=';
         equalSymbolDiv.style = 'left: 655px';
         sector_angle = 2*Math.PI/denom;
@@ -374,11 +379,9 @@ NextButton.onclick = function() {
     }
     else if (NextButtonClickTimes == 3){
         number2.numerator = number_slider.value;
-        bar3.style.display = 'flex';
-        box3NumeratorDiv.style.display = 'flex';
-        box3DenominatorDiv.style.display = 'flex';
+        
         AddedResult(number1.numerator, number2.numerator, number1.denominator);
-        feedbackArea.innerHTML = 'Check the result.';
+        
         NextButton.innerHTML = 'Reset';
         // number_slider.disabled = true;
         number_slider.style.display = 'none';
@@ -392,3 +395,4 @@ NextButton.onclick = function() {
     }
 }
 background.append(NextButton);
+//console.log(bar3.style);
