@@ -12,6 +12,7 @@ var BG = document.createElement("img");
 BG.src = "Sum of Like fracions/Elements/BG1.png";
 background.append(BG);
 
+
 //Navigation Bar
 var navigation_bar = document.createElement('div');
 background.append(navigation_bar);
@@ -29,7 +30,7 @@ question_bar.innerHTML = 'Question';
 var instructionArea = document.createElement('div');
 background.append(instructionArea);
 instructionArea.id = 'instructionArea';
-instructionArea.innerHTML = 'Use the slider to make and add fractions.';
+instructionArea.innerHTML = 'Use the slider to make and add like fractions.';
 
 //Two objects for the numbers
 var number1 = {};
@@ -128,7 +129,7 @@ plusSymbolDiv.innerHTML = '+';
 var feedbackArea = document.createElement('div');
 background.append(feedbackArea);
 feedbackArea.id = 'feedbackArea';
-feedbackArea.innerText = "Set the denominator of the fractions."
+feedbackArea.innerText = "Set the denominator"
 
 
 //The Initial Circle 1
@@ -300,7 +301,7 @@ function AddedResult(num1, num2, denom) {
 
     }
     else {
-        feedbackArea.innerHTML = 'Check the result.';
+        feedbackArea.innerHTML = 'This is the sum of two like fractions';
         bar3.style.display = 'flex';
         box3NumeratorDiv.style.display = 'flex';
         box3DenominatorDiv.style.display = 'flex';
@@ -308,6 +309,7 @@ function AddedResult(num1, num2, denom) {
         equalSymbolDiv.innerHTML = '=';
         equalSymbolDiv.style = 'left: 655px';
         sector_angle = 2*Math.PI/denom;
+        //The background resulting circle
         ctx.beginPath()
         ctx.arc(834, 180, //position
         100, //radius
@@ -317,24 +319,45 @@ function AddedResult(num1, num2, denom) {
         ctx.lineWidth = '5';
         ctx.fill();
         ctx.stroke();
-        for (let i = 0; i <= denom; i++) {
-            ctx3.beginPath();
-            ctx3.arc(834, 180, 100, i*sector_angle, (i+1)*sector_angle);
-            ctx3.lineTo(834, 180);
-            ctx3.strokeStyle = 'white';
-            ctx3.lineWidth = '5';
-            ctx3.stroke();
+            //For stroke sector lines
+            if(denom !==1){
+                for (let i = 0; i <= denom; i++) {
+                    ctx3.beginPath();
+                    ctx3.arc(834, 180, 100, i*sector_angle, (i+1)*sector_angle);
+                    ctx3.lineTo(834, 180);
+                    ctx3.strokeStyle = 'white';
+                    ctx3.lineWidth = '5';
+                    ctx3.stroke();
+                    }
             }
-        ctx2.beginPath();
-        ctx2.arc(834, 180, 100, 0, num1*sector_angle);
-        ctx2.lineTo(834, 180);
-        ctx2.fillStyle = '#fed219';
-        ctx2.fill();
-        ctx2.beginPath();
-        ctx2.arc(834, 180, 100, num1*sector_angle, (num1+num2)*sector_angle);
-        ctx2.lineTo(834, 180);
-        ctx2.fillStyle = '#fed219';
-        ctx2.fill();
+            else{ctx3.beginPath();
+                ctx3.arc(834, 180, 100, 0, 2*Math.PI);
+                ctx3.strokeStyle = 'white';
+                ctx3.lineWidth = '5';
+                ctx3.stroke();
+            }
+
+            //For filling with yellow part
+            if(num1+num2 == 1){
+                ctx2.beginPath();
+                ctx2.arc(834, 180, 100, 0, 2*Math.PI);
+                ctx2.fillStyle = '#fed219';
+                ctx2.fill();
+            }
+            else{
+            ctx2.beginPath();
+            ctx2.arc(834, 180, 100, 0, num1*sector_angle);
+            ctx2.lineTo(834, 180);
+            ctx2.fillStyle = '#fed219';
+            ctx2.fill();
+            ctx2.beginPath();
+            ctx2.arc(834, 180, 100, num1*sector_angle, (num1+num2)*sector_angle);
+            ctx2.lineTo(834, 180);
+            ctx2.fillStyle = '#fed219';
+            ctx2.fill();
+            }
+        
+        
         }
 }
 
@@ -346,8 +369,10 @@ NextButton.onclick = function() {
     NextButtonClickTimes += 1;
     // console.log(NextButtonClickTimes);
     if (NextButtonClickTimes == 1) {
-        feedbackArea.innerHTML = 'Set the numerator of the first Number';
+        feedbackArea.innerHTML = 'Set the numerator of the first fraction';
         const denominator = number_slider.value;
+        number1.denominator = denominator; //Initialising the denominator of the first and second number
+        number2.denominator = denominator;
         box1DenominatorDiv.innerHTML = denominator;
         box2DenominatorDiv.innerHTML = denominator;
         number_slider.max = denominator;
@@ -361,18 +386,18 @@ NextButton.onclick = function() {
         number_slider.oninput = function (){
             set_numeratorOne(number_slider.value, denominator);
         }
-        number1.denominator = denominator; //Initialising the denominator of the first and second number
-        number2.denominator = denominator;
     } 
     else if (NextButtonClickTimes == 2) {
-        feedbackArea.innerHTML = 'Set the numerator of the second Number';
+        feedbackArea.innerHTML = 'Set the numerator of the second fraction';
         number1.numerator = number_slider.value;
         number_slider.value = 0;
+        number_slider.max = parseInt(number1.denominator) - parseInt(number1.numerator);
+        maxValue.innerHTML = number_slider.max;
         box2NumeratorDiv.innerHTML = number_slider.value;
         numerical_pointer.innerHTML = number_slider.min;
         numerical_pointer.style = 'left: 10%; background:#eb697a;';
         number_slider.oninput = function (){
-            set_numeratorTwo(number_slider.value, number_slider.max);
+            set_numeratorTwo(number_slider.value, parseInt(number2.denominator));
             NextButton.textContent = 'Add numbers';
         }
     
@@ -396,3 +421,4 @@ NextButton.onclick = function() {
 }
 background.append(NextButton);
 //console.log(bar3.style);
+// console.log(screen.width);
