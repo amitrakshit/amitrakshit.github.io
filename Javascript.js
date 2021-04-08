@@ -357,7 +357,7 @@ function AddedResult(num1, num2, denom) {
                 if(num1 ==1){
                     ctx2.beginPath();
                     ctx2.arc(834, 180, 100, 0, 2*Math.PI);
-                    ctx2.fillStyle = '#f68827';
+                    ctx2.fillStyle = '#e99d52';
                     ctx2.fill();
                 }
                 else{
@@ -371,12 +371,12 @@ function AddedResult(num1, num2, denom) {
             ctx2.beginPath();
             ctx2.arc(834, 180, 100, 0, num1*sector_angle);
             ctx2.lineTo(834, 180);
-            ctx2.fillStyle = '#f68827';
+            ctx2.fillStyle = '#e99d52';
             ctx2.fill();
             ctx2.beginPath();
             ctx2.arc(834, 180, 100, num1*sector_angle, (num1+num2)*sector_angle);
             ctx2.lineTo(834, 180);
-            ctx2.fillStyle = '#e99d52';
+            ctx2.fillStyle = '#eb697a';
             ctx2.fill();
             }
         
