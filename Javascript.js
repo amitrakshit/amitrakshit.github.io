@@ -65,7 +65,7 @@ background.append(VisualArea3);
 box1DenominatorDiv = document.createElement('div'); // Div for the denominator of first number
 box1DenominatorDiv.className = 'Number';
 background.append(box1DenominatorDiv);
-box1DenominatorDiv.style = "left: 14.8%; background:#26bca4;"
+box1DenominatorDiv.style = "left: 14.8%; background:#06b2bc;"
 
 //second fraction box in the visual area
 // var box2 = document.createElement('img');
@@ -75,7 +75,7 @@ box1DenominatorDiv.style = "left: 14.8%; background:#26bca4;"
 box2DenominatorDiv = document.createElement('div'); // Div for the denominator of the second number
 box2DenominatorDiv.className = 'Number';
 background.append(box2DenominatorDiv);
-box2DenominatorDiv.style = "left: 47%; background:#26bca4;"
+box2DenominatorDiv.style = "left: 47%; background:#06b2bc;"
 
 //Div for the first number numerator
 box1NumeratorDiv = document.createElement('div');
@@ -101,7 +101,7 @@ box3NumeratorDiv.style = "left: 78%; top:43.7%; background:#fed219; display:none
 box3DenominatorDiv = document.createElement('div'); // Div for the denominator of the third number
 box3DenominatorDiv.className = 'Number';
 background.append(box3DenominatorDiv);
-box3DenominatorDiv.style = "left: 78%; background:#26bca4; display:none;"
+box3DenominatorDiv.style = "left: 78%; background:#06b2bc; display:none;"
 
 //div for horizontal bar for showing fraction
 bar1 = document.createElement('div');
@@ -141,7 +141,7 @@ ctx.arc(150, 180, //position
     0, 2*Math.PI);
 ctx.strokeStyle = 'rgb(255, 255, 255)';
 ctx.lineWidth = '5';
-ctx.fillStyle = '#06b2b6';
+ctx.fillStyle = '#06b2bc';
 ctx.fill();
 ctx.stroke();
 //The Initial Circle 2
@@ -149,7 +149,7 @@ ctx.beginPath()
 ctx.arc(492, 180, 100, 0, 2*Math.PI);
 ctx.strokeStyle = 'rgb(255, 255, 255)';
 ctx.lineWidth = '5';
-ctx.fillStyle = '#06b2b6';
+ctx.fillStyle = '#06b2bc';
 ctx.fill();
 ctx.stroke();
 
@@ -160,25 +160,28 @@ function set_denominator(number) {
     numerical_pointer.style.left = (10 + 80/(number_slider.max - number_slider.min)*(number_slider.value-1)).toString() + '%';
     numerical_pointer.innerHTML = number_slider.value;
     ctx3.clearRect(0,0, VisualArea2.width, VisualArea2.height);
-    sector_angle = (2*Math.PI/number);
-    for (let i = 0; i <= number; i++) {
-    ctx3.beginPath();
-    ctx3.arc(150, 180, 100, i*sector_angle, (i+1)*sector_angle);
-    ctx3.lineTo(150, 180);
-    //ctx.fillStyle = '#4b9c98';
-    //ctx.fill();
-    ctx3.strokeStyle = 'white';
-    ctx3.lineWidth = '5';
-    ctx3.stroke();
+    if(number>1){
+        sector_angle = (2*Math.PI/number);
+        for (let i = 0; i <= number; i++) {
+        ctx3.beginPath();
+        ctx3.arc(150, 180, 100, i*sector_angle, (i+1)*sector_angle);
+        ctx3.lineTo(150, 180);
+        //ctx.fillStyle = '#4b9c98';
+        //ctx.fill();
+        ctx3.strokeStyle = 'white';
+        ctx3.lineWidth = '5';
+        ctx3.stroke();
 
-    ctx3.beginPath();
-    ctx3.arc(492, 180, 100, i*sector_angle, (i+1)*sector_angle);
-    ctx3.lineTo(492, 180);
-    //ctx2.fillStyle = '#4b9c98';
-    //ctx2.fill();
-    ctx3.strokeStyle = 'white';
-    ctx3.lineWidth = '5';
-    ctx3.stroke();
+        ctx3.beginPath();
+        ctx3.arc(492, 180, 100, i*sector_angle, (i+1)*sector_angle);
+        ctx3.lineTo(492, 180);
+        //ctx2.fillStyle = '#4b9c98';
+        //ctx2.fill();
+        ctx3.strokeStyle = 'white';
+        ctx3.lineWidth = '5';
+        ctx3.stroke();
+    }
+    
     }
 }
 
@@ -194,7 +197,7 @@ box2DenominatorDiv.innerHTML = number_slider.value;  //For showing the default v
 //Numerical pointer
 var numerical_pointer = document.createElement('div');
 numerical_pointer.className = 'numerical_pointer';
-numerical_pointer.style = 'left:10%; background:#26bca4;';
+numerical_pointer.style = 'left:10%; background:#06b2bc;';
 numerical_pointer.innerHTML = number_slider.value;
 background.append(numerical_pointer);
 
@@ -228,6 +231,11 @@ function set_numeratorOne(number, denominator) {
     ctx2.lineTo(150, 180);
     ctx2.fillStyle = '#e99d52';
     ctx2.fill();
+    ctx3.beginPath();
+    ctx3.arc(150, 180, 100, 0, 2*Math.PI);
+    ctx3.strokeStyle = 'white';
+    ctx3.lineWidth = 5;
+    ctx3.stroke();
 }
 
 //function for changing numerator of the second number
@@ -242,8 +250,14 @@ function set_numeratorTwo(number, denominator) {
     ctx2.arc(492, 180, 100, 0, number*sector_angle);
     ctx2.lineTo(492, 180);
     ctx2.fillStyle = '#eb697a';
-    //ctx2.lineWidth = '8';
+    ctx2.lineWidth = '5';
     ctx2.fill();
+    ctx3.beginPath();
+    ctx3.arc(492, 180, 100, 0, 2*Math.PI);
+    ctx3.strokeStyle = 'white';
+    ctx3.lineWidth = 5;
+    ctx3.stroke();
+    
 }
 
 //Function for showing the result
@@ -339,22 +353,30 @@ function AddedResult(num1, num2, denom) {
             }
 
             //For filling with yellow part
-            if(num1+num2 == 1){
-                ctx2.beginPath();
-                ctx2.arc(834, 180, 100, 0, 2*Math.PI);
-                ctx2.fillStyle = '#fed219';
-                ctx2.fill();
+            if(num1+num2==1 && denom == 1){
+                if(num1 ==1){
+                    ctx2.beginPath();
+                    ctx2.arc(834, 180, 100, 0, 2*Math.PI);
+                    ctx2.fillStyle = '#f68827';
+                    ctx2.fill();
+                }
+                else{
+                    ctx2.beginPath();
+                    ctx2.arc(834, 180, 100, 0, 2*Math.PI);
+                    ctx2.fillStyle = '#eb697a';
+                    ctx2.fill();
+                }
             }
             else{
             ctx2.beginPath();
             ctx2.arc(834, 180, 100, 0, num1*sector_angle);
             ctx2.lineTo(834, 180);
-            ctx2.fillStyle = '#fed219';
+            ctx2.fillStyle = '#f68827';
             ctx2.fill();
             ctx2.beginPath();
             ctx2.arc(834, 180, 100, num1*sector_angle, (num1+num2)*sector_angle);
             ctx2.lineTo(834, 180);
-            ctx2.fillStyle = '#fed219';
+            ctx2.fillStyle = '#eb697a';
             ctx2.fill();
             }
         
@@ -376,7 +398,14 @@ NextButton.onclick = function() {
         number2.denominator = denominator;
         box1DenominatorDiv.innerHTML = denominator;
         box2DenominatorDiv.innerHTML = denominator;
-        number_slider.max = denominator;
+            if(denominator==1){       //for checking whether the denominator is 1 or not
+                number_slider.max = denominator;
+                console.log(number_slider.max);
+            }
+            else{
+                number_slider.max = denominator - 1;
+                console.log(denominator, number_slider.max);
+            }
         number_slider.min = 0;
         number_slider.value = 0;
         box1NumeratorDiv.innerHTML = number_slider.value;
@@ -392,8 +421,14 @@ NextButton.onclick = function() {
         feedbackArea.innerHTML = 'Set the numerator of the second fraction';
         number1.numerator = number_slider.value;
         number_slider.value = 0;
-        number_slider.max = parseInt(number1.denominator) - parseInt(number1.numerator);
-        maxValue.innerHTML = number_slider.max;
+
+        if(number1.numerator=='1' && number1.denominator=='1'){
+            number_slider.max=0;
+            maxValue.innerHTML = 1;
+        }
+        else{number_slider.max = parseInt(number1.denominator) - parseInt(number1.numerator);
+            maxValue.innerHTML = number_slider.max;}
+        
         box2NumeratorDiv.innerHTML = number_slider.value;
         numerical_pointer.innerHTML = number_slider.min;
         numerical_pointer.style = 'left: 10%; background:#eb697a;';
