@@ -97,7 +97,7 @@ var box3 = document.createElement('img');
 box3NumeratorDiv = document.createElement('div');
 box3NumeratorDiv.className = 'Number';
 background.append(box3NumeratorDiv);
-box3NumeratorDiv.style = "left: 78%; top:43.7%; background:#fed219; display:none;";
+box3NumeratorDiv.style = "left: 78%; top:43.7%; background:linear-gradient(90deg, #e99d52,#eb697a); display:none;";
 box3DenominatorDiv = document.createElement('div'); // Div for the denominator of the third number
 box3DenominatorDiv.className = 'Number';
 background.append(box3DenominatorDiv);
