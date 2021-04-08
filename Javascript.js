@@ -352,7 +352,7 @@ function AddedResult(num1, num2, denom) {
                 ctx3.stroke();
             }
 
-            //For filling with yellow part
+            //For filling with orange or red part
             if(num1+num2==1 && denom == 1){
                 if(num1 ==1){
                     ctx2.beginPath();
@@ -376,7 +376,7 @@ function AddedResult(num1, num2, denom) {
             ctx2.beginPath();
             ctx2.arc(834, 180, 100, num1*sector_angle, (num1+num2)*sector_angle);
             ctx2.lineTo(834, 180);
-            ctx2.fillStyle = '#eb697a';
+            ctx2.fillStyle = '#e99d52';
             ctx2.fill();
             }
         
