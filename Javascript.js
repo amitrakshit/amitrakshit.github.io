@@ -1,7 +1,8 @@
 var devicePixelRatio = window.devicePixelRatio;
+var screenScaleRatio = 1080/screen.width;
 //console.log(devicePixelRatio);
 var metaData = document.getElementsByName('viewport');
-metaData[0].content = "width=device-width, initial-scale=" + 1/devicePixelRatio.toString();
+metaData[0].content = "width=device-width, initial-scale=" + 1/screenScaleRatio.toString();
 //console.log(metaData[0].content);
 
 //This is the main background
