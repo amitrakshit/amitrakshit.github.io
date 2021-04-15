@@ -10,7 +10,7 @@ metaData[0].content = "width=device-width, initial-scale=" + 1 / screenScaleRati
 var observation_bar = document.getElementsByClassName("observation_bar2")[0];
 observation_bar.onclick = function () {
     background2.style.display = 'none';
-    background.style.display = '';
+    background.style.display = 'flex';
 }
 
 //question_area
