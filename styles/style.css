@@ -22,6 +22,7 @@ body {
     align-items: center;
     /* overflow: hidden;
     overflow-y: hidden; */
+    overflow: none;
 }
 #loading-screen{
     position: relative;
