@@ -42,7 +42,7 @@ question_bar.onclick = function () {
 var instructionArea = document.createElement('div');
 background.append(instructionArea);
 instructionArea.id = 'instructionArea';
-instructionArea.innerHTML = "Let's explore fractions using the following interaction.";
+instructionArea.innerHTML = "Let's explore additon of like fractions using the following interaction.";
 
 //Two objects for the numbers
 var number1 = {};
@@ -642,7 +642,7 @@ NextButton.onclick = function () {
         feedbackArea.style = "opacity:0; top: 60%;";
         setTimeout(() => {
             feedbackArea.removeChild(imageArray[2]);
-            inside_feedback.innerHTML = 'Hey! Did you notice that adding the numerators and keeping the denominator same as the fractions, gives the sum of the like fractions.';
+            inside_feedback.innerHTML = 'Hey! Did you notice that when we add two like fractions, the numerators of the fractions get added and the denominator remains the same.';
             feedbackArea.style = "opacity:1; top: 58.3%;";
         }, 500);
         VisualArea.style.opacity = "1";
