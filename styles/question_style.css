@@ -137,7 +137,6 @@
     display: flex; justify-content: center;
     align-items: center;
     text-align: center;
-    text-transform: capitalize;
     color: #FF8F8F;
 }
 .option-container{
