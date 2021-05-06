@@ -29,7 +29,7 @@ overflow-x: hidden;
     color: #fff;  
 }
 a:visited{
-    color:#cccccc;
+    color:#fff0bf;
 }
 .link_container a{
     display: block;
@@ -39,4 +39,5 @@ a:visited{
     margin: 1% 0 1% 0;
     border-radius: 1em;
     width: 80%;
+    color: #fff;
 }
