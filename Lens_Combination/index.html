@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ILE</title>
+    <link href="http://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="css.css" rel="stylesheet" type="text/css">
+
+</head>
+<body id="bodyId">
+    <div class="parentDiv">
+      <div class="childDiv">
+        <span id='crossMark'>&#10005;</span>
+        <div id='navigationBar'>
+          <div id='observationBar' class='cAlign add' onclick="obOnClick()">Observation</div>
+          <div id='questionBar' class='cAlign' onclick="qeOnClick()">Question</div>
+        </div>
+        <div id='obDiv' class='bodyDiv' style="display: block;">
+          <div id='obStatement' class='cAlign'><p>Two lasers are placed as shown in the figure. Drag and drop the lenses in the dotted box and observe the path of light rays.</p>
+          </div>
+          <canvas id='secondCanvas'></canvas>
+          <canvas id='thirdCanvas'></canvas>
+          <canvas id='firstCanvas'></canvas>
+          <img id='reloadButton' src='Images/reloadButton.svg'>
+          
+          <div id='obLensHolder1'></div>
+          <div id='obLensHolder2'></div>
+          <div id='obInputDiv' >
+            <div id='obConvexDiv' class='obOptions cAlign'>
+              <p class='cAlign' style="color: white;" draggable="false">Convex &emsp;</p>
+              <img id='convexLensImg' src='Images/convexLens.svg' height="85%" style="cursor: pointer;">
+            </div>
+            <div id='obConcaveDiv' class='obOptions cAlign'>
+              <p class='cAlign' style="color: white;" draggable="false">Concave &emsp;</p>
+              <img id='concaveLensImg' src='Images/concaveLens.svg' height="85%" style="cursor: pointer;">
+            </div>
+          </div>
+          <div id='nextButton' class="cAlign" onclick="qeOnClick()">Next</div>
+
+
+        </div>
+        <div id='qeDiv' class='bodyDiv' >
+          <div id='qeStatement' class="cAlign">Identify the type of lens present in the box based on the path of the light rays.</div>
+          <img id='questionImage' src='Images/questionImage.png' style="position: absolute; width: 100%; margin-top: 20%;">
+          <div id='rightWrongPopUp'></div>
+          <div id=qeOptionBox>
+            <div id='option1' class='qeOptions cAlign'><input id='option1Check' type="checkbox" class="qeCheckBox"> A:Convex, B:Concave</div>
+            <div id='option2' class='qeOptions cAlign'><input id='option2Check' type="checkbox" class="qeCheckBox">A:Concave, B:Convex</div>
+            <div id='option3' class='qeOptions cAlign'><input id='option3Check' type="checkbox" class="qeCheckBox">C:Concave, D:Convex</div>
+            <div id='option4' class='qeOptions cAlign'><input id='option4Check' type="checkbox" class="qeCheckBox">C:Convex, D:Concave</div>
+          </div>
+          <div id='qeSubmitButton' class='cAlign'>Submit</div>
+          <div id='solutionDiv' ><p style="font-size: 1.2rem;"><u>Solution:</u></p><p style="font-size: 1.1rem;"> We know that convex lens converges light and concave lens diverges light. In this figure, through A light is convering thus, A:convex lens, through B light is diverging thus, B:concave lens, through C light is again converging thus, C: convex lens and through D light is diverging thus, D:concave lens.<br><br><br><br><br></p></div>
+          <div id='footer'></div>
+        </div>
+
+
+        
+
+
+
+    </div>
+    </div>
+    <script src="js.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
