@@ -1,0 +1,518 @@
+@font-face {
+    font-family: Gotham SSm;
+    /* src: url('/fonts/Gotham-SSm/GothamSSm-Black.otf'); */
+    src: url('../fonts/Gotham-SSm/GothamSSm-Light.otf');
+    /* src: url('/fonts/Gotham-SSm/GothamSSm-BlackItalic.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-Bold.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-BoldItalic.otf'); 
+    src: url('fonts/Gotham-SSm/GothamSSm-Book.otf'); */
+    /* src: url('/fonts/Gotham-SSm/GothamSSm-BookItalic.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-LightItalic.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-Medium.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-MediumItalic.otf'); */
+}
+
+/* -- For the Background-- */
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background {
+    position: relative;
+    width: 1080px;
+    height: 1920px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: radial-gradient(119.99% 62.42% at 50% 36.33%, #7B16e1 0%, #000e87 100%);
+    overflow: hidden;
+}
+
+.bubble {
+    position: absolute;
+    border: none;
+    border-radius: 50%;
+}
+
+.bubble.bubble1 {
+    width: 531px;
+    height: 531px;
+    left: -144px;
+    top: -267px;
+    background: radial-gradient(53.31% 53.31% at 50% 50%, rgba(137, 27, 233, 0) 0%, rgba(137, 27, 233, 0.27907) 85.42%, #B663FF 100%);
+    opacity: 0.4;
+}
+
+.bubble.bubble2 {
+    width: 336px;
+    height: 336px;
+    left: 912px;
+    top: 156px;
+    background: radial-gradient(53.31% 53.31% at 50% 50%, rgba(137, 27, 233, 0) 0%, rgba(137, 27, 233, 0.27907) 85.42%, #891BE9 100%);
+    opacity: 0.3;
+}
+
+.bubble.bubble3 {
+    width: 381px;
+    height: 381px;
+    left: 606px;
+    top: 1647px;
+    background: radial-gradient(53.31% 53.31% at 58.96% 50.8%, rgba(0, 102, 255, 0) 47.4%, rgba(103, 121, 167, 0.5) 100%);
+    opacity: 0.36;
+}
+
+/* For the cross symbol */
+
+.cross_symbol_container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 108px;
+    height: 108px;
+    left: 48px;
+    top: 102px;
+    opacity: 0.5;
+    /* background: grey; */
+}
+
+.cross_symbol_container .cross_oval {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    /* background-color: blue; */
+}
+
+.cross_oval .cross_hand {
+    position: absolute;
+    width: 54px;
+    height: 6px;
+    top: 50%;
+    left: 50%;
+    background-color: #9C88D8;
+}
+
+.cross_oval #hand1 {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.cross_oval #hand2 {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* For navigation bar. When selected the 'nav_selected' class is to be added in js. And the direction of the box shadow should be changed depending on the situation */
+
+.navigation_bar {
+    position: absolute;
+    width: 55%;
+    height: 5.6%;
+    top: 5.3%;
+    border-radius: 200px;
+    background: rgb(109, 42, 244);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 36px;
+    text-align: center;
+    font-family: Gotham SSm;
+    font-weight: 325;
+    line-height: 144.2%;
+    cursor: pointer;
+    color: white;
+}
+
+.observation_bar {
+    height: 100%;
+    width: 50%;
+    border-radius: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.question_bar {
+    height: 100%;
+    width: 50%;
+    border-radius: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav_selected {
+    background: white;
+    color: rgb(54, 18, 175);
+    box-shadow: 4px 2px 10px 2px rgba(0, 0, 0, 0.284);
+    /*The direction needs to be changed by putting a 'minus' sign befer '4px'*/
+}
+
+/* For the instruction area */
+
+.instructino_area {
+    position: absolute;
+    width: 984px;
+    height: 240px;
+    top: 288px;
+}
+
+.instructino_area p {
+    margin: 0;
+    font-family: Gotham SSm;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 39px;
+    line-height: 60px;
+    /* or 154% */
+    color: #FFFDFD;
+}
+
+/* For Visual area */
+
+.visual_area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border-radius: 20px;
+    width: 984px;
+    height: 520px;
+    top: 564px;
+    background-color: #000000AB;
+    overflow: hidden;
+}
+
+/* All styles related to the table */
+
+.table {
+    border-collapse: collapse;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    font-size: 35px;
+    font-family: Gotham SSm;
+    font-weight: lighter;
+    text-align: center;
+}
+
+.table th {
+    height: 60px;
+    padding: 30px 0px;
+}
+
+.table td:nth-child(4) {
+    height: 98px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table thead tr {
+    background-color: #293450;
+}
+
+.table tbody tr:nth-of-type(even) {
+    background-color: #28334F;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #4d5a7e;
+}
+
+.table thead th:nth-child(1), .table tr td:nth-child(1) {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.table td:nth-child(2), .table thead th:nth-child(2), .table td:nth-child(3), .table thead th:nth-child(3) {
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* For the tick or cross mark */
+
+.check {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    /* border: 1px solid white; */
+    border-radius: 50%;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.45);
+}
+
+.right {
+    position: relative;
+    background: radial-gradient(#62eba0, #33b876);
+}
+
+.wrong {
+    position: relative;
+    background: radial-gradient(#e76c7d, #ff4b63);
+}
+
+.right #upper {
+    position: absolute;
+    height: 20px;
+    width: 6px;
+    left: 40%;
+    bottom: 25%;
+    background-color: #fff;
+    border-radius: 3px;
+    transform-origin: bottom;
+    transform: translateX(-50%) rotate(-45deg);
+}
+
+.right #lower {
+    position: absolute;
+    height: 35px;
+    width: 6px;
+    left: 38%;
+    bottom: 26%;
+    background-color: #fff;
+    border-radius: 3px;
+    transform: translateX(-50%) rotate(45deg);
+    transform-origin: bottom;
+}
+
+.wrong #upper {
+    position: absolute;
+    height: 6px;
+    width: 40px;
+    background-color: #fff;
+    left: 50%;
+    top: 50%;
+    border-radius: 3px;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.wrong #lower {
+    position: absolute;
+    height: 6px;
+    width: 40px;
+    background-color: #fff;
+    left: 50%;
+    top: 50%;
+    border-radius: 3px;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* For feedback bar */
+
+.feedback_bar {
+    position: absolute;
+    border-radius: 20px;
+    width: 984px;
+    height: 180px;
+    top: 1120px;
+    background: linear-gradient(180deg, #FFE601 0%, #E8882F 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feedback_bar p {
+    position: relative;
+    margin: 10px;
+    font-family: Gotham SSm;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 39px;
+    line-height: 60px;
+    /* or 154% */
+    color: black;
+    text-align: center;
+}
+
+/* For the equation container and the numbers */
+
+.equation_container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 984px;
+    height: 120px;
+    top: 1434px;
+    background: linear-gradient(180deg, #CF47FF 0%, #7E00EE 100%);
+    border-radius: 20px;
+}
+
+.equation_container p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: auto;
+    font-family: Gotham SSm;
+    font-style: normal;
+    font-weight: 325;
+    font-size: 36px;
+    line-height: 134%;
+    color: #fff;
+}
+
+.equation_container p .numbers {
+    position: relative;
+    margin-right: 10px;
+    margin-left: 10px;
+    background: linear-gradient(180deg, #8C38AA 0%, #4D028F 100%);
+    width: 80px;
+    height: 80px;
+    box-shadow: inset 2px 2px 4px #0F007B;
+    border-radius: 16px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.equation_container .numbers_container {
+    /* border: 1px solid white; */
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: -200%;
+    width: 100%;
+    height: 900%;
+    transition: top 1s ease-out;
+}
+
+.equation_container .numbers_container:hover {
+    top: 0%;
+}
+
+.equation_container .inside_number {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.triangle_up {
+    position: absolute;
+    background-color: white;
+    text-align: left;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.triangle_up:before, .triangle_up:after {
+    content: '';
+    position: absolute;
+    background-color: inherit;
+}
+
+.triangle_up, .triangle_up:before, .triangle_up:after {
+    width: 3em;
+    height: 3em;
+    border-top-right-radius: 30%;
+}
+
+.triangle_up {
+    transform: rotate(-60deg) skewX(-30deg) scale(1, .866);
+}
+
+.triangle_up:before {
+    transform: rotate(-135deg) skewX(-45deg) scale(1.414, .707) translate(0, -50%);
+    box-shadow: -8px -4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.triangle_up:after {
+    transform: rotate(135deg) skewY(-45deg) scale(.707, 1.414) translate(50%);
+    box-shadow: 4px -3px 4px rgba(0, 0, 0, 0.25);
+}
+
+.triangle_up.triangle1 {
+    left: 105px;
+    top: 1348px;
+}
+
+.triangle_up.triangle2 {
+    left: 393px;
+    top: 1348px;
+}
+
+.triangle_up.triangle3 {
+    left: 590px;
+    top: 1348px;
+}
+
+.triangle_up.triangle4 {
+    left: 860px;
+    top: 1348px;
+}
+
+.triangle_down {
+    position: absolute;
+    background-color: white;
+    text-align: left;
+    box-shadow: -4px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.triangle_down:before, .triangle_down:after {
+    content: '';
+    position: absolute;
+    background-color: inherit;
+}
+
+.triangle_down, .triangle_down:before, .triangle_down:after {
+    width: 3em;
+    height: 3em;
+    border-top-right-radius: 30%;
+}
+
+.triangle_down {
+    transform: rotate(-120deg) skewX(-30deg) scale(1, .866);
+}
+
+.triangle_down:before {
+    transform: rotate(-135deg) skewX(-45deg) scale(1.414, .707) translate(0, -50%);
+    box-shadow: 3px -4px 4px rgb(0 0 0 / 25%);
+}
+
+.triangle_down:after {
+    transform: rotate(135deg) skewY(-45deg) scale(.707, 1.414) translate(50%);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: -1;
+}
+
+.triangle_down.triangle5 {
+    left: 100px;
+    top: 1573px;
+}
+
+.triangle_down.triangle6 {
+    left: 383px;
+    top: 1573px;
+}
+
+.triangle_down.triangle7 {
+    left: 580px;
+    top: 1573px;
+}
+
+.triangle_down.triangle8 {
+    left: 855px;
+    top: 1573px;
+}
+
+.next_button {
+    position: absolute;
+    top: 1704px;
+    width: 45%;
+    height: 128.64px;
+    border: none;
+    border-radius: 200px;
+    background: linear-gradient(#10dca3, #3988fa);
+    color: white;
+    font-family: Gotham SSm;
+    font-weight: 350;
+    font-size: 39px;
+    cursor: pointer;
+}

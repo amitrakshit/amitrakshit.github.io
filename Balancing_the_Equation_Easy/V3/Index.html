@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Balance the equation</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <section class="background">
+        <!-- For the background only -->
+        <div class="bubble bubble1"></div>
+        <div class="bubble bubble2"></div>
+        <div class="bubble bubble3"></div>
+
+        <!-- For the corss mars -->
+        <div class="cross_symbol_container">
+            <div class="cross_oval">
+                <div class="cross_hand" id="hand1"></div>
+                <div class="cross_hand" id="hand2"></div>
+            </div>
+        </div>
+
+        <!-- For Navigation Bar -->
+        <div class="navigation_bar">
+            <div class="observation_bar nav_selected">Observation</div>
+            <div class="question_bar">Question</div>
+        </div>
+
+        <!-- For instruction Area. It is always a good practice to put the text in a paragraph element since it can contain inline mathJax. -->
+        <div class="instructino_area">
+            <p>Balance the following chemical equation by choosing the appropriate coefficient for the reactants and
+                products. </p>
+        </div>
+
+        <!-- For Visual Area -->
+        <div class="visual_area">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <!--table row-->
+                        <th>Elements</th> <!-- th tag inside thead-->
+                        <th>Reactants</th>
+                        <th>Products</tdh>
+                        <th>Balanced</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cu</td> <!-- td tag inside tbody-->
+                        <td>2</td>
+                        <td>3</td>
+                        <td>
+                            <div id="first_check" class="check right">
+                                <div id="upper"></div>
+                                <div id="lower"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>S</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>
+                            <div id="second_check" class="check right">
+                                <div id="upper"></div>
+                                <div id="lower"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>O</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>
+                            <div id="third_check" class="check right">
+                                <div id="upper"></div>
+                                <div id="lower"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Zn</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>
+                            <div id="fourth_check" class="check right">
+                                <div id="upper"></div>
+                                <div id="lower"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- For Feedback bar -->
+        <div class="feedback_bar">
+            <p id="para"> </p>
+        </div>
+
+        <!-- For the equation option/ Main Interaction Area -->
+        <div class="equation_container">
+            <p><span class="numbers">
+                    <span class="numbers_container container1">
+
+                    </span>
+                </span>
+                \(\text{CuSO}_4~+\)
+                <span class="numbers">
+                    <span class="numbers_container container2">
+
+                    </span>
+                </span>
+                \(\text{Zn} \rightarrow\)
+                <span class="numbers">
+                    <span class="numbers_container container3">
+
+                    </span>
+                </span>
+                \(\text{ZnSO}_4~+\)
+                <span class="numbers">
+                    <span class="numbers_container container4">
+
+                    </span>
+                </span>\(\text{Cu}\)
+            </p>
+        </div>
+        <!-- For the polygon buttons -->
+        <div class="triangle_up triangle1" onClick="poly1()"></div>
+        <div class="triangle_up triangle2" onClick="poly2()"></div>
+        <div class="triangle_up triangle3" onClick="poly3()"></div>
+        <div class="triangle_up triangle4" onClick="poly4()"></div>
+        <div class="triangle_down triangle5" onClick="poly5()"></div>
+        <div class="triangle_down triangle6" onClick="poly6()"></div>
+        <div class="triangle_down triangle7" onClick="poly7()"></div>
+        <div class="triangle_down triangle8" onClick="poly8()"></div>
+
+
+
+        <button class="next_button">Next</button>
+    </section>
+    <script src="scripts/index_script.js"></script>
+</body>
+
+</html>
