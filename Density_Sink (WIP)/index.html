@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Density - Sink and Float for Solids</title>
+</head>
+
+<body>
+    <div class="window">
+        <div class="movable_parent">
+            <!-- This section is for the observation -->
+            <section class="background">
+                <!-- For the background only -->
+                <div class="bubble bubble1"></div>
+                <div class="bubble bubble2"></div>
+                <div class="bubble bubble3"></div>
+
+                <!-- For the corss mark -->
+                <div class="cross_symbol_container">
+                    <div class="cross_oval">
+                        <div class="cross_hand" id="hand1"></div>
+                        <div class="cross_hand" id="hand2"></div>
+                    </div>
+                </div>
+
+                <!-- For Navigation Bar -->
+                <div class="navigation_bar">
+                    <div class="observation_bar nav_selected">Observation</div>
+                    <div class="question_bar">Question</div>
+                </div>
+
+                <!-- For instruction Area. It is always a good practice to put the text in a paragraph element since it can contain inline mathJax. -->
+                <div class="instructino_area">
+                    <p> Change the density of the ball using the slider, and observe the ball in the given liquids. </p>
+                </div>
+                <!-- For Visual Area -->
+                <div class="visual_area">
+                    <!-- For beaker holder image -->
+                    <img class="beaker_holder" src="img/beaker_holder.png" />
+                    <!--For honey beaker-->
+                    <img class="honey" src="img/Honey.png" />
+                    <div class="in_honey ball"></div>
+                    <img class="beaker" src="img/Honey_beaker.png" />
+                    <!--<img class = "reflection" src = "img/beaker_reflection.png"/>-->
+                    <img class="text" src="img/honey_text.png" />
+                    <!--For Water Beaker-->
+                    <img class="water" src="img/water.png" />
+                    <div class=" in_water ball"></div>
+                    <img class="beaker" src="img/water_beaker.png" />
+                   <!-- <img class = "reflection" src = "img/water_beaker_reflection.png"/>-->
+                    <img class="text" src="img/water_text.png" />
+                     <!--For density table-->
+                    <img class="density_table" src="img/density_table.png" />
+                    <div>
+                        <input type="range" min="500" max="2000" value="0" id="new_range" class = "yellow_slider">
+                    </div>
+                    <div>
+                        <input type="range" min="500" max="2000" value="1000" id="water_density" class = "blue_slider">
+                    </div>
+                    <div>
+                        <input type="range" min="500" max="2000" value="1420" id="honey_density" class = "orange_slider"> 
+                    </div>
+
+                </div>
+
+
+                <!-- For Feedback bar -->
+                <div class="feedback_bar">
+                   
+                </div>
+
+                <!-- For Slider -->
+                <div class="slider_container">
+                    <input type="range" min="500" max="2000" value="0" id="myrange" class = "input_slider">
+
+                </div>
+                <!-- For the Next Buttons -->
+                <button class="next_button">Next</button>
+            </section>
+
+            <!-- This section is for the question -->
+            <section class="background2">
+
+            </section>
+        </div>
+    </div>
+
+    <script src="scripts/index_script.js"></script>
+</body>
+
+</html>

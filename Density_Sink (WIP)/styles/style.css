@@ -1,0 +1,352 @@
+body {
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.window{
+    position: relative;
+    height: 1920px; width: 1080px;
+    overflow: hidden;
+}
+.movable_parent{
+    --width: 1080px;
+    height: 1920px; width: calc(var(--width)*2);
+    display: flex; flex-direction: row;
+}
+.background {
+    position: relative;
+    width: 1080px;
+    height: 1920px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: radial-gradient(119.99% 62.42% at 50% 36.33%, #7B16e1 0%, #000e87 100%);
+    overflow: hidden;
+}
+.background2 {
+    position: relative;
+    width: 1080px;
+    height: 1920px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: radial-gradient(119.99% 62.42% at 50% 36.33%, #7B16e1 0%, #000e87 100%);
+    overflow: hidden;
+}
+
+.bubble {
+    position: absolute;
+    border: none;
+    border-radius: 50%;
+}
+
+.bubble.bubble1 {
+    width: 531px;
+    height: 531px;
+    left: -144px;
+    top: -267px;
+    background: radial-gradient(53.31% 53.31% at 50% 50%, rgba(137, 27, 233, 0) 0%, rgba(137, 27, 233, 0.27907) 85.42%, #B663FF 100%);
+    opacity: 0.4;
+}
+
+.bubble.bubble2 {
+    width: 336px;
+    height: 336px;
+    left: 912px;
+    top: 156px;
+    background: radial-gradient(53.31% 53.31% at 50% 50%, rgba(137, 27, 233, 0) 0%, rgba(137, 27, 233, 0.27907) 85.42%, #891BE9 100%);
+    opacity: 0.3;
+}
+
+.bubble.bubble3 {
+    width: 381px;
+    height: 381px;
+    left: 606px;
+    top: 1647px;
+    background: radial-gradient(53.31% 53.31% at 58.96% 50.8%, rgba(0, 102, 255, 0) 47.4%, rgba(96, 140, 255, 0.5) 100%);
+    opacity: 0.36;
+}
+
+/* For navigation bar. When selected the 'nav_selected' class is to be added in js. And the direction of the box shadow should be changed depending on the situation */
+
+.navigation_bar {
+    position: absolute;
+    width: 55%;
+    height: 5.6%;
+    top: 5.3%;
+    border-radius: 200px;
+    background: rgb(109, 42, 244);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 36px;
+    text-align: center;
+    font-family: Gotham SSm;
+    font-weight: 325;
+    line-height: 144.2%;
+    cursor: pointer;
+    color: white;
+}
+
+.observation_bar {
+    height: 100%;
+    width: 50%;
+    border-radius: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.question_bar {
+    height: 100%;
+    width: 50%;
+    border-radius: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav_selected {
+    background: white;
+    color: rgb(54, 18, 175);
+    box-shadow: 4px 2px 10px 2px rgba(0, 0, 0, 0.284);
+    /*The direction needs to be changed by putting a 'minus' sign befer '4px'*/
+}
+
+/* For the instruction area */
+
+.instructino_area {
+    position: absolute;
+    width: 984px;
+    height: 240px;
+    top: 288px;
+}
+
+.instructino_area p {
+    margin: 0;
+    font-family: Gotham SSm;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 39px;
+    line-height: 60px;
+    /* or 154% */
+    color: #FFFDFD;
+}
+
+/* For Visual area */
+
+.visual_area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 984px;
+    height: 560px;
+    top: 564px;
+    
+}
+
+.beaker_holder{
+    position: absolute;
+    border-radius: 10px;
+}
+
+
+.beaker{
+    position:absolute;
+}
+.honey{
+    position:absolute;
+    
+}
+.text{
+    position: absolute;
+}
+.reflection{
+    position: absolute;
+}
+.water{
+    position: absolute;
+}
+.density_table{
+    position: absolute;
+}
+
+
+
+.yellow_slider{
+    -webkit-appearance: none;
+    position: absolute;
+    width: 34%;
+    height: 15px;
+    top: 59px;
+    left: 390px;
+    background: linear-gradient(90deg, #677B97 23.33%, #677B97 23.33%);
+    border-radius: 12px;
+    box-shadow:  0px 1px 10px 1px black;
+    }
+
+.yellow_slider::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 25px;
+    height: 25px; 
+    background: #E1BC27;
+    border-radius: 50%; 
+}
+.yellow_slider::-moz-range-thumb{
+    width: 25px;
+    height: 25px; 
+    background:#E1BC27;
+    border-radius: 50%;
+}
+
+.blue_slider{
+    -webkit-appearance: none;
+    position: absolute;
+    width: 34%;
+    height:15px;
+    top: 90px;
+    left: 390px;
+    background: linear-gradient(90deg, #006CEC 33.33%, #677B97 33.33%);
+    border-radius: 12px;
+    box-shadow:  0px 1px 10px 1px black;
+   
+}
+
+.blue_slider::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 25px;
+    height:25px; 
+    background:#006CEC;
+    border-radius: 50%;
+}
+
+.blue_slider::-moz-range-thumb{
+    width: 25px;
+    height:25px; 
+    background: blue;
+    border-radius: 50%;
+}
+
+
+.orange_slider{
+    -webkit-appearance: none;
+    position: absolute;
+    width: 34%;
+    height:15px;
+    top: 120px;
+    left: 390px;
+    background: linear-gradient(90deg,  #FF6F2C  61.33%, #677B97 61.33%);
+    border-radius: 12px;
+    box-shadow:  0px 1px 10px 1px black;
+}
+
+.orange_slider::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 25px;
+    height:25px; 
+    background: #FF6F2C;
+    border-radius: 50%;
+}
+
+.orange_slider::-moz-range-thumb{
+    width: 25px;
+    height:25px; 
+    background: darkorange;
+    border-radius: 50%;
+}
+
+
+.ball{
+
+    height:60px;
+    width:60px;
+    background-image: radial-gradient(snow, grey);
+    border-radius: 30px;
+    
+    
+    }
+
+    .in_water{
+        position:absolute;
+        top: 280px;
+        left:23.5%;
+        
+        
+        
+    }
+    
+    .in_honey {
+        position: absolute;
+        top: 280px;
+        left:70%;
+        
+    }
+    
+
+/* For feedback bar */
+
+.feedback_bar {
+    position: absolute;
+    border-radius: 20px;
+    width: 984px;
+    height: 180px;
+    top: 1200px;
+    background: linear-gradient(180deg, #FFE601 0%, #E8882F 100%);
+}
+.feedback_bar p{
+    font-family: Gotham SSm;
+    font-weight: 100;
+    font-size: 50px;
+}
+
+.slider_container{
+    position: absolute;
+    top: 80%;
+    width: 90%;
+    }
+
+ .slider_container input{
+        width: 100%;
+    }
+
+.input_slider{
+    -webkit-appearance: none;
+    height:12px;
+    background: #FBEBFF;
+    border-radius: 12px;
+    box-shadow:  0px 1px 10px 1px black;
+}
+.input_slider::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 60px;
+    height:60px; 
+    background: #FD7459;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.input_slider::-moz-range-thumb{
+    width: 60px;
+    height:60px; 
+    background: #FD7459;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.next_button {
+    position: absolute;
+    top: 1704px;
+    width: 45%;
+    height: 128.64px;
+    border: none;
+    border-radius: 200px;
+    background: linear-gradient(#10dca3, #3988fa);
+    color: white;
+    font-family: Gotham SSm;
+    font-weight: 350;
+    font-size: 39px;
+    cursor: pointer;
+}
