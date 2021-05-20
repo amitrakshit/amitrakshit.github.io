@@ -42,41 +42,56 @@
                     <!-- For beaker holder image -->
                     <img class="beaker_holder" src="img/beaker_holder.png" />
                     <!--For honey beaker-->
-                    <img class="honey" src="img/Honey.png" />
+                    <!-- <img class="honey" src="img/Honey.png" /> -->
+                    <img src="img/honey_bottom.svg" alt="" class="honey_bottom">
+                    <img src="img/Honey_top.svg" alt="" class="honey_top">
                     <div class="in_honey ball"></div>
+                    <!-- <img src="img/honey_covering_ball.svg" alt="honey_covering_ball" class="honey_covering_ball"> -->
+                    <img class="honey_overlayer" src="img/Honey_overlayer2.svg" alt="honey overlayer">
                     <img class="beaker" src="img/Honey_beaker.png" />
+
                     <!--<img class = "reflection" src = "img/beaker_reflection.png"/>-->
                     <img class="text" src="img/honey_text.png" />
+
                     <!--For Water Beaker-->
-                    <img class="water" src="img/water.png" />
+                    <!-- <img class="water" src="img/water.png" /> -->
+                    <img src="img/bottom_layer.svg" alt="" class="water_bottom">
+                    <img class="water_overlayer" src="img/Water_overlayer.svg" alt="water overlayer">
+                    <img src="img/top_layer_water.svg" alt="" class="water_top">
                     <div class=" in_water ball"></div>
                     <img class="beaker" src="img/water_beaker.png" />
-                   <!-- <img class = "reflection" src = "img/water_beaker_reflection.png"/>-->
+                    <!-- <img class = "reflection" src = "img/water_beaker_reflection.png"/>-->
                     <img class="text" src="img/water_text.png" />
-                     <!--For density table-->
+                    <!--For density table-->
                     <img class="density_table" src="img/density_table.png" />
+
+
+
                     <div>
-                        <input type="range" min="500" max="2000" value="0" id="new_range" class = "yellow_slider">
+                        <input type="range" min="500" max="2000" value="0" id="new_range" class="yellow_slider">
                     </div>
                     <div>
-                        <input type="range" min="500" max="2000" value="1000" id="water_density" class = "blue_slider">
+                        <input type="range" min="500" max="2000" value="1000" id="water_density" class="blue_slider">
                     </div>
                     <div>
-                        <input type="range" min="500" max="2000" value="1420" id="honey_density" class = "orange_slider"> 
+                        <input type="range" min="500" max="2000" value="1420" id="honey_density" class="orange_slider">
                     </div>
+                    <div class="hidden"></div>
 
                 </div>
 
 
                 <!-- For Feedback bar -->
                 <div class="feedback_bar">
-                   
+
                 </div>
 
                 <!-- For Slider -->
                 <div class="slider_container">
-                    <input type="range" min="500" max="2000" value="0" id="myrange" class = "input_slider">
-
+                    <input type="range" min="500" max="2000" value="0" id="myrange" class="input_slider">
+                    <div class="movable">
+                        <span class="slider_value">0</span>
+                    </div>
                 </div>
                 <!-- For the Next Buttons -->
                 <button class="next_button">Next</button>
@@ -84,6 +99,26 @@
 
             <!-- This section is for the question -->
             <section class="background2">
+                <!-- This section is for the observation -->
+            <section class="background">
+                <!-- For the background only -->
+                <div class="bubble bubble1"></div>
+                <div class="bubble bubble2"></div>
+                <div class="bubble bubble3"></div>
+
+                <!-- For the corss mark -->
+                <div class="cross_symbol_container">
+                    <div class="cross_oval">
+                        <div class="cross_hand" id="hand1"></div>
+                        <div class="cross_hand" id="hand2"></div>
+                    </div>
+                </div>
+
+                <!-- For Navigation Bar -->
+                <div class="navigation_bar">
+                    <div class="observation_bar">Observation</div>
+                    <div class="question_bar nav_selected">Question</div>
+                </div>
 
             </section>
         </div>
