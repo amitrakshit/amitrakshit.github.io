@@ -83,7 +83,7 @@ body {
     height: 196%;
     left: 0px;
     top: -249px;
-    outline: 1px solid rgb(255, 190, 190);
+    /* outline: 1px solid rgb(255, 190, 190); */
     box-sizing: border-box;
     display: flex;
     justify-content: center;
