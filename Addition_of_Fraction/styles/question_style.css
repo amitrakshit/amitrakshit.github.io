@@ -278,7 +278,7 @@ footer {
     height: 128.64px;
     border: none;
     border-radius: 200px;
-    background: linear-gradient(#10dca3, #3988fa);
+    background: linear-gradient(90deg, #10dca3, #3988fa);
     color: white;
     font-family: Gotham SSm;
     font-weight: 350;

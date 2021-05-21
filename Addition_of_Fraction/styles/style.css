@@ -342,7 +342,7 @@ button.Next-Button {
     top: 88.5%;
     border: none;
     border-radius: 200px;
-    background: linear-gradient(#10dca3, #3988fa);
+    background: linear-gradient(90deg,#10dca3, #3988fa);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -360,7 +360,7 @@ button#reset {
     top: 80%;
     border: none;
     border-radius: 200px;
-    background: linear-gradient(#10dca3, #3988fa);
+    background: linear-gradient(90deg, #10dca3, #3988fa);
     display: flex;
     align-items: center;
     justify-content: center;
