@@ -1,9 +1,3 @@
-var devicePixelRatio = window.devicePixelRatio;
-var screenScaleRatio = 1080 / screen.width;
-//console.log(devicePixelRatio);
-var metaData = document.getElementsByName('viewport');
-metaData[0].content = "width=device-width, initial-scale=" + 1 / screenScaleRatio.toString();
-//console.log(metaData[0].content);
 
 // SFX files
 var Right_ANS = new Audio();
@@ -50,12 +44,8 @@ for (let index = 0; index < options.length; index++) {
             feedback_bar.children[1].style = "color: #8DD43E;";
             feedback_bar.children[1].innerHTML = "You got the correct answer!";
             this.style = "background:linear-gradient(180deg, #3CA35A, #389B60); color: white;";
-            // option_container.style.top = "444px";
-            scrollable_dynamic_panel.style.top = "-970px";
             dynamic_panel_window.style = "overflow-y:scroll;";
-            // feedback_bar.style.top = "300px";
-            // question_area.style.opacity = "0";
-            // solution.style = "top:1160px";
+            dynamic_panel_window.scroll({top: 800, behavior: "smooth"});
             footer.style = "bottom:0px";
             Right_ANS.play();
         }
