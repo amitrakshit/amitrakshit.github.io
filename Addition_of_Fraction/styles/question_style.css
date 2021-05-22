@@ -4,7 +4,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden;
+    overflow-x: scroll;
     overflow-y: scroll;
 }
 
@@ -52,7 +52,7 @@ body {
     line-height: 144.2%;
     /* font-size: 2.5em; */
     cursor: pointer;
-    z-index: 2;
+    z-index: 0;
 }
 
 .question_bar2 {
@@ -100,9 +100,11 @@ body {
     overflow-y: hidden;
     overflow-x: hidden;
 }
-.dynamic_panel_window::-webkit-scrollbar{
+
+.dynamic_panel_window::-webkit-scrollbar {
     display: none;
 }
+
 .question_area {
     position: absolute;
     width: 90%;
@@ -230,6 +232,7 @@ body {
 
 .solution #SolHead {
     text-align: center;
+    font-size: 46px;
 }
 
 .solution {
@@ -278,7 +281,7 @@ footer {
     color: white;
     font-family: Gotham SSm;
     font-weight: 350;
-    font-size: 39px;
+    font-size: 42px;
     cursor: pointer;
     /* z-index: -1; */
 }

@@ -4,6 +4,8 @@ var Right_ANS = new Audio();
 Right_ANS.src = "sounds/Right_ANS.mp3";
 var Wrong_ANS = new Audio();
 Wrong_ANS.src = "sounds/Wrong_ANS.mp3";
+var buttonAudio_Click = new Audio();
+buttonAudio_Click.src = "../sounds/buton_Click.mp3";
 
 //Observation bar linking
 var observation_bar = document.getElementsByClassName("observation_bar2")[0];
@@ -59,7 +61,5 @@ for (let index = 0; index < options.length; index++) {
     }
 }
 
-var finish_button = document.getElementsByClassName('finish-button')[0];
-finish_button.onclick = function () {
-    window.location.reload();
-}
+// Finish Button
+// functionality added in LO_script

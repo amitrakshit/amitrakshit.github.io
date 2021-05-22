@@ -1,9 +1,18 @@
-var devicePixelRatio = window.devicePixelRatio;
-var screenScaleRatio = 1080 / screen.width;
 //console.log(devicePixelRatio);
 var metaData = document.getElementsByName('viewport');
-metaData[0].content = "width=device-width, initial-scale=" + 1 / screenScaleRatio.toString();
+
 //console.log(metaData[0].content);
+
+if (screen.width / screen.height < 9 / 16) {
+    screenScaleRatio = 1080 / screen.width;
+}
+else {
+    screenScaleRatio = 1920/screen.height;
+}
+metaData[0].content = "width=device-width, initial-scale=" + 1 / screenScaleRatio.toString();
+// console.log(document.getElementsByTagName('body')[0].style);
+
+
 var loading_screen = document.getElementById('loading-screen');
 window.onload = function () {
     loading_screen.style.display = 'none';
@@ -263,7 +272,7 @@ number_slider.oninput = function () {
     sliderAudio_oninput.play();
     sliderAudio_oninputForward.play();
 };
-number_slider.onchange = function (){
+number_slider.onchange = function () {
     sliderAudio_onchange.play();
 }
 background.append(number_slider);

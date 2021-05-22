@@ -11,17 +11,19 @@
     src: url('/fonts/Gotham-SSm/GothamSSm-Medium.otf');
     src: url('/fonts/Gotham-SSm/GothamSSm-MediumItalic.otf'); */
 }
-html{
+
+html {
     margin: 0;
 }
+
 body {
     min-height: 100vh;
     min-width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* overflow: hidden;
-    overflow-y: hidden; */
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .window {
@@ -37,7 +39,7 @@ body {
     left: 0px;
     --width: 1080px;
     height: 1920px;
-    width: calc(var(--width)*2);
+    width: auto;
     display: flex;
     flex-direction: row;
     transition: left 0.5s linear;
@@ -64,10 +66,12 @@ body {
     /* font-family: Gotham SSm A, Gotham SSm B, Helvetica, sans-serif; */
     overflow: hidden;
 }
-.BG_SVG{
+
+.BG_SVG {
     width: 1080px;
     height: auto;
 }
+
 .navigation_bar {
     position: absolute;
     width: 55%;
@@ -348,7 +352,7 @@ button.Next-Button {
     justify-content: center;
     color: white;
     font-family: Gotham SSm;
-    font-size: 39px;
+    font-size: 42px; line-height: 42px;
     font-weight: 350;
     cursor: pointer;
 }
@@ -360,13 +364,13 @@ button#reset {
     top: 80%;
     border: none;
     border-radius: 200px;
-    background: linear-gradient(90deg, #10dca3, #3988fa);
+    background: linear-gradient(45deg,#10dca3, #3988fa);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-family: Gotham SSm;
-    font-size: 39px;
+    font-size: 42px; line-height: 42px;
     font-weight: 350;
     cursor: pointer;
 }
