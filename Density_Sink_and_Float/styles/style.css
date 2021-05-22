@@ -190,6 +190,11 @@ body {
     /* display: none; */
 }
 
+#waterBeakerImgforHoney{
+    position: absolute;
+    left: 46.4%;
+}
+
 .honey {
     position: absolute;
 }
