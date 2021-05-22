@@ -50,7 +50,7 @@ body {
     align-items: center;
     flex-direction: column;
     /* background: radial-gradient(119.99% 62.42% at 50% 36.33%, #7B16e1 0%, #000e87 100%); */
-    background-image: url("img/BG (Observation) 1_200521.svg");
+    /* background-image: url("img/BG (Observation) 1_200521.svg"); */
     background-repeat: none;
     background-position: center;
     overflow: hidden;
