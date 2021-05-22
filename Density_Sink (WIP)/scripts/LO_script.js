@@ -48,7 +48,9 @@ var close_button = document.getElementsByClassName('close_button')[0];
 
 close_button.onclick = function () {
     buttonAudio_Click.play();
-    window.location.reload();
+    LO_message.style.backgroundColor = '#00000000';
+    popup.style = 'opacity:0; top: 950px'
+    LO_message.style = "z-index : -1;";
 }
 
 
@@ -56,11 +58,6 @@ close_button.onclick = function () {
 var finish_button = document.getElementsByClassName('finish-button')[0];
 finish_button.onclick = function () {
     buttonAudio_Click.play();
-    LO_message.style = "z-index : 0;";
-    LO_message.style.backgroundColor = '#000000cc';
-    popup.style = 'opacity:1; top: 601px'
-    circle_stroke_animation();
-    setTimeout(function () {
-        close_button.style.opacity = 1;
-    }, 1000)
+    window.location.reload();
+
 }

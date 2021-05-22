@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/question_style.css">
+    <link rel="stylesheet" href="styles/LO_style.css">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <title>Density - Sink and Float for Solids</title>
 </head>
 
@@ -14,11 +17,11 @@
         <div class="movable_parent">
             <!-- This section is for the observation -->
             <section class="background">
+                <img src="img/BG (Observation) 1_200521.svg" alt="">
                 <!-- For the background only -->
-                <div class="bubble bubble1"></div>
+                <!-- <div class="bubble bubble1"></div>
                 <div class="bubble bubble2"></div>
-                <div class="bubble bubble3"></div>
-
+                <div class="bubble bubble3"></div> -->
                 <!-- For the corss mark -->
                 <div class="cross_symbol_container">
                     <div class="cross_oval">
@@ -65,8 +68,6 @@
                     <!--For density table-->
                     <img class="density_table" src="img/density_table.png" />
 
-
-
                     <div>
                         <input type="range" min="500" max="2000" value="0" id="new_range" class="yellow_slider">
                     </div>
@@ -83,7 +84,7 @@
 
                 <!-- For Feedback bar -->
                 <div class="feedback_bar">
-
+                    <p id="para"> </p>
                 </div>
 
                 <!-- For Slider -->
@@ -92,6 +93,10 @@
                     <div class="movable">
                         <span class="slider_value">0</span>
                     </div>
+                    <div class="marker" id="marker1"></div>
+                    <div class="marker" id="marker2"></div>
+                    <div class="marker" id="marker3"></div>
+                    <div class="marker" id="marker4"></div>
                 </div>
                 <!-- For the Next Buttons -->
                 <button class="next_button">Next</button>
@@ -99,12 +104,12 @@
 
             <!-- This section is for the question -->
             <section class="background2">
-                <!-- This section is for the observation -->
-            <section class="background">
+                <img src="img/BG (Question) 1_200521.svg" alt="">
+
                 <!-- For the background only -->
-                <div class="bubble bubble1"></div>
+                <!-- <div class="bubble bubble1"></div>
                 <div class="bubble bubble2"></div>
-                <div class="bubble bubble3"></div>
+                <div class="bubble bubble3"></div> -->
 
                 <!-- For the corss mark -->
                 <div class="cross_symbol_container">
@@ -120,11 +125,80 @@
                     <div class="question_bar nav_selected">Question</div>
                 </div>
 
+                <div class="dynamic_panel_window">
+                    <div class="scrollable_dynamic_panel">
+                        <div class="question_area">
+                            <p>Three objects A, B, and C are placed in a liquid, as shown. Arrange them from the lowest
+                                density to the highest.</p>
+                        </div>
+                        <div class="question_visual_area">
+                            <img src="img/question_visual.png" alt="">
+                        </div>
+                        <div class="feedback-bar">
+                            <div id="big">Oops!</div>
+                            <div id="small">You’ve missed something! Let’s go back to the observation tab and give it
+                                another
+                                shot!
+                            </div>
+                        </div>
+                        <div class="option-container">
+                            <div class="options" id="option1"> B>A>C </div>
+                            <div class="options" id="option2" title="solution"> B&lt;A&lt;C </div>
+                            <div class="options" id="option3"> A>B>C </div>
+                            <!-- <div class="options" id="option4" title="solution">4</div> -->
+                        </div>
+
+                        <div class="solution">
+                            <p id="SolHead">Solution</p>
+                            <p>The object that completely sinks has more density than the water. So, C has the highest
+                                density among the three objects.
+                            </p>
+                            <ul>
+                                <li>A and B are floating, so their density is lower than water. Among A and B, a larger
+                                    fraction of A is immersed in water when compared to B. So, A has a higher density
+                                    than B.
+                                </li>
+                                <br>
+                                <li>So, arranging the bodies in the decreasing order of densities, we get the following
+                                    order : B&lt;A&lt;C </li>
+                            </ul>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <footer class="button-container">
+                    <button class="finish-button">Finish</button>
+                </footer>
+            </section>
+            <!-- LO message -->
+            <section class="LO_message">
+                <div class="popup">
+                    <div class="text_container">
+                        <p>Amazing! You have successfully learnt if the density of an object is less than the density of
+                            a liquid, then it floats on the liquid, and if it is greater than the density of the liquid, it sinks.</p>
+                    </div>
+                    <div class="tick_mark_container">
+                        <div class="ellipse2"></div>
+                        <svg class="round_stroke" width="200" height="200">
+                            <path d=""></path>
+                        </svg>
+                        <div class="ellipse1"></div>
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                    </div>
+                    <button class="close_button">Close</button>
+                </div>
             </section>
         </div>
     </div>
 
     <script src="scripts/index_script.js"></script>
+    <script src="scripts/question_script.js"></script>
+    <script src="scripts/LO_script.js"></script>
 </body>
 
 </html>
