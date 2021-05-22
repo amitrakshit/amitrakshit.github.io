@@ -1,6 +1,6 @@
 // SFX filrs
 var buttonAudio_Click = new Audio();
-buttonAudio_Click.src = "../sounds/buton_Click.mp3";
+buttonAudio_Click.src = "sounds/buton_Click.mp3";
 
 
 /* Following code till circle_stroke_animation() is for loaded screen animation */

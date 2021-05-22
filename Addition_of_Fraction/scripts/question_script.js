@@ -5,7 +5,7 @@ Right_ANS.src = "sounds/Right_ANS.mp3";
 var Wrong_ANS = new Audio();
 Wrong_ANS.src = "sounds/Wrong_ANS.mp3";
 var buttonAudio_Click = new Audio();
-buttonAudio_Click.src = "../sounds/buton_Click.mp3";
+buttonAudio_Click.src = "sounds/buton_Click.mp3";
 
 //Observation bar linking
 var observation_bar = document.getElementsByClassName("observation_bar2")[0];
