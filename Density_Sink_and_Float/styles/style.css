@@ -515,7 +515,7 @@ body {
 }
 
 #marker3 {
-    left: 66.67%;
+    left: 61.33%;
 }
 
 #marker4 {
@@ -533,6 +533,6 @@ body {
     color: white;
     font-family: Gotham SSm;
     font-weight: 350;
-    font-size: 39px;
+    font-size: 42px;
     cursor: pointer;
 }

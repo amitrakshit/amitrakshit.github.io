@@ -38,6 +38,12 @@ observation_tab.onclick = function () {
    movable_parent.style = "left: 0px";
 }
 
+//water and honey top, overlayer declearation
+var water_top = document.getElementsByClassName("water_top");
+var water_overlayer = document.getElementsByClassName('water_overlayer');
+var honey_top = document.getElementsByClassName("honey_top");
+var honey_overlayer = document.getElementsByClassName('honey_overlayer');
+
 //Next Button
 var next_button = document.getElementsByClassName("next_button")[0];
 next_button.onclick = function () {
@@ -89,7 +95,9 @@ function color_change() {
    update_relative_density();
 }
 
-
+/* To check wheather the ball is sinked or just submerged */
+var water_ball_sinked = undefined;
+var honey_ball_sinked = undefined;
 
 update_relative_density();
 
@@ -100,10 +108,17 @@ function update_relative_density() {
    var relative_water = density_ball / density_water;
    var immersed_water = relative_water * 60;
    var water_ball = document.getElementsByClassName("in_water");
-   var water_top = document.getElementsByClassName("water_top");
-   var water_overlayer = document.getElementsByClassName('water_overlayer');
-   var honey_top = document.getElementsByClassName("honey_top");
-   var honey_overlayer = document.getElementsByClassName('honey_overlayer');
+
+   if (input_slider.value > 980 && input_slider.value < 1020) {
+      // input_slider.value = 1000;
+      input_slider.step = 100;
+   }
+   else if (input_slider.value > 1400 && input_slider.value < 1440) {
+      input_slider.step = 92;
+   }
+   else {
+      input_slider.step = 1;
+   }
 
    if (density_ball <= parseInt(density_water)) {
       water_ball[0].style.transition = " top 1.1s";
@@ -123,7 +138,7 @@ function update_relative_density() {
    var relative_honey = density_ball / density_honey;
    var immersed_honey = relative_honey * 60;
    var honey_ball = document.getElementsByClassName("in_honey");
-   var honey_top = document.getElementsByClassName("honey_top");
+
    if (density_ball <= parseInt(density_honey)) {
       honey_ball[0].style.transition = " top 1.5s";
       top_honey = 265 + immersed_honey / 2;
@@ -137,25 +152,51 @@ function update_relative_density() {
    }
 
 
+   /* To check wheather the ball is sinked or just submerged */
+   
    if (input_slider.value < parseInt(density_water)) {
+      water_ball_sinked = false;
+      honey_ball_sinked = false;
 
+   }
+   else if (input_slider.value > parseInt(density_honey)) {
+      water_ball_sinked = true;
+      honey_ball_sinked = true;
+   }
+   else if (input_slider.value > parseInt(density_water) && input_slider.value < parseInt(density_honey)) {
+      water_ball_sinked = true;
+      honey_ball_sinked = false;
+   }
+
+
+
+   /* Area for all feedback messages */
+   if (input_slider.value < parseInt(density_water)) {
       remarks.innerText = "Notice that the ball floats in both water and honey because of the density difference.";
 
    }
-   else if (input_slider.value > parseInt(density_water) && density_ball < parseInt(density_honey)) {
+   else if (input_slider.value > parseInt(density_water) && input_slider.value < parseInt(density_honey)) {
       remarks.innerText = "Notice that the ball sinks in water but floats in honey because of the density difference.";
    }
 
-   else if (input_slider.value == parseInt(density_water)) {
+   else if (input_slider.value == parseInt(density_water) && water_ball_sinked == false) {
 
-      remarks.innerText = "The density of the ball is equal to the density of water and less than that of honey. Hence, it floats on water as well as honey.";
+      remarks.innerText = "The density of the ball is less than that of honey and equal to that of water. Hence, it floats on honey but just submerges in water.";
+
+   }
+   else if (input_slider.value == parseInt(density_water) && water_ball_sinked == true) {
+
+      remarks.innerText = "The density of water and the ball is equal. Since there is no force acting on it, the ball stays at its previous position.";
 
    }
 
-   else if (input_slider.value == parseInt(density_honey)) {
+   else if (input_slider.value == parseInt(density_honey) && honey_ball_sinked == false) {
 
-      remarks.innerText = "The density of ball is greater than that of water and equal to that of honey. Hence it sinks in water but floats on honey.";
+      remarks.innerText = "The density of ball is greater than that of water and equal to that of honey. Hence, it sinks in water but just submerges in honey.";
+   }
+   else if (input_slider.value == parseInt(density_honey) && honey_ball_sinked == true) {
 
+      remarks.innerText = "The density of honey and the ball is equal. Since there is no force acting on the ball, it stays at its previous position.";
    }
    else {
       remarks.innerText = "Notice that the ball sinks both in water and  honey because of the density difference.";
@@ -166,7 +207,7 @@ function update_relative_density() {
 update_value();
 function update_value() {
    slide_value.textContent = input_slider.value;
-   slide_value.style.left = (((92 / 1500) * (input_slider.value - 500)) + 4).toString() + "%";
+   slide_value.style.left = (((94 / 1500) * (input_slider.value - 500)) + 3.1).toString() + "%";
 
    // console.log(slide_value.style.left);
 }
