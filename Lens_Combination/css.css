@@ -33,12 +33,13 @@
   height: 177.78vw;
   /*border: 2px solid black;*/
   position: absolute;
-  background-image: url('Images/BG1.png');
+  background-image: url('Images/BG\ \(Observation\)\ 1_200521.svg');
   background-size: 100vw;
   overflow: hidden;  
 }
 .childDivAdd{
-  background-image: radial-gradient(119.99% 62.42% at 50% 36.33%, #7B16E1 0%, #000E87 100%) !important;
+  /* background-image: radial-gradient(119.99% 62.42% at 50% 36.33%, #7B16E1 0%, #000E87 100%) !important; */
+  background-image: url("Images/BG\ \(Question\)\ 1_200521.svg") !important;
 }
 html{
   font-size: 3.556vw;
