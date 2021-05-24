@@ -40,13 +40,13 @@ html{
 
 #navigationBar{
   position: absolute;
-  width: 60%;
-  height: 6%;
-  margin-left: 20%;
-  margin-top: 10%;
+  width: 55.55%;
+  height: 5.625%;
+  margin-left: 22.22%;
+  margin-top: 9.44%;
   border-radius: 2rem;
   background-color: rgb(109, 42, 244);
-  font-size:1.15rem ;
+  font-size:1rem ;
   
 }
 #observationBar{
@@ -81,25 +81,25 @@ html{
 
 .bodyDiv{
   position: absolute;
-  width:93%;
+  width:92%;
   height: 85%;
   /*margin-left: 3.5%;*/
-  margin-top: 25%;
+  margin-top: 26.66%;
   transition: margin-left 0.4s;
 }
 
 #obDiv{
-  margin-left: 3.5%;
+  margin-left: 4.00%;
 }
 #qeDiv{
-  margin-left: 103.5%;
+  margin-left: 104.00%;
   border: 0px solid black;
 }
 
 #obStatement{
   position: absolute;
   width: 100%;
-  height: 10%;
+  height: 12.70%;
   font-size: 1.1rem;
   font-weight: 325;
   color: white;
@@ -107,15 +107,15 @@ html{
 }
 canvas{
   position: absolute;
-  margin-top: 20%;
+  margin-top: 26.65%;
   /*width: 100%;
   height: 40%;*/
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 
 #obInputDiv{
   position: absolute;
-  margin-top: 105%;
+  margin-top: 93%;
   width: 100%;
   height: 20%;
   
@@ -123,11 +123,11 @@ canvas{
 
 #nextButton,#qeSubmitButton{
   position: absolute;
-  width: 35%;
+  width: 46%;
   height: 7%;
-  margin-left: 32.5%;
+  margin-left: 27%;
   margin-top: 148%;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   border-radius: 2rem;
   background-image: linear-gradient(#10dca3,#3988fa);
   color: white;
@@ -137,52 +137,85 @@ canvas{
 
 .obOptions{
   position: absolute;
-  width: 40%;
-  height: 60%;
+  width: 47.96%;
+  height: 100%;
   margin-top: 15%;
-  background-color: #130d21;
-  border-radius: 1rem;
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(#CF47FF, #7E00EE);
   
 }
 #obConvexDiv{
-  margin-left: 6.66%;
+  margin-left: 0%;
 }
 #obConcaveDiv{
-  margin-left: 53.32%;
+  margin-left: 51.8%;
+}
+
+.obOptionStatement{
+  position: absolute;
+  margin-left: 10%;
 }
 
 #obLensHolder1{
   position: absolute;
-  margin-left: 40.3%;
-  margin-top: 34.3%;
-  width: 8%;
-  height: 25%;
+  margin-left: 33.5%;
+  margin-top: 36.8%;
+  width: 7%;
+  height: 13.5%;
   border: 0.1rem solid white;
   border-style: dashed;
+  background-color: #ff0096;
+  opacity: 0.5;
 
 }
 #obLensHolder2{
   position: absolute;
-  margin-left: 55.3%;
-  margin-top: 34.3%;
-  width: 8%;
-  height: 25%;
+  margin-left: 58.0%;
+  margin-top: 36.8%;
+  width: 7%;
+  height: 13.5%;
   border: 0.1rem solid white;
   border-style: dashed;
+  background-color: #ff0096;
+  opacity: 0.5;
 
+}
+
+.obLensHolder{
+  border:0px solid black !important;
+  background-color: transparent !important;
 }
 
 #reloadButton{
   position: absolute;
-  width: 8%;
-  margin-top: 23%;
-  margin-left: 3%;
+  width: 17%;
+  margin-top: 74%;
+  margin-left: 79%;
   cursor: pointer;
   display: none;
 }
+#obPopupWindow{
+  position: absolute;
+  padding-left: 2%;
+  padding-right: 2%;
+  margin-top: 85.0%;
+  width: 96%;
+  height: 12%;
+  border-radius: 0.5rem;
+  background-image: linear-gradient(#FFE601, #E8882F);
+  opacity: 1;
+  transition: margin-top 0.3s, opacity 0.3s;
+  text-align: center;
+}
+.obPopupWindowAdd{
+    margin-top: 95% !important;
+    opacity: 0.1 !important;
+}
+
 #crossMark{
   position: absolute;
-  width: 10%;
   margin-top: 12%;
   margin-left: 5%;
   font-size: 1.3rem;
@@ -212,18 +245,27 @@ canvas{
   line-height: 1.5;
   
 }
+#questionInstruction{
+  position: absolute;
+  margin-left: 15%;
+  margin-top: 70%;
+  color: white;
+  
+}
 
 
 #qeOptionBox{
   position: absolute;
-  width: 95%;
-  margin-left: 2.5%;
-  height: 55%;
+  width: 100%;
+  margin-left: 0%;
+  height: 53%;
   margin-top: 80%;
-  font-size: 1.3rem;
-  font-weight: 405;
+  font-size: 1.2rem;
+  font-weight: 325;
   border: 0px solid black;
   transition: margin-top 0.6s;
+  
+
 }
 
 
@@ -231,7 +273,8 @@ canvas{
 /*Class for mcq options*/
 .qeCheckBox{
   position: absolute;
-  width: 5%;
+  width: 30%;
+  height: 30%;
   margin-left: -85%;
   cursor: pointer;
 }
@@ -244,6 +287,11 @@ canvas{
   border-radius: 0.5rem;
   border: 0px solid black;
   cursor: pointer;
+  
+}
+.qeOptionText{
+  position: absolute;
+  margin-left: -23%;
 }
 
 .qeOptions:active{

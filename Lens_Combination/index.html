@@ -28,14 +28,15 @@
           
           <div id='obLensHolder1'></div>
           <div id='obLensHolder2'></div>
+          <div id="obPopupWindow" class="cAlign">Drag and drop any lens to any of the dotted box</div>
           <div id='obInputDiv' >
-            <div id='obConvexDiv' class='obOptions cAlign'>
-              <p class='cAlign' style="color: white;" draggable="false">Convex &emsp;</p>
-              <img id='convexLensImg' src='Images/convexLens.svg' height="85%" style="cursor: pointer;">
+            <div id='obConvexDiv' class='obOptions'>
+              <p class='obOptionStatement' style="color: white; margin-top: 55%;" draggable="false">Convex &emsp;</p>
+              <img id='convexLensImg' src='Images/convexLens.svg' height="65%" style="cursor: pointer; margin-top: 5%;">
             </div>
-            <div id='obConcaveDiv' class='obOptions cAlign'>
-              <p class='cAlign' style="color: white;" draggable="false">Concave &emsp;</p>
-              <img id='concaveLensImg' src='Images/concaveLens.svg' height="85%" style="cursor: pointer;">
+            <div id='obConcaveDiv' class='obOptions'>
+              <p class='obOptionStatement' style="color: white; margin-top: 55%;" draggable="false">Concave &emsp;</p>
+              <img id='concaveLensImg' src='Images/concaveLens.svg' height="65%" style="cursor: pointer; margin-top: 5%;">
             </div>
           </div>
           <div id='nextButton' class="cAlign" onclick="qeOnClick()">Next</div>
@@ -44,30 +45,24 @@
         </div>
         <div id='qeDiv' class='bodyDiv' >
           <div id='qeStatement' class="cAlign">Identify the type of lens present in the box based on the path of the light rays.</div>
-          <img id='questionImage' src='Images/questionImage.png' style="position: absolute; width: 100%; margin-top: 20%;">
+          <img id='questionImage' src='Images/questionImage.jpg' style="position: absolute; width: 100%; margin-top: 20%;">
+          <div id='questionInstruction'>More than one options can be correct</div>
           <div id='rightWrongPopUp'></div>
           <div id=qeOptionBox>
-            <div id='option1' class='qeOptions cAlign'><input id='option1Check' type="checkbox" class="qeCheckBox"> A:Convex, B:Concave</div>
-            <div id='option2' class='qeOptions cAlign'><input id='option2Check' type="checkbox" class="qeCheckBox">A:Concave, B:Convex</div>
-            <div id='option3' class='qeOptions cAlign'><input id='option3Check' type="checkbox" class="qeCheckBox">C:Concave, D:Convex</div>
-            <div id='option4' class='qeOptions cAlign'><input id='option4Check' type="checkbox" class="qeCheckBox">C:Convex, D:Concave</div>
+            <div id='option1' class='qeOptions cAlign'><input id='option1Check' type="checkbox" class="qeCheckBox"><p class='qeOptionText'>A:Convex, B:Concave</p></div>
+            <div id='option2' class='qeOptions cAlign'><input id='option2Check' type="checkbox" class="qeCheckBox"><p class='qeOptionText'>A:Concave, B:Convex</p></div>
+            <div id='option3' class='qeOptions cAlign'><input id='option3Check' type="checkbox" class="qeCheckBox"><p class='qeOptionText'>C:Concave, D:Convex</p></div>
+            <div id='option4' class='qeOptions cAlign'><input id='option4Check' type="checkbox" class="qeCheckBox"><p class='qeOptionText'>C:Convex, D:Concave</p></div>
           </div>
           <div id='qeSubmitButton' class='cAlign'>Submit</div>
-          <div id='solutionDiv' ><p style="font-size: 1.2rem;"><u>Solution:</u></p><p style="font-size: 1.1rem;"> We know that convex lens converges light and concave lens diverges light. In this figure, through A light is convering thus, A:convex lens, through B light is diverging thus, B:concave lens, through C light is again converging thus, C: convex lens and through D light is diverging thus, D:concave lens.<br><br><br><br><br></p></div>
+          <div id='solutionDiv' ><p style="font-size: 1.2rem; text-align: center; font-weight: bold;">Solution:</p><p style="font-size: 1.1rem;"> We know that convex lens converges light and concave lens diverges light. In this figure, through A light is convering thus, A:convex lens, through B light is diverging thus, B:concave lens, through C light is again converging thus, C: convex lens and through D light is diverging thus, D:concave lens.<br><br><br><br><br></p></div>
           <div id='footer'></div>
         </div>
-
-
-        
-
-
-
     </div>
     </div>
     <script src="js.js"></script>
 </body>
 </html>
-
 
 
 
