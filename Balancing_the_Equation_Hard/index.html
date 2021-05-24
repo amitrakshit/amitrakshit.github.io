@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/question_style.css">
+    <link rel="stylesheet" href="styles/LO_style.css">
     <title>Balance the equation</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <link href="http://fonts.cdnfonts.com/css/gotham" rel="stylesheet">
@@ -13,121 +15,269 @@
 </head>
 
 <body>
-    <section class="background">
-        <!-- For the background only -->
-        <div class="bubble bubble1"></div>
-        <div class="bubble bubble2"></div>
-        <div class="bubble bubble3"></div>
+    <audio id="button_sound">
+        <source src="sounds/buton_Click.mp3" type="audio/mpeg">
+    </audio>
+    <div class="window">
+        <!-- For the corss mark -->
 
-        <!-- For Navigation Bar -->
-        <div class="navigation_bar">
-            <div class="observation_bar nav_selected">Observation</div>
-            <div class="question_bar">Question</div>
-        </div>
+        <div class="movable_parent">
+            <section class="background">
+                <!-- For the background only -->
+                <img src="img/background.svg" />
 
-        <!-- For instruction Area. It is always a good practice to put the text in a paragraph element since it can contain inline mathJax. -->
-        <div class="instructino_area">
-            <p>Balance the following chemical equation by choosing the appropriate coefficient for the reactants and
-                products. </p>
-        </div>
+                <div class="cross_symbol_container">
+                    <div class="cross_oval">
+                        <div class="cross_hand" id="hand1"></div>
+                        <div class="cross_hand" id="hand2"></div>
+                    </div>
+                </div>
 
-        <!-- For Visual Area -->
-        <div class="visual_area">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <!--table row-->
-                        <th>Elements</th> <!-- th tag inside thead-->
-                        <th>Reactants</th>
-                        <th>Products</tdh>
-                        <th>Balanced</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Fe</td> <!-- td tag inside tbody-->
-                        <td>2</td>
-                        <td>3</td>
-                        <td>
-                            <div id="first_check" class="check right">
-                                <div id="upper"></div>
-                                <div id="lower"></div>
+
+
+                <!-- For Navigation Bar -->
+                <div class="navigation_bar">
+
+                    <div class="observation_bar nav_selected">Observation</div>
+                    <div class="question_bar">Question</div>
+                </div>
+                <div class="context_button">
+                    <img src="img/Context_Button.svg" />
+                </div>
+
+
+                <!-- For instruction Area. It is always a good practice to put the text in a paragraph element since it can contain inline mathJax. -->
+                <div class="instructino_area">
+                    <p>Tap on the buttons to change the coefficients of the elements to balance the given chemical
+                        reaction. </p>
+                </div>
+
+                <!-- For Visual Area -->
+                <div class="visual_area">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <!--table row-->
+                                <th>Elements</th> <!-- th tag inside thead-->
+                                <th>Reactants</th>
+                                <th>Balanced</tdh>
+                                <th>Products</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Fe</td> <!-- td tag inside tbody-->
+                                <td>2</td>
+                                <td>
+                                    <div id="first_check" class="check right">
+                                        <div id="upper"></div>
+                                        <div id="lower"></div>
+                                    </div>
+                                </td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>C</td>
+                                <td>2</td>
+                                <td>
+                                    <div id="second_check" class="check right">
+                                        <div id="upper"></div>
+                                        <div id="lower"></div>
+                                    </div>
+                                </td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>O</td>
+                                <td>2</td>
+
+                                <td>
+                                    <div id="third_check" class="check right">
+                                        <div id="upper"></div>
+                                        <div id="lower"></div>
+                                    </div>
+                                </td>
+                                <td>3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- For Feedback bar -->
+                <div class="feedback_bar">
+                    <p id="para"> Let us start with Fe, observe the number of atoms in the reactant and product side and
+                        look to make it equal on both sides."
+                    </p>
+                </div>
+
+                <!-- For the equation option/ Main Interaction Area -->
+                <div class="equation_container">
+                    <p><span class="numbers">
+                            <span class="numbers_container container1">
+
+                            </span>
+                        </span>
+                        \(\text{Fe}_2\text{O}_3~+\)
+                        <span class="numbers">
+                            <span class="numbers_container container2">
+
+                            </span>
+                        </span>
+                        \(\text{C} \rightarrow\)
+                        <span class="numbers">
+                            <span class="numbers_container container3">
+
+                            </span>
+                        </span>
+                        \(\text{Fe}~+\)
+                        <span class="numbers">
+                            <span class="numbers_container container4">
+
+                            </span>
+                        </span>\(\text{CO}_2\)
+                    </p>
+                </div>
+                <!-- For the polygon buttons -->
+                <button class="Plus Plus1" id="button1" onClick="poly1()">
+                    <img src="img/Plus.svg" />
+                </button>
+                <button class="Plus Plus2" id="button2" type="button" disabled onClick="poly2()">
+                    <img src="img/Plus.svg" />
+                </button>
+                <button class="Plus Plus3" id="button3" onClick="poly3()">
+                    <img src="img/Plus.svg" />
+                </button>
+                <button class="Plus Plus4" id="button4" type="button" disabled onClick="poly4()">
+                    <img src="img/Plus.svg" />
+                </button>
+                <button class="Minus Minus1" id="button5" onClick="poly5()">
+                    <img src="img/Minus.svg" />
+                </button>
+                <button class="Minus Minus2" id="button6" type="button" disabled onClick="poly6()">
+                    <img src="img/Minus.svg" />
+                </button>
+                <button class="Minus Minus3" id="button7" onClick="poly7()">
+                    <img src="img/Minus.svg" />
+                </button>
+                <button class="Minus Minus4" id="button8" type="button" disabled onClick="poly8()">
+                    <img src="img/Minus.svg" />
+                </button>
+
+
+
+                <button class="next_button" onclick="next_instruction()">Next</button>
+            </section>
+
+
+            <!-- This section is for the question -->
+            <section class="background2">
+
+                <img src="img/background2.svg" />
+
+                <!-- For the corss mark -->
+                <div class="cross_symbol_container">
+                    <div class="cross_oval">
+                        <div class="cross_hand" id="hand1"></div>
+                        <div class="cross_hand" id="hand2"></div>
+                    </div>
+                </div>
+
+                <!-- For Navigation Bar -->
+                <div class="navigation_bar">
+                    <div class="observation_bar">Observation</div>
+                    <div class="question_bar nav_selected">Question</div>
+                </div>
+
+                <div class="dynamic_panel_window">
+                    <div class="scrollable_dynamic_panel">
+                        <div class="question_area">
+                            <p>
+                                Identify the value of \(\text{x} : \text{y}\), if the given chemical equation is
+                                balanced.
+                            </p>
+                            <p id = "equation_p">\(\text{xFe}~+~\text{yCl}_2 \rightarrow \text{2FeCl}_3\)</p>
+                        </div>
+                        <div class="feedback-bar">
+                            <div id="big">Oops!</div>
+                            <div id="small">You’ve missed something! Let’s go back to the observation tab and give it
+                                another
+                                shot!
                             </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>C</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>
-                            <div id="second_check" class="check right">
-                                <div id="upper"></div>
-                                <div id="lower"></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>O</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>
-                            <div id="third_check" class="check right">
-                                <div id="upper"></div>
-                                <div id="lower"></div>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                        </div>
+                        <div class="option-container">
+                            <div class="options" id="option1">\(\text{1} : \text{2}\)</div>
+                            <div class="options" id="option2">\(\text{2} : \text{1}\)</div>
+                            <div class="options" id="option3" title="solution">\(\text{2} : \text{3}\)</div>
+                            <div class="options" id="option4">\(\text{3} : \text{2}\)</div>
+                        </div>
+
+                        <div class="solution">
+                            <p id="SolHead">Solution</p>
+                        
+                            <table class="table1">
+                                <thead>
+                                    <tr>
+                                        <!--table row-->
+                            
+                                        <th>Reactants</th>
+                                        <th>Elements</tdh>
+                                        <th>Products</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Fe</td> <!-- td tag inside tbody-->
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Cl</td> <!-- td tag inside tbody-->
+                                        <td>6</td>
+                                    </tr>
+                                </tbody>
+                            
+                            </table>
+                           
+                                <p>The balanced chemical equation for the reaction of iron with chlorine is:<br>
+                                  \(~~~~~~~~~~~\text{2Fe}~+~\text{3Cl}_2 \rightarrow \text{2FeCl}_3\)<br>
+                                  \(~~~\) Thus, the value of \(\text{x} : \text{y}\) is \(\text{2} : \text{3}\).
+                                </p>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <footer class="button-container">
+                    <button class="finish-button">Finish</button>
+                </footer>
+            </section>
+            <!-- LO message -->
+            <section class="LO_message">
+                <div class="popup">
+                    <div class="text_container">
+                        <p>You have successfully learnt that to balance a chemical equation all the elements must have
+                            equal atoms on both sides.
+                        </p>
+                    </div>
+                    <div class="tick_mark_container">
+                        <div class="ellipse2"></div>
+                        <svg class="round_stroke" width="200" height="200">
+                            <path d=""></path>
+                        </svg>
+                        <div class="ellipse1"></div>
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                    </div>
+                    <button class="close_button">Close</button>
+            </section>
         </div>
-
-        <!-- For Feedback bar -->
-        <div class="feedback_bar">
-            <p id="para"> </p>
-        </div>
-
-        <!-- For the equation option/ Main Interaction Area -->
-        <div class="equation_container">
-            <p><span class="numbers">
-                    <span class="numbers_container container1">
-
-                    </span>
-                </span>
-                \(\text{Fe}_2\text{O}_3~+\)
-                <span class="numbers">
-                    <span class="numbers_container container2">
-
-                    </span>
-                </span>
-                \(\text{C} \rightarrow\)
-                <span class="numbers">
-                    <span class="numbers_container container3">
-
-                    </span>
-                </span>
-                \(\text{Fe}~+\)
-                <span class="numbers">
-                    <span class="numbers_container container4">
-
-                    </span>
-                </span>\(\text{CO}_2\)
-            </p>
-        </div>
-        <!-- For the polygon buttons -->
-        <div class="triangle_up triangle1" onClick="poly1()"></div>
-        <div class="triangle_up triangle2" onClick="poly2()"></div>
-        <div class="triangle_up triangle3" onClick="poly3()"></div>
-        <div class="triangle_up triangle4" onClick="poly4()"></div>
-        <div class="triangle_down triangle5" onClick="poly5()"></div>
-        <div class="triangle_down triangle6" onClick="poly6()"></div>
-        <div class="triangle_down triangle7" onClick="poly7()"></div>
-        <div class="triangle_down triangle8" onClick="poly8()"></div>
-
-
-
-        <button class="next_button">Next</button>
-    </section>
+    </div>
     <script src="scripts/index_script.js"></script>
+    <script src="scripts/question_script.js"></script>
+    <script src="scripts/LO_script.js"></script>
 </body>
 
 </html>
