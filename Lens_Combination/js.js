@@ -13,29 +13,44 @@ function sleep(ms) {
   }
 
 //question navigation bar onclick function
-function qeOnClick(){
+async function qeOnClick(){
     nextORFinish.play();
     document.getElementById('questionBar').classList.add('add');
     document.getElementById('observationBar').classList.remove('add');
     document.getElementsByClassName('childDiv')[0].classList.add('childDivAdd');
+    document.getElementById('nextButton').style.display='none';
     //obDiv.style.display='none';
     //qeDiv.style.display='block';
     obDiv.style.marginLeft='-96%';
     qeDiv.style.marginLeft='4.00%';
+    if(footerState==false){
+        document.getElementById('footer').style.display='none';
+    }
+    await sleep(150);
+    document.getElementById('qeSubmitButton').style.display='flex';
+    await sleep(200);
+    if(footerState){
+        document.getElementById('footer').style.display='block';
+    }
     
     
 }
 
 //observation navigation bar onclick function
-function obOnClick(){
+async function obOnClick(){
     nextORFinish.play();
     document.getElementById('observationBar').classList.add('add');
     document.getElementById('questionBar').classList.remove('add');
     document.getElementsByClassName('childDiv')[0].classList.remove('childDivAdd');
+    document.getElementById('qeSubmitButton').style.display='none';
+    document.getElementById('footer').style.display='none';
     //obDiv.style.display='block';
     //qeDiv.style.display='none'; 
     obDiv.style.marginLeft='4.00%';
     qeDiv.style.marginLeft='104.0%';
+    await sleep(150);
+    document.getElementById('nextButton').style.display='flex';
+    
     
 }
 
@@ -178,7 +193,7 @@ function Ray(x0,y0){
         ctx1.moveTo(transX(x0),transY(y0));
         this.y1=raySign*Math.tan(this.angle0*Math.PI/180)*(this.x1-this.x0)+y0;
         ctx1.lineTo(transX(this.x1),transY(this.y1));
-        ctx1.lineWidth='0.7';
+        ctx1.lineWidth='1';
         ctx1.strokeStyle='#3bff21';
         ctx1.stroke();
 
@@ -424,19 +439,25 @@ var wrongAnswerStatus=false;
 
 document.getElementById('qeSubmitButton').style.display='none';
 //question submit function
+footerState=false;
 document.getElementById('qeSubmitButton').onclick=function(){
+    footerState=true;
     if(document.getElementById('qeSubmitButton').innerHTML=='Submit'){
     document.getElementById('questionInstruction').style.display='none';
     document.getElementById('qeSubmitButton').innerHTML='Finish'
     //document.getElementById('solutionDiv').style.display='flex';
     document.getElementById('footer').style.display='block';
+    document.getElementById('solutionDiv').style.display='block';
 
 
-    document.getElementById('qeStatement').style.display='none';
-    document.getElementById('questionImage').style.display='none';
-    document.getElementById('qeOptionBox').style.marginTop='20%';
-    document.getElementById('solutionDiv').style.marginTop='85%';
-    document.getElementById('rightWrongPopUp').style.marginTop='2%';
+    document.getElementById('qeStatement').style.display='flex';
+    document.getElementById('questionImage').style.display='flex';
+    //document.getElementById('qeOptionBox').style.marginTop='20%';
+    //document.getElementById('solutionDiv').style.marginTop='85%';
+    //document.getElementById('rightWrongPopUp').style.marginTop='2%';
+    document.getElementById('qeDiv').style.overflowY ="scroll";
+    document.getElementById('qeDiv').style.scrollBehavior='smooth';
+    document.getElementById('qeDiv').scrollTop='215';
     document.getElementById('rightWrongPopUp').style.opacity='1';
     for(i=1;i<=correctAnswer.length-1;i++){
         document.getElementById('option'+i.toString()).classList.remove('qeOptionsAdd');
