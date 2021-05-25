@@ -26,6 +26,10 @@ body {
     overflow-y: scroll;
 }
 
+#loading-screen{
+    z-index: 1;
+}
+
 .window {
     position: relative;
     display: flex;
