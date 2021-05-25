@@ -28,6 +28,8 @@ body {
 
 .window {
     position: relative;
+    display: flex;
+    justify-content: center;
     height: 1920px;
     width: 1080px;
     overflow: hidden;
@@ -67,6 +69,9 @@ body {
     overflow: hidden;
 }
 
+#background .navigation_bar {
+    display: none;
+}
 .BG_SVG {
     width: 1080px;
     height: auto;
@@ -85,6 +90,7 @@ body {
     justify-content: space-around;
     font-size: 2.5em;
     text-align: right;
+    z-index: 1;
 }
 
 .observation_bar {
@@ -217,11 +223,14 @@ canvas {
 }
 
 #feedbackArea p {
-    width: 95%;
-    height: 80%;
-    font-size: 30px;
+    position: relative;
+    /* top: 0%; */
+    width: 90%;
+    /* height: max-content; */
+    font-size: 36px;
     line-height: 50px;
     font-family: Gotham SSm;
+    vertical-align: center;
 }
 
 /* .insideDiv{
@@ -346,13 +355,14 @@ button.Next-Button {
     top: 88.5%;
     border: none;
     border-radius: 200px;
-    background: linear-gradient(90deg,#10dca3, #3988fa);
+    background: linear-gradient(90deg, #10dca3, #3988fa);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-family: Gotham SSm;
-    font-size: 42px; line-height: 42px;
+    font-size: 42px;
+    line-height: 42px;
     font-weight: 350;
     cursor: pointer;
 }
@@ -364,13 +374,14 @@ button#reset {
     top: 80%;
     border: none;
     border-radius: 200px;
-    background: linear-gradient(45deg,#10dca3, #3988fa);
+    background: linear-gradient(45deg, #10dca3, #3988fa);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-family: Gotham SSm;
-    font-size: 42px; line-height: 42px;
+    font-size: 42px;
+    line-height: 42px;
     font-weight: 350;
     cursor: pointer;
 }

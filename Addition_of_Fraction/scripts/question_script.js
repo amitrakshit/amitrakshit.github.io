@@ -8,11 +8,11 @@ var buttonAudio_Click = new Audio();
 buttonAudio_Click.src = "sounds/buton_Click.mp3";
 
 //Observation bar linking
-var observation_bar = document.getElementsByClassName("observation_bar2")[0];
-observation_bar.onclick = function () {
-    buttonAudio_Click.play(); //defined in index-script.js
-    movable_parent.style = "left: calc(var(--width)*0); ";
-}
+// var observation_bar = document.getElementsByClassName("observation_bar2")[0];
+// observation_bar.onclick = function () {
+//     buttonAudio_Click.play(); //defined in index-script.js
+//     movable_parent.style = "left: calc(var(--width)*0); ";
+// }
 
 //Dynamic_panel
 var scrollable_dynamic_panel = document.getElementsByClassName('scrollable_dynamic_panel')[0];
@@ -47,9 +47,16 @@ for (let index = 0; index < options.length; index++) {
             feedback_bar.children[1].innerHTML = "You got the correct answer!";
             this.style = "background:linear-gradient(180deg, #3CA35A, #389B60); color: white;";
             dynamic_panel_window.style = "overflow-y:scroll;";
-            dynamic_panel_window.scroll({top: 800, behavior: "smooth"});
+            dynamic_panel_window.scroll({ top: 800, behavior: "smooth" });
             footer.style = "bottom:0px";
             Right_ANS.play();
+            LO_message.style = "z-index : 1;";
+            LO_message.style.backgroundColor = '#000000cc';
+            popup.style = 'opacity:1; top: 601px'
+            circle_stroke_animation();
+            setTimeout(function () {
+                close_button.style.opacity = 1;
+            }, 1000)
         }
         else if (this.title !== "solution" && solution_clicked == false) {
             options[which_button_clicked - 1].style = "background: white; color: black;"

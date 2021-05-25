@@ -137,13 +137,13 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: stretch;
+    justify-content: center;
     width: 1080px;
     height: 160px;
     left: 0px;
     top: 1050px;
     opacity: 0;
-    transition: top 0.4s ease-out, opacity 0.4s;
+    transition: top 0.5s ease-out, opacity 0.5s;
 }
 
 .feedback-bar #big {
@@ -164,10 +164,11 @@ body {
 
 .feedback-bar #small {
     /* position: absolute; */
-    width: 984px;
-    height: 88px;
+    width: 650px;
+    height: auto;
     left: 48px;
     top: 60px;
+    margin-top: 10px;
     font-family: Gotham SSm;
     font-style: normal;
     font-weight: 325;

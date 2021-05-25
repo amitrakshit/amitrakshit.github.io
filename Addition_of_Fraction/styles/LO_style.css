@@ -21,7 +21,7 @@
     left: 70px;
     top: 850px;
     opacity: 0;
-    transition: opacity 0.2s linear, top 0.2s linear;
+    transition: opacity 0.25s linear, top 0.25s linear;
 }
 
 .tick_mark_container {
@@ -125,8 +125,8 @@
 
 .LO_message .text_container p {
     position: relative;
-    top: 26%;
-    width: 90%;
+    top: 25%;
+    width: 85%;
     font-family: Gotham SSm;
     font-style: normal;
     font-weight: 325;
@@ -134,7 +134,7 @@
     line-height: 120.5%;
     /* or 43px */
     text-align: left;
-    text-transform: capitalize;
+    text-align: center;
 }
 
 .close_button{

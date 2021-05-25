@@ -7,7 +7,7 @@ if (screen.width / screen.height < 9 / 16) {
     screenScaleRatio = 1080 / screen.width;
 }
 else {
-    screenScaleRatio = 1920/screen.height;
+    screenScaleRatio = 1920 / screen.height;
 }
 metaData[0].content = "width=device-width, initial-scale=" + 1 / screenScaleRatio.toString();
 // console.log(document.getElementsByTagName('body')[0].style);
@@ -19,7 +19,27 @@ window.onload = function () {
     background.style.display = 'flex';
 }
 
+// Following code is for question tab and observation tab transition
+var navigation_bar = document.getElementsByClassName('navigation_bar');
+var question_tab = navigation_bar[0].children[1];
+var observation_tab = navigation_bar[0].children[0];
 var movable_parent = document.getElementsByClassName('movable_parent')[0];
+
+question_tab.onclick = function () {
+    buttonAudio_Click.play();
+    buttonAudio_Click.playbackRate = 1.5;
+    movable_parent.style = "left: -1080px;";
+    observation_tab.className = "observation_bar2";
+    question_tab.className = "question_bar2";
+}
+
+observation_tab.onclick = function () {
+    buttonAudio_Click.play();
+    buttonAudio_Click.playbackRate = 1.5;
+    movable_parent.style = "left: 0px";
+    observation_tab.className = "observation_bar";
+    question_tab.className = "question_bar";
+}
 
 // SFX files
 var sliderAudio_oninput = new Audio();
@@ -669,7 +689,7 @@ NextButton.onclick = function () {
         feedbackArea.style = "opacity:0; top: 60%;";
         setTimeout(() => {
             feedbackArea.removeChild(imageArray[2]);
-            inside_feedback.innerHTML = 'Hey! Did you notice that when we add two like fractions, the numerators of the fractions gets added and the denominator remains the same.';
+            inside_feedback.innerHTML = 'On adding two like fractions, the numerator of the fractions gets added and the denominator remains the same.';
             feedbackArea.style = "opacity:1; top: 58.3%;";
         }, 500);
         VisualArea.style.opacity = "1";
