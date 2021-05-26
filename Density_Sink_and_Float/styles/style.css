@@ -565,12 +565,12 @@ body {
 }
 
 #marker2 {
-    left: 33.3%;
+    left: 50%;
 }
 
-#marker3 {
+/* #marker3 {
     left: 61.33%;
-}
+} */
 
 #marker4 {
     left: 100%;

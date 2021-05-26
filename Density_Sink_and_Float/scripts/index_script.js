@@ -115,21 +115,21 @@ function color_change() {
 function update_position_and_style() {
    let current_slider_value = 0;
    if (input_slider.value < 1000) {
-      input_slider.value = 750;
-      current_slider_value = 750;
+      input_slider.value = 790;
+      current_slider_value = 790;
    }
    else if (input_slider.value >= 1000 && input_slider.value < 1420) {
       input_slider.value = 1210;
       current_slider_value = 1210;
    }
    else if (input_slider.value >= 1420) {
-      input_slider.value = 1710;
-      current_slider_value = 1420;
+      input_slider.value = 1630;
+      current_slider_value = 1630;
    }
-   else if (input_slider.value >= 1420 && input_slider.value <= 1520) {
-      input_slider.value = 1500;
-      current_slider_value = 1500;
-   }
+   // else if (input_slider.value >= 1420 && input_slider.value <= 1520) {
+   //    input_slider.value = 1500;
+   //    current_slider_value = 1500;
+   // }
 
    density_ball = input_slider.value;
    ball_slider.value = density_ball;
@@ -205,7 +205,7 @@ function update_position_and_style() {
    else if (input_slider.value > parseInt(density_water) && input_slider.value < parseInt(density_honey) && moving_left_to_Right == true) {
       feedbackArea.style = "opacity:0; top: 63.5%;";
       setTimeout(() => {
-         remarks.innerHTML = "The density of the ball is greater than that of water and less than that of honey. Hence, it sinks in water but floats in honey.";
+         remarks.innerHTML = "The density of the ball is greater than that of water and less than that of honey. Hence, it sinks in water but floats on honey.";
          feedbackArea.style = "opacity:1; top: 62.5%;";
          feedbackArea.children[0].style = "width: 92%;"
       }, 500);
@@ -213,7 +213,7 @@ function update_position_and_style() {
    else if (input_slider.value > parseInt(density_water) && input_slider.value < parseInt(density_honey) && moving_left_to_Right == false) {
       feedbackArea.style = "opacity:0; top: 63.5%;";
       setTimeout(() => {
-         remarks.innerHTML = "The density of the ball is greater than that of water and less than that of honey. Hence, it rises and floats in honey and remains submerged in water.";
+         remarks.innerHTML = "Density of the ball is greater than that of water and less than that of honey. Hence, it rises and floats on honey and remains submerged in water.";
          feedbackArea.style = "opacity:1; top: 62.5%;";
          feedbackArea.children[0].style = "width: 98%;"
       }, 500);
