@@ -45,7 +45,7 @@ for (let index = 0; index < options.length; index++) {
             dynamic_panel_window.scroll({ top: 880, behavior: "smooth" });
             footer.style = "bottom:0px";
             //Lo messaging
-            LO_message.style = "z-index : 0;";
+            LO_message.style = "z-index : 1;";
             LO_message.style.backgroundColor = '#000000cc';
             popup.style = 'opacity:1; top: 601px'
             circle_stroke_animation();
