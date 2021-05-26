@@ -14,6 +14,20 @@
 
 <body>
     <div class="window">
+        <!-- For the cross button -->
+        <div class="cross_symbol_container">
+            <div class="cross_oval">
+                <div class="cross_hand" id="hand1"></div>
+                <div class="cross_hand" id="hand2"></div>
+            </div>
+        </div>
+
+        <!-- For Navigation Bar -->
+        <div class="navigation_bar">
+            <div class="observation_bar nav_selected">Observation</div>
+            <div class="question_bar">Question</div>
+        </div>
+
         <div class="movable_parent">
             <!-- This section is for the observation -->
             <section class="background">
@@ -22,23 +36,11 @@
                 <!-- <div class="bubble bubble1"></div>
                 <div class="bubble bubble2"></div>
                 <div class="bubble bubble3"></div> -->
-                <!-- For the corss mark -->
-                <div class="cross_symbol_container">
-                    <div class="cross_oval">
-                        <div class="cross_hand" id="hand1"></div>
-                        <div class="cross_hand" id="hand2"></div>
-                    </div>
-                </div>
 
-                <!-- For Navigation Bar -->
-                <div class="navigation_bar">
-                    <div class="observation_bar nav_selected">Observation</div>
-                    <div class="question_bar">Question</div>
-                </div>
 
                 <!-- For instruction Area. It is always a good practice to put the text in a paragraph element since it can contain inline mathJax. -->
                 <div class="instructino_area">
-                    <p> Change the density of the ball using the slider, and observe the ball in the given liquids. </p>
+                    <p> Vary the density of the balls using the slider, and observe the balls in the given liquids. </p>
                 </div>
                 <!-- For Visual Area -->
                 <div class="visual_area">
@@ -52,7 +54,7 @@
                     <!-- <img src="img/honey_covering_ball.svg" alt="honey_covering_ball" class="honey_covering_ball"> -->
                     <img class="honey_overlayer" src="img/Honey_overlayer2.svg" alt="honey overlayer">
                     <!-- <img class="beaker" src="img/Honey_beaker.png" /> -->
-                    <img class="beaker" id="waterBeakerImgforHoney"  src="img/water_beaker.png" />
+                    <img class="beaker" id="waterBeakerImgforHoney" src="img/water_beaker.png" />
 
                     <!--<img class = "reflection" src = "img/beaker_reflection.png"/>-->
                     <img class="text" src="img/honey_text.png" />
@@ -70,7 +72,7 @@
                     <img class="density_table" src="img/density_table.png" />
 
                     <div>
-                        <input type="range" min="500" max="2000" value="0" id="new_range" class="yellow_slider">
+                        <input type="range" min="500" max="2000" value="750" id="new_range" class="yellow_slider">
                     </div>
                     <div>
                         <input type="range" min="500" max="2000" value="1000" id="water_density" class="blue_slider">
@@ -90,7 +92,7 @@
 
                 <!-- For Slider -->
                 <div class="slider_container">
-                    <input type="range" min="500" max="2000" value="0" id="myrange" class="input_slider">
+                    <input type="range" min="500" max="2000" value="750" step="1" id="myrange" class="input_slider">
                     <div class="movable">
                         <span class="slider_value">0</span>
                     </div>
@@ -112,20 +114,6 @@
                 <div class="bubble bubble2"></div>
                 <div class="bubble bubble3"></div> -->
 
-                <!-- For the corss mark -->
-                <div class="cross_symbol_container">
-                    <div class="cross_oval">
-                        <div class="cross_hand" id="hand1"></div>
-                        <div class="cross_hand" id="hand2"></div>
-                    </div>
-                </div>
-
-                <!-- For Navigation Bar -->
-                <div class="navigation_bar">
-                    <div class="observation_bar">Observation</div>
-                    <div class="question_bar nav_selected">Question</div>
-                </div>
-
                 <div class="dynamic_panel_window">
                     <div class="scrollable_dynamic_panel">
                         <div class="question_area">
@@ -137,31 +125,30 @@
                         </div>
                         <div class="feedback-bar">
                             <div id="big">Oops!</div>
-                            <div id="small">You’ve missed something! Let’s go back to the observation tab and give it
-                                another
-                                shot!
+                            <div id="small">Try again or swipe left to figure out the right answer.
                             </div>
                         </div>
                         <div class="option-container">
-                            <div class="options" id="option1"> B>A>C </div>
-                            <div class="options" id="option2" title="solution"> B&lt;A&lt;C </div>
-                            <div class="options" id="option3"> A>B>C </div>
+                            <div class="options" id="option1"> C &lt; A &lt; B </div>
+                            <div class="options" id="option2" title="solution"> B &lt; A &lt; C </div>
+                            <div class="options" id="option3"> A &lt; B &lt; C </div>
                             <!-- <div class="options" id="option4" title="solution">4</div> -->
                         </div>
 
                         <div class="solution">
                             <p id="SolHead">Solution</p>
-                            <p>The object that completely sinks has more density than the water. So, C has the highest
-                                density among the three objects.
-                            </p>
                             <ul>
+                                <li>The object that completely sinks has more density than the water. So, C has the
+                                    highest
+                                    density among the three objects.</li>
+                                <br>
                                 <li>A and B are floating, so their density is lower than water. Among A and B, a larger
                                     fraction of A is immersed in water when compared to B. So, A has a higher density
                                     than B.
                                 </li>
                                 <br>
                                 <li>So, arranging the bodies in the decreasing order of densities, we get the following
-                                    order : B&lt;A&lt;C </li>
+                                    order : B &lt; A &lt; C </li>
                             </ul>
 
 
@@ -180,7 +167,8 @@
                 <div class="popup">
                     <div class="text_container">
                         <p>Amazing! You have successfully learnt if the density of an object is less than the density of
-                            a liquid, then it floats on the liquid, and if it is greater than the density of the liquid, it sinks.</p>
+                            a liquid, then it floats on the liquid, and if its density is greater than the density of
+                            the liquid, it sinks.</p>
                     </div>
                     <div class="tick_mark_container">
                         <div class="ellipse2"></div>
