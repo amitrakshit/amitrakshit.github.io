@@ -27,6 +27,9 @@ body {
     height: 1920px;
     width: 1080px;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .movable_parent {
@@ -73,6 +76,7 @@ body {
     left: 48px;
     top: 102px;
     opacity: 0.5;
+    z-index: 1;
     /* background: grey; */
 }
 
@@ -103,8 +107,6 @@ body {
     transform: translate(-50%, -50%) rotate(45deg);
 }
 
-/* For navigation bar. When selected the 'nav_selected' class is to be added in js. And the direction of the box shadow should be changed depending on the situation */
-
 .navigation_bar {
     position: absolute;
     width: 55%;
@@ -122,6 +124,7 @@ body {
     line-height: 144.2%;
     cursor: pointer;
     color: white;
+    z-index: 1;
 }
 
 .observation_bar {
@@ -149,10 +152,17 @@ body {
     /*The direction needs to be changed by putting a 'minus' sign befer '4px'*/
 }
 
+.nav_selected2 {
+    background: white;
+    color: rgb(54, 18, 175);
+    box-shadow: -4px 2px 10px 2px rgba(0, 0, 0, 0.284);
+}
+
 .context_button {
     position: absolute;
     left: 924px;
     top: 101px;
+    z-index: 1;
 }
 
 /* For the instruction area */
@@ -201,6 +211,7 @@ body {
     font-family: Gotham SSm;
     font-weight: lighter;
     text-align: center;
+
 }
 
 .table th {
@@ -216,29 +227,44 @@ body {
 }
 
 .table thead tr {
-    background-color: #293450;
+    background-color: #212A40;
 }
 
-.table tbody tr:nth-of-type(even) {
+.table td:nth-child(1) {
+    background-color: #212A40;
+}
+
+/* .table td:nth-child(2), .table td:nth-child(3), .table td:nth-child(4) {
+    background-color: #28334F;
+} */
+
+.table tbody tr:nth-child(even), .table tbody tr:nth-child(odd)  {
     background-color: #28334F;
 }
 
-.table tbody tr:nth-child(odd) {
-    background-color: #4d5a7e;
+.table tbody td:nth-child(even), .table tbody td:nth-child(odd) {
+/* .table td:nth-child(2), .table thead th:nth-child(2), .table td:nth-child(3) { */
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    /* border-top: 1px solid rgba(255, 255, 255, 0.5); */
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.5); */
+
 }
 
-.table thead th:nth-child(1), .table tr td:nth-child(1) {
-    background: rgba(0, 0, 0, 0.2);
-}
+.table thead th {
+    /* .table td:nth-child(2), .table thead th:nth-child(2), .table td:nth-child(3) { */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        /* border-top: 1px solid rgba(255, 255, 255, 0.5); */
+        /* border-bottom: 1px solid rgba(255, 255, 255, 0.5); */
+    
+    }
 
-.table td:nth-child(2), .table thead th:nth-child(2), .table td:nth-child(3) {
+.table thead th:nth-child(1), .table thead th:nth-child(2), .table thead th:nth-child(3) {
     border-right: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-.table thead th:nth-child(3) {
-    border-right: 1px solid rgba(255, 255, 255, 0.5);
+.table tbody tr:nth-child(2), .table tbody tr:nth-child(3) {
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
 }
-
 /* Old table styles */
 
 /* .table{
@@ -277,16 +303,16 @@ body {
 
 /* For the tick or cross mark */
 
-.check {
+/* .check {
     position: relative;
     width: 50px;
     height: 50px;
     /* border: 1px solid white; */
-    border-radius: 50%;
+    /* border-radius: 50%;
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.45);
-}
+} */ 
 
-.right {
+/* .right {
     position: relative;
     background: radial-gradient(#62eba0, #33b876);
 }
@@ -340,7 +366,7 @@ body {
     top: 50%;
     border-radius: 3px;
     transform: translate(-50%, -50%) rotate(-45deg);
-}
+} */
 
 /* For feedback bar */
 
@@ -350,10 +376,13 @@ body {
     width: 984px;
     height: 180px;
     top: 1120px;
-    background: linear-gradient(180deg, #FFE601 0%, #E8882F 100%);
+    background: linear-gradient(180deg, #12EAFA  0%,#0787E2 100%); 
+    /* background: linear-gradient(180deg, #FFE601 0%, #E8882F 100%); */
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: opacity 0.5s, top 0.5s;
+    
 }
 
 .feedback_bar p {
@@ -366,10 +395,8 @@ body {
     line-height: 50px;
     /* or 154% */
     color: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 90%;
+    text-align: center; 
 }
 
 /* For the equation container and the numbers */
@@ -384,6 +411,8 @@ body {
     top: 1434px;
     background: linear-gradient(180deg, #CF47FF 0%, #7E00EE 100%);
     border-radius: 20px;
+    font-family: Gotham SSm;
+    font-size: 36px;
 }
 
 .equation_container p {
@@ -489,7 +518,7 @@ body {
 
 .next_button {
     position: absolute;
-    top: 1704px;
+    top: 100%;
     width: 45%;
     height: 128.64px;
     border: none;
@@ -500,4 +529,5 @@ body {
     font-weight: 350;
     font-size: 39px;
     cursor: pointer;
+    
 }

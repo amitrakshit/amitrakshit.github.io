@@ -1,3 +1,16 @@
+@font-face {
+    font-family: Gotham SSm;
+    /* src: url('/fonts/Gotham-SSm/GothamSSm-Black.otf'); */
+    src: url('../fonts/Gotham-SSm/GothamSSm-Light.otf');
+    /* src: url('/fonts/Gotham-SSm/GothamSSm-BlackItalic.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-Bold.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-BoldItalic.otf'); 
+    src: url('fonts/Gotham-SSm/GothamSSm-Book.otf'); */
+    /* src: url('/fonts/Gotham-SSm/GothamSSm-BookItalic.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-LightItalic.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-Medium.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-MediumItalic.otf'); */
+}
 body {
     min-height: 100vh;
     min-width: 100vw;
@@ -56,12 +69,16 @@ body {
     transition: opacity 0.5s;
 }
 
- /* .question_area p {
-    width: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-} */
+ .question_area p {
+    margin: 0;
+    font-family: Gotham SSm;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 39px;
+    line-height: 60px;
+    /* or 154% */
+    color: #FFFDFD;
+} 
 
 .feedback-bar {
     position: absolute;
@@ -169,7 +186,7 @@ body {
 .solution {
     position: absolute;
     width: 984px;
-    height: auto;
+    height: 600px;
     top: 1925px;
     padding-bottom: 150px;
     display: flex;
@@ -182,11 +199,12 @@ body {
     font-weight: 300;
     color: white;
     transition: top 0.5s ease-out;
+    line-height: 60px;
     scrollbar-width: 0;
 }
 
 .solution p {
-    top: 50%;
+    top: 70%;
     width: 80%;
 }
 
@@ -220,42 +238,43 @@ footer {
 .table1{
     border-collapse: collapse;
     width: 80%;
-    height: 80%;
+    height: 40%;
     font-size: 35px;
     font-family: Gotham SSm;
     font-weight: lighter;
     text-align: center;
     border-color: 1px solid black;
+    background: transparent;
+    color: #fff;
 }
 .table1 th{
-    height: 25px;
+    /* line-height: 50px; */
     padding: 20px 0px;
     } 
-.table1 td{
-        height: 25px;
+.table1 tr{
+        /* line-height: 50px; */
         padding: 20px 0px;
         } 
-.table1 thead tr{
-    background-color: #2C417A;
+/* .table1 thead tr{
+    
     color: #fff;
     }
 
 .table1 tbody tr:nth-child(1){
    
-    background-color: #fff;
+    
     color:black;
 }
 .table1 tbody tr:nth-child(2){
     
-    background-color: #9CB0D3;
+    
     color: black;
-}
+} */
  
 .table1 td:nth-child(2), .table1 thead th:nth-child(1), .table1 td:nth-child(1), .table1 thead th:nth-child(2), .table1 td:nth-child(3), .table1 thead th:nth-child(3)
 {
-    border-right: 2px solid black;
-    border-left: 2px solid black;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-
-} 
+    border-right: 2px solid white;
+    border-left: 2px solid white;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    } 
