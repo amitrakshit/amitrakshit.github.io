@@ -714,8 +714,9 @@ NextButton.onclick = function () {
         reset_button.style.display = '';
     }
     else {
-        background2.style = "display:flex;"
-        background.style = "display: none;"
+        movable_parent.style = "left: -1080px;";
+        observation_tab.className = "observation_bar2";
+        question_tab.className = "question_bar2";
     }
 }
 background.append(NextButton);
