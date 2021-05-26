@@ -198,6 +198,7 @@ function update_position_and_style() {
       setTimeout(() => {
          remarks.innerHTML = "The density of the ball is less than that of water and honey. Hence, it floats in water and honey.";
          feedbackArea.style = "opacity:1; top: 62.5%;";
+         feedbackArea.children[0].style = "width: 92%;"
       }, 500);
 
    }
@@ -206,6 +207,7 @@ function update_position_and_style() {
       setTimeout(() => {
          remarks.innerHTML = "The density of the ball is greater than that of water and less than that of honey. Hence, it sinks in water but floats in honey.";
          feedbackArea.style = "opacity:1; top: 62.5%;";
+         feedbackArea.children[0].style = "width: 92%;"
       }, 500);
    }
    else if (input_slider.value > parseInt(density_water) && input_slider.value < parseInt(density_honey) && moving_left_to_Right == false) {
@@ -213,6 +215,7 @@ function update_position_and_style() {
       setTimeout(() => {
          remarks.innerHTML = "The density of the ball is greater than that of water and less than that of honey. Hence, it rises and floats in honey and remains submerged in water.";
          feedbackArea.style = "opacity:1; top: 62.5%;";
+         feedbackArea.children[0].style = "width: 98%;"
       }, 500);
    }
    else if (input_slider.value > parseInt(density_honey) && moving_left_to_Right == true) {
@@ -220,6 +223,7 @@ function update_position_and_style() {
       setTimeout(() => {
          remarks.innerHTML = "Notice that the ball sinks in both water and honey because of the density being greater than both the  mediums.";
          feedbackArea.style = "opacity:1; top: 62.5%;";
+         feedbackArea.children[0].style = "width: 92%;"
       }, 500);
    }
    previous_ball_density = current_slider_value;
