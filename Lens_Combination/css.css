@@ -3,49 +3,55 @@
   src: url('Gotham-SSm/GothamSSm-Light.otf');
 }
 
-#bodyId{font-family: Gotham SSm;}
-.parentDiv{
-  width:100%;
+/* html {
+  --width: 100vw;
+  --height: 177.78vw;
+  font-size: calc(1/1920*var(--height));
+  ;
+} */
+
+#bodyId {
+  font-family: Gotham SSm;
+}
+
+.parentDiv {
+  width: 100%;
   height: 100%;
-  top:0;
+  top: 0;
   left: 0;
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  
-
 }
 
-.cAlign{
+.cAlign {
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
-
-
 /*By default mobile version*/
-.childDiv{
-  width:100vw;
+
+.childDiv {
+  width: 100vw;
   height: 177.78vw;
   /*border: 2px solid black;*/
   position: absolute;
-  background-image: url('Images/BG\ \(Observation\)\ 1_200521.svg');
+  background-image: url('Images/BG1.png');
   background-size: 100vw;
-  overflow: hidden;  
+  overflow: hidden;
 }
-.childDivAdd{
-  /* background-image: radial-gradient(119.99% 62.42% at 50% 36.33%, #7B16E1 0%, #000E87 100%) !important; */
-  background-image: url("Images/BG\ \(Question\)\ 1_200521.svg") !important;
+
+.childDivAdd {
+  background-image: radial-gradient(119.99% 62.42% at 50% 36.33%, #7B16E1 0%, #000E87 100%) !important;
 }
-html{
+
+html {
   font-size: 3.556vw;
 }
 
-#navigationBar{
+#navigationBar {
   position: absolute;
   width: 55.55%;
   height: 5.625%;
@@ -53,10 +59,10 @@ html{
   margin-top: 9.44%;
   border-radius: 2rem;
   background-color: rgb(109, 42, 244);
-  font-size:1rem ;
-  
+  font-size: 1rem;
 }
-#observationBar{
+
+#observationBar {
   position: absolute;
   width: 50%;
   height: 100%;
@@ -66,7 +72,8 @@ html{
   transition: background-color 0.0s;
   background-color: transparent;
 }
-#questionBar{
+
+#questionBar {
   position: absolute;
   width: 50%;
   height: 100%;
@@ -78,45 +85,50 @@ html{
   background-color: transparent;
 }
 
-.add{
+.add {
   color: black !important;
   /*box-shadow:  0.0rem 0.0rem 1rem 0.5rem rgb(0 0 0 / 28%) !important;*/
   background-color: white !important;
   transition: background-color 0.5s !important;
 }
 
-
-.bodyDiv{
+.bodyDiv {
   position: absolute;
-  width:92%;
+  width: 92%;
   height: 85%;
   /*margin-left: 3.5%;*/
   margin-top: 26.66%;
   transition: margin-left 0.4s;
 }
 
-#obDiv{
+#obDiv {
   margin-left: 4.00%;
 }
-#qeDiv{
+
+#qeDiv {
   margin-left: 104.00%;
   border: 0px solid black;
 }
-#qeDiv::-webkit-scrollbar {
-  width: 0.0rem; /* remove scrollbar space */
-  background: transparent; /* optional: just make scrollbar invisible */
-  }
 
-#obStatement{
+#qeDiv::-webkit-scrollbar {
+  width: 0.0rem;
+  /* remove scrollbar space */
+  background: transparent;
+  /* optional: just make scrollbar invisible */
+}
+
+#obStatement {
   position: absolute;
   width: 100%;
   height: 12.70%;
-  font-size: 1.0rem;
+  font-size: 1.015rem;
+  line-height: 1.549rem;
   font-weight: 325;
   color: white;
   border: 0px solid black;
 }
-canvas{
+
+canvas {
   position: absolute;
   margin-top: 26.65%;
   /*width: 100%;
@@ -124,29 +136,30 @@ canvas{
   border-radius: 0.5rem;
 }
 
-#obInputDiv{
+#obInputDiv {
   position: absolute;
   margin-top: 93%;
   width: 100%;
   height: 20%;
-  
 }
 
-#nextButton,#qeSubmitButton{
+#nextButton, #qeSubmitButton {
   position: fixed;
   width: 12.5rem;
   height: 3.4rem;
-  margin-left: 6.0rem;
+  /* margin-left: 6.0rem; */
+  left: 50%;
+  transform: translateX(-50%);
   margin-top: 37.7rem;
   font-size: 1.2rem;
   border-radius: 2rem;
-  background-image: linear-gradient(to right,#10dca3,#3988fa);
+  background-image: linear-gradient(to right, #10dca3, #3988fa);
   color: white;
   cursor: pointer;
   z-index: 1;
 }
 
-.obOptions{
+.obOptions {
   position: absolute;
   width: 47.96%;
   height: 100%;
@@ -155,21 +168,22 @@ canvas{
   display: flex;
   justify-content: center;
   background-image: linear-gradient(#CF47FF, #7E00EE);
-  
 }
-#obConvexDiv{
+
+#obConvexDiv {
   margin-left: 0%;
 }
-#obConcaveDiv{
+
+#obConcaveDiv {
   margin-left: 51.8%;
 }
 
-.obOptionStatement{
+.obOptionStatement {
   position: absolute;
   margin-left: 10%;
 }
 
-#obLensHolder1{
+#obLensHolder1 {
   position: absolute;
   margin-left: 32.5%;
   margin-top: 36.8%;
@@ -179,9 +193,9 @@ canvas{
   border-style: dashed;
   background-color: #ff0096;
   opacity: 0.5;
-
 }
-#obLensHolder2{
+
+#obLensHolder2 {
   position: absolute;
   margin-left: 57.0%;
   margin-top: 36.8%;
@@ -191,15 +205,14 @@ canvas{
   border-style: dashed;
   background-color: #ff0096;
   opacity: 0.5;
-
 }
 
-.obLensHolder{
-  border:0px solid black !important;
+.obLensHolder {
+  border: 0px solid black !important;
   background-color: transparent !important;
 }
 
-#reloadButton{
+#reloadButton {
   position: absolute;
   width: 17%;
   margin-top: 74%;
@@ -207,7 +220,8 @@ canvas{
   cursor: pointer;
   display: none;
 }
-#obPopupWindow{
+
+#obPopupWindow {
   position: absolute;
   padding-left: 2%;
   padding-right: 2%;
@@ -217,15 +231,18 @@ canvas{
   border-radius: 0.5rem;
   background-image: linear-gradient(#FFE601, #E8882F);
   opacity: 1;
-  transition: margin-top 0.3s, opacity 0.3s;
+  transition: margin-top 1s, opacity 1s;
   text-align: center;
-}
-.obPopupWindowAdd{
-    margin-top: 95% !important;
-    opacity: 0.1 !important;
+  font-size: 0.9374rem;
+  line-height: 1.25rem;
 }
 
-#crossMark{
+.obPopupWindowAdd {
+  margin-top: 95% !important;
+  opacity: 0.1 !important;
+}
+
+#crossMark {
   position: absolute;
   margin-top: 12%;
   margin-left: 5%;
@@ -234,38 +251,50 @@ canvas{
   cursor: pointer;
 }
 
-
-#qeStatement{
+#qeStatement {
   position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
   height: 10%;
   border: 0px solid black;
   color: white;
+  font-size: 1.015rem;
+  line-height: 1.549rem;
 }
 
-#rightWrongPopUp{
+#rightWrongPopUp {
   position: absolute;
-  width: 90%;
-  margin-left: 5%;
+  width: 100%;
   height: 10%;
-  margin-top: 62%;
+  top: 40.7%;
   transition: margin-top 0.6s, opacity 0.4s;
   opacity: 0;
   text-align: center;
-  
   line-height: 1.5;
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 0.9374rem;
 }
-#questionInstruction{
+
+#questionInstruction {
   position: absolute;
-  margin-left: 11%;
-  margin-top: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+  /* margin-left: 11%; */
+  /* margin-top: 70%; */
+  top: 48%;
   color: white;
-  
+  width: 80%;
 }
 
+#qeOptionBox div {
+  box-shadow: 0rem 0.26rem 0.53rem rgba(0, 0, 0, 0.507);
+}
 
-#qeOptionBox{
+#qeOptionBox {
   position: absolute;
   width: 100%;
   margin-left: 0%;
@@ -275,22 +304,21 @@ canvas{
   font-weight: 325;
   border: 0px solid black;
   transition: margin-top 0.6s;
-  
-
+  top: 3rem;
 }
 
-
-
 /*Class for mcq options*/
-.qeCheckBox{
+
+.qeCheckBox {
   position: absolute;
   width: 30%;
   height: 30%;
   margin-left: -85%;
   cursor: pointer;
+  border: 2px solid blue;
 }
 
-.qeOptions{
+.qeOptions {
   position: absolute;
   width: 100%;
   height: 15%;
@@ -298,104 +326,118 @@ canvas{
   border-radius: 0.5rem;
   border: 0px solid black;
   cursor: pointer;
-  
-}
-.qeOptionText{
-  position: absolute;
-  margin-left: -23%;
 }
 
-.qeOptions:active{
+.qeOptionText {
+  position: absolute;
+  left: 55%;
+  transform: translateX(-50%);
+  /* margin-left: -23%; */
+  font-size: 0.9374rem;
+  width: 70%;
+}
+
+.qeOptions:active {
   width: 95%;
   margin-left: 2.5%;
   height: 13%;
 }
 
-.qeOptionsAdd{
+.qeOptionsAdd {
   /*box-shadow:inset 0.0rem 0.0rem 1rem 0.5rem rgb(0 0 0 / 28%);*/
 }
 
-
-
-#option1{
+#option1 {
   margin-top: 0%;
 }
-#option2{
+
+#option2 {
   margin-top: 16.0%;
 }
-#option3{
+
+#option3 {
   margin-top: 32%;
 }
-#option4{
+
+#option4 {
   margin-top: 48.0%;
+  display: none;
 }
 
-#option1:active{
+#option1:active {
   margin-top: 1%;
 }
-#option2:active{
+
+#option2:active {
   margin-top: 17%;
 }
-#option3:active{
+
+#option3:active {
   margin-top: 33%;
 }
-#option4:active{
+
+#option4:active {
   margin-top: 49%;
 }
 
-#solutionDiv{
+#solutionDiv {
   position: absolute;
   width: 94%;
   padding: 3%;
   margin-left: 0%;
   height: 50%;
-  margin-top: 145%;
+  margin-top: 142%;
   border-radius: 0.5rem;
   line-height: 1.5;
   background-color: #D718A1;
   transition: margin-top 0.6s;
   color: white;
-  overflow:scroll;
+  overflow: scroll;
   overflow-x: hidden;
   display: none;
-  
+  font-size: 0.9374rem;
+}
+
+#solutionDiv p:nth-child(2) {
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  margin: 0;
+  text-align: center;
+  width: 76%;
 }
 
 #solutionDiv::-webkit-scrollbar {
-  width: 0.0rem; /* remove scrollbar space */
+  width: 0.0rem;
+  /* remove scrollbar space */
   opacity: 0.5;
-  background: transparent; /* optional: just make scrollbar invisible */
-  }
+  background: transparent;
+  /* optional: just make scrollbar invisible */
+}
 
-  #solutionDiv::-webkit-scrollbar-thumb {
-    background: rgb(235, 232, 232); 
-  }
+#solutionDiv::-webkit-scrollbar-thumb {
+  background: rgb(235, 232, 232);
+}
 
-#footer{
+#footer {
   position: fixed;
   width: 28rem;
   margin-left: -1.05rem;
   height: 7rem;
   margin-top: 36rem;
-  background:linear-gradient(0deg, #5a19db,#4a13b900);
+  background: linear-gradient(0deg, #5a19db, #4a13b900);
   display: none;
 }
 
 @media only screen and (min-aspect-ratio: 9/16) {
-  .childDiv{
-    width:56.25vh;
+  .childDiv {
+    width: 56.25vh;
     height: 100vh;
-    background-size:56.25vh;
-    overflow:hidden;
+    background-size: 56.25vh;
+    overflow: hidden;
   }
-  html{
+  html {
     font-size: 2vh;
   }
 }
-
-
-
-
-
-
-

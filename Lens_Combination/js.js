@@ -1,6 +1,6 @@
 
 //sound Import
-var click=new Audio('Sound/click.wav');
+var click = new Audio('Sound/click.wav');
 var correctSound = new Audio('Sound/rightAnswer.mp3');
 var wrongSound = new Audio('Sound/wrongAnswer.mp3');
 var dropSound = new Audio('Sound/dropSound.mp3');
@@ -10,100 +10,100 @@ var optionClick = new Audio('Sound/optionClick.mp3');
 //sleep
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
-  }
+}
 
 //question navigation bar onclick function
-async function qeOnClick(){
+async function qeOnClick() {
     nextORFinish.play();
     document.getElementById('questionBar').classList.add('add');
     document.getElementById('observationBar').classList.remove('add');
     document.getElementsByClassName('childDiv')[0].classList.add('childDivAdd');
-    document.getElementById('nextButton').style.display='none';
+    document.getElementById('nextButton').style.display = 'none';
     //obDiv.style.display='none';
     //qeDiv.style.display='block';
-    obDiv.style.marginLeft='-96%';
-    qeDiv.style.marginLeft='4.00%';
-    if(footerState==false){
-        document.getElementById('footer').style.display='none';
+    obDiv.style.marginLeft = '-96%';
+    qeDiv.style.marginLeft = '4.00%';
+    if (footerState == false) {
+        document.getElementById('footer').style.display = 'none';
     }
     await sleep(150);
-    document.getElementById('qeSubmitButton').style.display='flex';
+    document.getElementById('qeSubmitButton').style.display = 'flex';
     await sleep(200);
-    if(footerState){
-        document.getElementById('footer').style.display='block';
+    if (footerState) {
+        document.getElementById('footer').style.display = 'block';
     }
-    
-    
+
+
 }
 
 //observation navigation bar onclick function
-async function obOnClick(){
+async function obOnClick() {
     nextORFinish.play();
     document.getElementById('observationBar').classList.add('add');
     document.getElementById('questionBar').classList.remove('add');
     document.getElementsByClassName('childDiv')[0].classList.remove('childDivAdd');
-    document.getElementById('qeSubmitButton').style.display='none';
-    document.getElementById('footer').style.display='none';
+    document.getElementById('qeSubmitButton').style.display = 'none';
+    document.getElementById('footer').style.display = 'none';
     //obDiv.style.display='block';
     //qeDiv.style.display='none'; 
-    obDiv.style.marginLeft='4.00%';
-    qeDiv.style.marginLeft='104.0%';
+    obDiv.style.marginLeft = '4.00%';
+    qeDiv.style.marginLeft = '104.0%';
     await sleep(150);
-    document.getElementById('nextButton').style.display='flex';
-    
-    
+    document.getElementById('nextButton').style.display = 'flex';
+
+
 }
 
-childDiv=document.getElementsByClassName('childDiv')[0];
-qeDiv=document.getElementById('qeDiv');
-obDiv=document.getElementById('obDiv');
-var canvas1=document.getElementById('firstCanvas')
+childDiv = document.getElementsByClassName('childDiv')[0];
+qeDiv = document.getElementById('qeDiv');
+obDiv = document.getElementById('obDiv');
+var canvas1 = document.getElementById('firstCanvas');
 var canvas2 = document.getElementById("secondCanvas");
 var canvas3 = document.getElementById("thirdCanvas");
-canvas2.style.background="url('Images/LensBackground1.svg')";
+canvas2.style.background = "url('Images/LensBackground1.svg')";
 
 //canvas width height change
-if(window.innerWidth/window.innerHeight>=9.0/16){
-    canvas1.width=window.innerHeight*(9/16)*92/100;
-    canvas1.height=canvas1.width*0.55;
-    canvas2.width=window.innerHeight*(9/16)*92/100;
-    canvas2.height=canvas1.width*0.55;
-    canvas3.width=window.innerHeight*(9/16)*92/100;
-    canvas3.height=canvas1.width*0.55;
-    
+if (window.innerWidth / window.innerHeight >= 9.0 / 16) {
+    canvas1.width = window.innerHeight * (9 / 16) * 92 / 100;
+    canvas1.height = canvas1.width * 0.55;
+    canvas2.width = window.innerHeight * (9 / 16) * 92 / 100;
+    canvas2.height = canvas1.width * 0.55;
+    canvas3.width = window.innerHeight * (9 / 16) * 92 / 100;
+    canvas3.height = canvas1.width * 0.55;
+
 }
-else{
-    canvas1.width=window.innerWidth*92/100;
-    canvas1.height=canvas1.width*0.55;
-    canvas2.width=window.innerWidth*92/100;
-    canvas2.height=canvas1.width*0.55;
-    canvas3.width=window.innerHeight*(9/16)*92/100;
-    canvas3.height=canvas1.width*0.55;
-    
+else {
+    canvas1.width = window.innerWidth * 92 / 100;
+    canvas1.height = canvas1.width * 0.55;
+    canvas2.width = window.innerWidth * 92 / 100;
+    canvas2.height = canvas1.width * 0.55;
+    canvas3.width = window.innerHeight * (9 / 16) * 92 / 100;
+    canvas3.height = canvas1.width * 0.55;
+
 }
 
-window.onresize=function(){
+window.onresize = function () {
     location.reload();
 }
 
 
- //xtransformation
- function transX(x){
-    return originX+(x/xUnitsPerPixel)
+//xtransformation
+function transX(x) {
+    return originX + (x / xUnitsPerPixel)
 }
 //ytransformation
-function transY(y){
-    return originY-(y/yUnitsPerPixel)
+function transY(y) {
+    return originY - (y / yUnitsPerPixel)
 }
 
 
- //xtransformation from canvas frame
- function transX_from_canvas(x){
-  return (x-originX)*xUnitsPerPixel
+//xtransformation from canvas frame
+function transX_from_canvas(x) {
+    return (x - originX) * xUnitsPerPixel
 }
 //ytransformation from canvas frame
-function transY_from_canvas(y){
-  return (originY-y)*yUnitsPerPixel
+function transY_from_canvas(y) {
+    return (originY - y) * yUnitsPerPixel
 }
 
 
@@ -115,27 +115,27 @@ var ctx3 = canvas3.getContext("2d");
 
 
 //setting graph's ranges
-var xMin=-1;
-var xMax=9;
-var yMin=-3.5;
-var yMax=3.5;
+var xMin = -1;
+var xMax = 9;
+var yMin = -3.5;
+var yMax = 3.5;
 
 
 
 //setting scales and origin
-var xUnitsPerPixel=(xMax-xMin)/canvas1.width;
-var yUnitsPerPixel=(yMax-yMin)/canvas1.height;
-var originX=(-xMin)/xUnitsPerPixel;
-var originY=(yMax)/yUnitsPerPixel;
+var xUnitsPerPixel = (xMax - xMin) / canvas1.width;
+var yUnitsPerPixel = (yMax - yMin) / canvas1.height;
+var originX = (-xMin) / xUnitsPerPixel;
+var originY = (yMax) / yUnitsPerPixel;
 
-var convexImage= new Image();
-convexImage.src="Images/convexLens.svg";
-var concaveImage= new Image();
-concaveImage.src="Images/concaveLens.svg";
+var convexImage = new Image();
+convexImage.src = "Images/convexLens.svg";
+var concaveImage = new Image();
+concaveImage.src = "Images/concaveLens.svg";
 var laserImg = new Image();
-laserImg.src='Images/laser.svg';
+laserImg.src = 'Images/laser.svg';
 
-function backgroundANDlaserImg(){
+function backgroundANDlaserImg() {
     //canvas2 backgroundColor
     var grd = ctx2.createLinearGradient(0, 0, 0, canvas2.height);
     grd.addColorStop(0, "#130d21");
@@ -148,385 +148,390 @@ function backgroundANDlaserImg(){
 }
 
 //ray drawing function
-function Ray(x0,y0){
-    this.x0=x0;
-    this.y0=y0;
-    this.lensPos1State=0;
-    this.lensPos2State=0;
-    this.angle0=6;
-    this.angleSet=function(){
-        if(this.lensPos1State==0){
-            this.angle1=0;
+function Ray(x0, y0) {
+    this.x0 = x0;
+    this.y0 = y0;
+    this.lensPos1State = 0;
+    this.lensPos2State = 0;
+    this.angle0 = 6;
+    this.angleSet = function () {
+        if (this.lensPos1State == 0) {
+            this.angle1 = 0;
         }
-        else if(this.lensPos1State==1){
-            this.angle1=-6;
+        else if (this.lensPos1State == 1) {
+            this.angle1 = -6;
         }
-        else if(this.lensPos1State==-1){
-            this.angle1=5.1;
+        else if (this.lensPos1State == -1) {
+            this.angle1 = 5.1;
         }
-        if(this.lensPos2State==0){
-            this.angle2=0;
+        if (this.lensPos2State == 0) {
+            this.angle2 = 0;
         }
-        else if(this.lensPos2State==1){
-            this.angle2=-6;
+        else if (this.lensPos2State == 1) {
+            this.angle2 = -6;
         }
-        else if(this.lensPos2State==-1){
-            this.angle2=5.1;
+        else if (this.lensPos2State == -1) {
+            this.angle2 = 5.1;
         }
     }
 
-    
-    this.x1=2.7;
-    this.x2=5.1;
-    this.x3=8.5;
-    this.draw=function(raySign){
-        if(raySign<0){
-            y0=0.20;
-            this.y0=y0;
+
+    this.x1 = 2.7;
+    this.x2 = 5.1;
+    this.x3 = 11;
+    this.draw = function (raySign) {
+        if (raySign < 0) {
+            y0 = 0.20;
+            this.y0 = y0;
         }
-        else{
-            y0=1.10;
-            this.y0=y0;
+        else {
+            y0 = 1.10;
+            this.y0 = y0;
         }
         this.angleSet();
         ctx1.beginPath();
-        ctx1.moveTo(transX(x0),transY(y0));
-        this.y1=raySign*Math.tan(this.angle0*Math.PI/180)*(this.x1-this.x0)+y0;
-        ctx1.lineTo(transX(this.x1),transY(this.y1));
-        ctx1.lineWidth='1';
-        ctx1.strokeStyle='#3bff21';
+        ctx1.moveTo(transX(x0), transY(y0));
+        this.y1 = raySign * Math.tan(this.angle0 * Math.PI / 180) * (this.x1 - this.x0) + y0;
+        ctx1.lineTo(transX(this.x1), transY(this.y1));
+        ctx1.lineWidth = '1';
+        ctx1.strokeStyle = '#3bff21';
         ctx1.stroke();
 
-        this.y2=this.y1+raySign*Math.tan((this.angle0+this.angle1)*Math.PI/180)*(this.x2-this.x1);
-        ctx1.lineTo(transX(this.x2),transY(this.y2));
+        this.y2 = this.y1 + raySign * Math.tan((this.angle0 + this.angle1) * Math.PI / 180) * (this.x2 - this.x1);
+        ctx1.lineTo(transX(this.x2), transY(this.y2));
         ctx1.stroke();
 
 
-        this.y3=this.y2+raySign*Math.tan((this.angle0+this.angle1+this.angle2)*Math.PI/180)*(this.x3-this.x2);
-        ctx1.lineTo(transX(this.x3),transY(this.y3));
+        this.y3 = this.y2 + raySign * Math.tan((this.angle0 + this.angle1 + this.angle2) * Math.PI / 180) * (this.x3 - this.x2);
+        ctx1.lineTo(transX(this.x3), transY(this.y3));
         ctx1.stroke();
 
     }
 
 }
-window.onload= async function(){
+
+window.onload = async function () {
     backgroundANDlaserImg();
-    ray=new Ray(0.5,1);
+    ray = new Ray(0.5, 1);
     ray.draw(1);
     ray.draw(-1);
-    
+
     //ray.lensHolderDraw();
 }
 //drag and Drop Status
-var firstDrop=false;
-var secondDrop=false;
+var firstDrop = false;
+var secondDrop = false;
 
 //drag and drop function
-document.getElementById('convexLensImg').draggable="true";
-document.getElementById('convexLensImg').addEventListener("dragstart",dragStartFunction);
+document.getElementById('convexLensImg').draggable = "true";
+document.getElementById('convexLensImg').addEventListener("dragstart", dragStartFunction);
 
-document.getElementById('concaveLensImg').draggable="true";
-document.getElementById('concaveLensImg').addEventListener("dragstart",dragStartFunction);
+document.getElementById('concaveLensImg').draggable = "true";
+document.getElementById('concaveLensImg').addEventListener("dragstart", dragStartFunction);
 
-document.getElementById('obLensHolder1').addEventListener("drop",dropFunctionForLensHolder1);
-document.getElementById('obLensHolder1').addEventListener("dragover",dragOverFunction);
-document.getElementById('obLensHolder2').addEventListener("drop",dropFunctionForLensHolder2);
-document.getElementById('obLensHolder2').addEventListener("dragover",dragOverFunction);
- async function dropFunctionForLensHolder1(event){
+document.getElementById('obLensHolder1').addEventListener("drop", dropFunctionForLensHolder1);
+document.getElementById('obLensHolder1').addEventListener("dragover", dragOverFunction);
+document.getElementById('obLensHolder2').addEventListener("drop", dropFunctionForLensHolder2);
+document.getElementById('obLensHolder2').addEventListener("dragover", dragOverFunction);
+async function dropFunctionForLensHolder1(event) {
     document.getElementById('obLensHolder1').classList.add('obLensHolder');
-    firstDrop=true;
+    firstDrop = true;
     dropSound.play();
     event.preventDefault();
     var data = event.dataTransfer.getData("text");
     //event.target.appendChild(document.getElementById(data));
-    ctx1.clearRect(0,0,canvas1.width,canvas1.height);
-    if(data=='convexLensImg'){
-        ctx2.clearRect(0,0,canvas1.width,canvas1.height);
+    ctx1.clearRect(0, 0, canvas1.width, canvas1.height);
+    if (data == 'convexLensImg') {
+        ctx2.clearRect(0, 0, canvas1.width, canvas1.height);
         //document.getElementById('obLensHolder1').style.border='0.0rem solid white';
-        ray.lensPos1State=1;
+        ray.lensPos1State = 1;
         backgroundANDlaserImg();
-        ctx2.drawImage(convexImage,transX(2.73)-(0.9/xUnitsPerPixel)/2,transY(0.73)-(0.9/xUnitsPerPixel*(convexImage.height/convexImage.width))/2,0.9/xUnitsPerPixel,0.92/xUnitsPerPixel*(convexImage.height/convexImage.width));
+        ctx2.drawImage(convexImage, transX(2.73) - (0.9 / xUnitsPerPixel) / 2, transY(0.73) - (0.9 / xUnitsPerPixel * (convexImage.height / convexImage.width)) / 2, 0.9 / xUnitsPerPixel, 0.92 / xUnitsPerPixel * (convexImage.height / convexImage.width));
     }
-    else if(data=='concaveLensImg'){
-        ctx2.clearRect(0,0,canvas1.width,canvas1.height);
+    else if (data == 'concaveLensImg') {
+        ctx2.clearRect(0, 0, canvas1.width, canvas1.height);
         //document.getElementById('obLensHolder1').style.border='0.0rem solid white';
-        ray.lensPos1State=-1;
+        ray.lensPos1State = -1;
         backgroundANDlaserImg();
-        ctx2.drawImage(concaveImage,transX(2.73)-(0.9/xUnitsPerPixel)/2,transY(0.73)-(0.9/xUnitsPerPixel*(convexImage.height/convexImage.width))/2,0.9/xUnitsPerPixel,0.92/xUnitsPerPixel*(convexImage.height/convexImage.width));
+        ctx2.drawImage(concaveImage, transX(2.73) - (0.9 / xUnitsPerPixel) / 2, transY(0.73) - (0.9 / xUnitsPerPixel * (convexImage.height / convexImage.width)) / 2, 0.9 / xUnitsPerPixel, 0.92 / xUnitsPerPixel * (convexImage.height / convexImage.width));
     }
     ray.draw(1);
     ray.draw(-1);
-    document.getElementById('reloadButton').style.display='block';
+    document.getElementById('reloadButton').style.display = 'block';
     //obStatement popup
     document.getElementById('obPopupWindow').classList.add('obPopupWindowAdd');
     await sleep(300);
     document.getElementById('obPopupWindow').classList.remove('obPopupWindowAdd');
-        if(secondDrop){
-            document.getElementById('obPopupWindow').innerHTML='Great! You can go to the question section or you can press the reset button to see the interaction again';
-        }
-        else{
-            document.getElementById('obPopupWindow').innerHTML='Great! Now drag and drop any lens to the remaining dotted box.';
-        }
-    
-  }
- async function dropFunctionForLensHolder2(event){
+    if (secondDrop) {
+        document.getElementById('obPopupWindow').innerHTML = 'Great! You can go to the question section or you can press the reset button to see the interaction again';
+    }
+    else {
+        document.getElementById('obPopupWindow').innerHTML = 'Great! Now drag and drop any lens to the remaining dotted box.';
+    }
+
+}
+async function dropFunctionForLensHolder2(event) {
     document.getElementById('obLensHolder2').classList.add('obLensHolder');
-    secondDrop=true;
+    secondDrop = true;
     dropSound.play();
     event.preventDefault();
     var data = event.dataTransfer.getData("text");
     //event.target.appendChild(document.getElementById(data));
-    ctx1.clearRect(0,0,canvas1.width,canvas1.height);
-    if(data=='convexLensImg'){
+    ctx1.clearRect(0, 0, canvas1.width, canvas1.height);
+    if (data == 'convexLensImg') {
         //document.getElementById('obLensHolder2').style.border='0.0rem solid white';
-        ray.lensPos2State=1;
-        ctx3.clearRect(0,0,canvas1.width,canvas1.height);
-        ctx3.drawImage(convexImage,transX(5.2)-(0.9/xUnitsPerPixel)/2,transY(0.73)-(0.9/xUnitsPerPixel*(convexImage.height/convexImage.width))/2,0.9/xUnitsPerPixel,0.92/xUnitsPerPixel*(convexImage.height/convexImage.width));
+        ray.lensPos2State = 1;
+        ctx3.clearRect(0, 0, canvas1.width, canvas1.height);
+        ctx3.drawImage(convexImage, transX(5.2) - (0.9 / xUnitsPerPixel) / 2, transY(0.73) - (0.9 / xUnitsPerPixel * (convexImage.height / convexImage.width)) / 2, 0.9 / xUnitsPerPixel, 0.92 / xUnitsPerPixel * (convexImage.height / convexImage.width));
     }
-    else if(data=='concaveLensImg'){
+    else if (data == 'concaveLensImg') {
         //document.getElementById('obLensHolder2').style.border='0.0rem solid white';
-        ray.lensPos2State=-1;
-        ctx3.clearRect(0,0,canvas1.width,canvas1.height);
-        ctx3.drawImage(concaveImage,transX(5.2)-(0.9/xUnitsPerPixel)/2,transY(0.73)-(0.9/xUnitsPerPixel*(convexImage.height/convexImage.width))/2,0.9/xUnitsPerPixel,0.92/xUnitsPerPixel*(convexImage.height/convexImage.width));
+        ray.lensPos2State = -1;
+        ctx3.clearRect(0, 0, canvas1.width, canvas1.height);
+        ctx3.drawImage(concaveImage, transX(5.2) - (0.9 / xUnitsPerPixel) / 2, transY(0.73) - (0.9 / xUnitsPerPixel * (convexImage.height / convexImage.width)) / 2, 0.9 / xUnitsPerPixel, 0.92 / xUnitsPerPixel * (convexImage.height / convexImage.width));
     }
     ray.draw(1);
     ray.draw(-1);
-    document.getElementById('reloadButton').style.display='block';
+    document.getElementById('reloadButton').style.display = 'block';
 
     document.getElementById('obPopupWindow').classList.add('obPopupWindowAdd');
     await sleep(300);
     document.getElementById('obPopupWindow').classList.remove('obPopupWindowAdd');
-        if(firstDrop){
-            document.getElementById('obPopupWindow').innerHTML='Great! You can move to the question section or you can press the reset button to see the interaction again';
-        }
-        else{
-            document.getElementById('obPopupWindow').innerHTML='Great! Now drag and drop any lens to the remaining dotted box.';
-        }
-  }
+    if (firstDrop) {
+        document.getElementById('obPopupWindow').innerHTML = 'Great! You can move to the question section or you can press the reset button to see the interaction again';
+    }
+    else {
+        document.getElementById('obPopupWindow').innerHTML = 'Great! Now drag and drop any lens to the remaining dotted box.';
+    }
+}
 
-function dragOverFunction(event){
+function dragOverFunction(event) {
     event.preventDefault();
-  }
-  
-function dragStartFunction(event){
+}
+
+function dragStartFunction(event) {
     event.dataTransfer.setData("text", event.target.id);
-  
-  }
+
+}
 
 
-  //reload function
-document.getElementById('reloadButton').onclick= async function(){
+//reload function
+document.getElementById('reloadButton').onclick = async function () {
     click.play();
     document.getElementById('obLensHolder1').classList.remove('obLensHolder');
     document.getElementById('obLensHolder2').classList.remove('obLensHolder');
-    ctx1.clearRect(0,0,canvas1.width,canvas1.height);
-    ctx2.clearRect(0,0,canvas1.width,canvas1.height);
-    ctx3.clearRect(0,0,canvas1.width,canvas1.height);
+    ctx1.clearRect(0, 0, canvas1.width, canvas1.height);
+    ctx2.clearRect(0, 0, canvas1.width, canvas1.height);
+    ctx3.clearRect(0, 0, canvas1.width, canvas1.height);
     backgroundANDlaserImg();
-    ray.lensPos1State=0;
-    ray.lensPos2State=0;
+    ray.lensPos1State = 0;
+    ray.lensPos2State = 0;
     ray.draw(1);
     ray.draw(-1);
-    this.style.display='none';
-    firstDrop=false;
-    secondDrop=false;
+    this.style.display = 'none';
+    firstDrop = false;
+    secondDrop = false;
     document.getElementById('obPopupWindow').classList.add('obPopupWindowAdd');
     await sleep(300);
     document.getElementById('obPopupWindow').classList.remove('obPopupWindowAdd');
-    document.getElementById('obPopupWindow').innerHTML='Drag and drop any lens to any of the dotted box';
+    document.getElementById('obPopupWindow').innerHTML = 'Drag and drop any lens to any of the dotted box';
 
 }
 
 //correct answer list and response answer list
 
-var correctAnswer=[0,true,false,false,true]; //1st value is dummy to avoid 0th element
-var responseAnswer=[0,false,false,false,false]; //1st value is dummy to avoid 0th element
+var correctAnswer = [0, true, false, true]; //1st value is dummy to avoid 0th element
+var responseAnswer = [0, false, false, false]; //1st value is dummy to avoid 0th element
 
-option1=document.getElementById('option1');
-option2=document.getElementById('option2');
-option3=document.getElementById('option3');
-option4=document.getElementById('option4');
+option1 = document.getElementById('option1');
+option2 = document.getElementById('option2');
+option3 = document.getElementById('option3');
+option4 = document.getElementById('option4');
 
-option1Check=document.getElementById('option1Check');
-option2Check=document.getElementById('option2Check');
-option3Check=document.getElementById('option3Check');
-option4Check=document.getElementById('option4Check');
+option1Check = document.getElementById('option1Check');
+option2Check = document.getElementById('option2Check');
+option3Check = document.getElementById('option3Check');
+option4Check = document.getElementById('option4Check');
 
-var responseNumberCount=0;
+var responseNumberCount = 0;
 //options clicks function
-option1.onclick=function(){
+option1.onclick = function () {
     optionClick.play();
-    if(responseAnswer[1]==false){
-        responseAnswer[1]=true;
+    if (responseAnswer[1] == false) {
+        responseAnswer[1] = true;
         option1.classList.add('qeOptionsAdd');
-        option1Check.checked=true;
-        responseNumberCount+=1;
-        document.getElementById('qeSubmitButton').style.display='flex';
+        option1Check.checked = true;
+        responseNumberCount += 1;
+        document.getElementById('qeSubmitButton').style.display = 'flex';
     }
-    else{
-        responseAnswer[1]=false;
+    else {
+        responseAnswer[1] = false;
         option1.classList.remove('qeOptionsAdd');
-        option1Check.checked=false;
-        responseNumberCount-=1;
-        if(responseNumberCount<1){
-            document.getElementById('qeSubmitButton').style.display='none';
+        option1Check.checked = false;
+        responseNumberCount -= 1;
+        if (responseNumberCount < 1) {
+            document.getElementById('qeSubmitButton').style.display = 'none';
         }
-        
+
     }
-    
+
 }
-option2.onclick=function(){
+option2.onclick = function () {
     optionClick.play();
-    if(responseAnswer[2]==false){
-        responseAnswer[2]=true;
+    if (responseAnswer[2] == false) {
+        responseAnswer[2] = true;
         option2.classList.add('qeOptionsAdd');
-        option2Check.checked=true;
-        responseNumberCount+=1;
-        document.getElementById('qeSubmitButton').style.display='flex';
+        option2Check.checked = true;
+        responseNumberCount += 1;
+        document.getElementById('qeSubmitButton').style.display = 'flex';
     }
-    else{
-        responseAnswer[2]=false;
+    else {
+        responseAnswer[2] = false;
         option2.classList.remove('qeOptionsAdd');
-        option2Check.checked=false;
-        responseNumberCount-=1;
-        if(responseNumberCount<1){
-            document.getElementById('qeSubmitButton').style.display='none';
+        option2Check.checked = false;
+        responseNumberCount -= 1;
+        if (responseNumberCount < 1) {
+            document.getElementById('qeSubmitButton').style.display = 'none';
         }
     }
 }
-option3.onclick=function(){
+option3.onclick = function () {
     optionClick.play();
-    if(responseAnswer[3]==false){
-        responseAnswer[3]=true;
+    if (responseAnswer[3] == false) {
+        responseAnswer[3] = true;
         option3.classList.add('qeOptionsAdd');
-        option3Check.checked=true;
-        responseNumberCount+=1;
-        document.getElementById('qeSubmitButton').style.display='flex';
+        option3Check.checked = true;
+        responseNumberCount += 1;
+        document.getElementById('qeSubmitButton').style.display = 'flex';
     }
-    else{
-        responseAnswer[3]=false;
+    else {
+        responseAnswer[3] = false;
         option3.classList.remove('qeOptionsAdd');
-        option3Check.checked=false;
-        responseNumberCount-=1;
-        if(responseNumberCount<1){
-            document.getElementById('qeSubmitButton').style.display='none';
+        option3Check.checked = false;
+        responseNumberCount -= 1;
+        if (responseNumberCount < 1) {
+            document.getElementById('qeSubmitButton').style.display = 'none';
         }
     }
 }
-option4.onclick=function(){
+option4.onclick = function () {
     optionClick.play();
-    if(responseAnswer[4]==false){
-        responseAnswer[4]=true;
+    if (responseAnswer[4] == false) {
+        responseAnswer[4] = true;
         option4.classList.add('qeOptionsAdd');
-        option4Check.checked=true;
-        responseNumberCount+=1;
-        document.getElementById('qeSubmitButton').style.display='flex';
+        option4Check.checked = true;
+        responseNumberCount += 1;
+        document.getElementById('qeSubmitButton').style.display = 'flex';
     }
-    else{
-        responseAnswer[4]=false;
+    else {
+        responseAnswer[4] = false;
         option4.classList.remove('qeOptionsAdd');
-        option4Check.checked=false;
-        responseNumberCount-=1;
-        if(responseNumberCount<1){
-            document.getElementById('qeSubmitButton').style.display='none';
+        option4Check.checked = false;
+        responseNumberCount -= 1;
+        if (responseNumberCount < 1) {
+            document.getElementById('qeSubmitButton').style.display = 'none';
         }
     }
 }
 
 //variables to determine the answer is fully correct or partial correct
-var rightAnswerStatus=false;
-var wrongAnswerStatus=false;
+var rightAnswerStatus = false;
+var wrongAnswerStatus = false;
 
-document.getElementById('qeSubmitButton').style.display='none';
+document.getElementById('qeSubmitButton').style.display = 'none';
 //question submit function
-footerState=false;
-document.getElementById('qeSubmitButton').onclick=function(){
-    footerState=true;
-    if(document.getElementById('qeSubmitButton').innerHTML=='Submit'){
-    document.getElementById('questionInstruction').style.display='none';
-    document.getElementById('qeSubmitButton').innerHTML='Finish'
-    //document.getElementById('solutionDiv').style.display='flex';
-    document.getElementById('footer').style.display='block';
-    document.getElementById('solutionDiv').style.display='block';
+footerState = false;
+document.getElementById('qeSubmitButton').onclick = function () {
+    footerState = true;
+    if (document.getElementById('qeSubmitButton').innerHTML == 'Submit') {
+        //document.getElementById('solutionDiv').style.display='flex';
+        //document.getElementById('qeOptionBox').style.marginTop='20%';
+        //document.getElementById('solutionDiv').style.marginTop='85%';
+        //document.getElementById('rightWrongPopUp').style.marginTop='2%';
 
-
-    document.getElementById('qeStatement').style.display='flex';
-    document.getElementById('questionImage').style.display='flex';
-    //document.getElementById('qeOptionBox').style.marginTop='20%';
-    //document.getElementById('solutionDiv').style.marginTop='85%';
-    //document.getElementById('rightWrongPopUp').style.marginTop='2%';
-    document.getElementById('qeDiv').style.overflowY ="scroll";
-    document.getElementById('qeDiv').style.scrollBehavior='smooth';
-    document.getElementById('qeDiv').scrollTop='215';
-    document.getElementById('rightWrongPopUp').style.opacity='1';
-    for(i=1;i<=correctAnswer.length-1;i++){
-        document.getElementById('option'+i.toString()).classList.remove('qeOptionsAdd');
-        document.getElementById('option'+i.toString()).style.pointerEvents = 'none';
-        if(responseAnswer[i]==true ){
-            document.getElementById('option'+i.toString()).style.backgroundImage='linear-gradient(#FC7070, #EB5050)';
-        }
-        if(correctAnswer[i]==true){
-            document.getElementById('option'+i.toString()).style.backgroundImage='linear-gradient(#49BE47, #36A75C)';
-        }
-        if(responseAnswer[i]==true){
-            if(responseAnswer[i]==correctAnswer[i]){
-                rightAnswerStatus=true;
+        for (i = 1; i <= correctAnswer.length - 1; i++) {
+            // document.getElementById('option' + i.toString()).classList.remove('qeOptionsAdd');
+            // document.getElementById('option' + i.toString()).style.pointerEvents = 'none';
+            // if (responseAnswer[i] == true) {
+            //     document.getElementById('option' + i.toString()).style.backgroundImage = 'linear-gradient(#FC7070, #EB5050)';
+            // }
+            // if (correctAnswer[i] == true) {
+            //     document.getElementById('option' + i.toString()).style.backgroundImage = 'linear-gradient(#49BE47, #36A75C)';
+            // }
+            if (responseAnswer[i] == true) {
+                if (responseAnswer[i] == correctAnswer[i]) {
+                    rightAnswerStatus = true;
+                    document.getElementById('option' + i.toString()).style = 'background-image: linear-gradient(#49BE47, #36A75C); color: #fff;';
+                }
+                else {
+                    wrongAnswerStatus = true;
+                    document.getElementById('option' + i.toString()).style = 'background-image: linear-gradient(#FC7070, #EB5050); color: #fff;';
+                }
             }
-            else{
-                wrongAnswerStatus=true;
+            else {
+                if (correctAnswer[i] == true) {
+                    wrongAnswerStatus = true;
+                }
             }
         }
-        else{
-            if(correctAnswer[i]==true){
-                wrongAnswerStatus=true;
-            }
+        if (rightAnswerStatus == true && wrongAnswerStatus == true) {
+            document.getElementById('questionInstruction').style.display = 'none';
+            document.getElementById('rightWrongPopUp').style.opacity = '1';
+            document.getElementById('rightWrongPopUp').style.color = 'rgb(251, 111, 111)';
+            document.getElementById('qeSubmitButton').innerHTML = 'Retry';
+            document.getElementById('rightWrongPopUp').innerHTML = '<label style="position: relative; font-size:1.2rem; font-weight: 500;">Oops!</label><label style = "width: 60%;"> Try again or swipe left to figure out the right answer.</label>';
+            wrongSound.play();
         }
-
+        else if (rightAnswerStatus == true && wrongAnswerStatus == false) {
+            document.getElementById('questionInstruction').style.display = 'none';
+            document.getElementById('qeSubmitButton').innerHTML = 'Finish';
+            document.getElementById('footer').style.display = 'block';
+            document.getElementById('solutionDiv').style.display = 'block';
+            document.getElementById('qeStatement').style.display = 'flex';
+            document.getElementById('questionImage').style.display = 'flex';
+            document.getElementById('qeDiv').style.overflowY = "scroll";
+            document.getElementById('qeDiv').style.scrollBehavior = 'smooth';
+            document.getElementById('qeDiv').scrollTop = '215';
+            document.getElementById('rightWrongPopUp').style.opacity = '1';
+            document.getElementById('rightWrongPopUp').style.color = 'rgb(141, 212, 62)';
+            document.getElementById('rightWrongPopUp').innerHTML = '<label style="position: relative; font-size:1.2rem; font-weight: 500;">Well Done!</label><label style = "width: 60%;"> You got the correct answer!</label>';
+            correctSound.play();
+            //Lo messaging
+            LO_message.style = "z-index : 1;";
+            LO_message.style.backgroundColor = '#000000cc';
+            popup.style = 'opacity:2; top: calc(601*var(--newPixel));';
+            circle_stroke_animation();
+            setTimeout(function () {
+                close_button.style.opacity = 1;
+            }, 1000)
+        }
+        else {
+            document.getElementById('questionInstruction').style.display = 'none';
+            document.getElementById('rightWrongPopUp').style.opacity = '1';
+            document.getElementById('rightWrongPopUp').style.color = 'rgb(251, 111, 111)';
+            document.getElementById('qeSubmitButton').innerHTML = 'Retry';
+            document.getElementById('rightWrongPopUp').innerHTML = '<label style="position: relative; font-size:1.2rem; font-weight: 500;">Oops!</label><label style = "width: 60%;"> Try again or swipe left to figure out the right answer.</label>';
+            wrongSound.play();
+        }
     }
-    if(rightAnswerStatus==true && wrongAnswerStatus==true){
-        document.getElementById('rightWrongPopUp').style.color='rgb(251, 111, 111)';
-        document.getElementById('rightWrongPopUp').innerHTML='<label style="font-size:1.4rem; font-weight: 500;">Oops!</label><br><label> You are partially correct. Check the solution</label>';
-        wrongSound.play();
+    else if (document.getElementById('qeSubmitButton').innerHTML == 'Retry') {
+        document.getElementById('qeSubmitButton').innerHTML = 'Submit';
+        var options_parent = document.getElementsByClassName('qeOptions');
+        document.getElementById('questionInstruction').style.display = 'block';
+        document.getElementById('rightWrongPopUp').style.opacity = '0';
+        for (let j = 0; j < options_parent.length; j++) {
+            options_parent[j].style = "background-image: #fff; color: #000;";
+            options_parent[j].children[0].checked = false;
+        }
+        rightAnswerStatus = false;
+        wrongAnswerStatus = false;
+        correctAnswer = [0, true, false, true];
+        responseAnswer = [0, false, false, false];
+        responseNumberCount = 0;
+        wrongAnswerStatus = false;
     }
-    else if(rightAnswerStatus==true && wrongAnswerStatus==false){
-        document.getElementById('rightWrongPopUp').style.color='rgb(141, 212, 62)';
-        document.getElementById('rightWrongPopUp').innerHTML='<label style="font-size:1.4rem; font-weight: 500;">Well Done!</label><br><label> You got the correct answer!</label>';
-        correctSound.play();
-    }
-    else{
-        document.getElementById('rightWrongPopUp').style.color='rgb(251, 111, 111)';
-        document.getElementById('rightWrongPopUp').innerHTML='<label style="font-size:1.4rem; font-weight: 500;">Oops!</label><br><label> You are wrong. Check the solution</label>';
-        wrongSound.play();
+    else { /* The finish Button */
+        nextORFinish.play();
+        window.location.reload();
     }
 }
-else{
-    nextORFinish.play();
-}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
