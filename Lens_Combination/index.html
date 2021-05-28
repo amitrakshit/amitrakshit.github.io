@@ -15,6 +15,8 @@
 <body id="bodyId">
   <div class="parentDiv">
     <div class="childDiv">
+      <div class="onlyBG observation"></div>
+      <div class="onlyBG question"></div>
       <span id='crossMark'>&#10005;</span>
       <div id='navigationBar'>
         <div id='observationBar' class='cAlign add' onclick="obOnClick()">Observation</div>
@@ -22,8 +24,8 @@
       </div>
       <div id='obDiv' class='bodyDiv' style="display: block;">
         <div id='obStatement' class='cAlign'>
-          <p>Two lasers are placed as shown in the figure. Drag and drop the lenses in the dotted box and observe the
-            path of light rays.</p>
+          <p>Two lasers are placed as shown in the figure. Drag and drop the lenses in the highlighted region and
+            observe the effect on the path of light rays.</p>
         </div>
         <canvas id='secondCanvas'></canvas>
         <canvas id='thirdCanvas'></canvas>
@@ -32,7 +34,7 @@
 
         <div id='obLensHolder1'></div>
         <div id='obLensHolder2'></div>
-        <div id="obPopupWindow" class="cAlign">Drag and drop any lens to any of the dotted box</div>
+        <div id="obPopupWindow" class="cAlign"></div>
         <div id='obInputDiv'>
           <div id='obConvexDiv' class='obOptions'>
             <p class='obOptionStatement' style="color: white; margin-top: 55%;" draggable="false">Convex &emsp;</p>
@@ -71,7 +73,7 @@
         <div id='qeSubmitButton' class='cAlign'>Submit</div>
         <div id='solutionDiv'>
           <p style="font-size: 1.2rem; text-align: center; font-weight: bold;">Solution</p>
-          <p style=""> We know that convex lens converges light and concave lens diverges light. In
+          <p> We know that convex lens converges light and concave lens diverges light. In
             this figure, through A light is convering thus, A: convex lens, through B light is diverging thus, B:
             concave lens, through C light is again converging thus, C: convex lens and through D light is diverging
             thus, D: concave lens.</p>
@@ -82,7 +84,8 @@
       <section class="LO_message">
         <div class="popup">
           <div class="text_container">
-            <p>Excellent! You have successfully understood that light rays are converged by a convex lens and diverged by a concave lens.</p>
+            <p>Excellent! You have successfully understood that light rays are converged by a convex lens and diverged
+              by a concave lens.</p>
           </div>
           <div class="tick_mark_container">
             <div class="ellipse2"></div>
@@ -101,4 +104,5 @@
   <script src="js.js"></script>
   <script src="scripts/LO_script.js"></script>
 </body>
+
 </html>

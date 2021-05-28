@@ -44,7 +44,6 @@ function circle_stroke_animation() {
 }
 
 
-
 // LO messagig screen
 var LO_message = document.getElementsByClassName('LO_message')[0];
 var popup = document.getElementsByClassName('popup')[0];
