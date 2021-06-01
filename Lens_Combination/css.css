@@ -206,8 +206,8 @@ canvas {
 
 #obLensHolder1 {
   position: absolute;
-  margin-left: 32.5%;
-  margin-top: 36.8%;
+  left: 32.5%;
+  top: 22.7%;
   width: 9%;
   height: 13.5%;
   border: 0.1rem solid white;
@@ -218,8 +218,8 @@ canvas {
 
 #obLensHolder2 {
   position: absolute;
-  margin-left: 57.0%;
-  margin-top: 36.8%;
+  left: 57.0%;
+  top: 22.7%;
   width: 9%;
   height: 13.5%;
   border: 0.1rem solid white;

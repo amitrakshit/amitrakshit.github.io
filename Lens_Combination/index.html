@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lens Combinations</title>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="http://code.jquery.com/jquery.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.8.17/jquery-ui.min.js"></script>
   <link href="css.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="styles/LO_style.css">
 
@@ -32,17 +34,17 @@
         <canvas id='firstCanvas'></canvas>
         <img id='reloadButton' src='Images/Reset Button.svg'>
 
-        <div id='obLensHolder1'></div>
-        <div id='obLensHolder2'></div>
+        <div id='obLensHolder1' dropzone="copy"></div>
+        <div id='obLensHolder2' dropzone="copy"></div>
         <div id="obPopupWindow" class="cAlign"></div>
         <div id='obInputDiv'>
           <div id='obConvexDiv' class='obOptions'>
             <p class='obOptionStatement' style="color: white; margin-top: 55%;" draggable="false">Convex &emsp;</p>
-            <img id='convexLensImg' src='Images/convexLens.svg' height="65%" style="cursor: pointer; margin-top: 5%;">
+            <img id='convexLensImg' src='Images/convexLens.svg' height="65%" style="cursor: pointer; position: absolute; top: 5%;">
           </div>
           <div id='obConcaveDiv' class='obOptions'>
             <p class='obOptionStatement' style="color: white; margin-top: 55%;" draggable="false">Concave &emsp;</p>
-            <img id='concaveLensImg' src='Images/concaveLens.svg' height="65%" style="cursor: pointer; margin-top: 5%;">
+            <img id='concaveLensImg' src='Images/concaveLens.svg' height="65%" style="cursor: pointer; position: absolute; top: 5%;">
           </div>
         </div>
         <div id='nextButton' class="cAlign" onclick="qeOnClick()">Next</div>
@@ -101,6 +103,7 @@
       </section>
     </div>
   </div>
+  <script src="scripts/TouchDragDropscript.js"></script>
   <script src="js.js"></script>
   <script src="scripts/LO_script.js"></script>
 </body>

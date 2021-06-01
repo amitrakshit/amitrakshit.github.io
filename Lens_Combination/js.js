@@ -1,4 +1,3 @@
-
 //sound Import
 var click = new Audio('Sound/click.wav');
 var correctSound = new Audio('Sound/rightAnswer.mp3');
@@ -221,12 +220,47 @@ window.onload = async function () {
 var firstDrop = false;
 var secondDrop = false;
 
-var FirstDropzoneLens = '';
+var FirstDropzoneLens = ''; //storing the id of the lens images
 var SecondDropzoneLens = '';
 
 //drag and drop function
 document.getElementById('convexLensImg').draggable = "true";
-document.getElementById('convexLensImg').addEventListener("dragstart", dragStartFunction);
+let dragStartEv = document.getElementById('convexLensImg').addEventListener("dragstart", dragStartFunction);
+var convexLens = document.getElementById('convexLensImg');
+var concaveLens = document.getElementById('concaveLensImg');
+// var Lensstyle = window.getComputedStyle(convexLens);
+
+convexLens.addEventListener('touchstart', function (ev) {
+    touchstart(ev);
+})
+convexLens.addEventListener('touchmove', function (ev) {
+    touchmove(ev);
+})
+convexLens.addEventListener('touchend', function (ev) {
+    touchend(ev);
+    if (ev.target.getAttribute('dropzoneID') == 'obLensHolder1') {
+        dropFunctionForLensHolder1Touch(ev);
+    }
+    else if (ev.target.getAttribute('dropzoneID') == 'obLensHolder2'){
+        dropFunctionForLensHolder2Touch(ev);
+    }
+
+})
+concaveLens.addEventListener('touchstart', function (ev) {
+    touchstart(ev);
+})
+concaveLens.addEventListener('touchmove', function (ev) {
+    touchmove(ev);
+})
+concaveLens.addEventListener('touchend', function (ev) {
+    touchend(ev);
+    if (ev.target.getAttribute('dropzoneID') == 'obLensHolder1') {
+        dropFunctionForLensHolder1Touch(ev);
+    }
+    else if (ev.target.getAttribute('dropzoneID') == 'obLensHolder2'){
+        dropFunctionForLensHolder2Touch(ev);
+    }
+})
 
 document.getElementById('concaveLensImg').draggable = "true";
 document.getElementById('concaveLensImg').addEventListener("dragstart", dragStartFunction);
@@ -267,6 +301,7 @@ async function dropFunctionForLensHolder1(event) {
     document.getElementById('obPopupWindow').classList.add('obPopupWindowAdd');
     await sleep(300);
     document.getElementById('obPopupWindow').classList.remove('obPopupWindowAdd');
+
     if (secondDrop) {
         if (FirstDropzoneLens == 'convexLensImg' && SecondDropzoneLens == 'convexLensImg') {
             document.getElementById('obPopupWindow').innerHTML = 'Observe that the light converges first and then it converges further after passing through both the lenses.'; /*Convex - Convex Combination */
@@ -353,7 +388,121 @@ function dragStartFunction(event) {
 
 }
 
+//Drop Function for touch
+async function dropFunctionForLensHolder1Touch(event) {
+    firstDrop = true;
+    dropSound.play();
+    event.preventDefault();
+    var data = document.getElementById('obLensHolder1').getAttribute('draggedID');
+    //event.target.appendChild(document.getElementById(data));
+    console.log(data);
+    ctx1.clearRect(0, 0, canvas1.width, canvas1.height);
+    if (data == 'convexLensImg') {
+        document.getElementById('obLensHolder1').classList.add('obLensHolder');
+        ctx2.clearRect(0, 0, canvas1.width, canvas1.height);
+        //document.getElementById('obLensHolder1').style.border='0.0rem solid white';
+        ray.lensPos1State = 1;
+        backgroundANDlaserImg();
+        ctx2.drawImage(convexImage, transX(2.73) - (0.9 / xUnitsPerPixel) / 2, transY(0.73) - (0.9 / xUnitsPerPixel * (convexImage.height / convexImage.width)) / 2, 0.9 / xUnitsPerPixel, 0.92 / xUnitsPerPixel * (convexImage.height / convexImage.width));
+        FirstDropzoneLens = data;
+    }
+    else if (data == 'concaveLensImg') {
+        document.getElementById('obLensHolder1').classList.add('obLensHolder');
+        ctx2.clearRect(0, 0, canvas1.width, canvas1.height);
+        //document.getElementById('obLensHolder1').style.border='0.0rem solid white';
+        ray.lensPos1State = -1;
+        backgroundANDlaserImg();
+        ctx2.drawImage(concaveImage, transX(2.73) - (0.9 / xUnitsPerPixel) / 2, transY(0.73) - (0.9 / xUnitsPerPixel * (convexImage.height / convexImage.width)) / 2, 0.9 / xUnitsPerPixel, 0.92 / xUnitsPerPixel * (convexImage.height / convexImage.width));
+        FirstDropzoneLens = data;
+    }
+    ray.draw(1);
+    ray.draw(-1);
+    document.getElementById('reloadButton').style.display = 'block';
+    //obStatement popup
+    document.getElementById('obPopupWindow').style = "opacity: 1;";
+    document.getElementById('obPopupWindow').classList.add('obPopupWindowAdd');
+    await sleep(300);
+    document.getElementById('obPopupWindow').classList.remove('obPopupWindowAdd');
 
+    if (secondDrop) {
+        if (FirstDropzoneLens == 'convexLensImg' && SecondDropzoneLens == 'convexLensImg') {
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light converges first and then it converges further after passing through both the lenses.'; /*Convex - Convex Combination */
+        }
+        else if (FirstDropzoneLens == 'convexLensImg' && SecondDropzoneLens == 'concaveLensImg') {
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light converges first and then diverges after passing  through both the lenses.'; /*Convex - Concave Combination */
+        }
+        else if (FirstDropzoneLens == 'concaveLensImg' && SecondDropzoneLens == 'concaveLensImg') {
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light diverges first and then it diverges further after passing through both the lenses.'; /*Concave - Concave Combination */
+        }
+        else {
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light diverges first and then converges after passing through both the lenses.'; /* Else means Concave - Convex Combination */
+        }
+    }
+    else {
+        if (FirstDropzoneLens == 'convexLensImg') {
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the convex lens converges the light ray. Go ahead and try out the other combinations as well.';
+        }
+        else {
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the concave lens diverges the light ray. Go ahead and try out the other combinations as well.';
+        }
+    }
+
+}
+async function dropFunctionForLensHolder2Touch(event) {
+
+    secondDrop = true;
+    dropSound.play();
+    event.preventDefault();
+    var data = document.getElementById('obLensHolder2').getAttribute('draggedID');
+    console.log(data);
+    //event.target.appendChild(document.getElementById(data));
+    ctx1.clearRect(0, 0, canvas1.width, canvas1.height);
+    if (data == 'convexLensImg') {
+        document.getElementById('obLensHolder2').classList.add('obLensHolder');
+        //document.getElementById('obLensHolder2').style.border='0.0rem solid white';
+        ray.lensPos2State = 1;
+        ctx3.clearRect(0, 0, canvas1.width, canvas1.height);
+        ctx3.drawImage(convexImage, transX(5.2) - (0.9 / xUnitsPerPixel) / 2, transY(0.73) - (0.9 / xUnitsPerPixel * (convexImage.height / convexImage.width)) / 2, 0.9 / xUnitsPerPixel, 0.92 / xUnitsPerPixel * (convexImage.height / convexImage.width));
+        SecondDropzoneLens = data;
+    }
+    else if (data == 'concaveLensImg') {
+        document.getElementById('obLensHolder2').classList.add('obLensHolder');
+        //document.getElementById('obLensHolder2').style.border='0.0rem solid white';
+        ray.lensPos2State = -1;
+        ctx3.clearRect(0, 0, canvas1.width, canvas1.height);
+        ctx3.drawImage(concaveImage, transX(5.2) - (0.9 / xUnitsPerPixel) / 2, transY(0.73) - (0.9 / xUnitsPerPixel * (convexImage.height / convexImage.width)) / 2, 0.9 / xUnitsPerPixel, 0.92 / xUnitsPerPixel * (convexImage.height / convexImage.width));
+        SecondDropzoneLens = data;
+    }
+    ray.draw(1);
+    ray.draw(-1);
+    document.getElementById('reloadButton').style.display = 'block';
+    document.getElementById('obPopupWindow').style = "opacity: 1;";
+    document.getElementById('obPopupWindow').classList.add('obPopupWindowAdd');
+    await sleep(300);
+    document.getElementById('obPopupWindow').classList.remove('obPopupWindowAdd');
+    if (firstDrop) {
+        if (FirstDropzoneLens == 'convexLensImg' && SecondDropzoneLens == 'convexLensImg') {
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light converges first and then it converges further after passing through both the lenses.'; /*Convex - Convex Combination */
+        }
+        else if (FirstDropzoneLens == 'convexLensImg' && SecondDropzoneLens == 'concaveLensImg') {
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light converges first and then diverges after passing  through both the lenses.'; /*Convex - Concave Combination */
+        }
+        else if (FirstDropzoneLens == 'concaveLensImg' && SecondDropzoneLens == 'concaveLensImg') {
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light diverges first and then it diverges further after passing through both the lenses.'; /*Concave - Concave Combination */
+        }
+        else {
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light diverges first and then converges after passing through both the lenses.'; /* Else means Concave - Convex Combination */
+        }
+    }
+    else {
+        if (SecondDropzoneLens == 'convexLensImg') {
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the convex lens converges the light ray. Go ahead and try out the other combinations as well.';
+        }
+        else {
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the concave lens diverges the light ray. Go ahead and try out the other combinations as well.';
+        }
+    }
+}
 //reload function
 document.getElementById('reloadButton').onclick = async function () {
     click.play();
