@@ -1,0 +1,562 @@
+@font-face {
+    font-family: Gotham SSm;
+    /* src: url('/fonts/Gotham-SSm/GothamSSm-Black.otf'); */
+    src: url('../fonts/Gotham-SSm/GothamSSm-Light.otf');
+    /* src: url('/fonts/Gotham-SSm/GothamSSm-BlackItalic.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-Bold.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-BoldItalic.otf'); 
+    src: url('fonts/Gotham-SSm/GothamSSm-Book.otf'); */
+    /* src: url('/fonts/Gotham-SSm/GothamSSm-BookItalic.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-LightItalic.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-Medium.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-MediumItalic.otf'); */
+}
+
+/* -- For the Background-- */
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.window {
+    position: relative;
+    height: 1920px;
+    width: 1080px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.movable_parent {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    --width: 1080px;
+    height: 1920px;
+    width: calc(var(--width)*3);
+    display: flex;
+    flex-direction: row;
+    transition: left 0.5s linear;
+}
+
+.background {
+    position: relative;
+    width: 1080px;
+    height: 1920px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.background2 {
+    position: relative;
+    width: 1080px;
+    height: 1920px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* For the cross symbol */
+
+.cross_symbol_container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 108px;
+    height: 108px;
+    left: 48px;
+    top: 102px;
+    opacity: 0.5;
+    z-index: 1;
+    /* background: grey; */
+}
+
+.cross_symbol_container .cross_oval {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    /* background-color: blue; */
+}
+
+.cross_oval .cross_hand {
+    position: absolute;
+    width: 54px;
+    height: 6px;
+    top: 50%;
+    left: 50%;
+    background-color: #9C88D8;
+}
+
+.cross_oval #hand1 {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.cross_oval #hand2 {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.navigation_bar {
+    position: absolute;
+    width: 55%;
+    height: 5.6%;
+    top: 5.3%;
+    border-radius: 200px;
+    background: rgb(109, 42, 244);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 36px;
+    text-align: center;
+    font-family: Gotham SSm;
+    font-weight: 325;
+    line-height: 144.2%;
+    cursor: pointer;
+    color: white;
+    z-index: 1;
+}
+
+.observation_bar {
+    height: 100%;
+    width: 50%;
+    border-radius: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.question_bar {
+    height: 100%;
+    width: 50%;
+    border-radius: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav_selected {
+    background: white;
+    color: rgb(54, 18, 175);
+    box-shadow: 4px 2px 10px 2px rgba(0, 0, 0, 0.284);
+    /*The direction needs to be changed by putting a 'minus' sign befer '4px'*/
+}
+
+.nav_selected2 {
+    background: white;
+    color: rgb(54, 18, 175);
+    box-shadow: -4px 2px 10px 2px rgba(0, 0, 0, 0.284);
+}
+
+.context_button {
+    position: absolute;
+    left: 924px;
+    top: 101px;
+    z-index: 1;
+}
+
+/* For the instruction area */
+
+.instructino_area {
+    position: absolute;
+    width: 984px;
+    height: 240px;
+    top: 288px;
+}
+
+.instructino_area p {
+    margin: 0;
+    font-family: Gotham SSm;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 39px;
+    line-height: 60px;
+    /* or 154% */
+    color: #FFFDFD;
+}
+
+/* For Visual area */
+
+.visual_area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border-radius: 20px;
+    width: 984px;
+    height: 520px;
+    top: 564px;
+    background-color: #000000AB;
+    overflow: hidden;
+}
+
+/* All styles related to the table */
+.table_div{
+    width: 100%;
+    height: 100%;
+}
+.table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    color: #fff;
+    font-size: 36px;
+    font-family: Gotham SSm;
+    font-weight: heavier;
+    text-align: center;
+    
+
+
+}
+
+.check {
+    position: absolute;
+    left: 64.5%;
+    width:200px;
+    height:500px;
+    background-color: transparent;
+    
+    }
+.check #first_check{
+    position:absolute;
+    top:29%;
+}
+
+.check #second_check{
+    position:absolute;
+    top:56%;
+}
+
+.check #third_check{
+    position:absolute;
+    top:82%;
+}
+
+.wrong {
+    z-index: 1;
+    display: none;
+}
+
+.right {
+    z-index: 2;
+    display: none;
+}
+
+.table th {
+    height: 60px;
+    padding: 30px 0px;
+}
+
+.table td:nth-child(3) {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table thead tr {
+    background-color: #212A40;
+}
+
+.table td:nth-child(1) {
+    background-color: #212A40;
+}
+
+/* .table td:nth-child(2), .table td:nth-child(3), .table td:nth-child(4) {
+    background-color: #28334F;
+} */
+
+.table tbody tr:nth-child(even), .table tbody tr:nth-child(odd)  {
+    background-color: #28334F;
+}
+
+.table tbody td:nth-child(even), .table tbody td:nth-child(odd) {
+/* .table td:nth-child(2), .table thead th:nth-child(2), .table td:nth-child(3) { */
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    /* border-top: 1px solid rgba(255, 255, 255, 0.5); */
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.5); */
+
+}
+
+.table thead th {
+    /* .table td:nth-child(2), .table thead th:nth-child(2), .table td:nth-child(3) { */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        /* border-top: 1px solid rgba(255, 255, 255, 0.5); */
+        /* border-bottom: 1px solid rgba(255, 255, 255, 0.5); */
+    
+    }
+
+.table thead th:nth-child(1), .table thead th:nth-child(2), .table thead th:nth-child(3) {
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.table tbody tr:nth-child(2), .table tbody tr:nth-child(3) {
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* For feedback bar */
+
+.feedback_bar {
+    position: absolute;
+    border-radius: 20px;
+    width: 984px;
+    height: 180px;
+    top: 1120px;
+    background: linear-gradient(180deg, #12EAFA  0%,#0787E2 100%);  
+    /* background: linear-gradient(180deg, #FFE601 0%, #E8882F 100%); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s, top 0.5s;
+    
+}
+
+.feedback_bar p {
+    position: relative;
+    margin: 10px;
+    font-family: Gotham SSm;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 33px;
+    line-height: 50px;
+    /* or 154% */
+    color: black;
+    width: 95%;
+    text-align: center; 
+}
+
+/* For the equation container and the numbers */
+
+.equation_container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 984px;
+    height: 120px;
+    top: 1434px;
+    background: linear-gradient(180deg, #CF47FF 0%, #7E00EE 100%);
+    border-radius: 20px;
+    font-family: Gotham SSm;
+    font-size: 36px;
+}
+
+.equation_container p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    font-family: Gotham SSm;
+    font-style: normal;
+    font-weight: 325;
+    font-size: 36px;
+    line-height: 134%;
+    color: #fff;
+}
+
+.equation_container p .numbers {
+    position: relative;
+    margin-right: 10px;
+    margin-left: 10px;
+    background: linear-gradient(180deg, #8C38AA 0%, #4D028F 100%);
+    width: 80px;
+    height: 80px;
+    box-shadow: inset 2px 2px 4px #0F007B;
+    border-radius: 16px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.equation_container .numbers_container {
+    /* border: 1px solid white; */
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: -200%;
+    width: 100%;
+    height: 400%;
+    transition: top 1s ease-out;
+}
+
+.equation_container .inside_number {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coef {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-right: 10px;
+    margin-left: 10px;
+    /* background: linear-gradient(180deg, #8C38AA 0%, #4D028F 100%); */
+    background: transparent;
+    width: 80px;
+    height: 80px;
+    /* box-shadow: inset 2px 2px 4px #0F007B;
+    border-radius: 16px; */
+    overflow: hidden;
+    color: white;
+    opacity: 0;
+    /* display: none; */
+    font-size: 36px;
+    font-family: Gotham SSm;
+    font-weight: heavier;
+}
+
+.elm1 {
+    position: absolute;
+    left: 165px;
+    transition: top 2s;
+}
+
+.elm2 {
+    position: absolute;
+    left: 215px;
+}
+
+.elm3 {
+    position: absolute;
+    left: 324px;
+    
+}
+.elm4{
+
+position: absolute;
+    left: 535px;
+}
+
+.elm5{
+
+    position: absolute;
+        left: 745px;
+
+    }
+
+.elm6{
+
+        position: absolute;
+            left: 875px;
+        }
+    .Plus {
+    position: absolute;
+    background-color: transparent;
+    opacity: 0.4;
+    /* border: 2px solid black; */
+    border-radius: 25px;
+    height: 100px; width: 100px;
+     padding-left: 15px;
+    padding-top: 15px; 
+    padding-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+.Plus.Plus1 {
+    left: 100px;
+    top: 1325px;
+}
+
+.Plus.Plus2 {
+    left: 374px;
+    top: 1325px;
+}
+
+.Plus.Plus3 {
+    left: 581px;
+    top: 1325px;
+}
+
+.Plus.Plus4 {
+    left: 795px;
+    top: 1325px;
+}
+
+.Minus {
+    position: absolute;
+    background-color: transparent;
+    border-radius: 25px;
+    height: 100px; width: 100px;
+     padding-left: 15px;
+    padding-top: 15px; 
+    padding-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    opacity: 0.4;
+
+}
+
+.Minus.Minus1 {
+    left: 100px;
+    top: 1572px;
+}
+
+.Minus.Minus2 {
+    left: 374px;
+    top: 1572px;
+}
+
+.Minus.Minus3 {
+    left: 581px;
+    top: 1572px;
+}
+
+.Minus.Minus4 {
+    left: 795px;
+    top: 1572px;
+}
+
+.next_button {
+    position: absolute;
+    width: 45%;
+    height: 128.64px;
+    border: none;
+    border-radius: 200px;
+    background: linear-gradient(90deg, #10dca3, #3988fa);
+    color: white;
+    font-family: Gotham SSm;
+    font-weight: 350;
+    font-size: 39px;
+    top:1704px;
+    cursor: pointer;
+    
+}
+
+.reset_button {
+    position: absolute;
+    top: 100%;
+    width: 45%;
+    height: 128.64px;
+    border: none;
+    border-radius: 200px;
+    background: linear-gradient(90deg, #10dca3, #3988fa);
+    color: white;
+    font-family: Gotham SSm;
+    font-weight: 350;
+    font-size: 39px;
+    cursor: pointer;
+}
+
