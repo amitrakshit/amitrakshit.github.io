@@ -17,9 +17,7 @@ context_button.addEventListener('click', function (event) {
     }
 })
 
-console.log(window.innerHeight);
 var Tobescaled = window.innerHeight / 1920;
-
 if (window.innerWidth / window.innerHeight > 9 / 16) {
     var Tobescaled = window.innerHeight / 1920;
     document.getElementsByClassName('window')[0].style.setProperty('transform', 'scale(' + Tobescaled.toString() + ')');

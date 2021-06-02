@@ -257,7 +257,8 @@ function poly8() {
     }
 }
 
-var table_data = document.getElementsByTagName('td');
+var table_data = document.getElementsByClassName('table')[0].getElementsByTagName('td');
+console.log(table_data);
 
 // table_date[0].style.backgroundColor = "red";
 var reactant_1 = {
@@ -847,16 +848,6 @@ async function update_numbers()
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
      }
-
-
-
-
-
-
-
-
-
-
 
 function reset_instruction()
 
