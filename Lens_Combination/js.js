@@ -80,9 +80,9 @@ else {
 
 }
 
-window.onresize = function () {
-    location.reload();
-}
+// window.onresize = function () {
+//     location.reload();
+// }
 
 
 //xtransformation

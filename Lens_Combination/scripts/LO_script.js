@@ -6,9 +6,15 @@ buttonAudio_Click.src = "sounds/buton_Click.mp3";
 /* Following code till circle_stroke_animation() is for loaded screen animation */
 
 var round_stroke = document.getElementsByClassName('round_stroke')[0];
-var scaleOfsvg = 1.38 * (window.innerHeight / 1920);
+if(screen.width/screen.height > 9/16){
+    var scaleOfsvg = 1.38 * (window.innerHeight / 1920);
+    round_stroke.style = "transform: translate(-50%, -50%) scale(" + scaleOfsvg +");";
+}
+else{
+    var scaleOfsvg = 1.38 * (window.innerWidth / 1080);
+    round_stroke.style = "transform: translate(-50%, -50%) scale(" + scaleOfsvg +");";
+}
 
-round_stroke.style = "transform: translate(-50%, -50%) scale(" + scaleOfsvg +");";
 
 var circle_stroke = round_stroke.children[0];
 function draw_svgArc(svgElement, cx = 0, cy = 0, radius = 1, startAngle = 0, stopAngle = 360) {

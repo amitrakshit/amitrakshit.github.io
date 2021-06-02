@@ -1,10 +1,19 @@
-@media only screen and (min-aspect-ratio: 9/16) {}
+@media only screen and (min-aspect-ratio: 9/16) {
+    html {
+        --width: 56.25vh;
+        --height: 100vh;
+        /* font-size: calc(1/1920*var(--height)); */
+        --newPixel: calc(1/1920*(var(--height)));
+    }
 
-html {
-    --width: 56.25vh;
-    --height: 100vh;
-    /* font-size: calc(1/1920*var(--height)); */
-    --newPixel: calc(1/1920*(var(--height)));
+}
+@media only screen and (max-aspect-ratio: 9/16){
+    html{
+        --width: 100vw;
+        --height: calc(16/9*var(--width));
+        /* font-size: calc(1/1920*var(--height)); */
+        --newPixel: calc(1/1080*(var(--width)));
+    }
 }
 
 .LO_message {
