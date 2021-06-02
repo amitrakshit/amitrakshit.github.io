@@ -75,7 +75,6 @@ function touchend(event) {
             dropzones[i].setAttribute('draggedID', event.target.id.slice(0, -4));
             event.target.setAttribute('dropped', 'true');
             event.target.setAttribute('dropzoneID', dropzones[i].id);
-            // dropzones[i].style = "background: blue;";
         }
         else{
             dropzones[i].style = defaultDropzoneStyle[i].style;
@@ -88,5 +87,3 @@ function touchend(event) {
     // event.target.style = previousStyle;
     event.target.style = 'opacity: 0;';
 }
-
-console.log(dropzones);
