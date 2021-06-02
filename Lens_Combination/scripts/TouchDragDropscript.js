@@ -8,7 +8,7 @@ var NumberOfdropzones = dropzones.length;
 var dropzone_parameters = new Array();
 for (let i = 0; i < NumberOfdropzones; i++) {
     var temp_style = dropzones[i].getBoundingClientRect();
-    temp_collection = {left: Number(temp_style.left), top: Number(temp_style.top), width: Number(temp_style.width), height: Number(temp_style.height)};
+    temp_collection = { left: Number(temp_style.left), top: Number(temp_style.top), width: Number(temp_style.width), height: Number(temp_style.height) };
     dropzone_parameters[i] = temp_collection;
 }
 
@@ -19,7 +19,7 @@ var OriginY = 0;
 
 var previousStyle = undefined;
 function touchstart(event) {
-    previousStyle = event.target.style;
+    // previousStyle = event.target.style;
     initialX = event.touches[0].pageX;
     initialY = event.touches[0].pageY;
     var target_style = window.getComputedStyle(event.target);
@@ -35,7 +35,7 @@ function touchstart(event) {
         target.style = 'position: absolute; opacity: 0.5;';
         target.setAttribute('dragged', 'true');
     }
-    else{
+    else {
         event.target.style = "position: absolute; opacity: 0.5;"
     }
     OriginX = target_style.left;
@@ -52,13 +52,16 @@ function touchmove(event) {
     // console.log('clientX', event.touches[0].clientX, 'clientY', event.touches[0].clientY);
 }
 
+
+var defaultDropzoneStyle = dropzones;
 function touchend(event) {
     event.target.style.left = OriginX;
     event.target.style.top = OriginY;
     var clientX = Number(event.changedTouches[0].clientX);
     var clientY = Number(event.changedTouches[0].clientY);
-    // console.log(clientX, clientY);
-    // console.log(dropzone_parameters[0]);
+    event.target.setAttribute('dropzoneID', 'none');
+    event.target.setAttribute('dropped', 'false');
+    
 
     for (let i = 0; i < NumberOfdropzones; i++) {
         var dropzonLeft = dropzone_parameters[i].left;
@@ -66,14 +69,16 @@ function touchend(event) {
         var dropzonWidth = dropzone_parameters[i].width;
         var dropzonHeight = dropzone_parameters[i].height;
         // console.log(dropzonLeft, dropzonLeft + dropzonWidth, dropzonTop, dropzonTop + dropzonHeight);
-        var old_Style = dropzones[i].style;
+        
+        dropzones[i].style = defaultDropzoneStyle;
         if (clientX > dropzonLeft && clientX < (dropzonLeft + dropzonWidth) && clientY > dropzonTop && clientY < (dropzonTop + dropzonHeight)) {
             dropzones[i].setAttribute('draggedID', event.target.id.slice(0, -4));
             event.target.setAttribute('dropped', 'true');
             event.target.setAttribute('dropzoneID', dropzones[i].id);
+            // dropzones[i].style = "background: blue;";
         }
-        else {
-            event.target.setAttribute('dropped', 'false');
+        else{
+            dropzones[i].style = defaultDropzoneStyle[i].style;
         }
     }
     //For removing the copied one;
@@ -84,3 +89,4 @@ function touchend(event) {
     event.target.style = 'opacity: 0;';
 }
 
+console.log(dropzones);

@@ -238,12 +238,14 @@ convexLens.addEventListener('touchmove', function (ev) {
 })
 convexLens.addEventListener('touchend', function (ev) {
     touchend(ev);
+    console.log(ev.target.getAttribute('dropzoneID'));
     if (ev.target.getAttribute('dropzoneID') == 'obLensHolder1') {
         dropFunctionForLensHolder1Touch(ev);
     }
-    else if (ev.target.getAttribute('dropzoneID') == 'obLensHolder2'){
+    else if (ev.target.getAttribute('dropzoneID') == 'obLensHolder2') {
         dropFunctionForLensHolder2Touch(ev);
     }
+    else { }
 
 })
 concaveLens.addEventListener('touchstart', function (ev) {
@@ -257,9 +259,10 @@ concaveLens.addEventListener('touchend', function (ev) {
     if (ev.target.getAttribute('dropzoneID') == 'obLensHolder1') {
         dropFunctionForLensHolder1Touch(ev);
     }
-    else if (ev.target.getAttribute('dropzoneID') == 'obLensHolder2'){
+    else if (ev.target.getAttribute('dropzoneID') == 'obLensHolder2') {
         dropFunctionForLensHolder2Touch(ev);
     }
+    else { }
 })
 
 document.getElementById('concaveLensImg').draggable = "true";
@@ -395,7 +398,6 @@ async function dropFunctionForLensHolder1Touch(event) {
     event.preventDefault();
     var data = document.getElementById('obLensHolder1').getAttribute('draggedID');
     //event.target.appendChild(document.getElementById(data));
-    console.log(data);
     ctx1.clearRect(0, 0, canvas1.width, canvas1.height);
     if (data == 'convexLensImg') {
         document.getElementById('obLensHolder1').classList.add('obLensHolder');
@@ -454,7 +456,6 @@ async function dropFunctionForLensHolder2Touch(event) {
     dropSound.play();
     event.preventDefault();
     var data = document.getElementById('obLensHolder2').getAttribute('draggedID');
-    console.log(data);
     //event.target.appendChild(document.getElementById(data));
     ctx1.clearRect(0, 0, canvas1.width, canvas1.height);
     if (data == 'convexLensImg') {
