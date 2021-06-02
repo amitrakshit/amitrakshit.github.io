@@ -60,7 +60,7 @@ body {
     align-items: center;
     flex-direction: column;
     padding-left: 0px;
-    top: 10%;
+    top: 12%;
     color: white;
     font-size: 43px;
     font-weight: 325;
@@ -238,7 +238,7 @@ footer {
 .table1{
     border-collapse: collapse;
     width: 80%;
-    height: 40%;
+    height: 50%;
     font-size: 35px;
     font-family: Gotham SSm;
     font-weight: lighter;
@@ -248,11 +248,11 @@ footer {
     color: #fff;
 }
 .table1 th{
-    /* line-height: 50px; */
+    height: 50px;
     padding: 20px 0px;
     } 
 .table1 tr{
-        /* line-height: 50px; */
+        height: 80px;
         padding: 20px 0px;
         } 
 /* .table1 thead tr{

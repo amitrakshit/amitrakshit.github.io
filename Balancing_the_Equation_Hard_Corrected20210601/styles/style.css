@@ -280,7 +280,7 @@ body {
     background-color: #28334F;
 }
 
-.table tbody td:nth-child(even), .table tbody td:nth-child(odd) {
+.table tbody td:nth-child(1), .table tbody td:nth-child(2) {
 /* .table td:nth-child(2), .table thead th:nth-child(2), .table td:nth-child(3) { */
     border-right: 1px solid rgba(255, 255, 255, 0.5);
     /* border-top: 1px solid rgba(255, 255, 255, 0.5); */
@@ -296,7 +296,7 @@ body {
     
     }
 
-.table thead th:nth-child(1), .table thead th:nth-child(2), .table thead th:nth-child(3) {
+.table thead th:nth-child(1), .table thead th:nth-child(2){
     border-right: 1px solid rgba(255, 255, 255, 0.5);
 }
 
@@ -410,8 +410,8 @@ body {
     margin-left: 10px;
     /* background: linear-gradient(180deg, #8C38AA 0%, #4D028F 100%); */
     background: transparent;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     /* box-shadow: inset 2px 2px 4px #0F007B;
     border-radius: 16px; */
     overflow: hidden;
@@ -423,12 +423,72 @@ body {
     font-weight: heavier;
 }
 
+.elms {
+    position: relative;
+    margin-right: 10px;
+    margin-left: 10px;
+    background: linear-gradient(180deg, #8C38AA 0%, #4D028F 100%);
+    background: transparent;
+    width: 60px;
+    height: 60px;
+    box-shadow: inset 2px 2px 4px #0F007B;
+    border-radius: 16px;
+    overflow: hidden;
+    color: white;
+    opacity: 0;
+    /* display: none; */
+
+}
+.Fe1 {
+ position: absolute;
+ left: 145px;
+}
+
+.C1 {
+    position: absolute;
+    left: 415px; 
+}
+.O1{
+    position: absolute;
+ left: 210px;
+}
+.O2{
+    position: absolute;
+ left: 875px;
+}
+.C2{
+    position: absolute;
+ left: 825px;
+}
+
+.Fe2{
+    position: absolute;
+    left: 630px; 
+}
 .elm1 {
     position: absolute;
     left: 165px;
-    transition: top 2s;
+    
 }
 
+.Iron {
+    position: absolute;
+    left: 100px;
+    
+}
+
+.Oxygen {
+    position: absolute;
+    left: 135px;
+    
+}
+
+
+.Carbon {
+    position: absolute;
+    left: 400px;
+    
+}
 .elm2 {
     position: absolute;
     left: 215px;
@@ -455,14 +515,14 @@ position: absolute;
 .elm6{
 
         position: absolute;
-            left: 875px;
+            left: 875px; 
         }
     .Plus {
     position: absolute;
     background-color: transparent;
     opacity: 0.4;
     /* border: 2px solid black; */
-    border-radius: 25px;
+    border-radius: 20px;
     height: 100px; width: 100px;
      padding-left: 15px;
     padding-top: 15px; 
@@ -496,7 +556,7 @@ position: absolute;
 .Minus {
     position: absolute;
     background-color: transparent;
-    border-radius: 25px;
+    border-radius: 20px;
     height: 100px; width: 100px;
      padding-left: 15px;
     padding-top: 15px; 
