@@ -36,7 +36,7 @@ function touchstart(event) {
         target.setAttribute('dragged', 'true');
     }
     else {
-        event.target.style = "position: absolute; opacity: 0.5;"
+        event.target.style = "position: absolute; opacity: 0.5;";
     }
     OriginX = target_style.left;
     OriginY = target_style.top;
