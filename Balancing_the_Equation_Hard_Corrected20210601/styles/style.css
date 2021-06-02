@@ -14,12 +14,18 @@
 
 /* -- For the Background-- */
 
+/* html {
+    transform: scale(0.5);
+} */
+
 body {
-    min-height: 100vh;
+    height: 100vh;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* transform: scale(0.5); */
+    /* overflow: hidden; */
 }
 
 .window {
@@ -30,6 +36,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    transform-origin: center;
+    transform: scale(1);
 }
 
 .movable_parent {
@@ -172,7 +180,7 @@ body {
     width: 984px;
     height: 240px;
     top: 288px;
-    text-align:justify;
+    text-align: justify;
 }
 
 .instructino_area p {
@@ -202,10 +210,12 @@ body {
 }
 
 /* All styles related to the table */
-.table_div{
+
+.table_div {
     width: 100%;
     height: 100%;
 }
+
 .table {
     width: 100%;
     height: 100%;
@@ -215,32 +225,29 @@ body {
     font-family: Gotham SSm;
     font-weight: heavier;
     text-align: center;
-    
-
-
 }
 
 .check {
     position: absolute;
     left: 64.5%;
-    width:200px;
-    height:500px;
+    width: 200px;
+    height: 500px;
     background-color: transparent;
-    
-    }
-.check #first_check{
-    position:absolute;
-    top:48%;
 }
 
-.check #second_check{
-    position:absolute;
-    top:68%;
+.check #first_check {
+    position: absolute;
+    top: 48%;
 }
 
-.check #third_check{
-    position:absolute;
-    top:87%;
+.check #second_check {
+    position: absolute;
+    top: 68%;
+}
+
+.check #third_check {
+    position: absolute;
+    top: 87%;
 }
 
 .wrong {
@@ -277,32 +284,29 @@ body {
     background-color: #28334F;
 } */
 
-.table tbody tr:nth-child(even), .table tbody tr:nth-child(odd)  {
+.table tbody tr:nth-child(even), .table tbody tr:nth-child(odd) {
     background-color: #28334F;
     height: 100px;
 }
 
 .table tbody td:nth-child(1), .table tbody td:nth-child(2) {
-/* .table td:nth-child(2), .table thead th:nth-child(2), .table td:nth-child(3) { */
+    /* .table td:nth-child(2), .table thead th:nth-child(2), .table td:nth-child(3) { */
     border-right: 1px solid rgba(255, 255, 255, 0.5);
     /* border-top: 1px solid rgba(255, 255, 255, 0.5); */
     /* border-bottom: 1px solid rgba(255, 255, 255, 0.5); */
-
 }
 
 .table thead th {
     /* .table td:nth-child(2), .table thead th:nth-child(2), .table td:nth-child(3) { */
-        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-        /* border-top: 1px solid rgba(255, 255, 255, 0.5); */
-        /* border-bottom: 1px solid rgba(255, 255, 255, 0.5); */
-    
-    }
-
-.table thead th:nth-child(2){
-    border-right: 1px solid rgba(255, 255, 255, 0.5);
-    border-left:1px solid rgba(255, 255, 255, 0.5) ;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    /* border-top: 1px solid rgba(255, 255, 255, 0.5); */
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.5); */
 }
 
+.table thead th:nth-child(2) {
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+}
 
 .table tbody tr:nth-child(2), .table tbody tr:nth-child(3) {
     border-top: 1px solid rgba(255, 255, 255, 0.5);
@@ -316,14 +320,13 @@ body {
     width: 984px;
     height: 180px;
     top: 1120px;
-    background: linear-gradient(180deg, #12EAFA  0%,#0787E2 100%);  
+    background: linear-gradient(180deg, #12EAFA 0%, #0787E2 100%);
     /* background: linear-gradient(180deg, #FFE601 0%, #E8882F 100%); */
     display: flex;
     align-items: center;
     justify-content: center;
     transition: opacity 0.5s, top 0.5s;
     opacity: 0;
-    
 }
 
 .feedback_bar p {
@@ -337,7 +340,7 @@ body {
     /* or 154% */
     color: black;
     width: 95%;
-    text-align: center; 
+    text-align: center;
 }
 
 /* For the equation container and the numbers */
@@ -434,7 +437,6 @@ body {
     margin-left: 10px;
     /* background: linear-gradient(180deg, #8C38AA 0%, #4D028F 100%); */
     /* background: transparent; */
-    
     height: 120px;
     /* box-shadow: inset 2px 2px 4px #0F007B; */
     /*border-radius: 16px;
@@ -448,66 +450,64 @@ body {
     font-style: normal;
     font-weight: 325;
     font-size: 36px;
-    
-    
-
 }
+
 .Fe1 {
- position: absolute;
- left: 145px;
- width: 70px;
+    position: absolute;
+    left: 145px;
+    width: 69px;
 }
 
 .C1 {
     position: absolute;
-    left: 415px; 
+    left: 415px;
     width: 56px;
 }
-.O1{
+
+.O1 {
     position: absolute;
- left: 212px;
- width: 58px;
-}
-.O2{
-    position: absolute;
- left: 880px;
- width: 60px;
-}
-.C2{
-    position: absolute;
- left: 835px;
- width: 46px;
+    left: 212px;
+    width: 58px;
 }
 
-.Fe2{
+.O2 {
     position: absolute;
-    left: 630px; 
+    left: 877px;
     width: 60px;
 }
+
+.C2 {
+    position: absolute;
+    left: 833px;
+    width: 43px;
+}
+
+.Fe2 {
+    position: absolute;
+    left: 630px;
+    width: 60px;
+}
+
 .elm1 {
     position: absolute;
     left: 165px;
-    
 }
 
 .Iron {
     position: absolute;
     left: 100px;
-    
 }
 
 .Oxygen {
     position: absolute;
     left: 135px;
-    
 }
-
 
 .Carbon {
     position: absolute;
     left: 400px;
-    
 }
+
 .elm2 {
     position: absolute;
     left: 215px;
@@ -516,44 +516,41 @@ body {
 .elm3 {
     position: absolute;
     left: 324px;
-    
 }
-.elm4{
 
-position: absolute;
+.elm4 {
+    position: absolute;
     left: 535px;
 }
 
-.elm5{
-
+.elm5 {
     position: absolute;
-        left: 745px;
+    left: 745px;
+}
 
-    }
+.elm6 {
+    position: absolute;
+    left: 875px;
+}
 
-.elm6{
-
-        position: absolute;
-            left: 875px; 
-        }
-    .Plus {
+.Plus {
     position: absolute;
     background-color: transparent;
-    opacity: 0.4;  
+    opacity: 0.4;
     border-radius: 22px;
-    height: 93px; width: 93px;
+    height: 93px;
+    width: 93px;
     display: flex;
     justify-content: center;
     align-items: center;
     border: none;
-    
 }
 
 .Plus.Plus1 {
     left: 100px;
     top: 1325px;
     padding-left: 15px;
-    padding-top: 20px; 
+    padding-top: 20px;
     padding-bottom: 12px;
     padding-right: 6px;
 }
@@ -562,7 +559,7 @@ position: absolute;
     left: 374px;
     top: 1325px;
     padding-left: 14.5px;
-    padding-top: 20px; 
+    padding-top: 20px;
     padding-bottom: 12px;
     padding-right: 6.5px;
 }
@@ -571,7 +568,7 @@ position: absolute;
     left: 581px;
     top: 1325px;
     padding-left: 14.5px;
-    padding-top: 20px; 
+    padding-top: 20px;
     padding-bottom: 12px;
     padding-right: 6.5px;
 }
@@ -580,7 +577,7 @@ position: absolute;
     left: 795px;
     top: 1325px;
     padding-left: 16px;
-    padding-top: 20px; 
+    padding-top: 20px;
     padding-bottom: 12px;
     padding-right: 8.5px;
 }
@@ -589,22 +586,20 @@ position: absolute;
     position: absolute;
     background-color: transparent;
     border-radius: 22px;
-    height: 93px; width: 93px;
-
+    height: 93px;
+    width: 93px;
     display: flex;
     justify-content: center;
     align-items: center;
-
-     opacity: 0.4; 
-     border: none; 
-    
+    opacity: 0.4;
+    border: none;
 }
 
 .Minus.Minus1 {
     left: 102px;
     top: 1572px;
     padding-left: 16px;
-    padding-top: 21.5px; 
+    padding-top: 21.5px;
     padding-bottom: 10.5px;
     padding-right: 5px;
 }
@@ -613,30 +608,28 @@ position: absolute;
     left: 374px;
     top: 1572px;
     padding-left: 14.5px;
-    padding-top: 21.5px; 
+    padding-top: 21.5px;
     padding-bottom: 10.5px;
     padding-right: 6.5px;
 }
-
 
 .Minus.Minus3 {
     left: 581px;
     top: 1572px;
     padding-left: 14.5px;
-    padding-top: 21.5px; 
+    padding-top: 21.5px;
     padding-bottom: 10.5px;
     padding-right: 6.5px;
 }
-
 
 .Minus.Minus4 {
     left: 795px;
     top: 1572px;
     padding-left: 16px;
-    padding-top: 21.5px; 
+    padding-top: 21.5px;
     padding-bottom: 10.5px;
-    padding-right: 4px;}
-
+    padding-right: 4px;
+}
 
 .next_button {
     position: absolute;
@@ -649,9 +642,8 @@ position: absolute;
     font-family: Gotham SSm;
     font-weight: 350;
     font-size: 39px;
-    top:1704px;
+    top: 1704px;
     cursor: pointer;
-    
 }
 
 .reset_button {
@@ -668,4 +660,3 @@ position: absolute;
     font-size: 39px;
     cursor: pointer;
 }
-

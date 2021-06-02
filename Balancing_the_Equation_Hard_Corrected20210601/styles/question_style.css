@@ -11,7 +11,7 @@
     src: url('/fonts/Gotham-SSm/GothamSSm-Medium.otf');
     src: url('/fonts/Gotham-SSm/GothamSSm-MediumItalic.otf'); */
 }
-body {
+/* body {
     min-height: 100vh;
     min-width: 100vw;
     display: flex;
@@ -19,7 +19,7 @@ body {
     align-items: center;
     overflow-x: scroll;
     overflow-y: scroll;
-}
+} */
 
 .scrollable_dynamic_panel {
     position: absolute;
