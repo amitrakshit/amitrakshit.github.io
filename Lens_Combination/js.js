@@ -62,23 +62,37 @@ var canvas3 = document.getElementById("thirdCanvas");
 canvas2.style.background = "url('Images/LensBackground1.svg')";
 
 //canvas width height change
-if (window.innerWidth / window.innerHeight >= 9.0 / 16) {
-    canvas1.width = window.innerHeight * (9 / 16) * 92 / 100;
-    canvas1.height = canvas1.width * 0.55;
-    canvas2.width = window.innerHeight * (9 / 16) * 92 / 100;
-    canvas2.height = canvas1.width * 0.55;
-    canvas3.width = window.innerHeight * (9 / 16) * 92 / 100;
-    canvas3.height = canvas1.width * 0.55;
-}
-else {
-    canvas1.width = window.innerWidth * 92 / 100;
-    canvas1.height = canvas1.width * 0.55;
-    canvas2.width = window.innerWidth * 92 / 100;
-    canvas2.height = canvas1.width * 0.55;
-    canvas3.width = window.innerHeight * (9 / 16) * 92 / 100;
-    canvas3.height = canvas1.width * 0.55;
+// if (window.innerWidth / window.innerHeight >= 9.0 / 16) {
+//     canvas1.width = window.innerHeight * (9 / 16) * 92 / 100;
+//     canvas1.height = canvas1.width * 0.55;
+//     canvas2.width = window.innerHeight * (9 / 16) * 92 / 100;
+//     canvas2.height = canvas1.width * 0.55;
+//     canvas3.width = window.innerHeight * (9 / 16) * 92 / 100;
+//     canvas3.height = canvas1.width * 0.55;
+// }
+// else {
+//     canvas1.width = window.innerWidth * 92 / 100;
+//     canvas1.height = canvas1.width * 0.55;
+//     canvas2.width = window.innerWidth * 92 / 100;
+//     canvas2.height = canvas1.width * 0.55;
+//     canvas3.width = window.innerHeight * (9 / 16) * 92 / 100;
+//     canvas3.height = canvas1.width * 0.55;
 
-}
+// }
+
+//canvas width height change
+var visual_area = document.getElementsByClassName('visual_area')[0];
+var visual_areaHeight = window.getComputedStyle(visual_area).height.slice(0, -2);
+var visual_areaWidth = window.getComputedStyle(visual_area).width.slice(0, -2);
+console.log(visual_areaWidth, visual_areaHeight);
+canvas1.width = visual_areaWidth;
+canvas1.height = visual_areaHeight;
+
+canvas2.width = visual_areaWidth;
+canvas2.height = visual_areaHeight;
+
+canvas3.width = visual_areaWidth;
+canvas3.height = visual_areaHeight;
 
 // window.onresize = function () {
 //     location.reload();
