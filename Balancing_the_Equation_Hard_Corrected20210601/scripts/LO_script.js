@@ -4,8 +4,16 @@ buttonAudio_Click.src = "sounds/buton_Click.mp3";
 
 
 /* Following code till circle_stroke_animation() is for loaded screen animation */
-
 var round_stroke = document.getElementsByClassName('round_stroke')[0];
+if (screen.width / screen.height >= 9 / 16) {
+    var scaleOfsvg = 1.38 * (window.innerHeight / 1920);
+    round_stroke.style = "transform: translate(-50%, -50%) scale(" + scaleOfsvg + ");";
+}
+else {
+    var scaleOfsvg = 1.38 * (window.innerWidth / 1080);
+    round_stroke.style = "transform: translate(-50%, -50%) scale(" + scaleOfsvg + ");";
+}
+
 var circle_stroke = round_stroke.children[0];
 function draw_svgArc(svgElement, cx = 0, cy = 0, radius = 1, startAngle = 0, stopAngle = 360) {
     var xStart = radius * Math.cos(startAngle % 360 * (Math.PI / 180));
@@ -35,7 +43,7 @@ function circle_stroke_animation() {
         else {
             clearInterval(circle_animation);
         }
-    }, 1000/120);
+    }, 1000 / 120);
 
 }
 
@@ -57,5 +65,5 @@ close_button.onclick = function () {
 //Finish Button
 var finish_button = document.getElementsByClassName('finish-button')[0];
 finish_button.onclick = function () {
-   window.location.reload();
+    window.location.reload();
 }

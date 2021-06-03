@@ -74,11 +74,12 @@ body {
 
 .background .svgBG, .background2 .svgBG {
     position: absolute;
-    top: 0rem;
     width: 100%;
     height: 100%;
 }
-
+.background2 .svgBG{
+    top: -8.5rem;
+}
 .background2 {
     position: relative;
     width: 1080rem;
@@ -495,7 +496,8 @@ body {
 .C1 {
     position: absolute;
     left: 415rem;
-    width: 56rem;
+    width: 48rem;
+    
 }
 
 .O1 {
@@ -506,14 +508,14 @@ body {
 
 .O2 {
     position: absolute;
-    left: 877rem;
-    width: 60rem;
+    left: 885rem;
+    width: 41rem;
 }
 
 .C2 {
     position: absolute;
-    left: 833rem;
-    width: 43rem;
+    left: 845rem;
+    width: 38rem;
 }
 
 .Fe2 {
@@ -571,17 +573,18 @@ body {
     position: absolute;
     background-color: transparent;
     opacity: 0.4;
-    border-radius: 22rem;
-    height: 93rem;
-    width: 93rem;
+    border-radius: 20.9rem;
+    height: 85rem;
+    width: 85rem;
     display: flex;
     justify-content: center;
     align-items: center;
     border: none;
+    background-color: transparent;
 }
 
 .Plus.Plus1 {
-    left: 100rem;
+    left: 104rem;
     top: 1325rem;
     padding-left: 15rem;
     padding-top: 20rem;
@@ -590,25 +593,25 @@ body {
 }
 
 .Plus.Plus2 {
-    left: 374rem;
+    left: 378rem;
     top: 1325rem;
-    padding-left: 14.5rem;
-    padding-top: 20rem;
+    padding-left: 13.8rem;
+    padding-top: 18.8rem;
     padding-bottom: 12rem;
-    padding-right: 6.5rem;
+    padding-right: 6.4rem;
 }
 
 .Plus.Plus3 {
-    left: 581rem;
+    left: 585rem;
     top: 1325rem;
-    padding-left: 14.5rem;
+    padding-left: 13.9rem;
     padding-top: 20rem;
     padding-bottom: 12rem;
     padding-right: 6.5rem;
 }
 
 .Plus.Plus4 {
-    left: 795rem;
+    left: 799rem;
     top: 1325rem;
     padding-left: 16rem;
     padding-top: 20rem;
@@ -624,55 +627,58 @@ body {
 .Minus {
     position: absolute;
     background-color: transparent;
-    border-radius: 22rem;
-    height: 93rem;
-    width: 93rem;
+    border-radius: 20rem;
+    height: 85rem;
+    width: 85rem;
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 0.4;
     border: none;
+    /* border: 8rem solid rgb(234, 255, 116); */
 }
 
 .Minus.Minus1 {
-    left: 102rem;
+    left: 104rem;
     top: 1572rem;
     padding-left: 16rem;
-    padding-top: 21.5rem;
-    padding-bottom: 10.5rem;
-    padding-right: 5rem;
+    padding-top: 16rem;
+    padding-bottom: 8rem;
+    padding-right: 8rem;
 }
 
 .Minus.Minus2 {
-    left: 374rem;
+    left: 378rem;
     top: 1572rem;
-    padding-left: 14.5rem;
-    padding-top: 21.5rem;
+    padding-left: 13.8rem;
+    padding-top: 16.5rem;
     padding-bottom: 10.5rem;
     padding-right: 6.5rem;
 }
 
 .Minus.Minus3 {
-    left: 581rem;
+    left: 585rem;
     top: 1572rem;
-    padding-left: 14.5rem;
-    padding-top: 21.5rem;
-    padding-bottom: 10.5rem;
-    padding-right: 6.5rem;
+    padding-left: 15.4rem;
+    padding-top: 16rem;
+    padding-bottom: 7.4rem;
+    padding-right: 8rem;
 }
 
 .Minus.Minus4 {
-    left: 795rem;
+    left: 799rem;
     top: 1572rem;
-    padding-left: 16rem;
-    padding-top: 21.5rem;
+    padding-left: 10rem;
+    padding-top: 19.1rem;
     padding-bottom: 10.5rem;
     padding-right: 4rem;
 }
+
 .Minus img {
     width: 80rem;
     height: 80rem;
 }
+
 .next_button {
     position: absolute;
     width: 45%;

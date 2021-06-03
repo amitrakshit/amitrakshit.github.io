@@ -14,19 +14,19 @@ var observation_tab = navigation_bar[0].children[0];
 var movable_parent = document.getElementsByClassName('movable_parent')[0];
 
 question_tab.onclick = function () {
-   buttonAudio_Click.play();
-   buttonAudio_Click.playbackRate = 3;
-   movable_parent.style = "left: -1080rem;";
-   observation_tab.classList.remove('nav_selected');
-   question_tab.classList.add('nav_selected2');
+    buttonAudio_Click.play();
+    buttonAudio_Click.playbackRate = 3;
+    movable_parent.style = "left: -1080rem;";
+    observation_tab.classList.remove('nav_selected');
+    question_tab.classList.add('nav_selected2');
 }
 
 observation_tab.onclick = function () {
-   buttonAudio_Click.play();
-   buttonAudio_Click.playbackRate = 3;
-   movable_parent.style = "left: 0rem";
-   observation_tab.classList.add('nav_selected');
-   question_tab.classList.remove('nav_selected2');
+    buttonAudio_Click.play();
+    buttonAudio_Click.playbackRate = 3;
+    movable_parent.style = "left: 0rem";
+    observation_tab.classList.add('nav_selected');
+    question_tab.classList.remove('nav_selected2');
 }
 
 // Inserting the numbers for coefficients in the number container
@@ -71,8 +71,7 @@ var highlight3 = document.getElementById("my_table").rows[4];
 var h3 = document.getElementById("my_table").rows[4].cells[0];
 
 // Function to hide the table numbers
- function hide_numbers()
- {
+function hide_numbers() {
     document.getElementsByClassName("coef")[0].style.display = "none";
     document.getElementsByClassName("coef")[1].style.display = "none";
     document.getElementsByClassName("coef")[2].style.display = "none";
@@ -94,11 +93,14 @@ function poly1() {
         sound.play();
         sound.playbackRate = 3;
         reactant_1.update_element_numbers();
-        if (reactant_1.multiplier ==4){btn1.disabled = true; btn1.style.opacity =0.4; btn1.style.border = "none";}
-        btn5.disabled = false; btn5.style.opacity =1;
+        if (reactant_1.multiplier == 4) { btn1.disabled = true; btn1.style.opacity = 0.4; btn1.style.border = "none"; }
+        btn5.disabled = false; btn5.style.opacity = 1;
         if (btn3.disabled == false || btn7.disabled == false) {
-        btn5.style.border = "8rem solid #0FCDF3";}
-        else {btn5.style.border = "8rem solid #FFD390";}
+            btn5.style.border = "8rem solid #0FCDF3";
+        }
+        else {
+            btn5.style.border = "8rem solid #FFD390";
+        }
         update_reactant_column();
         update_product_column();
         update_check_column();
@@ -115,8 +117,8 @@ function poly2() {
         reactant_2.multiplier = Number(number_container[1].style.top.slice(0, -1)) / -100 + 1;
         sound.play();
         sound.playbackRate = 3;
-        if (reactant_2.multiplier ==4){btn2.disabled = true; btn2.style.opacity =0.4; btn2.style.border = "none";}
-        btn6.disabled = false; btn6.style.opacity =1;
+        if (reactant_2.multiplier == 4) { btn2.disabled = true; btn2.style.opacity = 0.4; btn2.style.border = "none"; }
+        btn6.disabled = false; btn6.style.opacity = 1;
         btn6.style.border = "8rem solid #FB78AF";
         reactant_2.update_element_numbers();
         update_reactant_column();
@@ -135,11 +137,10 @@ function poly3() {
         product_1.multiplier = Number(number_container[2].style.top.slice(0, -1)) / -100 + 1;
         sound.play();
         sound.playbackRate = 3;
-        if (random ==0)
-            {random = 1;}
-            else {random = 0;}
-            if (product_1.multiplier ==4){btn3.disabled = true; btn3.style.opacity =0.4; btn3.style.border = "none";}
-        btn7.disabled = false; btn7.style.opacity =1;
+        if (random == 0) { random = 1; }
+        else { random = 0; }
+        if (product_1.multiplier == 4) { btn3.disabled = true; btn3.style.opacity = 0.4; btn3.style.border = "none"; }
+        btn7.disabled = false; btn7.style.opacity = 1;
         btn7.style.border = "8rem solid #0FCDF3";
         product_1.update_element_numbers();
         update_product_column();
@@ -159,11 +160,11 @@ function poly4() {
         product_2.multiplier = Number(number_container[3].style.top.slice(0, -1)) / -100 + 1;
         sound.play();
         sound.playbackRate = 3;
-        if (product_2.multiplier ==4){btn4.disabled = true; btn4.style.opacity =0.4; btn4.style.border = "none";}
-        btn8.disabled = false; btn8.style.opacity =1;
+        if (product_2.multiplier == 4) { btn4.disabled = true; btn4.style.opacity = 0.4; btn4.style.border = "none"; }
+        btn8.disabled = false; btn8.style.opacity = 1;
 
-    if (btn2.disabled == false || btn6.disabled == false){btn8.style.border = "5rem solid #FB78AF";}
-        else {btn8.style.border = "8rem solid #FFD390";}
+        if (btn2.disabled == false || btn6.disabled == false) { btn8.style.border = "5rem solid #FB78AF"; }
+        else { btn8.style.border = "8rem solid #FFD390"; }
         product_2.update_element_numbers();
         update_product_column();
         update_reactant_column();
@@ -181,11 +182,12 @@ function poly5() {
         reactant_1.multiplier = Number(number_container[0].style.top.slice(0, -1)) / -100 + 1;
         sound.play();
         sound.playbackRate = 3;
-        if (reactant_1.multiplier ==1){btn5.disabled = true; btn5.style.opacity =0.4; btn5.style.border = "none";}
-        btn1.disabled = false; btn1.style.opacity =1;
+        if (reactant_1.multiplier == 1) { btn5.disabled = true; btn5.style.opacity = 0.4; btn5.style.border = "none"; }
+        btn1.disabled = false; btn1.style.opacity = 1;
         if (btn3.disabled == false || btn7.disabled == false) {
-            btn1.style.border = "8rem solid #0FCDF3";}
-            else{btn1.style.border = "8rem solid #FFD390";}
+            btn1.style.border = "8rem solid #0FCDF3";
+        }
+        else { btn1.style.border = "8rem solid #FFD390"; }
         reactant_1.update_element_numbers();
         update_reactant_column();
         update_product_column();
@@ -203,8 +205,8 @@ function poly6() {
         reactant_2.multiplier = Number(number_container[1].style.top.slice(0, -1)) / -100 + 1;
         sound.play();
         sound.playbackRate = 3;
-        if (reactant_2.multiplier ==1){btn6.disabled = true; btn6.style.opacity =0.4; btn6.style.border = "none";}
-        btn2.disabled = false; btn2.style.opacity =1;
+        if (reactant_2.multiplier == 1) { btn6.disabled = true; btn6.style.opacity = 0.4; btn6.style.border = "none"; }
+        btn2.disabled = false; btn2.style.opacity = 1;
         btn2.style.border = "8rem solid #FB78AF";
         reactant_2.update_element_numbers();
         update_reactant_column();
@@ -223,8 +225,8 @@ function poly7() {
         product_1.multiplier = Number(number_container[2].style.top.slice(0, -1)) / -100 + 1;
         sound.play();
         sound.playbackRate = 3;
-        if (product_1.multiplier ==1){btn7.disabled = true; btn7.style.opacity =0.4; btn7.style.border = "none";}
-        btn3.disabled = false; btn3.style.opacity =1;
+        if (product_1.multiplier == 1) { btn7.disabled = true; btn7.style.opacity = 0.4; btn7.style.border = "none"; }
+        btn3.disabled = false; btn3.style.opacity = 1;
         btn3.style.border = "8rem solid #0FCDF3";
         product_1.update_element_numbers();
         random = 0;
@@ -244,14 +246,14 @@ function poly8() {
         product_2.multiplier = Number(number_container[3].style.top.slice(0, -1)) / -100 + 1;
         sound.play();
         sound.playbackRate = 3;
-        if (product_2.multiplier ==1){btn8.disabled = true; btn8.style.opacity =0.4; btn8.style.border = "none";}
-        btn4.disabled = false; btn4.style.opacity =1;
-        if (btn2.disabled == false || btn6.disabled == false){btn4.style.border = "8rem solid #FB78AF";}
-        else {btn4.style.border = "8rem solid #FFD390";}
+        if (product_2.multiplier == 1) { btn8.disabled = true; btn8.style.opacity = 0.4; btn8.style.border = "none"; }
+        btn4.disabled = false; btn4.style.opacity = 1;
+        if (btn2.disabled == false || btn6.disabled == false) { btn4.style.border = "8rem solid #FB78AF"; }
+        else { btn4.style.border = "8rem solid #FFD390"; }
         product_2.update_element_numbers();
         update_product_column();
         update_reactant_column();
-       update_check_column();
+        update_check_column();
         paragraph_show();
         hide_numbers();
     }
@@ -302,11 +304,11 @@ reactant_2.update_element_numbers();
 
 var reactant_column = [];
 var product_column = [];
-var balance_column = []; 
-for (let i = 0; i < 3; i ++) {
-    reactant_column[i] = table_data[3*i + 1];
+var balance_column = [];
+for (let i = 0; i < 3; i++) {
+    reactant_column[i] = table_data[3 * i + 1];
     // balance_column[i] = table_data[4 * i + 2];
-    product_column[i] = table_data[3*i + 2];
+    product_column[i] = table_data[3 * i + 2];
 }
 
 
@@ -328,457 +330,437 @@ function update_product_column() {
 //update_check_column();
 
 
-function update_check_column()
-{
-if (2*reactant_1.multiplier == product_1.multiplier)
-{
-    document.getElementsByClassName("right")[0].style.display = "inline";
-    document.getElementsByClassName("wrong")[0].style.display = "none";
-}else
-{
-    document.getElementsByClassName("wrong")[0].style.display = "inline";
-    document.getElementsByClassName("right")[0].style.display = "none";
-}
+function update_check_column() {
+    if (2 * reactant_1.multiplier == product_1.multiplier) {
+        document.getElementsByClassName("right")[0].style.display = "inline";
+        document.getElementsByClassName("wrong")[0].style.display = "none";
+    } else {
+        document.getElementsByClassName("wrong")[0].style.display = "inline";
+        document.getElementsByClassName("right")[0].style.display = "none";
+    }
 
-if (reactant_2.multiplier == product_2.multiplier){
-    document.getElementsByClassName("right")[1].style.display = "inline";
-    document.getElementsByClassName("wrong")[1].style.display = "none";
-}else 
-{
-    document.getElementsByClassName("wrong")[1].style.display = "inline";
-    document.getElementsByClassName("right")[1].style.display = "none";
-}
-if (3*reactant_1.multiplier == 2*product_2.multiplier)
-{
-    document.getElementsByClassName("right")[2].style.display = "inline";
-    document.getElementsByClassName("wrong")[2].style.display = "none";
-}else
-{
-    document.getElementsByClassName("wrong")[2].style.display = "inline";
-    document.getElementsByClassName("right")[2].style.display = "none";
-}
+    if (reactant_2.multiplier == product_2.multiplier) {
+        document.getElementsByClassName("right")[1].style.display = "inline";
+        document.getElementsByClassName("wrong")[1].style.display = "none";
+    } else {
+        document.getElementsByClassName("wrong")[1].style.display = "inline";
+        document.getElementsByClassName("right")[1].style.display = "none";
+    }
+    if (3 * reactant_1.multiplier == 2 * product_2.multiplier) {
+        document.getElementsByClassName("right")[2].style.display = "inline";
+        document.getElementsByClassName("wrong")[2].style.display = "none";
+    } else {
+        document.getElementsByClassName("wrong")[2].style.display = "inline";
+        document.getElementsByClassName("right")[2].style.display = "none";
+    }
 }
 
 // function to call the functions to show the stepwise feedback
-function paragraph_show()
-{
-if ( btn3.disabled == false || btn7.disabled == false)
-{ if(btn1.disabled == false || btn5.disabled == false) 
-   { 
-       iron_feedback();
-       
-       }
-  else{final_feedback();}
-}
-else if (btn1.disabled == false || btn5.disabled == false)
-{oxygen_feedback();
-   
-   }
-else if (btn2.disabled == false || btn6.disabled == false && btn8.disabled == false)
-{carbon_feedback();
-  
+function paragraph_show() {
+    if (btn3.disabled == false || btn7.disabled == false) {
+        if (btn1.disabled == false || btn5.disabled == false) {
+            iron_feedback();
+
+        }
+        else { final_feedback(); }
+    }
+    else if (btn1.disabled == false || btn5.disabled == false) {
+        oxygen_feedback();
+
+    }
+    else if (btn2.disabled == false || btn6.disabled == false && btn8.disabled == false) {
+        carbon_feedback();
+
     }
 }
 
 
 // function to show the feedback when iron is being dealt
-function iron_feedback()
-{
-  
-var remarks = document.getElementById("para");
-if (reactant_1.multiplier == 1 && product_1.multiplier == 2)
-    {
-        
+function iron_feedback() {
+
+    var remarks = document.getElementById("para");
+    if (reactant_1.multiplier == 1 && product_1.multiplier == 2) {
+
         box.style = "opacity:0; top: 60%;";
         setTimeout(() => {
-        remarks.innerText = "Awesome! You have balanced iron atoms on both sides.";
-        box.style = "opacity:1; top: 58.3%;";
-         }, 400);
-    
-        
-    
-    document.getElementsByClassName("next_button")[0].style.top = "1704rem";
-    document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
-    btn1.disabled = true;
-    btn1.style.border = "none";
-    btn1.style.opacity = 0.4;
-    btn3.disabled = true;
-    btn3.style.opacity = 0.4;
-    btn3.style.border = "none";
-    btn7.disabled = true;
-    btn7.style.opacity = 0.4;
-    btn7.style.border = "none";
-    btn5.style.border = "none";
+            remarks.innerText = "Awesome! You have balanced iron atoms on both sides.";
+            box.style = "opacity:1; top: 58.3%;";
+        }, 400);
+
+
+
+        document.getElementsByClassName("next_button")[0].style.top = "1704rem";
+        document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
+        btn1.disabled = true;
+        btn1.style.border = "none";
+        btn1.style.opacity = 0.4;
+        btn3.disabled = true;
+        btn3.style.opacity = 0.4;
+        btn3.style.border = "none";
+        btn7.disabled = true;
+        btn7.style.opacity = 0.4;
+        btn7.style.border = "none";
+        btn5.style.border = "none";
     }
- else if (reactant_1.multiplier == 2 && product_1.multiplier == 4)
-    
-        {
-            box.style = "opacity:0; top: 60%;";
+    else if (reactant_1.multiplier == 2 && product_1.multiplier == 4) {
+        box.style = "opacity:0; top: 60%;";
         setTimeout(() => {
             remarks.innerText = "Awesome! Iron atoms are equal but you could have gotten it done with a much lower number. Try again.";
             box.style = "opacity:1; top: 58.3%;";
-         }, 400);
-            
-        }  
-else{
-    
+        }, 400);
+
+    }
+    else {
+
+        remarks.innerText = "Let us start with Fe. Observe the number of atoms in the reactant and product side and try to make it equal on both sides.";
+
+
+    }
+
+}
+
+
+function next_instruction() {
+    var remarks = document.getElementById("para");
+
+    if (remarks.innerText == "To balance a chemical equation we need to compare number of molecules on reactant and product side. Tap on the button to tabulate this date.") {
+        sound.play();
+        sound.playbackRate = 3;
+        document.getElementsByClassName("next_button")[0].style.top = "100%";
+        document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
+        update_numbers();
+
+
+    }
+    else if (remarks.innerText == "Click on the start button to start balancing the equation.") {
+        sound.play();
+        sound.playbackRate = 3;
+        document.getElementsByClassName("next_button")[0].style.top = "100%";
+        document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
+        highlight1.style.background = "#0FCDF3";
+        highlight1.style.color = "black";
+        // h1.style.color = "black";
+        document.getElementsByClassName("elm1")[0].style.color = "black";
+        document.getElementsByClassName("elm4")[0].style.color = "black";
+        document.getElementsByClassName("Iron")[0].style.color = "black";
+        h1.style.background = "#0FCDF3";
+        //remarks.innerText = "Let us start with Fe. Observe the number of atoms in the reactant and product side and try to make it equal on both sides.";
+
+
+        box.style = "opacity:0; top: 60%;";
+        setTimeout(() => {
             remarks.innerText = "Let us start with Fe. Observe the number of atoms in the reactant and product side and try to make it equal on both sides.";
-            
-   
-}
- 
-}
+            box.style = "opacity:1; top: 58.3%;";
+        }, 400);
 
 
-function next_instruction()
-{
-var remarks = document.getElementById("para");
-
-if (remarks.innerText == "To balance a chemical equation we need to compare number of molecules on reactant and product side. Tap on the button to tabulate this date.")
-{
-    sound.play();
-    sound.playbackRate = 3;
-    document.getElementsByClassName("next_button")[0].style.top = "100%";
-    document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
-    update_numbers();
-
-    
-}    
-else if (remarks.innerText == "Click on the start button to start balancing the equation.")  
-{
-    sound.play();
-    sound.playbackRate = 3;
-    document.getElementsByClassName("next_button")[0].style.top = "100%";
-    document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
-    highlight1.style.background = "#0FCDF3";
-    highlight1.style.color = "black";
-    // h1.style.color = "black";
-    document.getElementsByClassName("elm1")[0].style.color = "black";
-    document.getElementsByClassName("elm4")[0].style.color = "black";
-    document.getElementsByClassName("Iron")[0].style.color = "black";
-    h1.style.background = "#0FCDF3";
-    //remarks.innerText = "Let us start with Fe. Observe the number of atoms in the reactant and product side and try to make it equal on both sides.";
-
-
-    box.style = "opacity:0; top: 60%;";
-    setTimeout(() => {
-    remarks.innerText = "Let us start with Fe. Observe the number of atoms in the reactant and product side and try to make it equal on both sides.";
-    box.style = "opacity:1; top: 58.3%;";
-     }, 400);
-
-
-btn1.disabled = false;
-btn1.style.opacity = 1;
-btn1.style.border = "8rem solid #0FCDF3";
-btn3.disabled = false;
-btn3.style.opacity = 1;
-btn3.style.border = "8rem solid #0FCDF3";
-document.getElementsByClassName("next_button")[0].innerText = "Next";
-document.getElementsByClassName("Fe1")[0].style.opacity = "1";
-document.getElementsByClassName("Fe1")[0].style.background = "linear-gradient(180deg, #12EAFA  0%, #0787E2 100%)"; 
-document.getElementsByClassName("Fe2")[0].style.opacity = "1";
-document.getElementsByClassName("Fe2")[0].style.background = "linear-gradient(180deg, #12EAFA  0%, #0787E2 100%)";  
-}            
-else if (remarks.innerText == "Awesome! You have balanced iron atoms on both sides.")
-{ sound.play();
-    sound.playbackRate = 3;
-    highlight3.style.background = "#FFD390";
-    highlight3.style.color = "black";
-    document.getElementsByClassName("Oxygen")[0].style.color = "black";
-    highlight1.style.color = "white";
-    document.getElementsByClassName("Iron")[0].style.color = "white";
-    highlight3.style.background = "linear-gradient(180deg, #FFDDA9 0%, #FFC773 100%)";
-    h3.style.background = "#FFD390";
-    h1.style.background = "#212A40";
-    highlight1.style.background = "#212A40";
-    
-
-
-    box.style = "opacity:0; top: 60%;";
-    box.style.background = "linear-gradient(180deg, #12EAFA  0%,#0787E2 100%)";
-    setTimeout(() => {
-        
-        remarks.innerText = "Awesome! Let us look to balance the oxygen atoms next.";
-    box.style = "opacity:1; top: 58.3%;";
-    box.style.background = "linear-gradient(180deg, #FFDDA9 0%, #FFC773 100%)";
-     }, 400);
-     
-
-// box.style.background = "linear-gradient(180deg, #FFDDA9 0%, #FFC773 100%)";
-btn4.disabled = false;
-btn4.style.border = "8rem solid #FFD390";
-btn4.style.opacity = 1;
-btn1.disabled = false;
-btn1.style.border = "8rem solid #FFD390";
-btn1.style.opacity = 1;
-
-document.getElementsByClassName("next_button")[0].style.top = "100%";
-    document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
-
-
-    document.getElementsByClassName("Fe1")[0].style.opacity = "0";
-    document.getElementsByClassName("Fe2")[0].style.opacity = "0";
-    document.getElementsByClassName("O1")[0].style.opacity = "1";
-    document.getElementsByClassName("O2")[0].style.opacity = "1";
-    document.getElementsByClassName("O1")[0].style.background =  "linear-gradient(180deg, #FFDDA9 0%, #FFC773 100%)";
-document.getElementsByClassName("O2")[0].style.background =  "linear-gradient(180deg, #FFDDA9 0%, #FFC773 100%)";
-
-}
-else if (remarks.innerText == "Awesome! You have balanced oxygen atoms on both sides.")
-{ sound.play();
-    sound.playbackRate = 3;
-    highlight3.style.background = "#28334F";
-    highlight2.style.background = "#FB78AF";
-    h2.style.background = "#FB78AF";
-    h3.style.background = "#212A40";
-    highlight2.style.color = "black";
-    document.getElementsByClassName("Carbon")[0].style.color = "black";
-    highlight3.style.color = "white";
-    document.getElementsByClassName("Oxygen")[0].style.color = "white";
-
-
-    box.style = "opacity:0; top: 60%;";
-    box.style.background = "linear-gradient(180deg, #FFDDA9 0%, #FFC773 100%)";
-    setTimeout(() => {
-        
-        remarks.innerText = "Awesome! Let us look to balance the carbon atoms next.";
-    box.style = "opacity:1; top: 58.3%;";
-    box.style.background = "linear-gradient(180deg, #FEAFC6 0%, #FA65A7 100%)";
-    
-     }, 400);
-
-
-
-btn4.disabled = false; btn4.style.opacity = 1;
-btn4.style.border = "8rem solid #FB78AF";
-btn2.disabled = false; btn2.style.opacity = 1;
-btn2.style.border = "8rem solid #FB78AF";
-btn8.disabled = false; btn8.style.opacity = 1;
-btn8.style.border = "8rem solid #FB78AF";
-document.getElementsByClassName("next_button")[0].style.top = "100%";
-document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
-
-document.getElementsByClassName("C1")[0].style.opacity = "1";
-    document.getElementsByClassName("C2")[0].style.opacity = "1";
-    document.getElementsByClassName("O1")[0].style.opacity = "0";
-    document.getElementsByClassName("O2")[0].style.opacity = "0";
-    document.getElementsByClassName("C1")[0].style.background = "linear-gradient(180deg, #FEAFC6 0%, #FA65A7 100%)";
-    document.getElementsByClassName("C2")[0].style.background = "linear-gradient(180deg, #FEAFC6 0%, #FA65A7 100%)";
-
-}
-else if(remarks.innerText == "Awesome! You have balanced carbon atoms on both sides.")
-{ sound.play();
-    sound.playbackRate = 3;
-    highlight2.style.background = "#28334F";
-    highlight1.style.background = "#0FCDF3";
-    h1.style.background = "#0FCDF3";
-    h2.style.background = "#212A40";
-    highlight1.style.color = "black";
-    document.getElementsByClassName("Iron")[0].style.color = "black";
-    highlight2.style.color = "white";
-    document.getElementsByClassName("Carbon")[0].style.color = "white";
-    document.getElementsByClassName("next_button")[0].style.top = "100%";
-    document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
-
-
-    
-    box.style = "opacity:0; top: 60%;";
-    box.style.background = "linear-gradient(180deg, #FEAFC6 0%, #FA65A7 100%)";
-    setTimeout(() => {
-   remarks.innerText = "Awesome! But looks like the Fe atoms are again unequal."; 
-    box.style = "opacity:1; top: 58.3%;";
-    box.style.background = "linear-gradient(180deg, #12EAFA  0%,#0787E2 100%)";
-     }, 400);
-
-
-
-btn2.disabled = true; btn2.style.opacity = 0.4; btn2.style.border = "none";
-btn3.disabled = false;btn3.style.opacity = 1;
-btn3.style.border = "8rem solid #0FCDF3 ";
-btn4.disabled = true;btn4.style.opacity = 0.4; btn4.style.border = "none";
-btn6.disabled = true;btn6.style.opacity = 0.4; btn6.style.border = "none";
-btn7.disabled = false;btn7.style.opacity = 1;
-btn7.style.border = "8rem solid #0FCDF3 ";
-btn8.disabled = true;btn8.style.opacity = 0.4; btn8.style.border = "none";
-document.getElementsByClassName("C1")[0].style.opacity = "0";
-document.getElementsByClassName("C2")[0].style.opacity = "0";
-document.getElementsByClassName("Fe1")[0].style.opacity = "1";
-document.getElementsByClassName("Fe1")[0].style.background = "linear-gradient(180deg, #12EAFA  0%, #0787E2 100%)"; 
-document.getElementsByClassName("Fe2")[0].style.opacity = "1";
-document.getElementsByClassName("Fe2")[0].style.background = "linear-gradient(180deg, #12EAFA  0%, #0787E2 100%)";  
-
-
-}
-else if (remarks.innerText == "Awesome! You have made Fe atoms equal on both sides and also the entire equation looks balanced.")
-{sound.play();
-    sound.playbackRate = 3; 
-   movable_parent.style = "left: -1080rem;";
-   observation_tab.classList.remove('nav_selected');
-   question_tab.classList.add('nav_selected2');
-}
-
-}
-
-function oxygen_feedback() 
-{ 
-
-if (reactant_1.multiplier == 2 && product_2.multiplier == 3)
-{
-
-    box.style = "opacity:0; top: 60%;";
-    box.style.background = "linear-gradient(180deg, #FFDDA9 0%, #FFC773 100%)";
-    setTimeout(() => {
-        remarks.innerText = "Awesome! You have balanced oxygen atoms on both sides.";
-    box.style = "opacity:1; top: 58.3%;";
-    box.style.background = "linear-gradient(180deg, #FFDDA9 0%, #FFC773 100%)";
-     }, 400);
-
-
-
-document.getElementsByClassName("next_button")[0].style.top = "1704rem";
-document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
-btn1.disabled = true; btn1.style.opacity = 0.4;btn1.style.border = "none";
-btn4.disabled = true; btn4.style.opacity = 0.4;btn4.style.border = "none";
-btn5.disabled = true; btn5.style.opacity = 0.4;btn5.style.border = "none";
-btn8.disabled = true; btn8.style.opacity = 0.4;btn8.style.border = "none";
-
-}
-else{remarks.innerText = "Awesome! Let us next look to balance the oxygen atoms.";
-
-}
-}
-
-
-function carbon_feedback()
-{ 
-if (reactant_2.multiplier == product_2.multiplier)
-{
-    if (reactant_2.multiplier == 3)
-    {
-        box.style = "opacity:0; top: 60%;";
-        box.style.background = "linear-gradient(180deg, #FEAFC6 0%, #FA65A7 100%)";
-        setTimeout(() => {
-        remarks.innerText = "Awesome! You have balanced carbon atoms on both sides."
-        box.style = "opacity:1; top: 58.3%;";
-        box.style.background = "linear-gradient(180deg, #FEAFC6 0%, #FA65A7 100%)";
-         }, 400);
-        
-        
-        
-    
-    btn4.disabled = true; btn4.style.opacity = 0.4;btn4.style.border = "none";
-    btn2.disabled = true; btn2.style.opacity = 0.4;btn2.style.border = "none";
-    btn8.disabled = true; btn8.style.opacity = 0.4;btn8.style.border = "none";
-    btn6.disabled = true; btn6.style.opacity = 0.4;btn6.style.border = "none";
-    document.getElementsByClassName("next_button")[0].style.top = "1704rem";
-    document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
-}
-    else{
-        
-        
-        box.style = "opacity:0; top: 60%;";
-        box.style.background = "linear-gradient(180deg, #FEAFC6 0%, #FA65A7 100%)";
-        setTimeout(() => {
-        remarks.innerText = "Oh! Carbon atoms are now equal, but that made the number of oxygen atoms unequal. Try using another coefficient."; 
-        box.style = "opacity:1; top: 58.3%;";
-        box.style.background = "linear-gradient(180deg, #FEAFC6 0%, #FA65A7 100%)";
-         }, 400);
-        
-        
-        
+        btn1.disabled = false;
+        btn1.style.opacity = 1;
+        btn1.style.border = "8rem solid #0FCDF3";
+        btn3.disabled = false;
+        btn3.style.opacity = 1;
+        btn3.style.border = "8rem solid #0FCDF3";
+        document.getElementsByClassName("next_button")[0].innerText = "Next";
+        document.getElementsByClassName("Fe1")[0].style.opacity = "1";
+        document.getElementsByClassName("Fe1")[0].style.background = "linear-gradient(180deg, #12EAFA  0%, #0787E2 100%)";
+        document.getElementsByClassName("Fe2")[0].style.opacity = "1";
+        document.getElementsByClassName("Fe2")[0].style.background = "linear-gradient(180deg, #12EAFA  0%, #0787E2 100%)";
     }
+    else if (remarks.innerText == "Awesome! You have balanced iron atoms on both sides.") {
+        sound.play();
+        sound.playbackRate = 3;
+        highlight3.style.background = "#FFD390";
+        highlight3.style.color = "black";
+        document.getElementsByClassName("Oxygen")[0].style.color = "black";
+        highlight1.style.color = "white";
+        document.getElementsByClassName("Iron")[0].style.color = "white";
+        highlight3.style.background = "linear-gradient(180deg, #FFDDA9 0%, #FFC773 100%)";
+        h3.style.background = "#FFD390";
+        h1.style.background = "#212A40";
+        highlight1.style.background = "#212A40";
+
+
+
+        box.style = "opacity:0; top: 60%;";
+        box.style.background = "linear-gradient(180deg, #12EAFA  0%,#0787E2 100%)";
+        setTimeout(() => {
+
+            remarks.innerText = "Awesome! Let us look to balance the oxygen atoms next.";
+            box.style = "opacity:1; top: 58.3%;";
+            box.style.background = "linear-gradient(180deg, #FFDDA9 0%, #FFC773 100%)";
+        }, 400);
+
+
+        // box.style.background = "linear-gradient(180deg, #FFDDA9 0%, #FFC773 100%)";
+        btn4.disabled = false;
+        btn4.style.border = "8rem solid #FFD390";
+        btn4.style.opacity = 1;
+        btn1.disabled = false;
+        btn1.style.border = "8rem solid #FFD390";
+        btn1.style.opacity = 1;
+
+        document.getElementsByClassName("next_button")[0].style.top = "100%";
+        document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
+
+
+        document.getElementsByClassName("Fe1")[0].style.opacity = "0";
+        document.getElementsByClassName("Fe2")[0].style.opacity = "0";
+        document.getElementsByClassName("O1")[0].style.opacity = "1";
+        document.getElementsByClassName("O2")[0].style.opacity = "1";
+        document.getElementsByClassName("O1")[0].style.background = "linear-gradient(180deg, #FFDDA9 0%, #FFC773 100%)";
+        document.getElementsByClassName("O2")[0].style.background = "linear-gradient(180deg, #FFDDA9 0%, #FFC773 100%)";
+
+    }
+    else if (remarks.innerText == "Awesome! You have balanced oxygen atoms on both sides.") {
+        sound.play();
+        sound.playbackRate = 3;
+        highlight3.style.background = "#28334F";
+        highlight2.style.background = "#FB78AF";
+        h2.style.background = "#FB78AF";
+        h3.style.background = "#212A40";
+        highlight2.style.color = "black";
+        document.getElementsByClassName("Carbon")[0].style.color = "black";
+        highlight3.style.color = "white";
+        document.getElementsByClassName("Oxygen")[0].style.color = "white";
+
+
+        box.style = "opacity:0; top: 60%;";
+        box.style.background = "linear-gradient(180deg, #FFDDA9 0%, #FFC773 100%)";
+        setTimeout(() => {
+
+            remarks.innerText = "Awesome! Let us look to balance the carbon atoms next.";
+            box.style = "opacity:1; top: 58.3%;";
+            box.style.background = "linear-gradient(180deg, #FEAFC6 0%, #FA65A7 100%)";
+
+        }, 400);
+
+
+
+        btn4.disabled = false; btn4.style.opacity = 1;
+        btn4.style.border = "8rem solid #FB78AF";
+        btn2.disabled = false; btn2.style.opacity = 1;
+        btn2.style.border = "8rem solid #FB78AF";
+        btn8.disabled = false; btn8.style.opacity = 1;
+        btn8.style.border = "8rem solid #FB78AF";
+        document.getElementsByClassName("next_button")[0].style.top = "100%";
+        document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
+
+        document.getElementsByClassName("C1")[0].style.opacity = "1";
+        document.getElementsByClassName("C2")[0].style.opacity = "1";
+        document.getElementsByClassName("O1")[0].style.opacity = "0";
+        document.getElementsByClassName("O2")[0].style.opacity = "0";
+        document.getElementsByClassName("C1")[0].style.background = "linear-gradient(180deg, #FEAFC6 0%, #FA65A7 100%)";
+        document.getElementsByClassName("C2")[0].style.background = "linear-gradient(180deg, #FEAFC6 0%, #FA65A7 100%)";
+
+    }
+    else if (remarks.innerText == "Awesome! You have balanced carbon atoms on both sides.") {
+        sound.play();
+        sound.playbackRate = 3;
+        highlight2.style.background = "#28334F";
+        highlight1.style.background = "#0FCDF3";
+        h1.style.background = "#0FCDF3";
+        h2.style.background = "#212A40";
+        highlight1.style.color = "black";
+        document.getElementsByClassName("Iron")[0].style.color = "black";
+        highlight2.style.color = "white";
+        document.getElementsByClassName("Carbon")[0].style.color = "white";
+        document.getElementsByClassName("next_button")[0].style.top = "100%";
+        document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
+
+
+
+        box.style = "opacity:0; top: 60%;";
+        box.style.background = "linear-gradient(180deg, #FEAFC6 0%, #FA65A7 100%)";
+        setTimeout(() => {
+            remarks.innerText = "Awesome! But looks like the Fe atoms are again unequal.";
+            box.style = "opacity:1; top: 58.3%;";
+            box.style.background = "linear-gradient(180deg, #12EAFA  0%,#0787E2 100%)";
+        }, 400);
+
+
+
+        btn2.disabled = true; btn2.style.opacity = 0.4; btn2.style.border = "none";
+        btn3.disabled = false; btn3.style.opacity = 1;
+        btn3.style.border = "8rem solid #0FCDF3 ";
+        btn4.disabled = true; btn4.style.opacity = 0.4; btn4.style.border = "none";
+        btn6.disabled = true; btn6.style.opacity = 0.4; btn6.style.border = "none";
+        btn7.disabled = false; btn7.style.opacity = 1;
+        btn7.style.border = "8rem solid #0FCDF3 ";
+        btn8.disabled = true; btn8.style.opacity = 0.4; btn8.style.border = "none";
+        document.getElementsByClassName("C1")[0].style.opacity = "0";
+        document.getElementsByClassName("C2")[0].style.opacity = "0";
+        document.getElementsByClassName("Fe1")[0].style.opacity = "1";
+        document.getElementsByClassName("Fe1")[0].style.background = "linear-gradient(180deg, #12EAFA  0%, #0787E2 100%)";
+        document.getElementsByClassName("Fe2")[0].style.opacity = "1";
+        document.getElementsByClassName("Fe2")[0].style.background = "linear-gradient(180deg, #12EAFA  0%, #0787E2 100%)";
+
+
+    }
+    else if (remarks.innerText == "Awesome! You have made Fe atoms equal on both sides and also the entire equation looks balanced.") {
+        sound.play();
+        sound.playbackRate = 3;
+        movable_parent.style = "left: -1080rem;";
+        observation_tab.classList.remove('nav_selected');
+        question_tab.classList.add('nav_selected2');
+    }
+
 }
-    else{remarks.innerText = "Awesome! Let us look to balance the carbon atoms next.";
+
+function oxygen_feedback() {
+
+    if (reactant_1.multiplier == 2 && product_2.multiplier == 3) {
+
+        box.style = "opacity:0; top: 60%;";
+        box.style.background = "linear-gradient(180deg, #FFDDA9 0%, #FFC773 100%)";
+        setTimeout(() => {
+            remarks.innerText = "Awesome! You have balanced oxygen atoms on both sides.";
+            box.style = "opacity:1; top: 58.3%;";
+            box.style.background = "linear-gradient(180deg, #FFDDA9 0%, #FFC773 100%)";
+        }, 400);
+
+
+
+        document.getElementsByClassName("next_button")[0].style.top = "1704rem";
+        document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
+        btn1.disabled = true; btn1.style.opacity = 0.4; btn1.style.border = "none";
+        btn4.disabled = true; btn4.style.opacity = 0.4; btn4.style.border = "none";
+        btn5.disabled = true; btn5.style.opacity = 0.4; btn5.style.border = "none";
+        btn8.disabled = true; btn8.style.opacity = 0.4; btn8.style.border = "none";
+
+    }
+    else {
+        remarks.innerText = "Awesome! Let us next look to balance the oxygen atoms.";
 
     }
 }
 
-function final_feedback()
-{       
-    if (reactant_1.multiplier == 2 && product_1.multiplier == 4)   
-    {   document.getElementsByClassName("next_button")[0].style.top = "1704rem";
-    document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
-    document.getElementsByClassName("reset_button")[0].style.top = "1540rem";
-    document.getElementsByClassName("reset_button")[0].style.transition = " top 0.5s";
-    document.getElementsByClassName("equation_container")[0].style.top = "1340rem";
-    document.getElementsByClassName("equation_container")[0].style.transition = " top 0.5s";
 
-    btn1.style.display = "none"; btn2.style.display = "none";
-    btn3.style.display = "none"; btn4.style.display = "none";
-    btn5.style.display = "none"; btn6.style.display = "none";
-    btn7.style.display = "none"; btn8.style.display = "none";
-    highlight1.style.background = "#28334F";
-h1.style.background = "#212A40";
-h1.style.color = "white";
-highlight1.style.color = "white";
-document.getElementsByClassName("Iron")[0].style.color = "white";
+function carbon_feedback() {
+    if (reactant_2.multiplier == product_2.multiplier) {
+        if (reactant_2.multiplier == 3) {
+            box.style = "opacity:0; top: 60%;";
+            box.style.background = "linear-gradient(180deg, #FEAFC6 0%, #FA65A7 100%)";
+            setTimeout(() => {
+                remarks.innerText = "Awesome! You have balanced carbon atoms on both sides."
+                box.style = "opacity:1; top: 58.3%;";
+                box.style.background = "linear-gradient(180deg, #FEAFC6 0%, #FA65A7 100%)";
+            }, 400);
 
-    // btn3.disabled = "false"; btn3.style.opacity = 1;
-    // btn1.style.border = "8rem solid black";
-    // btn1.disabled = "false"; btn1.style.opacity = 1;
-    // btn3.style.border = "8rem solid black";
 
-    btn7.disabled = "true"; btn7.style.opacity = 0.4;btn7.style.border = "none";
 
-    document.getElementsByClassName("Fe1")[0].style.opacity = "0";
-    document.getElementsByClassName("Fe2")[0].style.opacity = "0";
 
-    h1.innerText = "Fe";
-    h1.style.color = "white";
-    h2.innerText = "C";
-    h2.style.color = "white";
-    h3.innerText = "O";
-    h3.style.color = "white";
-
-    document.getElementsByClassName("Iron")[0].style.display = "none";
-    document.getElementsByClassName("Carbon")[0].style.display = "none";
-    document.getElementsByClassName("Oxygen")[0].style.display = "none";
-
-        if (random ==0)
-            {
-                
-         
-        
-         box.style = "opacity:0; top: 60%;";
-         box.style.background = "linear-gradient(180deg, #12EAFA  0%,#0787E2 100%)";
-         setTimeout(() => {
-            remarks.innerText = "Awesome! You have made Fe atoms equal on both sides and also the entire equation looks balanced.";
-         box.style = "opacity:1; top: 58.3%;";
-         box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)"; 
-          }, 400);
-     
-        
-        
+            btn4.disabled = true; btn4.style.opacity = 0.4; btn4.style.border = "none";
+            btn2.disabled = true; btn2.style.opacity = 0.4; btn2.style.border = "none";
+            btn8.disabled = true; btn8.style.opacity = 0.4; btn8.style.border = "none";
+            btn6.disabled = true; btn6.style.opacity = 0.4; btn6.style.border = "none";
+            document.getElementsByClassName("next_button")[0].style.top = "1704rem";
+            document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
         }
-        else{
-            
+        else {
 
- 
+
+            box.style = "opacity:0; top: 60%;";
+            box.style.background = "linear-gradient(180deg, #FEAFC6 0%, #FA65A7 100%)";
+            setTimeout(() => {
+                remarks.innerText = "Oh! Carbon atoms are now equal, but that made the number of oxygen atoms unequal. Try using another coefficient.";
+                box.style = "opacity:1; top: 58.3%;";
+                box.style.background = "linear-gradient(180deg, #FEAFC6 0%, #FA65A7 100%)";
+            }, 400);
+
+
+
+        }
+    }
+    else {
+        remarks.innerText = "Awesome! Let us look to balance the carbon atoms next.";
+
+    }
+}
+
+function final_feedback() {
+    if (reactant_1.multiplier == 2 && product_1.multiplier == 4) {
+        document.getElementsByClassName("next_button")[0].style.top = "1704rem";
+        document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
+        document.getElementsByClassName("reset_button")[0].style.top = "1540rem";
+        document.getElementsByClassName("reset_button")[0].style.transition = " top 0.5s";
+        document.getElementsByClassName("equation_container")[0].style.top = "1340rem";
+        document.getElementsByClassName("equation_container")[0].style.transition = " top 0.5s";
+
+        btn1.style.display = "none"; btn2.style.display = "none";
+        btn3.style.display = "none"; btn4.style.display = "none";
+        btn5.style.display = "none"; btn6.style.display = "none";
+        btn7.style.display = "none"; btn8.style.display = "none";
+        highlight1.style.background = "#28334F";
+        h1.style.background = "#212A40";
+        h1.style.color = "white";
+        highlight1.style.color = "white";
+        document.getElementsByClassName("Iron")[0].style.color = "white";
+
+        // btn3.disabled = "false"; btn3.style.opacity = 1;
+        // btn1.style.border = "8rem solid black";
+        // btn1.disabled = "false"; btn1.style.opacity = 1;
+        // btn3.style.border = "8rem solid black";
+
+        btn7.disabled = "true"; btn7.style.opacity = 0.4; btn7.style.border = "none";
+
+        document.getElementsByClassName("Fe1")[0].style.opacity = "0";
+        document.getElementsByClassName("Fe2")[0].style.opacity = "0";
+
+        h1.innerText = "Fe";
+        h1.style.color = "white";
+        h2.innerText = "C";
+        h2.style.color = "white";
+        h3.innerText = "O";
+        h3.style.color = "white";
+
+        document.getElementsByClassName("Iron")[0].style.display = "none";
+        document.getElementsByClassName("Carbon")[0].style.display = "none";
+        document.getElementsByClassName("Oxygen")[0].style.display = "none";
+
+        if (random == 0) {
+
+
+
             box.style = "opacity:0; top: 60%;";
             box.style.background = "linear-gradient(180deg, #12EAFA  0%,#0787E2 100%)";
             setTimeout(() => {
-               
-        remarks.innerText = "Yay! All the elements have equal atoms on both sides, which means the equation is balanced.";
-            
-   
-            box.style = "opacity:1; top: 58.3%;";
-            box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)"; 
-             }, 400);
-            }
+                remarks.innerText = "Awesome! You have made Fe atoms equal on both sides and also the entire equation looks balanced.";
+                box.style = "opacity:1; top: 58.3%;";
+                box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)";
+            }, 400);
+
+
 
         }
-    else{remarks.innerText = "Awesome! But looks like the Fe atoms are again unequal.";
-    
+        else {
+
+
+
+            box.style = "opacity:0; top: 60%;";
+            box.style.background = "linear-gradient(180deg, #12EAFA  0%,#0787E2 100%)";
+            setTimeout(() => {
+
+                remarks.innerText = "Yay! All the elements have equal atoms on both sides, which means the equation is balanced.";
+
+
+                box.style = "opacity:1; top: 58.3%;";
+                box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)";
+            }, 400);
+        }
+
+    }
+    else {
+        remarks.innerText = "Awesome! But looks like the Fe atoms are again unequal.";
+
+    }
 }
-}
 
 
 
 
-async function update_numbers()
-{  
+async function update_numbers() {
 
-    
+
     document.getElementsByClassName("Iron")[0].style.opacity = "1";
     document.getElementsByClassName("Iron")[0].style.transform = "translate(13rem,-1070%)";
     document.getElementsByClassName("Iron")[0].style.transition = "transform 1s";
@@ -792,7 +774,7 @@ async function update_numbers()
     document.getElementsByClassName("Oxygen")[0].style.transition = "transform 1s";
 
 
-     await sleep (1500);
+    await sleep(1500);
 
     document.getElementsByClassName("elm1")[0].style.opacity = "1";
     document.getElementsByClassName("elm1")[0].style.transform = "translate(280rem,-1070%)";
@@ -803,9 +785,9 @@ async function update_numbers()
     document.getElementsByClassName("elm4")[0].style.transition = "transform 1s";
 
 
-    
 
-    await sleep (1500); 
+
+    await sleep(1500);
 
     document.getElementsByClassName("elm3")[0].style.opacity = "1";
     document.getElementsByClassName("elm3")[0].style.transform = "translate(118rem,-920%)";
@@ -815,48 +797,45 @@ async function update_numbers()
     document.getElementsByClassName("elm5")[0].style.transform = "translate(15rem,-920%)";
     document.getElementsByClassName("elm5")[0].style.transition = "transform 1s";
 
-    await sleep (1500);
-    
+    await sleep(1500);
+
     document.getElementsByClassName("elm2")[0].style.opacity = "1";
     document.getElementsByClassName("elm2")[0].style.transform = "translate(230rem,-750%)";
     document.getElementsByClassName("elm2")[0].style.transition = "transform 1s";
-    
+
     document.getElementsByClassName("elm6")[0].style.opacity = "1";
     document.getElementsByClassName("elm6")[0].style.transform = "translate(-115rem,-750%)";
     document.getElementsByClassName("elm6")[0].style.transition = "transform 1s";
-     
-    await sleep (1500)
+
+    await sleep(1500)
     update_check_column();
 
-    await sleep (800)
+    await sleep(800)
     document.getElementsByClassName("next_button")[0].style.top = "1704rem";
     document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
 
-    box.style.opacity = 1;  
+    box.style.opacity = 1;
     box.style = "opacity:0; top: 60%;";
     setTimeout(() => {
-    remarks.innerText = "Click on the start button to start balancing the equation.";
-    box.style = "opacity:1; top: 58.3%;";
-     }, 400);
+        remarks.innerText = "Click on the start button to start balancing the equation.";
+        box.style = "opacity:1; top: 58.3%;";
+    }, 400);
     // box.style.transition = "opacity 0.5s";
     // remarks.innerText = "Click on the start button to start balancing the equation.";
     document.getElementsByClassName("next_button")[0].innerText = "Start";
 
- }
+}
 
 
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-     }
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-function reset_instruction()
-
- { 
+function reset_instruction() {
     sound.play();
     sound.playbackRate = 3;
-    onload = window.location.reload(); 
+    onload = window.location.reload();
 
- }
+}
 
 
- 
