@@ -12,8 +12,8 @@
     src: url('/fonts/Gotham-SSm/GothamSSm-MediumItalic.otf'); */
 }
 .LO_message {
-    --width: 1080px;
-    --height: 1920px;
+    --width: 1080rem;
+    --height: 1920rem;
     position: relative;
     width: var(--width);
     height: var(--height);
@@ -29,10 +29,10 @@
 
 .popup {
     position: absolute;
-    width: 940px;
-    height: 719px;
-    left: 70px;
-    top: 850px;
+    width: 940rem;
+    height: 719rem;
+    left: 70rem;
+    top: 850rem;
     opacity: 0;
     transition: opacity 0.2s linear, top 0.2s linear;
 }
@@ -42,38 +42,38 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    width: 238px;
-    height: 238px;
+    width: 238rem;
+    height: 238rem;
     left: 50%; transform: translate(-50%, 0%);
-    top: 0px;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    top: 0rem;
+    filter: drop-shadow(0rem 4rem 4rem rgba(0, 0, 0, 0.25));
     opacity: 1;
 }
 
 .tick_mark_container .line1 {
     position: absolute;
-    width: 73.32px;
-    /* height: 0px; */
+    width: 73.32rem;
+    /* height: 0rem; */
     left: 32%;
     top: 63%;
-    border-top: 12.5px solid #FFFFFF;
-    border-bottom: 12.5px solid #FFFFFF;
+    border-top: 12.5rem solid #FFFFFF;
+    border-bottom: 12.5rem solid #FFFFFF;
     box-sizing: content-box;
-    border-radius: 12.5px;
+    border-radius: 12.5rem;
     background-color: #ffffff;
     transform: translate(-50%, -50%) rotate(39.89deg);
 }
 
 .tick_mark_container .line2 {
     position: absolute;
-    width: 144.73px;
-    /* height: 0px; */
-    left: 57.6%;
-    top: 52.1%;
+    width: 144.73rem;
+    /* height: 0rem; */
+    left: 57.8%;
+    top: 50%;
     transform: translate(-50%, -50%);
-    border-top: 12.5px solid #FFFFFF;
-    border-bottom: 12.5px solid #FFFFFF;
-    border-radius: 12.5px;
+    border-top: 12.5rem solid #FFFFFF;
+    border-bottom: 12.5rem solid #FFFFFF;
+    border-radius: 12.5rem;
     background-color: #ffffff;
     transform: translate(-50%, -50%) rotate(-48.59deg);
 }
@@ -81,27 +81,27 @@
 .tick_mark_container .ellipse1 {
     border-radius: 50%;
     position: absolute;
-    width: 238px;
-    height: 238px;
+    width: 238rem;
+    height: 238rem;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     background: linear-gradient(90deg, #10DBA4 0%, #388BFC 153.15%);
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25), inset 0px -10px 10px rgba(0, 0, 0, 0.25), inset 0px 10px 10px rgba(255, 255, 255, 0.5);
+    box-shadow: 0rem 5rem 5rem rgba(0, 0, 0, 0.25), inset 0rem -10rem 10rem rgba(0, 0, 0, 0.25), inset 0rem 10rem 10rem rgba(255, 255, 255, 0.5);
     opacity: 1;
 }
 
 .tick_mark_container .ellipse2 {
     border-radius: 50%;
     position: absolute;
-    width: 238px;
-    height: 238px;
+    width: 238rem;
+    height: 238rem;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    border: 10px solid #FFFFFF;
-    box-shadow: inset 0px -2px 2px rgba(0, 0, 0, 0.25), inset 0px 2px 2px rgba(255, 255, 255, 0.5);
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border: 10rem solid #FFFFFF;
+    box-shadow: inset 0rem -2rem 2rem rgba(0, 0, 0, 0.25), inset 0rem 2rem 2rem rgba(255, 255, 255, 0.5);
+    filter: drop-shadow(0rem 4rem 4rem rgba(0, 0, 0, 0.25));
     display: none;
 }
 
@@ -110,12 +110,12 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 940px;
-    height: 600px;
-    left: 0px;
-    top: 120px;
+    width: 940rem;
+    height: 600rem;
+    left: 0rem;
+    top: 120rem;
     background: #FFFFFF;
-    border-radius: 24px;
+    border-radius: 24rem;
 }
 
 .tick_mark_container svg {
@@ -131,8 +131,8 @@
     fill: none;
     stroke: #b3ff10;
     stroke-width: 6;
-    box-shadow: inset 0px -2px 2px rgba(0, 0, 0, 0.25), inset 0px 2px 2px rgba(255, 255, 255, 0.5);
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    box-shadow: inset 0rem -2rem 2rem rgba(0, 0, 0, 0.25), inset 0rem 2rem 2rem rgba(255, 255, 255, 0.5);
+    filter: drop-shadow(0rem 4rem 4rem rgba(0, 0, 0, 0.25));
     
 }
 
@@ -143,9 +143,9 @@
     font-family: Gotham SSm;
     font-style: normal;
     font-weight: 325;
-    font-size: 36px;
-    line-height: 60px;
-    /* or 43px */
+    font-size: 36rem;
+    line-height: 60rem;
+    /* or 43rem */
     text-align: center;
     /* text-transform: capitalize; */
 }
@@ -153,16 +153,16 @@
 .close_button{
     position: relative;
     left: 50%; transform: translate(-50%, 0%);
-    top: 552px;
-    width: 468px;
-    height: 128.64px;
+    top: 552rem;
+    width: 468rem;
+    height: 128.64rem;
     border: none;
-    border-radius: 200px;
+    border-radius: 200rem;
     background: linear-gradient(90deg, #10dca3, #3988fa);
     color: white;
     font-family: Gotham SSm;
     font-weight: 350;
-    font-size: 42px;
+    font-size: 42rem;
     cursor: pointer;
     z-index: 1;
     opacity: 0;

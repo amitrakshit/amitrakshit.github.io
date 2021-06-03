@@ -1,6 +1,6 @@
 .contex_card {
-    --width: 1080px;
-    --height: 1920px;
+    --width: 1080rem;
+    --height: 1920rem;
     position: absolute;
     width: var(--width);
     height: var(--height);
@@ -28,13 +28,13 @@
     width: calc(936/1080*var(--width));
     height: calc(1584/1920*var(--height));
     top: calc(264/1920*var(--height));
-    border-radius: 24px;
+    border-radius: 24rem;
     overflow-x: hidden;
     overflow-y: scroll;
 }
 
 .card_scroll_window::-webkit-scrollbar {
-    width: 0px;
+    width: 0rem;
 }
 
 /* .card_scroll_window::-webkit-scrollbar-button{
@@ -42,10 +42,10 @@
 }
 
 .card_scroll_window::-webkit-scrollbar-track {
-    right: 12px;
-    width: 30px;
+    right: 12rem;
+    width: 30rem;
     background-color: rgb(183, 241, 255);
-    border-radius: 24px;
+    border-radius: 24rem;
     ;
 }
 
@@ -60,7 +60,7 @@
     top: calc(0/1920*var(--height));
     height: 180%;
     background-color: white;
-    font-size: 36px;
+    font-size: 36rem;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -84,41 +84,41 @@
 
 .inline_table {
     position: absolute;
-    border: 1px solid black;
+    border: 1rem solid black;
     width: 70%;
     border-collapse: collapse;
     font-family: Gotham Ssm;
 }
 
 .inline_table td, .inline_table th {
-    border: 1px solid black;
+    border: 1rem solid black;
     text-align: center;
 }
 
 #step2_table {
-    top: 390px;
+    top: 390rem;
 }
 
 #step4a_table {
-    top: 1566px;
+    top: 1552rem;
 }
 
 #step4b_table {
-    top: 2011px;
+    top: 1990rem;
 }
 
 #step5_table {
-    top: 2417px;
+    top: 2390rem;
 }
 
 .LCM_Visual {
-    /* border: 1px solid black; */
+    /* border: 1rem solid black; */
     font-family: Gotham SSm;
     position: absolute;
-    top: 770px;
+    top: 770rem;
     width: 40%;
     text-align: center;
-    padding: 10px 0px;;
+    padding: 10rem 0rem;;
     background-color: rgb(214, 214, 214);
 }
 
@@ -130,16 +130,16 @@
 }
 
 .LCM_Visual table tr:nth-of-type(1), .LCM_Visual table tr:nth-of-type(2) {
-    border-bottom: 1px solid black;
+    border-bottom: 1rem solid black;
 }
 
 .LCM_Visual table td:nth-of-type(1) {
-    border-right: 1px solid black;
+    border-right: 1rem solid black;
     text-align: right;
-    padding-right: 10px;
+    padding-right: 10rem;
 }
 
 .LCM_Visual table td:nth-of-type(2) {
     text-align: left;
-    padding-left: 10px;
+    padding-left: 10rem;
 }

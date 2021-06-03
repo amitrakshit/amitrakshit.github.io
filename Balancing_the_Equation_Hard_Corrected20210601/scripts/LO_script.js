@@ -49,7 +49,7 @@ var close_button = document.getElementsByClassName('close_button')[0];
 close_button.onclick = function () {
     buttonAudio_Click.play();
     LO_message.style.backgroundColor = '#00000000';
-    popup.style = 'opacity:0; top: 950px'
+    popup.style = 'opacity:0; top: 950rem';
     LO_message.style = "z-index : -1;";
 }
 

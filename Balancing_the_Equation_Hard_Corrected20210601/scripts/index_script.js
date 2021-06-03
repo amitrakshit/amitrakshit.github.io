@@ -16,7 +16,7 @@ var movable_parent = document.getElementsByClassName('movable_parent')[0];
 question_tab.onclick = function () {
    buttonAudio_Click.play();
    buttonAudio_Click.playbackRate = 3;
-   movable_parent.style = "left: -1080px;";
+   movable_parent.style = "left: -1080rem;";
    observation_tab.classList.remove('nav_selected');
    question_tab.classList.add('nav_selected2');
 }
@@ -24,7 +24,7 @@ question_tab.onclick = function () {
 observation_tab.onclick = function () {
    buttonAudio_Click.play();
    buttonAudio_Click.playbackRate = 3;
-   movable_parent.style = "left: 0px";
+   movable_parent.style = "left: 0rem";
    observation_tab.classList.add('nav_selected');
    question_tab.classList.remove('nav_selected2');
 }
@@ -97,8 +97,8 @@ function poly1() {
         if (reactant_1.multiplier ==4){btn1.disabled = true; btn1.style.opacity =0.4; btn1.style.border = "none";}
         btn5.disabled = false; btn5.style.opacity =1;
         if (btn3.disabled == false || btn7.disabled == false) {
-        btn5.style.border = "8px solid #0FCDF3";}
-        else {btn5.style.border = "8px solid #FFD390";}
+        btn5.style.border = "8rem solid #0FCDF3";}
+        else {btn5.style.border = "8rem solid #FFD390";}
         update_reactant_column();
         update_product_column();
         update_check_column();
@@ -117,7 +117,7 @@ function poly2() {
         sound.playbackRate = 3;
         if (reactant_2.multiplier ==4){btn2.disabled = true; btn2.style.opacity =0.4; btn2.style.border = "none";}
         btn6.disabled = false; btn6.style.opacity =1;
-        btn6.style.border = "8px solid #FB78AF";
+        btn6.style.border = "8rem solid #FB78AF";
         reactant_2.update_element_numbers();
         update_reactant_column();
         update_product_column();
@@ -140,7 +140,7 @@ function poly3() {
             else {random = 0;}
             if (product_1.multiplier ==4){btn3.disabled = true; btn3.style.opacity =0.4; btn3.style.border = "none";}
         btn7.disabled = false; btn7.style.opacity =1;
-        btn7.style.border = "8px solid #0FCDF3";
+        btn7.style.border = "8rem solid #0FCDF3";
         product_1.update_element_numbers();
         update_product_column();
         update_reactant_column();
@@ -162,8 +162,8 @@ function poly4() {
         if (product_2.multiplier ==4){btn4.disabled = true; btn4.style.opacity =0.4; btn4.style.border = "none";}
         btn8.disabled = false; btn8.style.opacity =1;
 
-    if (btn2.disabled == false || btn6.disabled == false){btn8.style.border = "5px solid #FB78AF";}
-        else {btn8.style.border = "8px solid #FFD390";}
+    if (btn2.disabled == false || btn6.disabled == false){btn8.style.border = "5rem solid #FB78AF";}
+        else {btn8.style.border = "8rem solid #FFD390";}
         product_2.update_element_numbers();
         update_product_column();
         update_reactant_column();
@@ -184,8 +184,8 @@ function poly5() {
         if (reactant_1.multiplier ==1){btn5.disabled = true; btn5.style.opacity =0.4; btn5.style.border = "none";}
         btn1.disabled = false; btn1.style.opacity =1;
         if (btn3.disabled == false || btn7.disabled == false) {
-            btn1.style.border = "8px solid #0FCDF3";}
-            else{btn1.style.border = "8px solid #FFD390";}
+            btn1.style.border = "8rem solid #0FCDF3";}
+            else{btn1.style.border = "8rem solid #FFD390";}
         reactant_1.update_element_numbers();
         update_reactant_column();
         update_product_column();
@@ -205,7 +205,7 @@ function poly6() {
         sound.playbackRate = 3;
         if (reactant_2.multiplier ==1){btn6.disabled = true; btn6.style.opacity =0.4; btn6.style.border = "none";}
         btn2.disabled = false; btn2.style.opacity =1;
-        btn2.style.border = "8px solid #FB78AF";
+        btn2.style.border = "8rem solid #FB78AF";
         reactant_2.update_element_numbers();
         update_reactant_column();
         update_product_column();
@@ -225,7 +225,7 @@ function poly7() {
         sound.playbackRate = 3;
         if (product_1.multiplier ==1){btn7.disabled = true; btn7.style.opacity =0.4; btn7.style.border = "none";}
         btn3.disabled = false; btn3.style.opacity =1;
-        btn3.style.border = "8px solid #0FCDF3";
+        btn3.style.border = "8rem solid #0FCDF3";
         product_1.update_element_numbers();
         random = 0;
         update_product_column();
@@ -246,8 +246,8 @@ function poly8() {
         sound.playbackRate = 3;
         if (product_2.multiplier ==1){btn8.disabled = true; btn8.style.opacity =0.4; btn8.style.border = "none";}
         btn4.disabled = false; btn4.style.opacity =1;
-        if (btn2.disabled == false || btn6.disabled == false){btn4.style.border = "8px solid #FB78AF";}
-        else {btn4.style.border = "8px solid #FFD390";}
+        if (btn2.disabled == false || btn6.disabled == false){btn4.style.border = "8rem solid #FB78AF";}
+        else {btn4.style.border = "8rem solid #FFD390";}
         product_2.update_element_numbers();
         update_product_column();
         update_reactant_column();
@@ -397,7 +397,7 @@ if (reactant_1.multiplier == 1 && product_1.multiplier == 2)
     
         
     
-    document.getElementsByClassName("next_button")[0].style.top = "1704px";
+    document.getElementsByClassName("next_button")[0].style.top = "1704rem";
     document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
     btn1.disabled = true;
     btn1.style.border = "none";
@@ -469,10 +469,10 @@ else if (remarks.innerText == "Click on the start button to start balancing the 
 
 btn1.disabled = false;
 btn1.style.opacity = 1;
-btn1.style.border = "8px solid #0FCDF3";
+btn1.style.border = "8rem solid #0FCDF3";
 btn3.disabled = false;
 btn3.style.opacity = 1;
-btn3.style.border = "8px solid #0FCDF3";
+btn3.style.border = "8rem solid #0FCDF3";
 document.getElementsByClassName("next_button")[0].innerText = "Next";
 document.getElementsByClassName("Fe1")[0].style.opacity = "1";
 document.getElementsByClassName("Fe1")[0].style.background = "linear-gradient(180deg, #12EAFA  0%, #0787E2 100%)"; 
@@ -506,10 +506,10 @@ else if (remarks.innerText == "Awesome! You have balanced iron atoms on both sid
 
 // box.style.background = "linear-gradient(180deg, #FFDDA9 0%, #FFC773 100%)";
 btn4.disabled = false;
-btn4.style.border = "8px solid #FFD390";
+btn4.style.border = "8rem solid #FFD390";
 btn4.style.opacity = 1;
 btn1.disabled = false;
-btn1.style.border = "8px solid #FFD390";
+btn1.style.border = "8rem solid #FFD390";
 btn1.style.opacity = 1;
 
 document.getElementsByClassName("next_button")[0].style.top = "100%";
@@ -550,11 +550,11 @@ else if (remarks.innerText == "Awesome! You have balanced oxygen atoms on both s
 
 
 btn4.disabled = false; btn4.style.opacity = 1;
-btn4.style.border = "8px solid #FB78AF";
+btn4.style.border = "8rem solid #FB78AF";
 btn2.disabled = false; btn2.style.opacity = 1;
-btn2.style.border = "8px solid #FB78AF";
+btn2.style.border = "8rem solid #FB78AF";
 btn8.disabled = false; btn8.style.opacity = 1;
-btn8.style.border = "8px solid #FB78AF";
+btn8.style.border = "8rem solid #FB78AF";
 document.getElementsByClassName("next_button")[0].style.top = "100%";
 document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
 
@@ -594,11 +594,11 @@ else if(remarks.innerText == "Awesome! You have balanced carbon atoms on both si
 
 btn2.disabled = true; btn2.style.opacity = 0.4; btn2.style.border = "none";
 btn3.disabled = false;btn3.style.opacity = 1;
-btn3.style.border = "8px solid #0FCDF3 ";
+btn3.style.border = "8rem solid #0FCDF3 ";
 btn4.disabled = true;btn4.style.opacity = 0.4; btn4.style.border = "none";
 btn6.disabled = true;btn6.style.opacity = 0.4; btn6.style.border = "none";
 btn7.disabled = false;btn7.style.opacity = 1;
-btn7.style.border = "8px solid #0FCDF3 ";
+btn7.style.border = "8rem solid #0FCDF3 ";
 btn8.disabled = true;btn8.style.opacity = 0.4; btn8.style.border = "none";
 document.getElementsByClassName("C1")[0].style.opacity = "0";
 document.getElementsByClassName("C2")[0].style.opacity = "0";
@@ -612,7 +612,7 @@ document.getElementsByClassName("Fe2")[0].style.background = "linear-gradient(18
 else if (remarks.innerText == "Awesome! You have made Fe atoms equal on both sides and also the entire equation looks balanced.")
 {sound.play();
     sound.playbackRate = 3; 
-   movable_parent.style = "left: -1080px;";
+   movable_parent.style = "left: -1080rem;";
    observation_tab.classList.remove('nav_selected');
    question_tab.classList.add('nav_selected2');
 }
@@ -635,7 +635,7 @@ if (reactant_1.multiplier == 2 && product_2.multiplier == 3)
 
 
 
-document.getElementsByClassName("next_button")[0].style.top = "1704px";
+document.getElementsByClassName("next_button")[0].style.top = "1704rem";
 document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
 btn1.disabled = true; btn1.style.opacity = 0.4;btn1.style.border = "none";
 btn4.disabled = true; btn4.style.opacity = 0.4;btn4.style.border = "none";
@@ -670,7 +670,7 @@ if (reactant_2.multiplier == product_2.multiplier)
     btn2.disabled = true; btn2.style.opacity = 0.4;btn2.style.border = "none";
     btn8.disabled = true; btn8.style.opacity = 0.4;btn8.style.border = "none";
     btn6.disabled = true; btn6.style.opacity = 0.4;btn6.style.border = "none";
-    document.getElementsByClassName("next_button")[0].style.top = "1704px";
+    document.getElementsByClassName("next_button")[0].style.top = "1704rem";
     document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
 }
     else{
@@ -696,11 +696,11 @@ if (reactant_2.multiplier == product_2.multiplier)
 function final_feedback()
 {       
     if (reactant_1.multiplier == 2 && product_1.multiplier == 4)   
-    {   document.getElementsByClassName("next_button")[0].style.top = "1704px";
+    {   document.getElementsByClassName("next_button")[0].style.top = "1704rem";
     document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
-    document.getElementsByClassName("reset_button")[0].style.top = "1540px";
+    document.getElementsByClassName("reset_button")[0].style.top = "1540rem";
     document.getElementsByClassName("reset_button")[0].style.transition = " top 0.5s";
-    document.getElementsByClassName("equation_container")[0].style.top = "1340px";
+    document.getElementsByClassName("equation_container")[0].style.top = "1340rem";
     document.getElementsByClassName("equation_container")[0].style.transition = " top 0.5s";
 
     btn1.style.display = "none"; btn2.style.display = "none";
@@ -714,9 +714,9 @@ highlight1.style.color = "white";
 document.getElementsByClassName("Iron")[0].style.color = "white";
 
     // btn3.disabled = "false"; btn3.style.opacity = 1;
-    // btn1.style.border = "8px solid black";
+    // btn1.style.border = "8rem solid black";
     // btn1.disabled = "false"; btn1.style.opacity = 1;
-    // btn3.style.border = "8px solid black";
+    // btn3.style.border = "8rem solid black";
 
     btn7.disabled = "true"; btn7.style.opacity = 0.4;btn7.style.border = "none";
 
@@ -780,26 +780,26 @@ async function update_numbers()
 
     
     document.getElementsByClassName("Iron")[0].style.opacity = "1";
-    document.getElementsByClassName("Iron")[0].style.transform = "translate(13px,-1070%)";
+    document.getElementsByClassName("Iron")[0].style.transform = "translate(13rem,-1070%)";
     document.getElementsByClassName("Iron")[0].style.transition = "transform 1s";
 
     document.getElementsByClassName("Carbon")[0].style.opacity = "1";
-    document.getElementsByClassName("Carbon")[0].style.transform = "translate(-300px,-920%)";
+    document.getElementsByClassName("Carbon")[0].style.transform = "translate(-300rem,-920%)";
     document.getElementsByClassName("Carbon")[0].style.transition = "transform 1s";
 
     document.getElementsByClassName("Oxygen")[0].style.opacity = "1";
-    document.getElementsByClassName("Oxygen")[0].style.transform = "translate(-30px,-750%)";
+    document.getElementsByClassName("Oxygen")[0].style.transform = "translate(-30rem,-750%)";
     document.getElementsByClassName("Oxygen")[0].style.transition = "transform 1s";
 
 
      await sleep (1500);
 
     document.getElementsByClassName("elm1")[0].style.opacity = "1";
-    document.getElementsByClassName("elm1")[0].style.transform = "translate(280px,-1070%)";
+    document.getElementsByClassName("elm1")[0].style.transform = "translate(280rem,-1070%)";
     document.getElementsByClassName("elm1")[0].style.transition = "transform 1s";
 
     document.getElementsByClassName("elm4")[0].style.opacity = "1";
-    document.getElementsByClassName("elm4")[0].style.transform = "translate(225px,-1070%)";
+    document.getElementsByClassName("elm4")[0].style.transform = "translate(225rem,-1070%)";
     document.getElementsByClassName("elm4")[0].style.transition = "transform 1s";
 
 
@@ -808,28 +808,28 @@ async function update_numbers()
     await sleep (1500); 
 
     document.getElementsByClassName("elm3")[0].style.opacity = "1";
-    document.getElementsByClassName("elm3")[0].style.transform = "translate(118px,-920%)";
+    document.getElementsByClassName("elm3")[0].style.transform = "translate(118rem,-920%)";
     document.getElementsByClassName("elm3")[0].style.transition = "transform 1s";
 
     document.getElementsByClassName("elm5")[0].style.opacity = "1";
-    document.getElementsByClassName("elm5")[0].style.transform = "translate(15px,-920%)";
+    document.getElementsByClassName("elm5")[0].style.transform = "translate(15rem,-920%)";
     document.getElementsByClassName("elm5")[0].style.transition = "transform 1s";
 
     await sleep (1500);
     
     document.getElementsByClassName("elm2")[0].style.opacity = "1";
-    document.getElementsByClassName("elm2")[0].style.transform = "translate(230px,-750%)";
+    document.getElementsByClassName("elm2")[0].style.transform = "translate(230rem,-750%)";
     document.getElementsByClassName("elm2")[0].style.transition = "transform 1s";
     
     document.getElementsByClassName("elm6")[0].style.opacity = "1";
-    document.getElementsByClassName("elm6")[0].style.transform = "translate(-115px,-750%)";
+    document.getElementsByClassName("elm6")[0].style.transform = "translate(-115rem,-750%)";
     document.getElementsByClassName("elm6")[0].style.transition = "transform 1s";
      
     await sleep (1500)
     update_check_column();
 
     await sleep (800)
-    document.getElementsByClassName("next_button")[0].style.top = "1704px";
+    document.getElementsByClassName("next_button")[0].style.top = "1704rem";
     document.getElementsByClassName("next_button")[0].style.transition = " top 0.5s";
 
     box.style.opacity = 1;  

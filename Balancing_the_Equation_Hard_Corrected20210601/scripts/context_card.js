@@ -17,13 +17,13 @@ context_button.addEventListener('click', function (event) {
     }
 })
 
-var Tobescaled = window.innerHeight / 1920;
-if (window.innerWidth / window.innerHeight > 9 / 16) {
-    var Tobescaled = window.innerHeight / 1920;
-    document.getElementsByClassName('window')[0].style.setProperty('transform', 'scale(' + Tobescaled.toString() + ')');
-}
-else {
-    var Tobescaled = window.innerWidth / 1080;
-    document.getElementsByClassName('window')[0].style.setProperty('transform', 'scale(' + Tobescaled.toString() + ')');
-    document.getElementsByClassName('window')[0].style = "transform-origin:center;";
-}
+// var Tobescaled = window.innerHeight / 1920;
+// if (window.innerWidth / window.innerHeight > 9 / 16) {
+//     var Tobescaled = window.innerHeight / 1920;
+//     document.getElementsByClassName('window')[0].style.setProperty('transform', 'scale(' + Tobescaled.toString() + ')');
+// }
+// else {
+//     var Tobescaled = window.innerWidth / 1080;
+//     document.getElementsByClassName('window')[0].style.setProperty('transform', 'scale(' + Tobescaled.toString() + ')');
+//     document.getElementsByClassName('window')[0].style = "transform-origin:center;";
+// }

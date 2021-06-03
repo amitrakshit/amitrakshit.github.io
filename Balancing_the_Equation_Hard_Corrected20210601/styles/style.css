@@ -14,9 +14,19 @@
 
 /* -- For the Background-- */
 
-/* html {
-    transform: scale(0.5);
-} */
+html {
+    --vwidth: 100vw;
+    --vheight: calc(16/9*var(--vwidth));
+    font-size: calc(1/1080*var(--vwidth));
+}
+
+@media (min-aspect-ratio: 9/16) {
+    html {
+        --vheight: 100vh;
+        --vwidth: calc(9/16*var(--vheight));
+        font-size: calc(1/1920*var(--vheight));
+    }
+}
 
 body {
     height: 100vh;
@@ -30,8 +40,8 @@ body {
 
 .window {
     position: relative;
-    height: 1920px;
-    width: 1080px;
+    height: 1920rem;
+    width: 1080rem;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -42,10 +52,10 @@ body {
 
 .movable_parent {
     position: absolute;
-    top: 0px;
-    left: 0px;
-    --width: 1080px;
-    height: 1920px;
+    top: 0rem;
+    left: 0rem;
+    --width: 1080rem;
+    height: 1920rem;
     width: calc(var(--width)*3);
     display: flex;
     flex-direction: row;
@@ -54,18 +64,25 @@ body {
 
 .background {
     position: relative;
-    width: 1080px;
-    height: 1920px;
+    width: 1080rem;
+    height: 1920rem;
     display: flex;
     align-items: center;
     flex-direction: column;
     overflow: hidden;
 }
 
+.background .svgBG, .background2 .svgBG {
+    position: absolute;
+    top: 0rem;
+    width: 100%;
+    height: 100%;
+}
+
 .background2 {
     position: relative;
-    width: 1080px;
-    height: 1920px;
+    width: 1080rem;
+    height: 1920rem;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -79,10 +96,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 108px;
-    height: 108px;
-    left: 48px;
-    top: 102px;
+    width: 108rem;
+    height: 108rem;
+    left: 48rem;
+    top: 102rem;
     opacity: 0.5;
     z-index: 1;
     /* background: grey; */
@@ -100,8 +117,8 @@ body {
 
 .cross_oval .cross_hand {
     position: absolute;
-    width: 54px;
-    height: 6px;
+    width: 54rem;
+    height: 6rem;
     top: 50%;
     left: 50%;
     background-color: #9C88D8;
@@ -120,12 +137,12 @@ body {
     width: 55%;
     height: 5.6%;
     top: 5.3%;
-    border-radius: 200px;
+    border-radius: 200rem;
     background: rgb(109, 42, 244);
     display: flex;
     align-items: center;
     justify-content: space-around;
-    font-size: 36px;
+    font-size: 36rem;
     text-align: center;
     font-family: Gotham SSm;
     font-weight: 325;
@@ -138,7 +155,7 @@ body {
 .observation_bar {
     height: 100%;
     width: 50%;
-    border-radius: 200px;
+    border-radius: 200rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -147,7 +164,7 @@ body {
 .question_bar {
     height: 100%;
     width: 50%;
-    border-radius: 200px;
+    border-radius: 200rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -156,30 +173,37 @@ body {
 .nav_selected {
     background: white;
     color: rgb(54, 18, 175);
-    box-shadow: 4px 2px 10px 2px rgba(0, 0, 0, 0.284);
-    /*The direction needs to be changed by putting a 'minus' sign befer '4px'*/
+    box-shadow: 4rem 2rem 10rem 2rem rgba(0, 0, 0, 0.284);
+    /*The direction needs to be changed by putting a 'minus' sign befer '4rem'*/
 }
 
 .nav_selected2 {
     background: white;
     color: rgb(54, 18, 175);
-    box-shadow: -4px 2px 10px 2px rgba(0, 0, 0, 0.284);
+    box-shadow: -4rem 2rem 10rem 2rem rgba(0, 0, 0, 0.284);
 }
 
 .context_button {
     position: absolute;
-    left: 924px;
-    top: 101px;
+    left: 900rem;
+    top: 117rem;
+    height: 108rem;
+    width: 108rem;
     z-index: 2;
+}
+
+.context_button img {
+    width: 100%;
+    height: 100%;
 }
 
 /* For the instruction area */
 
 .instructino_area {
     position: absolute;
-    width: 984px;
-    height: 240px;
-    top: 288px;
+    width: 984rem;
+    height: 240rem;
+    top: 288rem;
     text-align: justify;
 }
 
@@ -188,8 +212,8 @@ body {
     font-family: Gotham SSm;
     font-style: normal;
     font-weight: 300;
-    font-size: 39px;
-    line-height: 60px;
+    font-size: 39rem;
+    line-height: 60rem;
     /* or 154% */
     color: #FFFDFD;
 }
@@ -201,10 +225,10 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
-    border-radius: 20px;
-    width: 984px;
-    height: 520px;
-    top: 564px;
+    border-radius: 20rem;
+    width: 984rem;
+    height: 520rem;
+    top: 564rem;
     background-color: #000000AB;
     overflow: hidden;
 }
@@ -221,7 +245,7 @@ body {
     height: 100%;
     border-collapse: collapse;
     color: #fff;
-    font-size: 36px;
+    font-size: 36rem;
     font-family: Gotham SSm;
     font-weight: heavier;
     text-align: center;
@@ -229,40 +253,50 @@ body {
 
 .check {
     position: absolute;
-    left: 64.5%;
-    width: 200px;
-    height: 500px;
+    left: 64.8%;
+    width: 200rem;
+    height: 500rem;
     background-color: transparent;
 }
 
 .check #first_check {
+    width: 70rem;
+    height: 70rem;
     position: absolute;
     top: 48%;
 }
 
 .check #second_check {
+    width: 70rem;
+    height: 70rem;
     position: absolute;
     top: 68%;
 }
 
 .check #third_check {
+    width: 70rem;
+    height: 70rem;
     position: absolute;
     top: 87%;
 }
 
 .wrong {
+    width: 100%;
+    height: 100%;
     z-index: 1;
     display: none;
 }
 
 .right {
+    width: 100%;
+    height: 100%;
     z-index: 2;
     display: none;
 }
 
 .table th {
-    height: 60px;
-    padding: 30px 0px;
+    height: 60rem;
+    padding: 30rem 0rem;
 }
 
 .table td:nth-child(3) {
@@ -286,40 +320,40 @@ body {
 
 .table tbody tr:nth-child(even), .table tbody tr:nth-child(odd) {
     background-color: #28334F;
-    height: 100px;
+    height: 100rem;
 }
 
 .table tbody td:nth-child(1), .table tbody td:nth-child(2) {
     /* .table td:nth-child(2), .table thead th:nth-child(2), .table td:nth-child(3) { */
-    border-right: 1px solid rgba(255, 255, 255, 0.5);
-    /* border-top: 1px solid rgba(255, 255, 255, 0.5); */
-    /* border-bottom: 1px solid rgba(255, 255, 255, 0.5); */
+    border-right: 1rem solid rgba(255, 255, 255, 0.5);
+    /* border-top: 1rem solid rgba(255, 255, 255, 0.5); */
+    /* border-bottom: 1rem solid rgba(255, 255, 255, 0.5); */
 }
 
 .table thead th {
     /* .table td:nth-child(2), .table thead th:nth-child(2), .table td:nth-child(3) { */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    /* border-top: 1px solid rgba(255, 255, 255, 0.5); */
-    /* border-bottom: 1px solid rgba(255, 255, 255, 0.5); */
+    border-bottom: 1rem solid rgba(255, 255, 255, 0.5);
+    /* border-top: 1rem solid rgba(255, 255, 255, 0.5); */
+    /* border-bottom: 1rem solid rgba(255, 255, 255, 0.5); */
 }
 
 .table thead th:nth-child(2) {
-    border-right: 1px solid rgba(255, 255, 255, 0.5);
-    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1rem solid rgba(255, 255, 255, 0.5);
+    border-left: 1rem solid rgba(255, 255, 255, 0.5);
 }
 
 .table tbody tr:nth-child(2), .table tbody tr:nth-child(3) {
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1rem solid rgba(255, 255, 255, 0.5);
 }
 
 /* For feedback bar */
 
 .feedback_bar {
     position: absolute;
-    border-radius: 20px;
-    width: 984px;
-    height: 180px;
-    top: 1120px;
+    border-radius: 20rem;
+    width: 984rem;
+    height: 180rem;
+    top: 1120rem;
     background: linear-gradient(180deg, #12EAFA 0%, #0787E2 100%);
     /* background: linear-gradient(180deg, #FFE601 0%, #E8882F 100%); */
     display: flex;
@@ -331,12 +365,12 @@ body {
 
 .feedback_bar p {
     position: relative;
-    margin: 10px;
+    margin: 10rem;
     font-family: Gotham SSm;
     font-style: normal;
     font-weight: 400;
-    font-size: 36px;
-    line-height: 50px;
+    font-size: 36rem;
+    line-height: 50rem;
     /* or 154% */
     color: black;
     width: 95%;
@@ -350,13 +384,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 984px;
-    height: 120px;
-    top: 1434px;
+    width: 984rem;
+    height: 120rem;
+    top: 1434rem;
     background: linear-gradient(180deg, #CF47FF 0%, #7E00EE 100%);
-    border-radius: 20px;
+    border-radius: 20rem;
     font-family: Gotham SSm;
-    font-size: 36px;
+    font-size: 36rem;
 }
 
 .equation_container p {
@@ -368,20 +402,20 @@ body {
     font-family: Gotham SSm;
     font-style: normal;
     font-weight: 325;
-    font-size: 36px;
+    font-size: 36rem;
     line-height: 134%;
     color: #fff;
 }
 
 .equation_container p .numbers {
     position: relative;
-    margin-right: 10px;
-    margin-left: 10px;
+    margin-right: 10rem;
+    margin-left: 10rem;
     background: linear-gradient(180deg, #8C38AA 0%, #4D028F 100%);
-    width: 80px;
-    height: 80px;
-    box-shadow: inset 2px 2px 4px #0F007B;
-    border-radius: 16px;
+    width: 80rem;
+    height: 80rem;
+    box-shadow: inset 2rem 2rem 4rem #0F007B;
+    border-radius: 16rem;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -389,7 +423,7 @@ body {
 }
 
 .equation_container .numbers_container {
-    /* border: 1px solid white; */
+    /* border: 1rem solid white; */
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -414,32 +448,32 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    margin-right: 10px;
-    margin-left: 10px;
+    margin-right: 10rem;
+    margin-left: 10rem;
     /* background: linear-gradient(180deg, #8C38AA 0%, #4D028F 100%); */
     background: transparent;
-    width: 60px;
-    height: 60px;
-    /* box-shadow: inset 2px 2px 4px #0F007B;
-    border-radius: 16px; */
+    width: 60rem;
+    height: 60rem;
+    /* box-shadow: inset 2rem 2rem 4rem #0F007B;
+    border-radius: 16rem; */
     overflow: hidden;
     color: white;
     opacity: 0;
     /* display: none; */
-    font-size: 36px;
+    font-size: 36rem;
     font-family: Gotham SSm;
     font-weight: heavier;
 }
 
 .elms {
     position: relative;
-    margin-right: 10px;
-    margin-left: 10px;
+    margin-right: 10rem;
+    margin-left: 10rem;
     /* background: linear-gradient(180deg, #8C38AA 0%, #4D028F 100%); */
     /* background: transparent; */
-    height: 120px;
-    /* box-shadow: inset 2px 2px 4px #0F007B; */
-    /*border-radius: 16px;
+    height: 120rem;
+    /* box-shadow: inset 2rem 2rem 4rem #0F007B; */
+    /*border-radius: 16rem;
     overflow: hidden; */
     opacity: 0;
     color: solid black;
@@ -449,97 +483,97 @@ body {
     font-family: Gotham SSm;
     font-style: normal;
     font-weight: 325;
-    font-size: 36px;
+    font-size: 36rem;
 }
 
 .Fe1 {
     position: absolute;
-    left: 145px;
-    width: 69px;
+    left: 145rem;
+    width: 69rem;
 }
 
 .C1 {
     position: absolute;
-    left: 415px;
-    width: 56px;
+    left: 415rem;
+    width: 56rem;
 }
 
 .O1 {
     position: absolute;
-    left: 212px;
-    width: 58px;
+    left: 212rem;
+    width: 58rem;
 }
 
 .O2 {
     position: absolute;
-    left: 877px;
-    width: 60px;
+    left: 877rem;
+    width: 60rem;
 }
 
 .C2 {
     position: absolute;
-    left: 833px;
-    width: 43px;
+    left: 833rem;
+    width: 43rem;
 }
 
 .Fe2 {
     position: absolute;
-    left: 630px;
-    width: 60px;
+    left: 630rem;
+    width: 60rem;
 }
 
 .elm1 {
     position: absolute;
-    left: 165px;
+    left: 165rem;
 }
 
 .Iron {
     position: absolute;
-    left: 100px;
+    left: 100rem;
 }
 
 .Oxygen {
     position: absolute;
-    left: 135px;
+    left: 135rem;
 }
 
 .Carbon {
     position: absolute;
-    left: 400px;
+    left: 400rem;
 }
 
 .elm2 {
     position: absolute;
-    left: 215px;
+    left: 215rem;
 }
 
 .elm3 {
     position: absolute;
-    left: 324px;
+    left: 324rem;
 }
 
 .elm4 {
     position: absolute;
-    left: 535px;
+    left: 535rem;
 }
 
 .elm5 {
     position: absolute;
-    left: 745px;
+    left: 745rem;
 }
 
 .elm6 {
     position: absolute;
-    left: 875px;
+    left: 875rem;
 }
 
 .Plus {
     position: absolute;
     background-color: transparent;
     opacity: 0.4;
-    border-radius: 22px;
-    height: 93px;
-    width: 93px;
+    border-radius: 22rem;
+    height: 93rem;
+    width: 93rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -547,47 +581,52 @@ body {
 }
 
 .Plus.Plus1 {
-    left: 100px;
-    top: 1325px;
-    padding-left: 15px;
-    padding-top: 20px;
-    padding-bottom: 12px;
-    padding-right: 6px;
+    left: 100rem;
+    top: 1325rem;
+    padding-left: 15rem;
+    padding-top: 20rem;
+    padding-bottom: 12rem;
+    padding-right: 6rem;
 }
 
 .Plus.Plus2 {
-    left: 374px;
-    top: 1325px;
-    padding-left: 14.5px;
-    padding-top: 20px;
-    padding-bottom: 12px;
-    padding-right: 6.5px;
+    left: 374rem;
+    top: 1325rem;
+    padding-left: 14.5rem;
+    padding-top: 20rem;
+    padding-bottom: 12rem;
+    padding-right: 6.5rem;
 }
 
 .Plus.Plus3 {
-    left: 581px;
-    top: 1325px;
-    padding-left: 14.5px;
-    padding-top: 20px;
-    padding-bottom: 12px;
-    padding-right: 6.5px;
+    left: 581rem;
+    top: 1325rem;
+    padding-left: 14.5rem;
+    padding-top: 20rem;
+    padding-bottom: 12rem;
+    padding-right: 6.5rem;
 }
 
 .Plus.Plus4 {
-    left: 795px;
-    top: 1325px;
-    padding-left: 16px;
-    padding-top: 20px;
-    padding-bottom: 12px;
-    padding-right: 8.5px;
+    left: 795rem;
+    top: 1325rem;
+    padding-left: 16rem;
+    padding-top: 20rem;
+    padding-bottom: 12rem;
+    padding-right: 8.5rem;
+}
+
+.Plus img {
+    width: 80rem;
+    height: 80rem;
 }
 
 .Minus {
     position: absolute;
     background-color: transparent;
-    border-radius: 22px;
-    height: 93px;
-    width: 93px;
+    border-radius: 22rem;
+    height: 93rem;
+    width: 93rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -596,53 +635,56 @@ body {
 }
 
 .Minus.Minus1 {
-    left: 102px;
-    top: 1572px;
-    padding-left: 16px;
-    padding-top: 21.5px;
-    padding-bottom: 10.5px;
-    padding-right: 5px;
+    left: 102rem;
+    top: 1572rem;
+    padding-left: 16rem;
+    padding-top: 21.5rem;
+    padding-bottom: 10.5rem;
+    padding-right: 5rem;
 }
 
 .Minus.Minus2 {
-    left: 374px;
-    top: 1572px;
-    padding-left: 14.5px;
-    padding-top: 21.5px;
-    padding-bottom: 10.5px;
-    padding-right: 6.5px;
+    left: 374rem;
+    top: 1572rem;
+    padding-left: 14.5rem;
+    padding-top: 21.5rem;
+    padding-bottom: 10.5rem;
+    padding-right: 6.5rem;
 }
 
 .Minus.Minus3 {
-    left: 581px;
-    top: 1572px;
-    padding-left: 14.5px;
-    padding-top: 21.5px;
-    padding-bottom: 10.5px;
-    padding-right: 6.5px;
+    left: 581rem;
+    top: 1572rem;
+    padding-left: 14.5rem;
+    padding-top: 21.5rem;
+    padding-bottom: 10.5rem;
+    padding-right: 6.5rem;
 }
 
 .Minus.Minus4 {
-    left: 795px;
-    top: 1572px;
-    padding-left: 16px;
-    padding-top: 21.5px;
-    padding-bottom: 10.5px;
-    padding-right: 4px;
+    left: 795rem;
+    top: 1572rem;
+    padding-left: 16rem;
+    padding-top: 21.5rem;
+    padding-bottom: 10.5rem;
+    padding-right: 4rem;
 }
-
+.Minus img {
+    width: 80rem;
+    height: 80rem;
+}
 .next_button {
     position: absolute;
     width: 45%;
-    height: 128.64px;
+    height: 128.64rem;
     border: none;
-    border-radius: 200px;
+    border-radius: 200rem;
     background: linear-gradient(90deg, #10dca3, #3988fa);
     color: white;
     font-family: Gotham SSm;
     font-weight: 350;
-    font-size: 39px;
-    top: 1704px;
+    font-size: 39rem;
+    top: 1704rem;
     cursor: pointer;
 }
 
@@ -650,13 +692,13 @@ body {
     position: absolute;
     top: 100%;
     width: 45%;
-    height: 128.64px;
+    height: 128.64rem;
     border: none;
-    border-radius: 200px;
+    border-radius: 200rem;
     background: #FFFFFF;
     color: #333333;
     font-family: Gotham SSm;
     font-weight: 350;
-    font-size: 39px;
+    font-size: 39rem;
     cursor: pointer;
 }
