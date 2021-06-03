@@ -28,7 +28,7 @@ function touchstart(event) {
     }
     if (event.target.getAttribute('dragged') != 'true') {
         var target = event.target;
-        var target_copy = target.cloneNode(true);
+        var target_copy = target.cloneNode(true); //For copying the node with all its childs and innerHTML
         target.before(target_copy);
         target_copy.id = target.id;
         target.id = target.id + "copy";
@@ -36,7 +36,8 @@ function touchstart(event) {
         target.setAttribute('dragged', 'true');
     }
     else {
-        event.target.style = "position: absolute; opacity: 0.5;";
+        event.target.style.setProperty ('position', 'absolute');
+        event.target.style.setProperty ('opacity', '0.5');
     }
     OriginX = target_style.left;
     OriginY = target_style.top;
@@ -47,8 +48,8 @@ function touchmove(event) {
     var relativeY = (event.touches[0].pageY - initialY) * (1 / 1);
     var targetX = (Number(OriginX.slice(0, -2)) + relativeX).toString() + 'px';
     var targetY = (Number(OriginY.slice(0, -2)) + relativeY).toString() + 'px';
-    event.target.style.left = targetX;
-    event.target.style.top = targetY;
+    event.target.style.setProperty('left', targetX);
+    event.target.style.setProperty('top', targetY);
     // console.log('clientX', event.touches[0].clientX, 'clientY', event.touches[0].clientY);
 }
 
