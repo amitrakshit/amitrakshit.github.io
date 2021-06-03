@@ -36,14 +36,16 @@ function touchstart(event) {
         target.setAttribute('dragged', 'true');
     }
     else {
-        event.target.style.setProperty ('position', 'absolute');
-        event.target.style.setProperty ('opacity', '0.5');
+        event.target.style.setProperty('position', 'absolute');
+        event.target.style.setProperty('opacity', '0.5');
     }
     OriginX = target_style.left;
     OriginY = target_style.top;
 }
 
 function touchmove(event) {
+    event.target.style.setProperty('position', 'absolute');
+    event.target.style.setProperty('opacity', '0.5');
     var relativeX = (event.touches[0].pageX - initialX) * (1 / 1);
     var relativeY = (event.touches[0].pageY - initialY) * (1 / 1);
     var targetX = (Number(OriginX.slice(0, -2)) + relativeX).toString() + 'px';
@@ -62,7 +64,7 @@ function touchend(event) {
     var clientY = Number(event.changedTouches[0].clientY);
     event.target.setAttribute('dropzoneID', 'none');
     event.target.setAttribute('dropped', 'false');
-    
+
 
     for (let i = 0; i < NumberOfdropzones; i++) {
         var dropzonLeft = dropzone_parameters[i].left;
@@ -70,14 +72,14 @@ function touchend(event) {
         var dropzonWidth = dropzone_parameters[i].width;
         var dropzonHeight = dropzone_parameters[i].height;
         // console.log(dropzonLeft, dropzonLeft + dropzonWidth, dropzonTop, dropzonTop + dropzonHeight);
-        
+
         dropzones[i].style = defaultDropzoneStyle;
         if (clientX > dropzonLeft && clientX < (dropzonLeft + dropzonWidth) && clientY > dropzonTop && clientY < (dropzonTop + dropzonHeight)) {
             dropzones[i].setAttribute('draggedID', event.target.id.slice(0, -4));
             event.target.setAttribute('dropped', 'true');
             event.target.setAttribute('dropzoneID', dropzones[i].id);
         }
-        else{
+        else {
             dropzones[i].style = defaultDropzoneStyle[i].style;
         }
     }
