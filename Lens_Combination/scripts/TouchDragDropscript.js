@@ -14,42 +14,46 @@ for (let i = 0; i < NumberOfdropzones; i++) {
 
 var initialX = 0;
 var initialY = 0;
-var OriginX = 0;
-var OriginY = 0;
+var OriginXTouch = 0;
+var OriginYTouch = 0;
 
-var previousStyle = undefined;
+var previousStyle = 0;
 function touchstart(event) {
-    // previousStyle = event.target.style;
     initialX = event.touches[0].pageX;
     initialY = event.touches[0].pageY;
-    var target_style = window.getComputedStyle(event.target);
     if (event.target.id == '') {
         event.target.id = 'tempID';
     }
     if (event.target.getAttribute('dragged') != 'true') {
         var target = event.target;
         var target_copy = target.cloneNode(true); //For copying the node with all its childs and innerHTML
+        previousStyle = window.getComputedStyle(target);
+        target_style = previousStyle;
         target.before(target_copy);
         target_copy.id = target.id;
         target.id = target.id + "copy";
-        target.style = 'position: absolute; opacity: 0.5;';
+        event.target.style.setProperty('position', 'absolute');        
+        event.target.style.setProperty('opacity', '0.5');
+        event.target.style.setProperty('top', target_style.top);
+        event.target.style.setProperty('left', target_style.left);
         target.setAttribute('dragged', 'true');
     }
-    else {
+    else if(event.target.getAttribute('dragged') == 'true') {
         event.target.style.setProperty('position', 'absolute');
         event.target.style.setProperty('opacity', '0.5');
+        // event.target.style.setProperty('top', previousStyle.top);
+        // event.target.style.setProperty('left', previousStyle.left);
     }
-    OriginX = target_style.left;
-    OriginY = target_style.top;
+    
+    OriginXTouch = target_style.left;
+    OriginYTouch = target_style.top;
 }
 
 function touchmove(event) {
-    event.target.style.setProperty('position', 'absolute');
-    event.target.style.setProperty('opacity', '0.5');
     var relativeX = (event.touches[0].pageX - initialX) * (1 / 1);
     var relativeY = (event.touches[0].pageY - initialY) * (1 / 1);
-    var targetX = (Number(OriginX.slice(0, -2)) + relativeX).toString() + 'px';
-    var targetY = (Number(OriginY.slice(0, -2)) + relativeY).toString() + 'px';
+    var targetX = (Number(OriginXTouch.slice(0, -2)) + relativeX).toString() + 'px';
+    var targetY = (Number(OriginYTouch.slice(0, -2)) + relativeY).toString() + 'px';
     event.target.style.setProperty('left', targetX);
     event.target.style.setProperty('top', targetY);
     // console.log('clientX', event.touches[0].clientX, 'clientY', event.touches[0].clientY);
@@ -58,8 +62,8 @@ function touchmove(event) {
 
 var defaultDropzoneStyle = dropzones;
 function touchend(event) {
-    event.target.style.left = OriginX;
-    event.target.style.top = OriginY;
+    event.target.style.left = OriginXTouch;
+    event.target.style.top = OriginYTouch;
     var clientX = Number(event.changedTouches[0].clientX);
     var clientY = Number(event.changedTouches[0].clientY);
     event.target.setAttribute('dropzoneID', 'none');
@@ -83,10 +87,11 @@ function touchend(event) {
             dropzones[i].style = defaultDropzoneStyle[i].style;
         }
     }
-    //For removing the copied one;
-    // document.getElementById(event.target.id.slice(0, -4)).remove();
-    // event.target.id = event.target.id.slice(0, -4);
-    // event.target.setAttribute('dragged', 'false');
-    // event.target.style = previousStyle;
-    event.target.style = 'opacity: 0;';
+    // For removing the copied one;
+    document.getElementById(event.target.id.slice(0, -4)).remove();
+    event.target.id = event.target.id.slice(0, -4);
+    event.target.setAttribute('dragged', 'false');
+    event.target.style.setProperty('top', previousStyle.top);
+    event.target.style.setProperty('left', previousStyle.left);
+    event.target.style = 'opacity: 1;';
 }

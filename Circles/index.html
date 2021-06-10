@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/question_style.css">
+    <link rel="stylesheet" href="styles/LO_style.css">
+    <link rel="stylesheet" href="styles/context_card.css">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Circles</title>
+</head>
+
+<body>
+    <div class="window">
+
+        <div class="cross_symbol_container">
+            <div class="cross_oval">
+                <div class="cross_hand" id="hand1"></div>
+                <div class="cross_hand" id="hand2"></div>
+            </div>
+        </div>
+
+        <div class="navigation_bar">
+            <div class="observation_bar nav_selected">Observation</div>
+            <div class="question_bar">Question</div>
+        </div>
+        <div class="context_button">
+            <img class="btn" src="img/Context_Button.svg" />
+        </div>
+
+        <div class="movable_parent">
+            <!-- This section is for the observation -->
+            <section id="reload_section" class="background">
+                <img class="bg" src="img/background.svg">
+
+
+
+
+
+
+                <!-- For instruction Area. It is always a good practice to put the text in a paragraph element since it can contain inline mathJax. -->
+                <div class="instructino_area">
+                    <p> See how angles subtended by the same chord in the same segment are equal in measure. </p>
+                </div>
+                <!-- For Visual Area -->
+                <div class="visual_area">
+
+                    <p id="a">A</p>
+                    <p id="b">B</p>
+                    <p id="q">Q</p>
+                    <p id="p">P</p>
+
+
+
+
+                </div>
+
+                
+                <canvas id="fill_canvas" class="parent_canvas" width="984" height="540"></canvas>
+                <canvas id="tri1canvas" class="parent_canvas" width="984" height="540"></canvas>
+                <canvas id="tri2canvas" class="parent_canvas" width="984" height="540"></canvas>
+                <canvas id="mycanvas" class="parent_canvas" width="984" height="540"></canvas>
+
+                <!-- For Feedback bar -->
+                <div class="feedback_bar">
+                    <p id="feed"> Move the slider to change the length of chord AB. Click on next button. </p>
+                </div>
+
+                <!-- For Interaction area -->
+                <div class="interaction_area">
+                    <!-- <div class = "movable">
+                        <span class = "slider_value"></span>
+                    </div> -->
+                    <input type="range" min="1" max="150" value="1" id="myrange" class="input_slider">
+                </div>
+                <!-- For the Next Buttons -->
+                <button class="next_button" onclick="next_instruction()">Next</button>
+            </section>
+
+            <!-- This section is for the question -->
+            <section class="background2">
+                <img class="bg2" src="img/background2.svg">
+
+
+
+
+
+                <div class="dynamic_panel_window">
+                    <div class="scrollable_dynamic_panel">
+                        <div class="question_area">
+                            <p>Find the value of x in the figure. O is the centre of the circle.</p><br>
+                            <img class = "ques_image" src = "img/Question_Visual.svg">
+                        </div>
+                        <div class="feedback-bar">
+                            <div id="big">Oops!</div>
+                            <div id="small">You’ve missed something! Let’s go back to the observation tab and give it
+                                another
+                                shot!
+                            </div>
+                        </div>
+                        <div class="option-container">
+                            <div class="options" id="option1" title="solution">60&deg;</div>
+                            <div class="options" id="option2">40&deg;</div>
+                            <div class="options" id="option3">45&deg;</div>
+                            <div class="options" id="option4">50&deg;</div>
+                        </div>
+
+                        <div class="solution">
+                            <p id="SolHead">Solution</p>
+                            <img class = "sol_image" src = "img/Solution_Visual.svg" >
+                            <p id = "Soltext">
+
+                                &bull;&nbsp;&angle;BAN and &angle;NMB are the angles subtended by the same segment BNMA.
+                                <br>
+                                &bull;&nbsp;&therefore;&nbsp;&angle;BAN = &angle;NMB = 30&deg; [by theorem].<br>
+                                &bull;&nbsp;Also, AB is the diameter. Hence, <br> &nbsp;&nbsp;&angle;ANB = 90&deg;.<br>
+                                &bull;&nbsp;In &#9651;ABN, &angle;ANB = 90&deg; and &angle;BAN = 30&deg;. <br>
+                                &bull;&nbsp;&therefore;&nbsp;&angle;ANB + &angle;BAN + x = 180&deg; <br>
+                                &nbsp;&nbsp;&nbsp;&DoubleRightArrow; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;90&deg;
+                                + 30&deg; + x = 180&deg;<br>
+                                &nbsp;&nbsp;&nbsp;&DoubleRightArrow;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                x = 60&deg;
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="button-container">
+                    <button class="finish-button">Finish</button>
+                </footer>
+            </section>
+            <!-- LO message -->
+            <section class="LO_message">
+                <div class="popup">
+                    <div class="text_container">
+                        <p>Wow! You have successfully learnt that angles subtended by the same chord in the same segment
+                            are equal.
+                        </p>
+                    </div>
+                    <div class="tick_mark_container">
+                        <div class="ellipse2"></div>
+                        <svg class="round_stroke" width="200" height="200">
+                            <path d=""></path>
+                        </svg>
+                        <div class="ellipse1"></div>
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                    </div>
+                    <button class="close_button">Close</button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="scripts/index_script.js"></script>
+    <script src="scripts/question_script.js"></script>
+    <script src="scripts/LO_script.js"></script>
+    <script src="scripts/context_card.js"></script>
+</body>
+
+</html>

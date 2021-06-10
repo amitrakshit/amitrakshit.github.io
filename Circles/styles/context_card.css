@@ -1,0 +1,145 @@
+.contex_card {
+    --width: 1080rem;
+    --height: 1920rem;
+    position: absolute;
+    width: var(--width);
+    height: var(--height);
+    top: calc(var(--height)*0);
+    left: calc(var(--width)*0);
+    /* background-color: #000000FF; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transition: background-color 0.5s;
+    z-index: 1;
+    transform-origin: 91% 8%;
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 0.5s, opacity 0.5s;
+    z-index: 0;
+}
+
+.contex_card img {
+    height: 100%;
+    width: 100%;
+}
+
+.contex_card .card_scroll_window {
+    position: absolute;
+    width: calc(936/1080*var(--width));
+    height: calc(1584/1920*var(--height));
+    top: calc(264/1920*var(--height));
+    border-radius: 24rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.card_scroll_window::-webkit-scrollbar {
+    width: 0rem;
+}
+
+/* .card_scroll_window::-webkit-scrollbar-button{
+    opacity: 0;
+}
+
+.card_scroll_window::-webkit-scrollbar-track {
+    right: 12px;
+    width: 30px;
+    background-color: rgb(183, 241, 255);
+    border-radius: 24px;
+    ;
+}
+
+.card_scroll_window::-webkit-scrollbar-thumb {
+    background-color: violet;
+} */
+
+.card_scrollable {
+    position: absolute;
+    width: calc(936/1080*var(--width));
+    /* min-height: calc(1584/1920*var(--height)); */
+    top: calc(0/1920*var(--height));
+    height: 180%;
+    background-color: white;
+    font-size: 36rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card_scrollable p {
+    font-family: Gotham Ssm;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 90%;
+    font-weight: 300;
+}
+
+.card_scrollable p span {
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.inline_table {
+    position: absolute;
+    border: 1rem solid black;
+    width: 70%;
+    border-collapse: collapse;
+    font-family: Gotham Ssm;
+}
+
+.inline_table td, .inline_table th {
+    border: 1rem solid black;
+    text-align: center;
+}
+
+#step2_table {
+    top: 390rem;
+}
+
+#step4a_table {
+    top: 1566rem;
+}
+
+#step4b_table {
+    top: 2011rem;
+}
+
+#step5_table {
+    top: 2396rem;
+}
+
+.LCM_Visual {
+    font-family: Gotham SSm;
+    position: absolute;
+    top: 770rem;
+    width: 40%;
+    text-align: center;
+    padding: 10rem 0rem;;
+    background-color: rgb(189, 189, 189);
+}
+
+.LCM_Visual table {
+    position: relative;
+    left: 50%; transform: translateX(-50%);
+    border-collapse: collapse;
+    width: 40%;
+}
+
+.LCM_Visual table tr:nth-of-type(1), .LCM_Visual table tr:nth-of-type(2) {
+    border-bottom: 1rem solid black;
+}
+
+.LCM_Visual table td:nth-of-type(1) {
+    border-right: 1rem solid black;
+    text-align: right;
+    padding-right: 10rem;
+}
+
+.LCM_Visual table td:nth-of-type(2) {
+    text-align: left;
+    padding-left: 10rem;
+}
