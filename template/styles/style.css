@@ -1,0 +1,341 @@
+@font-face {
+    font-family: Gotham SSm;
+    /* src: url('/fonts/Gotham-SSm/GothamSSm-Black.otf'); */
+    src: url('../fonts/Gotham-SSm/GothamSSm-Light.otf');
+    /* src: url('/fonts/Gotham-SSm/GothamSSm-BlackItalic.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-Bold.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-BoldItalic.otf'); 
+    src: url('fonts/Gotham-SSm/GothamSSm-Book.otf'); */
+    /* src: url('/fonts/Gotham-SSm/GothamSSm-BookItalic.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-LightItalic.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-Medium.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-MediumItalic.otf'); */
+}
+
+html {
+    font-size: calc(1/1080*100vw);
+}
+
+@media only screen and (min-aspect-ratio: 9/16) {
+    html {
+        font-size: calc(1/1920*100vh);
+    }
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* This part is for showing the slider animation */
+
+.window {
+    position: relative;
+    height: 1920rem;
+    width: 1080rem;
+    overflow: hidden;
+}
+
+.movable_parent {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    --width: 1080rem;
+    height: 1920rem;
+    width: calc(var(--width)*3);
+    display: flex;
+    flex-direction: row;
+    transition: left 0.4s linear;
+}
+
+.background {
+    position: relative;
+    width: 1080rem;
+    height: 1920rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.background2 {
+    position: relative;
+    width: 1080rem;
+    height: 1920rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* background: radial-gradient(119.99% 62.42% at 50% 36.33%, #7B16e1 0%, #000e87 100%); */
+    overflow: hidden;
+}
+
+.BG_svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* For the cross symbol */
+
+.cross_symbol_container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 108rem;
+    height: 108rem;
+    left: 48rem;
+    top: 102rem;
+    opacity: 0.5;
+    /* background: grey; */
+    z-index: 1;
+}
+
+.cross_symbol_container .cross_oval {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    /* background-color: blue; */
+}
+
+.cross_oval .cross_hand {
+    position: absolute;
+    width: 54rem;
+    height: 6rem;
+    top: 50%;
+    left: 50%;
+    background-color: #9C88D8;
+}
+
+.cross_oval #hand1 {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.cross_oval #hand2 {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.bubble {
+    position: absolute;
+    border: none;
+    border-radius: 50%;
+}
+
+.bubble.bubble1 {
+    width: 531rem;
+    height: 531rem;
+    left: -144rem;
+    top: -267rem;
+    background: radial-gradient(53.31% 53.31% at 50% 50%, rgba(137, 27, 233, 0) 0%, rgba(137, 27, 233, 0.27907) 85.42%, #B663FF 100%);
+    opacity: 0.4;
+}
+
+.bubble.bubble2 {
+    width: 336rem;
+    height: 336rem;
+    left: 912rem;
+    top: 156rem;
+    background: radial-gradient(53.31% 53.31% at 50% 50%, rgba(137, 27, 233, 0) 0%, rgba(137, 27, 233, 0.27907) 85.42%, #891BE9 100%);
+    opacity: 0.3;
+}
+
+.bubble.bubble3 {
+    width: 381rem;
+    height: 381rem;
+    left: 606rem;
+    top: 1647rem;
+    background: radial-gradient(53.31% 53.31% at 58.96% 50.8%, rgba(0, 102, 255, 0) 47.4%, rgba(96, 140, 255, 0.5) 100%);
+    opacity: 0.36;
+}
+
+/* For navigation bar. When selected the 'nav_selected' class is to be added in js. And the direction of the box shadow should be changed depending on the situation */
+
+.navigation_bar {
+    position: absolute;
+    width: 55%;
+    height: 5.6%;
+    top: 5.3%;
+    border-radius: 200rem;
+    background: rgb(109, 42, 244);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 36rem;
+    text-align: center;
+    font-family: Gotham SSm;
+    font-weight: 325;
+    line-height: 144.2%;
+    cursor: pointer;
+    color: white;
+}
+
+.observation_bar {
+    height: 100%;
+    width: 50%;
+    border-radius: 200rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.question_bar {
+    height: 100%;
+    width: 50%;
+    border-radius: 200rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav_selected {
+    background: white;
+    color: rgb(54, 18, 175);
+    box-shadow: 4rem 2rem 10rem 2rem rgba(0, 0, 0, 0.284);
+    /*The direction needs to be changed by putting a 'minus' sign befer '4rem'*/
+}
+
+/* For the instruction area */
+
+.instructino_area {
+    position: absolute;
+    width: 984rem;
+    height: 240rem;
+    top: 288rem;
+}
+
+.instructino_area p {
+    margin: 0;
+    font-family: Gotham SSm;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 39rem;
+    line-height: 60rem;
+    /* or 154% */
+    color: #FFFDFD;
+}
+
+/* For Visual area */
+
+.visual_area {
+    position: absolute;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    width: 984rem;
+    height: 560rem;
+    top: 564rem;
+    background-image: radial-gradient(119.99% 62.42% at 50% 36.33%, #2d0457 0%, #000108 100%);
+    border-radius: 20rem;
+    z-index: 1;
+}
+
+/* For feedback bar */
+
+.feedback_bar {
+    position: absolute;
+    border-radius: 20rem;
+    width: 984rem;
+    height: 180rem;
+    top: 1200rem;
+    background: linear-gradient(180deg, #FFE601 0%, #E8882F 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feedback_bar p {
+    font-family: Gotham SSm;
+    font-weight: 80;
+    font-size: 40rem;
+    margin: 10rem;
+}
+
+.interaction_area {
+    position: absolute;
+    top: 80%;
+    width: 90%;
+    height: 5%;
+    /* outline: 1rem solid white; */
+}
+
+.input_slider {
+    -webkit-appearance: none;
+    outline: none;
+    overflow: none;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    height: 10%;
+}
+
+.input_slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 60rem;
+    height: 60rem;
+    background: linear-gradient(#fb8d34, #f96074);
+    border: none;
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.input_slider::-moz-range-thumb {
+    -webkit-appearance: none;
+    width: 80rem;
+    height: 80rem;
+    background: linear-gradient(#fb8d34, #f96074);
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.slider_container .movable span {
+    position: absolute;
+    bottom: 105%;
+    width: 15%;
+    height: 100%;
+    border: 6rem solid rgb(255, 255, 255);
+    border-radius: 20rem;
+    background: linear-gradient(#fb8d34, #f96074);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Gotham SSm;
+    font-size: 40rem;
+    color: rgb(241, 247, 246);
+    transform: translateX(-50%);
+}
+
+.slider_container .movable span::after {
+    content: '';
+    border-top: 20rem solid #ffffff;
+    border-left: 20rem solid rgba(0, 0, 0, 0);
+    border-right: 20rem solid rgba(0, 0, 0, 0);
+    position: absolute;
+    bottom: -025%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.next_button {
+    position: absolute;
+    top: 1704rem;
+    width: 45%;
+    height: 128.64rem;
+    border: none;
+    border-radius: 200rem;
+    background: linear-gradient(#10dca3, #3988fa);
+    color: white;
+    font-family: Gotham SSm;
+    font-weight: 350;
+    font-size: 39rem;
+    cursor: pointer;
+}

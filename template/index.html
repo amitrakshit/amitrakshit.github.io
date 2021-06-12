@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/question_style.css">
+    <link rel="stylesheet" href="styles/LO_style.css">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Simulation Template V1</title>
+</head>
+
+<body>
+    <div class="window">
+        <div class="movable_parent">
+            <!-- This section is for the observation -->
+            <section class="background">
+                <!-- For the corss mark -->
+                <div class="cross_symbol_container">
+                    <div class="cross_oval">
+                        <div class="cross_hand" id="hand1"></div>
+                        <div class="cross_hand" id="hand2"></div>
+                    </div>
+                </div>
+
+                <img src="img/BG_(Observation)_1_200521.svg" class='BG_svg'>
+                <!-- For the background only -->
+                <div class="bubble bubble1"></div>
+                <div class="bubble bubble2"></div>
+                <div class="bubble bubble3"></div>
+
+                <!-- For Navigation Bar -->
+                <div class="navigation_bar">
+                    <div class="observation_bar nav_selected">Observation</div>
+                    <div class="question_bar">Question</div>
+                </div>
+
+                <!-- For instruction Area. It is always a good practice to put the text in a paragraph element since it can contain inline mathJax. -->
+                <div class="instructino_area">
+                    <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, maiores quis at voluptas
+                        inventore obcaecati ab debitis sapiente beatae. </p>
+                </div>
+                <!-- For Visual Area -->
+                <div class="visual_area">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed esse animi ipsa facilis aliquid ullam
+                    qui similique doloribus. Harum magni quas dolorum sit modi qui molestias autem velit laborum
+                    laboriosam!
+
+                </div>
+
+
+                <!-- For Feedback bar -->
+                <div class="feedback_bar">
+                    <p id="para"> </p>
+                </div>
+
+                <!-- For Interaction area -->
+                <div class="interaction_area">
+                    <input type="range" min="500" max="2000" value="0" id="myrange" class="input_slider">
+                </div>
+                <!-- For the Next Buttons -->
+                <button class="next_button">Next</button>
+            </section>
+
+            <!-- This section is for the question -->
+            <section class="background2">
+                <!-- For the corss mark -->
+                <div class="cross_symbol_container">
+                    <div class="cross_oval">
+                        <div class="cross_hand" id="hand1"></div>
+                        <div class="cross_hand" id="hand2"></div>
+                    </div>
+                </div>
+                <img src="img/BG_(Question)_1_200521.svg" class='BG_svg'>
+
+                <!-- For the background only
+                <div class="bubble bubble1"></div>
+                <div class="bubble bubble2"></div>
+                <div class="bubble bubble3"></div> -->
+
+                <!-- For Navigation Bar -->
+                <div class="navigation_bar">
+                    <div class="observation_bar">Observation</div>
+                    <div class="question_bar nav_selected">Question</div>
+                </div>
+
+                <div class="dynamic_panel_window">
+                    <div class="scrollable_dynamic_panel">
+                        <div class="question_area">
+                            <p>If \(\frac{1}{6}+\frac{x}{6}=\frac{5}{6}\),
+                                then what is the value of \(x\)?</p>
+                        </div>
+                        <div class="feedback-bar">
+                            <div id="big">Oops!</div>
+                            <div id="small">You’ve missed something! Let’s go back to the observation tab and give it
+                                another
+                                shot!
+                            </div>
+                        </div>
+                        <div class="option-container">
+                            <div class="options" id="option1">1</div>
+                            <div class="options" id="option2">2</div>
+                            <div class="options" id="option3">3</div>
+                            <div class="options" id="option4" title="solution">4</div>
+                        </div>
+
+                        <div class="solution">
+                            <p id="SolHead">Solution</p>
+                            <p>When we add two like fractions, the numerators of the fractions gets added and the
+                                denominator remains
+                                the same.
+                                $$~~~\frac{1}{6}+\frac{x}{6}=\frac{5}{6}$$
+                                $$\Rightarrow \frac{1+x}{6}=\frac56$$
+                                From this expression, it is clear that \((1+x)\) must be equal to \(5\). <br>
+                                &nbsp;$$\displaylines{\therefore 1+x = 5 \\
+                                ~~~~~~\Rightarrow ~~~~~x=5-1\\
+                                \Rightarrow ~~~~~x = 4}$$
+                            </p>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <footer class="button-container">
+                    <button class="finish-button">Finish</button>
+                </footer>
+            </section>
+            <!-- LO message -->
+            <section class="LO_message">
+                <div class="popup">
+                    <div class="text_container">
+                        <p>Wow! You have successfully learnt that when we add two like fractions, the numerators of the
+                            fractions get added and the denominator remains the same.</p>
+                    </div>
+                    <div class="tick_mark_container">
+                        <div class="ellipse2"></div>
+                        <svg class="round_stroke" width="200" height="200">
+                            <path d=""></path>
+                        </svg>
+                        <div class="ellipse1"></div>
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                    </div>
+                    <button class="close_button">Close</button>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="./scripts/TouchDragDropscript.js"></script>
+    <script src="scripts/index_script.js"></script>
+    <script src="scripts/question_script.js"></script>
+    <script src="scripts/LO_script.js"></script>
+    
+</body>
+
+</html>
