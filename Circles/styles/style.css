@@ -199,7 +199,7 @@ body {
     position: absolute;
     width: 984rem;
     height: 240rem;
-    top: 288rem;
+    top: 268rem;
 }
 
 .instructino_area p {
@@ -207,7 +207,7 @@ body {
     font-family: Gotham SSm;
     font-style: normal;
     font-weight: 300;
-    font-size: 39rem;
+    font-size: 36rem;
     line-height: 60rem;
     /* or 154% */
     color: #FFFDFD;
@@ -219,8 +219,8 @@ body {
     position: absolute;
     width: 984rem;
     height: 540rem;
-    top: 564rem;
-    background-color: #072F3E;
+    top: 470rem;
+    background-image: radial-gradient(119.99% 62.42% at 50% 36.33%, #2d0457 0%, #000108 100%);
     border-radius: 20rem;
 
 }
@@ -237,37 +237,45 @@ body {
     position: absolute;
     width: 984rem;
     height: 540rem;
-    top: 564rem;
+    top: 470rem;
     transform: scale(0.8);
 }
 
 
 #a{
     position: absolute;
-    top: 380rem;
-    left: 293rem;
+    top: 360rem;
+    left: 260rem;
     color:aliceblue;
+    z-index: 1;
 }
 
 #b{
     position: absolute;
-    top: 380rem;
-    left: 632rem;
+    top: 360rem;
+    left: 660rem;
     color:aliceblue;
+    z-index: 1;
+   
 }
+
 
 #p{
     position: absolute;
-    top: -15rem;
+    top: -20rem;
     left: 395rem;
     color:aliceblue;
+    z-index: 1;
 }
+
 
 #q{
     position: absolute;
-    top: -15rem;
+    top: -20rem;
     left: 535rem;
     color:aliceblue;
+    z-index: 1;
+
 }
 
 /* For feedback bar */
@@ -276,11 +284,12 @@ body {
     border-radius: 20rem;
     width: 984rem;
     height: 180rem;
-    top: 1200rem;
+    top: 1050rem;
     background: linear-gradient(180deg, #FFE601 0%, #E8882F 100%);
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 0;
 }
 
 .feedback_bar p {
@@ -288,18 +297,34 @@ body {
     font-weight: 80;
     font-size: 36rem;
     margin: 10rem;
-    width: 75%;
+    width: 85%;
     text-align: center;
 }
 
-.interaction_area {
+.bottom_slider {
     position: absolute;
-    top: 80%;
+    top: 77%;
     width: 90%;
     height: 5%;
     /* outline: 1px solid white; */
 }
 
+.top_slider {
+    position: absolute;
+    top: 67%;
+    width: 90%;
+    height: 4%;
+}
+
+.top_text {
+    position: absolute;
+    top:70%; 
+}
+
+.bottom_text {
+    position: absolute;
+    top:80%; 
+}
 .input_slider {
     -webkit-appearance: none;
     outline: none;
@@ -316,7 +341,7 @@ body {
     -webkit-appearance: none;
     width: 60rem;
     height: 60rem;
-    background: linear-gradient(#fb8d34, #f96074);
+    /* background: linear-gradient(#fb8d34, #f96074); */
     border: none;
     border-radius: 50%;
     z-index: 3;
@@ -326,12 +351,52 @@ body {
     -webkit-appearance: none;
     width: 80rem;
     height: 80rem;
-    background: linear-gradient(#fb8d34, #f96074);
+    /* background: linear-gradient(#fb8d34, #f96074); */
     cursor: pointer;
     border: none;
     border-radius: 50%;
     z-index: 3;
 }
+
+.top::-webkit-slider-thumb {
+
+    background: linear-gradient(#E45AFB, #C612CA);
+}
+
+.top::-moz-range-thumb {
+
+    background: linear-gradient(#E45AFB, #C612CA);
+}
+
+.bottom::-webkit-slider-thumb {
+
+    background: linear-gradient(#fb8d34, #f96074); 
+}
+
+.bottom::-moz-range-thumb {
+
+    background: linear-gradient(#fb8d34, #f96074); 
+}
+
+
+
+.label{
+    width: 60%;
+    height: 128.64rem;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.label span{
+    margin: 0;
+    font-family: Gotham SSm;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 36rem;
+    line-height: 60rem;
+    color: #FFFDFD;
+}  
 
 /* .interaction_area .movable span {
     position: absolute;
@@ -363,7 +428,7 @@ body {
 
 .next_button {
     position: absolute;
-    top: 1704rem;
+    /* top: 1704rem; */
     width: 45%;
     height: 128.64rem;
     border: none;
@@ -374,6 +439,7 @@ body {
     font-weight: 350;
     font-size: 39rem;
     cursor: pointer;
+    top: 100%;
 }
 
 .context_button {
@@ -389,4 +455,32 @@ body {
 
 height: 100%;
 width: 100%;
+}
+
+.angle {
+
+    height: 40rem;
+    width: 40rem;
+    background-color: transparent;
+  outline:rgba(0, 0, 0, 0.284);
+    z-index: 2;
+font-family: Gotham SSm;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 36rem;
+    color: aliceblue;
+}
+
+ .anglep {
+  
+    position: absolute;
+    top: 30%;
+    left: 12%;  
+}
+
+.angleq {
+  
+    position: absolute;
+    top: 30%;
+    left: 75%;  
 }

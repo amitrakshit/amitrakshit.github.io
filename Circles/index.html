@@ -43,7 +43,7 @@
 
                 <!-- For instruction Area. It is always a good practice to put the text in a paragraph element since it can contain inline mathJax. -->
                 <div class="instructino_area">
-                    <p> See how angles subtended by the same chord in the same segment are equal in measure. </p>
+                    <p> Move the slider and observe how the angles subtended by the same chord in the same segment are related.</p>
                 </div>
                 <!-- For Visual Area -->
                 <div class="visual_area">
@@ -53,29 +53,46 @@
                     <p id="q">Q</p>
                     <p id="p">P</p>
 
+                    <div class = "anglep angle">30
+                    </div>
+                    <div class = "angleq angle">30
+                       
+                    </div>
 
 
 
                 </div>
-
-                
                 <canvas id="fill_canvas" class="parent_canvas" width="984" height="540"></canvas>
-                <canvas id="tri1canvas" class="parent_canvas" width="984" height="540"></canvas>
-                <canvas id="tri2canvas" class="parent_canvas" width="984" height="540"></canvas>
                 <canvas id="mycanvas" class="parent_canvas" width="984" height="540"></canvas>
 
+                
+                <canvas id="tri1canvas" class="parent_canvas" width="984" height="540"></canvas>
+                <canvas id="tri2canvas" class="parent_canvas" width="984" height="540"></canvas>
+               
                 <!-- For Feedback bar -->
                 <div class="feedback_bar">
-                    <p id="feed"> Move the slider to change the length of chord AB. Click on next button. </p>
+                    <p id="feed"> The angles subtended by the same chord in the same segment are equal. </p>
                 </div>
 
                 <!-- For Interaction area -->
-                <div class="interaction_area">
-                    <!-- <div class = "movable">
-                        <span class = "slider_value"></span>
-                    </div> -->
-                    <input type="range" min="1" max="150" value="1" id="myrange" class="input_slider">
-                </div>
+
+                <div class = "top_slider">
+                    <input type="range" min="1" max="150" value="75" id="point_change" class="input_slider top">
+               </div> 
+               <div class = "top_text label">
+                   <span>Position of P</span>
+               </div>
+                <div class="bottom_slider">
+                    <input type="range" min="1" max="150" value="1" id="chord_change" class="input_slider bottom">
+                    </div>
+                    <div class = "bottom_text label">
+                        <span>Position of chord</span>
+                    </div>
+                    
+                   
+               
+                
+                
                 <!-- For the Next Buttons -->
                 <button class="next_button" onclick="next_instruction()">Next</button>
             </section>
