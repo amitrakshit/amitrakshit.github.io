@@ -260,8 +260,9 @@ body {
     position: absolute;
     top: 80%;
     width: 90%;
-    height: 5%;
-    /* outline: 1rem solid white; */
+    height: 10%;
+    outline: 1rem solid white;
+    z-index: 2;
 }
 
 .input_slider {
