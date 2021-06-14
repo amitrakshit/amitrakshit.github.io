@@ -51,7 +51,8 @@
 
                 <!-- For instruction Area. It is always a good practice to put the text in a paragraph element since it can contain inline mathJax. -->
                 <div class="instructino_area">
-                    <p> Move the slider and observe how the angles subtended by the same chord in the same segment are related.</p>
+                    <p> Move the slider and observe how the angles subtended by the same chord in the same segment are
+                        related.</p>
                 </div>
                 <!-- For Visual Area -->
                 <div class="visual_area">
@@ -61,10 +62,10 @@
                     <p id="q">Q</p>
                     <p id="p">P</p>
 
-                    <div class = "anglep angle">30
+                    <div class="anglep angle">30
                     </div>
-                    <div class = "angleq angle">30
-                       
+                    <div class="angleq angle">30
+
                     </div>
 
 
@@ -73,10 +74,10 @@
                 <canvas id="fill_canvas" class="parent_canvas" width="984" height="540"></canvas>
                 <canvas id="mycanvas" class="parent_canvas" width="984" height="540"></canvas>
 
-                
+
                 <canvas id="tri1canvas" class="parent_canvas" width="984" height="540"></canvas>
                 <canvas id="tri2canvas" class="parent_canvas" width="984" height="540"></canvas>
-               
+
                 <!-- For Feedback bar -->
                 <div class="feedback_bar">
                     <p id="feed"> The angles subtended by the same chord in the same segment are equal. </p>
@@ -84,23 +85,26 @@
 
                 <!-- For Interaction area -->
 
-                <div class = "top_slider">
+                <div class="top_slider">
                     <input type="range" min="1" max="150" value="75" id="point_change" class="input_slider top">
-               </div> 
-               <div class = "top_text label">
-                   <span>Position of P</span>
-               </div>
+                </div>
+                <div class="top_text label">
+                    <span>Position of P</span>
+                </div>
                 <div class="bottom_slider">
                     <input type="range" min="1" max="150" value="1" id="chord_change" class="input_slider bottom">
-                    </div>
-                    <div class = "bottom_text label">
-                        <span>Position of chord</span>
-                    </div>
-                    
-                   
-               
-                
-                
+                </div>
+                <div class="bottom_text label">
+                    <span>Position of chord</span>
+                </div>
+                <div class="marker" id="marker1"></div>
+                <div class="marker" id="marker2"></div>
+                <div class="marker" id="marker3"></div>
+                <div class="marker" id="marker4"></div>
+
+
+
+
                 <!-- For the Next Buttons -->
                 <button class="next_button" onclick="next_instruction()">Next</button>
             </section>
@@ -117,7 +121,7 @@
                     <div class="scrollable_dynamic_panel">
                         <div class="question_area">
                             <p>Find the value of x in the figure. O is the centre of the circle.</p><br>
-                            <img class = "ques_image" src = "img/Question_Visual.svg">
+                            <img class="ques_image" src="img/Question_Visual.svg">
                         </div>
                         <div class="feedback-bar">
                             <div id="big">Oops!</div>
@@ -135,8 +139,8 @@
 
                         <div class="solution">
                             <p id="SolHead">Solution</p>
-                            <img class = "sol_image" src = "img/Solution_Visual.svg" >
-                            <p id = "Soltext">
+                            <img class="sol_image" src="img/Solution_Visual.svg">
+                            <p id="Soltext">
 
                                 &bull;&nbsp;&angle;BAN and &angle;NMB are the angles subtended by the same segment BNMA.
                                 <br>
