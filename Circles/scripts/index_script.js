@@ -34,7 +34,8 @@ observation_tab.onclick = function () {
 var x1; var x2; var x3; var y2; var y; var last_slider_value; var xp; var yp; var xl;
 
 
-
+var sound_oninput = document.getElementById("slider_oninput");
+var sound_onchange = document.getElementById("slider_onchange");
 
 // Calculating theta for A and B
 var thetaA = Math.PI - Math.acos(173 / 250);
@@ -144,12 +145,13 @@ var feedback_box  = document.getElementsByClassName("feedback_bar")[0];
 
 // Update the input slider value (each time you drag the slider handle)
 for_chord.oninput = function () {
+  sound_oninput.play();
   this.innerHTML = this.value;
   change_chord();
 }
 
 for_chord.onchange = function () {
-
+  sound_onchange.play();
   feedback_box.style.opacity = 1;  
   
   feedback_box.style.transition = "opacity 1s";
@@ -162,12 +164,13 @@ for_chord.onchange = function () {
 
 
 for_point.oninput = function () {
+  sound_oninput.play();
   this.innerHTML = this.value;
   change_point();
 }
 
 for_point.onchange = function () {
-  
+  sound_onchange.play();
   feedback_box.style.opacity = 1;  
   feedback_box.style.transition = "opacity 1s";
   document.getElementById("p").style.color = "aliceblue";
