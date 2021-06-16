@@ -31,11 +31,13 @@ observation_tab.onclick = function () {
   question_tab.classList.remove('nav_selected2');
 }
 
-var x1; var x2; var x3; var y2; var y; var last_slider_value; var xp; var yp; var xl;
+var x1; var x2; var x3; var y2; var y; var last_slider_value; var xp; var yp; var xl; var last_slider;
 
 
 var sound_oninput = document.getElementById("slider_oninput");
 var sound_onchange = document.getElementById("slider_onchange");
+
+
 
 // Calculating theta for A and B
 var thetaA = Math.PI - Math.acos(173 / 250);
@@ -70,22 +72,15 @@ angle1.stroke();
 
 var label1 = document.getElementById("tri1canvas").getContext("2d");
 label1.beginPath();
-label1.moveTo(120, 170);
-label1.lineTo(400,170);
-label1.lineTo(400,100);
-label1.strokeStyle = "#FFFFFF80";
-label1.lineWidth = 5;
+label1.moveTo(25, 203);
+label1.lineTo(120,203);
+label1.lineTo(390,80);
+label1.strokeStyle = "#FFFFFF";
+label1.lineWidth = 3;
 label1.stroke();
 
 document.getElementsByClassName("anglep")[0].innerHTML = theta+"&deg";
 
-// var line1 = document.getElementById("tri1canvas").getContext("2d");
-//     line1.beginPath();
-//     line1.moveTo(302,450);
-//     line1.lineTo(650,450);
-//     line1.strokeStyle = "#FD715D";
-//     line1.lineWidth = 5;
-//     line1.stroke();
 
 // For drawing a second angle
 tan1 = (450 - 40) / (650 - 550); theta1 = Math.atan(tan1);
@@ -131,11 +126,11 @@ triangle2.stroke();
 
 var label2 = document.getElementById("tri2canvas").getContext("2d");
 label2.beginPath();
-label2.moveTo(800, 65);
-label2.lineTo(540,65);
-// label2.lineTo(540,100);
-label2.strokeStyle = "#FFFFFF80";
-label2.lineWidth = 5;
+label2.moveTo(895, 100);
+label2.lineTo(800,100);
+label2.lineTo(550,80);
+label2.strokeStyle = "solid #FFFFFF";
+label2.lineWidth = 3;
 label2.stroke();
 
 var for_point = document.getElementById("point_change");
@@ -145,26 +140,26 @@ var feedback_box  = document.getElementsByClassName("feedback_bar")[0];
 
 // Update the input slider value (each time you drag the slider handle)
 for_chord.oninput = function () {
-  sound_oninput.play();
+ 
+
   this.innerHTML = this.value;
+
   change_chord();
 }
 
 for_chord.onchange = function () {
   sound_onchange.play();
   feedback_box.style.opacity = 1;  
-  
+ 
   feedback_box.style.transition = "opacity 1s";
 
-  document.getElementsByClassName("next_button")[0].style.top = "1704rem";
+  document.getElementsByClassName("next_button")[0].style.top = "1717rem";
   document.getElementsByClassName("next_button")[0].style.transition = "top 0.5s";
-  
-
+ 
 }
 
 
 for_point.oninput = function () {
-  sound_oninput.play();
   this.innerHTML = this.value;
   change_point();
 }
@@ -175,7 +170,7 @@ for_point.onchange = function () {
   feedback_box.style.transition = "opacity 1s";
   document.getElementById("p").style.color = "aliceblue";
 
-  document.getElementsByClassName("next_button")[0].style.top = "1704rem";
+  document.getElementsByClassName("next_button")[0].style.top = "1717rem";
   document.getElementsByClassName("next_button")[0].style.transition = "top 0.5s";
 
   if (parseInt(for_chord.value) ==1)
@@ -215,32 +210,46 @@ y = 450;
   // For drawing a circle
 var circle = document.getElementById("mycanvas").getContext("2d");
 circle.beginPath();
-circle.arc(475, 275, 250, 0, 2 * Math.PI);
+circle.arc(475, 275, 255, 0, 2 * Math.PI);
 circle.strokeStyle = "#FFFFFF";
 circle.lineCap = "round";
 circle.lineJoin = "round";
 circle.lineWidth = 5;
 circle.stroke();
 
+// document.getElementById("chord_change").max = parseInt ((y-yp)/1.5);
 
 
 function change_chord() {
  
   document.getElementById("p").style.color = "aliceblue";
-  
+
+  var max_set =  (125/yp) * for_chord.value;
+  y = 450 - max_set;
   if (parseInt(for_point.value) == 75 && document.getElementById("point_change").max == 150)
   {
 xp = 400; 
 yp = 40;
   }
+if (parseInt(yp) < 100){
+y = 450 - 1.5*for_chord.value;
+console.log(4);}
+  
 
-  document.getElementById("chord_change").max = parseInt ((y-yp)/1.5);
+  // console.log(for_chord.value);
+  // document.getElementById("chord_change").max = parseInt ((y-yp)/1.5);
+
+
+
+  // document.getElementById("chord_change").max = document.getElementById("point_change").max;
+
+  // document.getElementById("chord_change").max = parseInt ((last_slider-yp)/1.5);
 
     triangle1.clearRect(0, 0, tri1canvas.width, tri1canvas.height);
     triangle2.clearRect(0, 0, tri2canvas.width, tri2canvas.height);
     circle1.clearRect(0, 0, fill_canvas.width, fill_canvas.height);
 
-    y = 450 - 1.75 * for_chord.value;
+    
     x1 = 475 - Math.sqrt((250 ** 2) - ((y - 275) ** 2));
     x3 = 475 + Math.sqrt((250 ** 2) - ((y - 275) ** 2));
 
@@ -290,8 +299,7 @@ yp = 40;
 
     if (theta1 < 0)
     {theta1 = Math.PI + Math.atan(tan1);}
-    console.log(theta1, theta2);
-    console.log (theta1*(180/Math.PI),theta2*(180/Math.PI)  );
+    
   
     if (theta2 > 4 )
     {theta2 = Math.atan(tan2);}
@@ -344,21 +352,24 @@ yp = 40;
 
 
     label2.beginPath();
-    label2.moveTo(800, 65);
-    label2.lineTo(540,65);
-    // label2.lineTo(540,100);
-    label2.strokeStyle = "#FFFFFF80";
-    label2.lineWidth = 5;
-    label2.stroke();
+label2.moveTo(895, 100);
+label2.lineTo(800,100);
+label2.lineTo(550,80);
+label2.strokeStyle = "#FFFFFF";
+label2.lineWidth = 3;
+label2.stroke();
 
 
-    label1.beginPath();
-    label1.moveTo(120, 170);
-    label1.lineTo(xp,170);
-    label1.lineTo(xp,yp+40);
-    label1.strokeStyle = "#FFFFFF80";
-    label1.lineWidth = 5;
-    label1.stroke();
+label1.beginPath();
+label1.moveTo(25, 203);
+label1.lineTo(120,203);
+label1.lineTo(xp,yp+40);
+label1.strokeStyle = "#FFFFFF";
+label1.lineWidth = 3;
+label1.stroke();
+    // label1.lineTo(xp,170);
+    // label1.lineTo(xp,yp+40);
+   
     
     
     var line1 = document.getElementById("tri1canvas").getContext("2d");
@@ -374,9 +385,14 @@ yp = 40;
     document.getElementById("b").style.top = (y - 60) + "rem";
     document.getElementById("b").style.left = (x3 - 30) + "rem";
 
+//     document.getElementById("chord_change").max = parseInt (150 - (yp/2.5));
+// console.log(for_chord.value);
+
+    
   }
 
 
+  
  
     
   function change_point(){  
@@ -391,7 +407,8 @@ y = 450;
     }
     document.getElementById("point_change").max = parseInt(y/3);
   
-
+    // document.getElementById("chord_change").max = parseInt (150 - (yp/2.5));
+    // console.log(for_chord.value);
 
     if (parseInt(for_point.value) >= y/6) {
       y2 = (25 + (for_point.value - y/6) * 3);
@@ -436,13 +453,22 @@ y = 450;
 
 
 
+
     label1.beginPath();
-    label1.moveTo(120, 170);
-    label1.lineTo(xl,170);
+    label1.moveTo(25, 203);
+    label1.lineTo(120,203);
     label1.lineTo(xl,y2+30);
-    label1.strokeStyle = "#FFFFFF80";
-    label1.lineWidth = 5;
-    label1.stroke();
+    label1.strokeStyle = "#FFFFFF";
+    label1.lineWidth = 3;
+    label1.stroke();    
+
+    // label1.beginPath();
+    // label1.moveTo(120, 170);
+    // label1.lineTo(xl,170);
+    // label1.lineTo(xl,y2+30);
+    // label1.strokeStyle = "#FFFFFF80";
+    // label1.lineWidth = 5;
+    // label1.stroke();
     
     theta =  Math.floor((theta2 - theta1)*(180/Math.PI));
     document.getElementsByClassName("anglep")[0].innerHTML = theta+"&deg";
@@ -450,7 +476,7 @@ y = 450;
     angle1.arc(x2, y2, 50, theta1, theta2);
     angle1.lineTo(x2, y2);
     angle1.closePath();
-    angle1.fillStyle = "#E050F4";
+    angle1.fillStyle = "#00DBB3";
     angle1.fill();
     angle1.strokeStyle = "transparent";
     angle1.stroke();
@@ -490,16 +516,18 @@ y = 450;
 
 
     label2.beginPath();
-label2.moveTo(800, 65);
-label2.lineTo(540,65);
-// label2.lineTo(540,100);
-label2.strokeStyle = "#FFFFFF80";
-label2.lineWidth = 5;
+label2.moveTo(895, 100);
+label2.lineTo(800,100);
+label2.lineTo(550,80);
+label2.strokeStyle = "#FFFFFF";
+label2.lineWidth = 3;
 label2.stroke();
 
    
     xp = x2;
     yp = y2;
+
+// console.log(y2);
 
   }
 
@@ -513,6 +541,5 @@ function next_instruction() {
     observation_tab.classList.remove('nav_selected');
     question_tab.classList.add('nav_selected2');
   }
-
 
 

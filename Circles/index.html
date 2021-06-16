@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/question_style.css">
     <link rel="stylesheet" href="styles/LO_style.css">
-    <link rel="stylesheet" href="styles/context_card.css">
+    <!-- <link rel="stylesheet" href="styles/context_card.css"> -->
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <title>Circles</title>
 </head>
 
 <body>
 
-    <audio id="slider_oninput">
+    <!-- <audio id="slider_oninput">
         <source src="sounds/Slider_oninput.mp3" type="audio/mpeg">
-    </audio>
+    </audio> -->
 
     <audio id="slider_onchange">
         <source src="sounds/Slider_onchange.mp3" type="audio/mpeg">
@@ -35,9 +35,9 @@
             <div class="observation_bar nav_selected">Observation</div>
             <div class="question_bar">Question</div>
         </div>
-        <div class="context_button">
+        <!-- <div class="context_button">
             <img class="btn" src="img/Context_Button.svg" />
-        </div>
+        </div> -->
 
         <div class="movable_parent">
             <!-- This section is for the observation -->
@@ -51,7 +51,7 @@
 
                 <!-- For instruction Area. It is always a good practice to put the text in a paragraph element since it can contain inline mathJax. -->
                 <div class="instructino_area">
-                    <p> Move the slider and observe how the angles subtended by the same chord in the same segment are
+                    <p> Move the slider and observe how the angles in the same segment of a circle are
                         related.</p>
                 </div>
                 <!-- For Visual Area -->
@@ -87,20 +87,22 @@
 
                 <div class="top_slider">
                     <input type="range" min="1" max="150" value="75" id="point_change" class="input_slider top">
+                    <div class="marker" id="marker1"></div>
+                    <div class="marker" id="marker2"></div>
                 </div>
                 <div class="top_text label">
                     <span>Position of P</span>
                 </div>
                 <div class="bottom_slider">
                     <input type="range" min="1" max="150" value="1" id="chord_change" class="input_slider bottom">
+                    <div class="marker" id="marker3"></div>
+                    <div class="marker" id="marker4"></div>
                 </div>
                 <div class="bottom_text label">
                     <span>Position of chord</span>
                 </div>
-                <div class="marker" id="marker1"></div>
-                <div class="marker" id="marker2"></div>
-                <div class="marker" id="marker3"></div>
-                <div class="marker" id="marker4"></div>
+
+
 
 
 
@@ -165,7 +167,7 @@
             <section class="LO_message">
                 <div class="popup">
                     <div class="text_container">
-                        <p>Wow! You have successfully learnt that angles subtended by the same chord in the same segment
+                        <p>Wow! You have successfully learnt that angles in the same segment of a circle
                             are equal.
                         </p>
                     </div>
@@ -187,7 +189,7 @@
     <script src="scripts/index_script.js"></script>
     <script src="scripts/question_script.js"></script>
     <script src="scripts/LO_script.js"></script>
-    <script src="scripts/context_card.js"></script>
+    <!-- <script src="scripts/context_card.js"></script> -->
 </body>
 
 </html>

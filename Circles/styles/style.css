@@ -190,8 +190,9 @@ body {
 .instructino_area {
     position: absolute;
     width: 984rem;
-    height: 240rem;
-    top: 268rem;
+    height: 114rem;
+    top: 288rem;
+    left: 48rem;
 }
 
 .instructino_area p {
@@ -210,8 +211,8 @@ body {
 .visual_area {
     position: absolute;
     width: 984rem;
-    height: 540rem;
-    top: 470rem;
+    height: 520rem;
+    top: 440rem;
     background-image: radial-gradient(119.99% 62.42% at 50% 36.33%, #2d0457 0%, #000108 100%);
     border-radius: 20rem;
 }
@@ -225,8 +226,8 @@ body {
 .parent_canvas {
     position: absolute;
     width: 984rem;
-    height: 540rem;
-    top: 470rem;
+    height: 520rem;
+    top: 440rem;
     transform: scale(0.8);
 }
 
@@ -269,7 +270,7 @@ body {
     border-radius: 20rem;
     width: 984rem;
     height: 180rem;
-    top: 1050rem;
+    top: 987rem;
     background: linear-gradient(180deg, #FFE601 0%, #E8882F 100%);
     display: flex;
     justify-content: center;
@@ -288,27 +289,42 @@ body {
 
 .bottom_slider {
     position: absolute;
-    top: 77%;
+    /* top: 76%;
     width: 90%;
-    height: 4%;
+    height: 5%; */
     /* outline: 1px solid white; */
+    top: 1486rem;
+    width: 90%;
+    height: 70rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .top_slider {
     position: absolute;
-    top: 67%;
+    /* top: 63%;
     width: 90%;
-    height: 4%;
+    height: 5%; */
+    top: 1255rem;
+    width: 90%;
+    height: 70rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .top_text {
     position: absolute;
-    top: 70%;
+    /* top: 67%; */
+    top: 1331rem;
 }
 
 .bottom_text {
     position: absolute;
-    top: 80%;
+    /* top: 80%; */
+    top: 1562rem;
 }
 
 /* For the markers */
@@ -322,23 +338,36 @@ body {
 }
 
 #marker1 {
-    top: 68.3%;
-    left: 5%;
+    /* top: 64.3%;
+    left: 5%; */
+    position: absolute;
+    /* top: 1270rem; */
+    left: 0%;
 }
 
+
 #marker2 {
-    top: 68.3%;
-    right: 4%;
+    /* top: 64.3%;
+    right: 4%; */
+    position: absolute;
+    /* top: 1270rem; */
+    right: 0%;
 }
 
 #marker3 {
-    top: 78.2%;
-    left: 5%;
+    /* top: 74.2%;
+    left: 5%; */
+    position: absolute;
+    /* top: 1500rem; */
+    left: 0%;
 }
 
 #marker4 {
-    top: 78.2%;
-    right: 4%;
+    /* top: 74.2%;
+    right: 4%; */
+    position: absolute;
+    /* top: 1500rem; */
+    right: 0%;
 }
 
 .input_slider {
@@ -346,9 +375,9 @@ body {
     outline: none;
     overflow: none;
     width: 100%;
-    position: absolute;
+    /* position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%); */
     z-index: 1;
     height: 10%;
 }
@@ -365,8 +394,8 @@ body {
 
 .input_slider::-moz-range-thumb {
     -webkit-appearance: none;
-    width: 80rem;
-    height: 80rem;
+    width: 60rem;
+    height: 60rem;
     /* background: linear-gradient(#fb8d34, #f96074); */
     cursor: pointer;
     border: none;
@@ -375,11 +404,11 @@ body {
 }
 
 .top::-webkit-slider-thumb {
-    background: linear-gradient(#E45AFB, #C612CA);
+    background: linear-gradient(#2FE8DD, #038B83);
 }
 
 .top::-moz-range-thumb {
-    background: linear-gradient(#E45AFB, #C612CA);
+    background: linear-gradient(#2FE8DD, #038B83);
 }
 
 .bottom::-webkit-slider-thumb {
@@ -438,7 +467,7 @@ body {
 
 .next_button {
     position: absolute;
-    /* top: 1704rem; */
+    /* top: 1717rem; */
     width: 45%;
     height: 128.64rem;
     border: none;
@@ -467,16 +496,17 @@ body {
 }
 
 .angle {
-    height: 40rem;
-    width: 40rem;
-    background-color: transparent;
-    outline: rgba(0, 0, 0, 0.284);
+    height: 50rem;
+    width: 75rem; 
+    background-color: #FF69E240;
+    outline: rgba(184, 163, 163, 0.284);
     z-index: 2;
     font-family: Gotham SSm;
     font-style: normal;
-    font-weight: 300;
-    font-size: 36rem;
-    color: aliceblue;
+    font-weight: 325;
+    font-size: 39rem;
+    color: #FFFFFF;
+    line-height: 60rem;
 }
 
 .anglep {
