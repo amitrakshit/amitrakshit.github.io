@@ -31,7 +31,7 @@ observation_tab.onclick = function () {
   question_tab.classList.remove('nav_selected2');
 }
 
-var x1; var x2; var x3; var y2; var y; var last_slider_value; var xp; var yp; var xl; var last_slider;
+var x1; var x2; var x3; var y2; var y; var last_slider_value; var xp; var yp; var xl; var last_slider; var last_theta1; var last_theta2;
 
 
 var sound_oninput = document.getElementById("slider_oninput");
@@ -61,7 +61,7 @@ var theta =  Math.floor((theta2 - theta1)*(180/Math.PI));
 
 var angle1 = document.getElementById("tri1canvas").getContext("2d");
 angle1.beginPath();
-angle1.arc(400, 40, 50, theta1, theta2);
+angle1.arc(400, 40, 55, theta1, theta2);
 angle1.lineTo(400, 40);
 angle1.closePath();
 angle1.fillStyle = "#EFCACA";
@@ -180,12 +180,20 @@ x3 = 650;
 y = 450;
   }
 
+  
 
+    
+
+  
   tan1 = (y - 40) / (x3 - 550); theta1 = Math.atan(tan1);
     tan2 = (y - 40) / (Math.abs(x1 - 550)); theta2 = Math.PI - (Math.atan(tan2));
    
+
+
+    
+
     angle2.beginPath();
-    angle2.arc(550, 45, 50, theta1, theta2);
+    angle2.arc(550, 45, 48, theta1, theta2);
     angle2.lineTo(550, 40);
     angle2.closePath();
     angle2.fillStyle = "#EFCACA";
@@ -202,10 +210,27 @@ y = 450;
     triangle2.lineWidth = 5;
     triangle2.stroke();
 
-
     
-
-  }
+    angle1.beginPath();
+    angle1.arc(xp, yp, 55, last_theta1, last_theta2);
+    angle1.lineTo(xp, yp);
+    angle1.closePath();
+    angle1.fillStyle = "#00DBB3";
+    angle1.fill();
+    angle1.strokeStyle = "transparent";
+    angle1.stroke();
+    
+    triangle1.beginPath();
+    triangle1.moveTo(x1, y);
+    triangle1.lineTo(xp, yp);
+    triangle1.lineTo(x3, y);
+    triangle1.closePath();
+    triangle1.strokeStyle = "#FFFFFF";
+    triangle1.lineWidth = 5;
+    triangle1.stroke();
+    
+}
+   
 
   // For drawing a circle
 var circle = document.getElementById("mycanvas").getContext("2d");
@@ -233,7 +258,7 @@ yp = 40;
   }
 if (parseInt(yp) < 100){
 y = 450 - 1.5*for_chord.value;
-console.log(4);}
+}
   
 
   // console.log(for_chord.value);
@@ -304,11 +329,18 @@ console.log(4);}
     if (theta2 > 4 )
     {theta2 = Math.atan(tan2);}
 
-    
+    label1.beginPath();
+label1.moveTo(25, 203);
+label1.lineTo(120,203);
+label1.lineTo(xp,yp+30);
+label1.strokeStyle = "#FFFFFF";
+label1.lineWidth = 3;
+label1.stroke();
+
     theta =  Math.floor((theta2 - theta1)*(180/Math.PI));
     document.getElementsByClassName("anglep")[0].innerHTML = theta+"&deg";
     angle1.beginPath();
-    angle1.arc(xp, yp, 50, theta1, theta2);
+    angle1.arc(xp, yp, 55, theta1, theta2);
     angle1.lineTo(xp, yp);
     angle1.closePath();
     angle1.fillStyle = "#EFCACA";
@@ -360,13 +392,7 @@ label2.lineWidth = 3;
 label2.stroke();
 
 
-label1.beginPath();
-label1.moveTo(25, 203);
-label1.lineTo(120,203);
-label1.lineTo(xp,yp+40);
-label1.strokeStyle = "#FFFFFF";
-label1.lineWidth = 3;
-label1.stroke();
+
     // label1.lineTo(xp,170);
     // label1.lineTo(xp,yp+40);
    
@@ -410,13 +436,36 @@ y = 450;
     // document.getElementById("chord_change").max = parseInt (150 - (yp/2.5));
     // console.log(for_chord.value);
 
+
+    triangle1.clearRect(0, 0, tri1canvas.width, tri1canvas.height);
+    triangle2.clearRect(0, 0, tri2canvas.width, tri2canvas.height);
+
+    tan1 = (y - 40) / (x3 - 550); theta1 = Math.atan(tan1);
+    tan2 = (y - 40) / (Math.abs(x1 - 550)); theta2 = Math.PI - (Math.atan(tan2));
+    document.getElementsByClassName("angleq")[0].innerHTML = theta+"&deg";
+    angle2.beginPath();
+    angle2.arc(550, 45, 50, theta1, theta2);
+    angle2.lineTo(550, 40);
+    angle2.closePath();
+    angle2.fillStyle = "#EFCACA50";
+    angle2.fill();
+    angle2.strokeStyle = "transparent";
+    angle2.stroke();
+
+
     if (parseInt(for_point.value) >= y/6) {
       y2 = (25 + (for_point.value - y/6) * 3);
       x2 = 475 + Math.sqrt((250 ** 2) - ((y2 - 275) ** 2));
       var xl = x2 - 10; 
-      document.getElementById("p").style.top = (y2 - 50) + "rem";
-      document.getElementById("p").style.left = (x2 - 5) + "rem";
+
+     
+      // document.getElementById("p").style.top = (y2 - 50) + "rem";
+      // document.getElementById("p").style.left = (x2 - 5) + "rem";
+
+      
        
+
+
 
      
         tan1 = (y - y2) / (x3 - x2); theta1 =  Math.atan(tan1);
@@ -433,8 +482,7 @@ y = 450;
       y2 = (25 + (y/6 - for_point.value) * 3);
       var x2 = 475 - Math.sqrt((250 ** 2) - ((y2 - 275) ** 2));
       var xl = x2 + 10;
-      document.getElementById("p").style.top = (y2 - 50) + "rem";
-      document.getElementById("p").style.left = (x2 - 5) + "rem";
+    
 
       tan1 = (y - y2) / (x3 - x2); theta1 = Math.atan(tan1);
   
@@ -447,11 +495,20 @@ y = 450;
     }
   
      
-    triangle1.clearRect(0, 0, tri1canvas.width, tri1canvas.height);
-    triangle2.clearRect(0, 0, tri2canvas.width, tri2canvas.height);
+  
+// console.log(x2, y2);
 
-
-
+    if (parseInt(x2) > 513 && parseInt(x2) < 569)
+    {
+    document.getElementById("p").style.left = (513-5) + "rem";
+    document.getElementById("p").style.top = (28 - 50) + "rem";
+  }
+    else {
+      document.getElementById("p").style.left = (x2 - 5) + "rem";
+      document.getElementById("p").style.top = (y2 - 50) + "rem";
+    }
+   
+    
 
 
     label1.beginPath();
@@ -469,11 +526,12 @@ y = 450;
     // label1.strokeStyle = "#FFFFFF80";
     // label1.lineWidth = 5;
     // label1.stroke();
-    
+    last_theta1  = theta1; last_theta2 = theta2;
+
     theta =  Math.floor((theta2 - theta1)*(180/Math.PI));
     document.getElementsByClassName("anglep")[0].innerHTML = theta+"&deg";
     angle1.beginPath();
-    angle1.arc(x2, y2, 50, theta1, theta2);
+    angle1.arc(x2, y2, 55, theta1, theta2);
     angle1.lineTo(x2, y2);
     angle1.closePath();
     angle1.fillStyle = "#00DBB3";
@@ -482,17 +540,7 @@ y = 450;
     angle1.stroke();
 
 
-    tan1 = (y - 40) / (x3 - 550); theta1 = Math.atan(tan1);
-    tan2 = (y - 40) / (Math.abs(x1 - 550)); theta2 = Math.PI - (Math.atan(tan2));
-    document.getElementsByClassName("angleq")[0].innerHTML = theta+"&deg";
-    angle2.beginPath();
-    angle2.arc(550, 45, 50, theta1, theta2);
-    angle2.lineTo(550, 40);
-    angle2.closePath();
-    angle2.fillStyle = "#EFCACA50";
-    angle2.fill();
-    angle2.strokeStyle = "transparent";
-    angle2.stroke();
+   
     
    
     triangle1.beginPath();
