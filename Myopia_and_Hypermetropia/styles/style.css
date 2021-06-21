@@ -243,7 +243,7 @@ body {
     justify-content: center;
     align-items: center; */
     width: 984rem;
-    height: 560rem;
+    height: 520rem;
     top: 485rem;
     /* background-image: radial-gradient(119.99% 62.42% at 50% 36.33%, #2d0457 0%, #000108 100%); */
     border-radius: 20rem;
@@ -258,9 +258,9 @@ body {
     overflow: hidden;
 }
 
-.visual_area #canvas0{
-    /* background-image: radial-gradient(119.99% 62.42% at 50% 36.33%, #2d0457 0%, #000108 100%); */
-}
+/* .visual_area #canvas0{
+    background-image: radial-gradient(119.99% 62.42% at 50% 36.33%, #2d0457 0%, #000108 100%);
+} */
 
 .visual_area svg {
     position: absolute;
@@ -293,7 +293,19 @@ body {
     left: 8rem;
 }
 
-.visual_area .forblur, #blendingGradient {
+.forBlur .myopia {
+    -webkit-mask: radial-gradient(15% 40% at 49% 43%, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+    --blurValue: 2rem;
+    filter: blur(var(--blurValue));
+}
+
+.forBlur .hyperopia {
+    -webkit-mask: radial-gradient(15% 40% at 49% 43%, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%);
+    --blurValue: 2rem;
+    filter: blur(var(--blurValue));
+}
+
+.visual_area .forBlur, #blendingGradient {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -347,15 +359,30 @@ body {
 .visual_area #plant {
     position: absolute;
     left: 32%;
-    bottom: 15%;
-    width: 10%;
+    bottom: 40%;
+    width: 7%;
     z-index: 0;
 }
-#plantImg{
+
+#plantImg {
     width: 100%;
     height: auto;
 }
 
+.visual_area .resetButtonContainter {
+    position: absolute;
+    bottom: 24rem;
+    right: 24rem;
+    height: 60rem;
+    width: 179rem;
+    /* background-color: white; */
+    cursor: pointer;
+}
+
+.resetButtonContainter #resetButtonImg {
+    width: 100%;
+    height: auto;
+}
 
 /* For feedback bar */
 
@@ -369,13 +396,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 
 .feedback_bar p {
     font-family: Gotham SSm;
     font-weight: 80;
-    font-size: 40rem;
-    margin: 10rem;
+    font-size: 36rem;
+    margin: 0rem 50rem;
+    width: 100%;
+    text-align: center;
 }
 
 /* For interaction area */
@@ -448,9 +479,11 @@ body {
 #markerLeft {
     left: 0%;
 }
-#markerMiddle{
+
+#markerMiddle {
     left: 50%;
 }
+
 #markerRight {
     right: 0%;
 }
