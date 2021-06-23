@@ -78,14 +78,3 @@ var signInButton = document.getElementById('singInButton');
 signInButton.onclick = function () {
     handleSignInClick();
 }
-
-
-
-
-APIKEY = 'AIzaSyCPeYrqyxXsk7LwCvMEBujymjwdFw0GRYE';
-
-clientID = '497862049389-v5b0ovv0ci4jn5311q121gjtkoujb5nr.apps.googleusercontent.com';
-
-clientSecret = "ViSJjWLgIfbsSq4KC1jyNttL";
-
-serviceAcc = 'serviceaccount@pristine-glass-317711.iam.gserviceaccount.com';
