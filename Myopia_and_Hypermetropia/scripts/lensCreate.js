@@ -138,7 +138,11 @@ class xParallelRays {
         this.fill = true;
         this.height = this.spread;
         this.width = Math.abs(this.endX - this.startX);
-        if (this.type == 'convergent' || this.type == 'divergent') {
+        if (this.type == 'convergent') {
+            var endY = Math.abs(this.endX - this.focusPoint) * ((this.spread / 2) / Math.abs(this.startX - this.focusPoint));
+            this.endSpread = 2 * endY;
+        }
+        else if (this.type == 'divergent') {
             var endY = Math.abs(this.endX - this.focusPoint) * ((this.spread / 2) / Math.abs(this.startX - this.focusPoint));
             this.endSpread = 2 * endY;
         }
@@ -148,9 +152,16 @@ class xParallelRays {
         this.lineWidth = 1;
     }
     getEndSpread() {
-        if (this.type == 'convergent' || this.type == 'divergent') {
+        if (this.type == 'convergent') {
             var endY = Math.abs(this.endX - this.focusPoint) * ((this.spread / 2) / Math.abs(this.startX - this.focusPoint));
             this.endSpread = 2 * endY;
+        }
+        else if (this.type == 'divergent' && this.startX != this.focusPoint) {
+            var endY = Math.abs(this.endX - this.focusPoint) * ((this.spread / 2) / Math.abs(this.startX - this.focusPoint));
+            this.endSpread = 2 * endY;
+        }
+        else if (this.type == 'divergent' && this.startX == this.focusPoint) {
+            this.endSpread = this.endSpread;
         }
         else if (this.type == 'parallel') {
             this.endSpread = this.spread;
@@ -210,7 +221,29 @@ class xParallelRays {
             }
             // this.endSpread = 2 * endY;
         }
-        else if (this.type == 'divergent') {
+        // For drawing a divergent rays which originate from the focus
+        else if (this.type == 'divergent' && this.startX == this.focusPoint) {
+            var endY = this.endSpread / 2;
+            ctx.clearRect(1 * originX, originY - 1.0 * endY, 1.0 * endX, originY + 1.0 * endY);
+            ctx.beginPath();
+            ctx.moveTo(originX, originY);
+            ctx.lineTo(endX, originY - endY);
+            ctx.moveTo(endX, originY + endY);
+            // ctx.lineTo(endX, originY + endY);
+            ctx.lineTo(originX, originY);
+            // ctx.lineTo(originX, originY - spread / 2);
+            ctx.strokeStyle = this.strokeStyle;
+            ctx.lineWidth = this.lineWidth;
+            ctx.fillStyle = this.fillStyle;
+            if (this.fill == true) {
+                ctx.fill();
+            }
+            if (this.stroke == true) {
+                ctx.stroke();
+            }
+            // this.endSpread = 2 * endY;
+        }
+        else if (this.type == 'divergent' && this.startX != this.focusPoint) {
             var endY = Math.abs(endX - focusPoint) * ((spread / 2) / Math.abs(originX - focusPoint));
             ctx.clearRect(1 * originX, originY - 1.0 * spread / 2, 1.0 * endX, originY + 1.0 * spread / 2);
             ctx.beginPath();

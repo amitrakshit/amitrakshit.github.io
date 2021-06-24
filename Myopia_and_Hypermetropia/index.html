@@ -67,19 +67,25 @@
                         <img src="./img/wallFrontView.png" alt="" id="blurBackImg">
                         <div class="forBlur">
                             <img src="./img/wallFrontView.png" alt="" id="blurFrontImg" class="">
-                            <!-- <div class="blur" id="blendingGradient"></div> -->
                         </div>
                     </div>
 
                     <div class="imageContainer" id="sideView">
                         <img src="./img/wallSideView.png" alt="">
                     </div>
+
                     <div class="imageContainer" id="eye">
                         <img src="./img/eye.png" alt="">
                     </div>
+
                     <div class="imageContainer" id="plant">
-                        <img src="./img/plant.png" id="plantImg" alt="">
+                        <img src="./img/plant.png" class="plantImg" id="plantImg" alt="">
                     </div>
+
+                    <div class="imageContainer" id="plant2">
+                        <img src="./img/plant.png" class="plantImg" id="plantImg2" alt="">
+                    </div>
+
                     <!-- canvas in visual area -->
                     <canvas class=visualCanvas id="canvas0"></canvas>
                     <canvas class=visualCanvas id="canvas1"></canvas>
@@ -89,8 +95,6 @@
                     <div class="resetButtonContainter">
                         <img src="./img/resetButton.svg" alt="resetButton" id="resetButtonImg">
                     </div>
-
-
 
                 </div>
 
@@ -114,7 +118,7 @@
                 </div>
 
                 <!-- For the Next Buttons -->
-                <button class="next_button">Next</button>
+                <button class="next_button" id="nextButton">Next</button>
             </section>
 
             <!-- This section is for the question -->
@@ -124,35 +128,30 @@
                 <div class="dynamic_panel_window">
                     <div class="scrollable_dynamic_panel">
                         <div class="question_area">
-                            <p>If \(\frac{1}{6}+\frac{x}{6}=\frac{5}{6}\),
-                                then what is the value of \(x\)?</p>
+                            <p>To correct myopia, the power of the corrective lens should be ___________?</p>
+                        </div>
+                        <div class="questionImageContainer">
+                            <img src="./img/Temporary IMG.svg" alt="" id="questionImg">
                         </div>
                         <div class="feedback-bar">
                             <div id="big">Oops!</div>
-                            <div id="small">You’ve missed something! Let’s go back to the observation tab and give it
-                                another
-                                shot!
+                            <div id="small">Try again or swipe left to figure out the right answer.
                             </div>
                         </div>
                         <div class="option-container">
-                            <div class="options" id="option1">1</div>
-                            <div class="options" id="option2">2</div>
-                            <div class="options" id="option3">3</div>
-                            <div class="options" id="option4" title="solution">4</div>
+                            <div class="options" id="option1">increased</div>
+                            <div class="options" id="option2" title="solution">decreased</div>
+                            <div class="options" id="option3">kept the same</div>
+                            <!-- <div class="options" id="option4">4</div> -->
                         </div>
 
                         <div class="solution">
                             <p id="SolHead">Solution</p>
-                            <p>When we add two like fractions, the numerators of the fractions gets added and the
-                                denominator remains
-                                the same.
-                                $$~~~\frac{1}{6}+\frac{x}{6}=\frac{5}{6}$$
-                                $$\Rightarrow \frac{1+x}{6}=\frac56$$
-                                From this expression, it is clear that \((1+x)\) must be equal to \(5\). <br>
-                                &nbsp;$$\displaylines{\therefore 1+x = 5 \\
-                                ~~~~~~\Rightarrow ~~~~~x=5-1\\
-                                \Rightarrow ~~~~~x = 4}$$
-                            </p>
+                            <ul>
+                                <li>In a myopic eye, the image forms before the retina.</li>
+                                <li>By reducing the converging power, the image can be focused on the retina.</li>
+                                <li>Thus, the corrective lens decreases the converging power.</li>
+                            </ul>
                         </div>
 
 
@@ -167,8 +166,8 @@
             <section class="LO_message">
                 <div class="popup">
                     <div class="text_container">
-                        <p>Wow! You have successfully learnt that when we add two like fractions, the numerators of the
-                            fractions get added and the denominator remains the same.</p>
+                        <p>You have successfully learnt that a diverging lens can be used to correct the defect in a
+                            myopic eye.</p>
                     </div>
                     <div class="tick_mark_container">
                         <div class="ellipse2"></div>

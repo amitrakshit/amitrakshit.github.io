@@ -294,13 +294,13 @@ body {
 }
 
 .forBlur .myopia {
-    -webkit-mask: radial-gradient(15% 40% at 49% 43%, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+    -webkit-mask: radial-gradient(15% 30% at 49% 43%, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
     --blurValue: 2rem;
     filter: blur(var(--blurValue));
 }
 
 .forBlur .hyperopia {
-    -webkit-mask: radial-gradient(15% 40% at 49% 43%, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%);
+    -webkit-mask: radial-gradient(15% 30% at 49% 39%, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%);
     --blurValue: 2rem;
     filter: blur(var(--blurValue));
 }
@@ -318,11 +318,6 @@ body {
     outline: 5rem solid black;
     box-sizing: border-box;
 }
-
-/* #blendingGradient {
-    -webkit-border-radius: 10px;
-    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
-} */
 
 .visual_area #sideView {
     position: absolute;
@@ -364,7 +359,22 @@ body {
     z-index: 0;
 }
 
+.visual_area #plant2 {
+    position: absolute;
+    left: 53%;
+    bottom: 40%;
+    width: 7%;
+    z-index: 0;
+}
+
 #plantImg {
+    opacity: 0;
+    width: 100%;
+    height: auto;
+}
+
+#plantImg2 {
+    opacity: 0;
     width: 100%;
     height: auto;
 }

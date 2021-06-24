@@ -57,7 +57,7 @@ for (let index = 0; index < options.length; index++) {
         else if (this.title !== "solution" && solution_clicked == false) {
             options[which_button_clicked - 1].style = "background: white; color: black;"
             this.style = "background:linear-gradient(180deg, #FB6F6F, #EB5151); color: white;";
-            feedback_bar.style = "opacity:1; top: 1000rem";
+            feedback_bar.style = "opacity:1; top: 1050rem";
             Wrong_ANS.play();
         }
         which_button_clicked = (this.id).charAt(this.id.length - 1);
