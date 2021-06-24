@@ -107,3 +107,13 @@ function listMajors() {
         appendPre('Error: ' + response.result.error.message);
     });
 }
+
+var script = document.createElement('script');
+script.setAttribute('id', 'script_api');
+script.defer = true;
+script.async = true;
+script.src = 'https://apis.google.com/js/api.js';
+script.onload = 'this.onload=function(){};handleClientLoad()';
+script.onreadystatechange = "if (this.readyState === 'complete') this.onload()";
+script.type = 'text/javascript';
+document.body.parentNode.appendChild(script);
