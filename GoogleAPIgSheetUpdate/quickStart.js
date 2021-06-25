@@ -130,7 +130,7 @@ var values = { 'values': [['New Value']] };
 function updateValue() {
     gapi.client.sheets.spreadsheets.values.update({
         spreadsheetId: '1v18hhOD-rwErgikIfPqPperYUh8fv9uFVMhtQG_xXq0',
-        range: `A2`,
+        range: `A${whichRowIsEmpty}`,
         valueInputOption: 'USER_ENTERED'
     }, values).then(function (respons) {
     })
