@@ -50,7 +50,7 @@ function updateSigninStatus(isSignedIn) {
     if (isSignedIn) {
         authorizeButton.style.display = 'none';
         signoutButton.style.display = 'block';
-        readValue();
+        // readValue();
     } else {
         authorizeButton.style.display = 'block';
         signoutButton.style.display = 'none';
@@ -108,6 +108,8 @@ function listMajors() {
     });
 }
 
+var whichRowIsEmpty = 1;
+
 function readValue() {
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: '1GaUDDa_ou6TjOssUyUCY37WeU_74qtAkfRiZTGS_J0s',
@@ -115,15 +117,15 @@ function readValue() {
     }).then(function (response) {
         var range = response.result;
         console.log(range.values);
-
+        whichRowIsEmpty = range.values.length + 1;
     }, function (response) {
         appendPre('Error: ' + response.result.error.message);
     });
 }
 
-function updateValue() {
-    gapi.client.sheets.spreadsheets.values.update()
-}
+// function updateValue() {
+//     gapi.client.sheets.spreadsheets.values.update()
+// }
 
 
 
@@ -139,12 +141,10 @@ document.body.parentNode.appendChild(script);
 
 
 
-// Reading SpreadSheet data
-gapi.client.sheets.spreadsheets.values.get({
-    spreadsheetId: spreadsheetId,
-    range: range
-}).then((response) => {
-    var result = response.result;
-    var numRows = result.values ? result.values.length : 0;
-    console.log(`${numRows} rows retrieved.`);
-});
+
+
+
+// My own button
+var updateButton = document.getElementById('updateValueButton');
+
+updateButton.onclick = readValue;
