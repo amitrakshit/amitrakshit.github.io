@@ -112,7 +112,7 @@ var whichRowIsEmpty = 1;
 
 function readValue() {
     gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: '1GaUDDa_ou6TjOssUyUCY37WeU_74qtAkfRiZTGS_J0s',
+        spreadsheetId: '1v18hhOD-rwErgikIfPqPperYUh8fv9uFVMhtQG_xXq0',
         range: 'A1:A50',
     }).then(function (response) {
         var range = response.result;
@@ -128,7 +128,7 @@ var values = { 'values': 'New Value' };
 
 function updateValue() {
     gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId: '1GaUDDa_ou6TjOssUyUCY37WeU_74qtAkfRiZTGS_J0s',
+        spreadsheetId: '1v18hhOD-rwErgikIfPqPperYUh8fv9uFVMhtQG_xXq0',
         range: `A${whichRowIsEmpty}`,
         valueInputOption: 'USER_ENTERED'
     }, values).then(function (respons) {
