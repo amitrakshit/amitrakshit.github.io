@@ -123,9 +123,18 @@ function readValue() {
     });
 }
 
-// function updateValue() {
-//     gapi.client.sheets.spreadsheets.values.update()
-// }
+
+var values = { 'values': 'New Value' };
+
+function updateValue() {
+    gapi.client.sheets.spreadsheets.values.update({
+        spreadsheetId: '1GaUDDa_ou6TjOssUyUCY37WeU_74qtAkfRiZTGS_J0s',
+        range: `A${whichRowIsEmpty}`,
+        valueInputOption: 'USER_ENTERED'
+    }, values).then(function (respons) {
+        console.log('updated');
+    })
+}
 
 
 
@@ -147,4 +156,7 @@ document.body.parentNode.appendChild(script);
 // My own button
 var updateButton = document.getElementById('updateValueButton');
 
-updateButton.onclick = readValue;
+updateButton.onclick = function () {
+    readValue();
+    updateValue();
+}
