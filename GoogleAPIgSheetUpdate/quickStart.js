@@ -124,8 +124,14 @@ function readValue() {
     });
 }
 
+document.getElementById('textInput').onchange = function () {
+    valueToBeUpdated = this.value;
+    console.log(valueToBeUpdated);
+}
 
-var values = { 'values': [['New Value']] };
+var valueToBeUpdated = document.getElementById('textInput').value;
+
+var values = { 'values': [[valueToBeUpdated]] };
 
 function updateValue() {
     gapi.client.sheets.spreadsheets.values.update({
