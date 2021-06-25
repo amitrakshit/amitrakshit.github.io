@@ -124,14 +124,14 @@ function readValue() {
 }
 
 
-var values = { 'values': 'New Value' };
+var values = { 'values': [['New Value']] };
 
 function updateValue() {
     gapi.client.sheets.spreadsheets.values.update({
         spreadsheetId: '1v18hhOD-rwErgikIfPqPperYUh8fv9uFVMhtQG_xXq0',
         range: `A2`,
         valueInputOption: 'USER_ENTERED'
-    }, { 'values': 'New Value' }).then(function (respons) {
+    }, values).then(function (respons) {
         console.log('updated');
     })
 }
