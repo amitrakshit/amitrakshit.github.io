@@ -50,7 +50,7 @@ function updateSigninStatus(isSignedIn) {
     if (isSignedIn) {
         authorizeButton.style.display = 'none';
         signoutButton.style.display = 'block';
-        listMajors();
+        readValue();
     } else {
         authorizeButton.style.display = 'block';
         signoutButton.style.display = 'none';
@@ -110,10 +110,11 @@ function listMajors() {
 
 function readValue() {
     gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-        range: 'A1::',
+        spreadsheetId: '1GaUDDa_ou6TjOssUyUCY37WeU_74qtAkfRiZTGS_J0s',
+        range: 'A1:A50',
     }).then(function (response) {
         var range = response.result;
+        console.log(range.values);
 
     }, function (response) {
         appendPre('Error: ' + response.result.error.message);
