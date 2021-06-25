@@ -78,3 +78,5 @@ var signInButton = document.getElementById('singInButton');
 signInButton.onclick = function () {
     handleSignInClick();
 }
+
+localStorage

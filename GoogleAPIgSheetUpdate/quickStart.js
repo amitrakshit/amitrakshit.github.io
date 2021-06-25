@@ -90,7 +90,7 @@ function appendPre(message) {
 function listMajors() {
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-        range: 'Class Data!A2:E',
+        range: 'A1:D5',
     }).then(function (response) {
         var range = response.result;
         if (range.values.length > 0) {
@@ -117,3 +117,15 @@ script.onload = 'this.onload=function(){};handleClientLoad()';
 script.onreadystatechange = "if (this.readyState === 'complete') this.onload()";
 script.type = 'text/javascript';
 document.body.parentNode.appendChild(script);
+
+
+
+// Reading SpreadSheet data
+gapi.client.sheets.spreadsheets.values.get({
+    spreadsheetId: spreadsheetId,
+    range: range
+}).then((response) => {
+    var result = response.result;
+    var numRows = result.values ? result.values.length : 0;
+    console.log(`${numRows} rows retrieved.`);
+});
