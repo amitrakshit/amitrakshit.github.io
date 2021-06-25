@@ -90,7 +90,7 @@ function appendPre(message) {
 function listMajors() {
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-        range: 'A1:D5',
+        range: 'A1::',
     }).then(function (response) {
         var range = response.result;
         if (range.values.length > 0) {
@@ -107,6 +107,24 @@ function listMajors() {
         appendPre('Error: ' + response.result.error.message);
     });
 }
+
+function readValue() {
+    gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
+        range: 'A1::',
+    }).then(function (response) {
+        var range = response.result;
+
+    }, function (response) {
+        appendPre('Error: ' + response.result.error.message);
+    });
+}
+
+function updateValue() {
+    gapi.client.sheets.spreadsheets.values.update()
+}
+
+
 
 var script = document.createElement('script');
 script.setAttribute('id', 'script_api');
