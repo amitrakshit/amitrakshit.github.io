@@ -122,6 +122,7 @@ function readValue() {
     }, function (response) {
         appendPre('Error: ' + response.result.error.message);
     });
+    updateValue();
 }
 
 document.getElementById('textInput').onchange = function () {
@@ -135,7 +136,6 @@ var valueToBeUpdated = document.getElementById('textInput').value;
 var values = { 'values': [[valueToBeUpdated]] };
 
 function updateValue() {
-    readValue();
     gapi.client.sheets.spreadsheets.values.update({
         spreadsheetId: '1v18hhOD-rwErgikIfPqPperYUh8fv9uFVMhtQG_xXq0',
         range: `A${whichRowIsEmpty}`,
@@ -165,5 +165,6 @@ document.body.parentNode.appendChild(script);
 var updateButton = document.getElementById('updateValueButton');
 
 updateButton.onclick = function () {
+    readValue();
     updateValue();
 }
