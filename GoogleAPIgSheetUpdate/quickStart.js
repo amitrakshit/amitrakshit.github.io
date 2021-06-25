@@ -132,7 +132,6 @@ function updateValue() {
         range: `A2`,
         valueInputOption: 'USER_ENTERED'
     }, values).then(function (respons) {
-        console.log('updated');
     })
 }
 
