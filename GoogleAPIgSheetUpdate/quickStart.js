@@ -127,6 +127,7 @@ function readValue() {
 document.getElementById('textInput').onchange = function () {
     valueToBeUpdated = this.value;
     console.log(valueToBeUpdated);
+    values = { 'values': [[valueToBeUpdated]] };
 }
 
 var valueToBeUpdated = document.getElementById('textInput').value;
