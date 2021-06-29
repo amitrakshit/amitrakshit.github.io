@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/question_style.css">
+    <link rel="stylesheet" href="styles/LO_style.css">
+    <!-- <link rel="stylesheet" href="styles/context_card.css"> -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>States of Matter</title>
+</head>
+
+<body>
+
+    <!-- <audio id="slider_oninput">
+        <source src="sounds/Slider_oninput.mp3" type="audio/mpeg">
+    </audio> -->
+
+    <audio id="slider_onchange">
+        <source src="sounds/Slider_onchange.mp3" type="audio/mpeg">
+    </audio>
+    <div class="window">
+
+        <div class="cross_symbol_container">
+            <div class="cross_oval">
+                <div class="cross_hand" id="hand1"></div>
+                <div class="cross_hand" id="hand2"></div>
+            </div>
+        </div>
+
+        <div class="navigation_bar">
+            <div class="observation_bar nav_selected">Observation</div>
+            <div class="question_bar">Question</div>
+        </div>
+        <!-- <div class="context_button">
+            <img class="btn" src="img/Context_Button.svg" />
+        </div> -->
+
+        <div class="movable_parent">
+            <!-- This section is for the observation -->
+            <section id="reload_section" class="background">
+                <img class="bg" src="img/background.svg">
+
+
+
+
+
+
+                <!-- For instruction Area. It is always a good practice to put the text in a paragraph element since it can contain inline mathJax. -->
+                <div class="instructino_area">
+                    <p> Tap to select the state of matter, then use the slider to change the temperature and observe its effect on the particles.</p>
+                </div>
+                <!-- For Visual Area -->
+                <div class="visual_area">
+                    <img class = "side_bg" src = "img/side_bg.png">
+                    <img class = "bottom_layer" src = "img/bottom_layer.png">
+                    <img class = "top_layer" src = "img/top_layer.png">
+                    <img class = "interior_normal" src = "img/interior_normal.png">
+                    <img class = "interior_hot" src = "img/interior_hot.png">
+                    <img class = "interior_cold" src = "img/interior_cold.png">
+                    <img class = "normal_ball ball" src = "img/ball_normal.png">
+                    <img class ="cold_ball ball" src = "img/ball_cold.png">
+                    <img class = "hot_ball ball" src = "img/ball_hot.png">
+                    <img class = "normal_water water" src = "img/normal_water.png">
+                    <img class = "hot_water water" src = "img/hot_water.png">
+                    <img class = "cold_water water" src = "img/cold_water.png">
+                    <img class = "gas_container" src = "img/gas_container.png">
+                    <img class = "zoom_container" src = "img/Zoombox.png">
+                  
+
+                    </div>
+                    <canvas id="mycanvas" class = "gas_canvas"></canvas>
+                    <canvas id = "liquid_canvas" class = "small_canvas"></canvas> 
+                    <canvas id ="solid_canvas" class = "smallest_canvas"></canvas>
+
+
+               
+
+                <!-- For Feedback bar -->
+                <div class="feedback_bar">
+                    <p id="message">  </p>
+                </div>
+
+                <!-- For Interaction area -->
+
+                <button class = "Solid Matter" onmouseover="solid_outline()" onmouseout = "solid_remove()" onclick = "solid_instruction()">Solid</button>
+                <button class = "Liquid Matter" onmouseover="liquid_outline()" onmouseout = "liquid_remove()" onclick = "liquid_instruction()">Liquid</button>
+                <button class = "Gas Matter" id = "gas_button" onmouseover="gas_outline()" onmouseout = "gas_remove()" onclick = "gas_instruction()">Gas</button>
+                 
+           
+                <div class="temp_slider">
+                    <input type="range" min="25" max="85" value="55" id="temp_change" class="input_slider">
+                
+                </div>
+
+                <div class = min_temp>25&#8451</div>
+                <div class = max_temp>85&#8451</div>
+                <div class="label">
+                    <span>Temperature</span>
+                </div>
+
+              
+
+
+
+                <!-- For the Next Buttons -->
+                <button class="next_button" onclick="next_instruction()">Next</button>
+            </section>
+
+            <!-- This section is for the question -->
+            <section class="background2">
+                <img class="bg2" src="img/background2.svg">
+
+
+
+
+
+                <div class="dynamic_panel_window">
+                    <div class="scrollable_dynamic_panel">
+                        <div class="question_area">
+                            <p>At room temperature, particles of which of the following states of matter have the maximum movement speed?</p><br>
+                            
+                        </div>
+                        <div class="feedback-bar">
+                            <div id="big">Oops!</div>
+                            <div id="small">You’ve missed something! Let’s go back to the observation tab and give it
+                                another
+                                shot!
+                            </div>
+                        </div>
+                        <div class="option-container">
+                            <div class="options" id="option1">Solid</div>
+                            <div class="options" id="option2">Liquid</div>
+                            <div class="options" id="option3"  title="solution">Gas</div>
+                            
+                        </div>
+
+                        <div class="solution">
+                            <p id="SolHead">Solution</p>
+                           
+                            <p id="Soltext">
+
+                                &bull;&nbsp;Solids and liquids have more closely packed particles as compared to gases.
+        <br>
+        <br>
+                                &bull;&nbsp;They are harder to compress as compared to gases because of strong forces of attraction between their particles.<br>
+                                <br>
+                                &bull;&nbsp; Gas particles do not have these strong force of attraction between them and hence are free to move around and vibrate at very high speeds.
+                                <br>
+                                <br>
+                                &bull;&nbsp;Thus at a given temperature, gas particles show the maximum movement speed when compared to solid and liquid.  <br>
+            
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="button-container">
+                    <button class="finish-button">Finish</button>
+                </footer>
+            </section>
+            <!-- LO message -->
+            <section class="LO_message">
+                <div class="popup">
+                    <div class="text_container">
+                        <p>Wow! You have successfully learnt that gas particles have the maximum speed due to the minimum force of attraction between them.
+
+                        </p>
+                    </div>
+                    <div class="tick_mark_container">
+                        <div class="ellipse2"></div>
+                        <svg class="round_stroke" width="200" height="200">
+                            <path d=""></path>
+                        </svg>
+                        <div class="ellipse1"></div>
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                    </div>
+                    <button class="close_button">Close</button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="scripts/index_script.js"></script>
+    <script src="scripts/question_script.js"></script>
+    <script src="scripts/LO_script.js"></script>
+    <!-- <script src="scripts/context_card.js"></script> -->
+</body>
+
+</html>
