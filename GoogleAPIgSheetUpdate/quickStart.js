@@ -166,5 +166,5 @@ var updateButton = document.getElementById('updateValueButton');
 
 updateButton.onclick = function () {
     readValue();
-    updateValue();
+
 }
