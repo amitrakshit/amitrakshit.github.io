@@ -523,3 +523,22 @@ body {
     top: 15%;
     left: 75%;
 }
+
+.diameter {
+    position: absolute;
+    height: 50rem;
+    width: 90rem; 
+    z-index: 2;
+    font-family: Gotham SSm;
+    font-style: normal;
+    font-weight: 325;
+    font-size: 36rem;
+    color: #FFFFFF;
+    line-height: 60rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 52%;
+    left: 45%;
+    opacity: 0;
+}

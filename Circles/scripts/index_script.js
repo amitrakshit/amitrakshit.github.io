@@ -444,7 +444,15 @@ console.log (x1, x3, y);
   // console.log(for_chord.value);
 
   
-
+if (theta == 90) 
+{
+  document.getElementsByClassName("diameter")[0].style.opacity = "1";
+  document.getElementsByClassName("diameter").style.transition = "opacity 2s";
+}
+else {
+  document.getElementsByClassName("diameter")[0].style.opacity = "0";
+  document.getElementsByClassName("diameter").style.transition = "opacity 2s";
+}
 
 }
 
