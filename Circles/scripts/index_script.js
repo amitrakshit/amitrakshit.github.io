@@ -190,7 +190,6 @@ for_point.onchange = function () {
 
 
 
-
   angle2.beginPath();
   angle2.arc(550, 45, 48, theta1, theta2);
   angle2.lineTo(550, 40);
@@ -248,26 +247,27 @@ function change_chord() {
 
   document.getElementById("p").style.color = "aliceblue";
 
-  var max_set = (125 / yp) * for_chord.value;
-  y = 450 - max_set;
+  // var max_set = (125 / yp) * for_chord.value;
+  // y = 450 - max_set;
   if (parseInt(for_point.value) == 75 && document.getElementById("point_change").max == 150) {
     xp = 400;
     yp = 40;
   }
-  if (parseInt(yp) < 100) {
-    y = 450 - 1.5 * for_chord.value;
+  // if (parseInt(yp) < 100) {
+  //   y = 450 - 1.5 * for_chord.value;
+  // }
+  
+  y = 450 - 1.5 * for_chord.value;
+
+  if (for_chord.value == 1) {
+    y = 450;
   }
 
-
-  // console.log(for_chord.value);
-  // document.getElementById("chord_change").max = parseInt ((y-yp)/1.5);
-
-
-
-  // document.getElementById("chord_change").max = document.getElementById("point_change").max;
-
-  // document.getElementById("chord_change").max = parseInt ((last_slider-yp)/1.5);
-
+  else if (for_chord.value == 150)
+  {
+    y = 225;
+  }
+  
   triangle1.clearRect(0, 0, tri1canvas.width, tri1canvas.height);
   triangle2.clearRect(0, 0, tri2canvas.width, tri2canvas.height);
   circle1.clearRect(0, 0, fill_canvas.width, fill_canvas.height);
@@ -276,7 +276,10 @@ function change_chord() {
   x1 = 475 - Math.sqrt((250 ** 2) - ((y - 275) ** 2));
   x3 = 475 + Math.sqrt((250 ** 2) - ((y - 275) ** 2));
 
+  
+  
 
+console.log (x1, x3, y);
   thetaA = Math.acos((475 - x1) / 250);
   thetaB = Math.acos((475 - x3) / 250);
 
@@ -317,8 +320,22 @@ function change_chord() {
 
   }
 
+  if (for_chord.value == 1) {
+    x1  = 294;
+    x3 = 650;
+  }
+
+  else if (for_chord.value == 150)
+
+  {
+    x1 = 230;
+    x3 = 720;
+  }
   tan1 = (y - yp) / (x3 - xp); theta1 = Math.atan(tan1);
   tan2 = (y - yp) / (x1 - xp); theta2 = Math.PI + (Math.atan(tan2));
+
+  
+
 
   if (theta1 < 0) { theta1 = Math.PI + Math.atan(tan1); }
 
@@ -334,7 +351,19 @@ function change_chord() {
   label1.stroke();
 
   theta = Math.floor((theta2 - theta1) * (180 / Math.PI));
+  if (for_chord.value == 150)
+  {
+    document.getElementsByClassName("anglep")[0].innerHTML = "102&deg";
+    document.getElementsByClassName("angleq")[0].innerHTML = "102&deg";
+  }
+  else {
   document.getElementsByClassName("anglep")[0].innerHTML = theta + "&deg";
+  document.getElementsByClassName("angleq")[0].innerHTML = theta + "&deg";
+  }
+ 
+ 
+  
+ 
   angle1.beginPath();
   angle1.arc(xp, yp, 55, theta1, theta2);
   angle1.lineTo(xp, yp);
@@ -343,12 +372,13 @@ function change_chord() {
   angle1.fill();
   angle1.strokeStyle = "transparent";
   angle1.stroke();
-
+  
 
   tan1 = (y - 40) / (x3 - 550); theta1 = Math.atan(tan1);
   tan2 = (y - 40) / (Math.abs(x1 - 550)); theta2 = Math.PI - (Math.atan(tan2));
 
-  document.getElementsByClassName("angleq")[0].innerHTML = theta + "&deg";
+  
+
 
   angle2.beginPath();
   angle2.arc(550, 45, 50, theta1, theta2);
@@ -406,9 +436,12 @@ function change_chord() {
   document.getElementById("a").style.left = (x1 + 5) + "rem";
   document.getElementById("b").style.top = (y - 60) + "rem";
   document.getElementById("b").style.left = (x3 - 30) + "rem";
+  
 
   //     document.getElementById("chord_change").max = parseInt (150 - (yp/2.5));
   // console.log(for_chord.value);
+
+  
 
 
 }
@@ -422,13 +455,13 @@ function change_point() {
   // document.getElementById("p").style.color = "#E050F4";
 
   if (parseInt(for_chord.value) == 1) {
-    x1 = 302;
+    x1 = 294;
     x3 = 650;
     y = 450;
   }
-  document.getElementById("point_change").max = parseInt(y / 3);
+  // document.getElementById("point_change").max = parseInt(y / 3);
 
-  // document.getElementById("chord_change").max = parseInt (150 - (yp/2.5));
+ 
   // console.log(for_chord.value);
 
 
@@ -437,7 +470,7 @@ function change_point() {
 
   tan1 = (y - 40) / (x3 - 550); theta1 = Math.atan(tan1);
   tan2 = (y - 40) / (Math.abs(x1 - 550)); theta2 = Math.PI - (Math.atan(tan2));
-  document.getElementsByClassName("angleq")[0].innerHTML = theta + "&deg";
+  // document.getElementsByClassName("angleq")[0].innerHTML = theta + "&deg";
   angle2.beginPath();
   angle2.arc(550, 45, 50, theta1, theta2);
   angle2.lineTo(550, 40);
@@ -448,8 +481,8 @@ function change_point() {
   angle2.stroke();
 
 
-  if (parseInt(for_point.value) >= y / 6) {
-    y2 = (25 + (for_point.value - y / 6) * 3);
+  if (parseInt(for_point.value) >= 75) {
+    y2 = (25 + (for_point.value - 75));
     x2 = 475 + Math.sqrt((250 ** 2) - ((y2 - 275) ** 2));
     var xl = x2 - 10;
 
@@ -466,6 +499,8 @@ function change_point() {
     tan1 = (y - y2) / (x3 - x2); theta1 = Math.atan(tan1);
     tan2 = (y - y2) / (x1 - x2); theta2 = Math.PI + (Math.atan(tan2));
 
+    
+
     if (theta1 < 0) { theta1 = Math.PI + Math.atan(tan1); }
 
 
@@ -473,12 +508,12 @@ function change_point() {
   }
 
   else {
-    y2 = (25 + (y / 6 - for_point.value) * 3);
+    y2 = (25 + (75 - for_point.value) );
     var x2 = 475 - Math.sqrt((250 ** 2) - ((y2 - 275) ** 2));
     var xl = x2 + 10;
 
 
-    tan1 = (y - y2) / (x3 - x2); theta1 = Math.atan(tan1);
+    // tan1 = (y - y2) / (x3 - x2); theta1 = Math.atan(tan1);
 
     tan1 = (y - y2) / (x3 - x2); theta1 = Math.atan(tan1);
     tan2 = (y - y2) / (x1 - x2); theta2 = Math.PI + (Math.atan(tan2));
@@ -521,7 +556,10 @@ function change_point() {
   last_theta1 = theta1; last_theta2 = theta2;
 
   theta = Math.floor((theta2 - theta1) * (180 / Math.PI));
-  document.getElementsByClassName("anglep")[0].innerHTML = theta + "&deg";
+  // document.getElementsByClassName("anglep")[0].innerHTML = theta + "&deg";
+
+  
+   
   angle1.beginPath();
   angle1.arc(x2, y2, 55, theta1, theta2);
   angle1.lineTo(x2, y2);
@@ -530,7 +568,7 @@ function change_point() {
   angle1.fill();
   angle1.strokeStyle = "transparent";
   angle1.stroke();
-
+  
 
 
 
@@ -568,6 +606,7 @@ function change_point() {
   yp = y2;
 
   // console.log(y2);
+  // document.getElementById("chord_change").max = parseInt (150 - (yp/2.5));
 
 }
 
