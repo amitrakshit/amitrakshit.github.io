@@ -81,6 +81,14 @@ label1.stroke();
 
 document.getElementsByClassName("anglep")[0].innerHTML = theta + "&deg";
 
+var label2 = document.getElementById("tri2canvas").getContext("2d");
+label2.beginPath();
+label2.moveTo(895, 100);
+label2.lineTo(800, 100);
+label2.lineTo(550, 80);
+label2.strokeStyle = "white";
+label2.lineWidth = 3;
+label2.stroke();
 
 // For drawing a second angle
 tan1 = (450 - 40) / (650 - 550); theta1 = Math.atan(tan1);
@@ -103,7 +111,7 @@ document.getElementsByClassName("angleq")[0].innerHTML = theta + "&deg";
 // For drawing a first triangle
 var triangle1 = document.getElementById("tri1canvas").getContext("2d");
 triangle1.beginPath();
-triangle1.moveTo(302, 450);
+triangle1.moveTo(294, 450);
 triangle1.lineTo(400, 40);
 triangle1.lineTo(650, 450);
 triangle1.closePath();
@@ -114,7 +122,7 @@ triangle1.stroke();
 // For drawing a second triangle
 var triangle2 = document.getElementById("tri2canvas").getContext("2d");
 triangle2.beginPath();
-triangle2.moveTo(302, 450);
+triangle2.moveTo(294, 450);
 triangle2.lineTo(550, 40);
 triangle2.lineTo(650, 450);
 triangle2.closePath();
@@ -124,14 +132,7 @@ triangle2.stroke();
 
 
 
-var label2 = document.getElementById("tri2canvas").getContext("2d");
-label2.beginPath();
-label2.moveTo(895, 100);
-label2.lineTo(800, 100);
-label2.lineTo(550, 80);
-label2.strokeStyle = "solid #FFFFFF";
-label2.lineWidth = 3;
-label2.stroke();
+
 
 var for_point = document.getElementById("point_change");
 var for_chord = document.getElementById("chord_change");
@@ -174,7 +175,7 @@ for_point.onchange = function () {
   document.getElementsByClassName("next_button")[0].style.transition = "top 0.5s";
 
   if (parseInt(for_chord.value) == 1) {
-    x1 = 302;
+    x1 = 294;
     x3 = 650;
     y = 450;
   }
@@ -374,6 +375,14 @@ console.log (x1, x3, y);
   angle1.stroke();
   
 
+  label2.beginPath();
+  label2.moveTo(895, 100);
+  label2.lineTo(800, 100);
+  label2.lineTo(550, 80);
+  label2.strokeStyle = "#FFFFFF";
+  label2.lineWidth = 3;
+  label2.stroke();
+
   tan1 = (y - 40) / (x3 - 550); theta1 = Math.atan(tan1);
   tan2 = (y - 40) / (Math.abs(x1 - 550)); theta2 = Math.PI - (Math.atan(tan2));
 
@@ -409,14 +418,7 @@ console.log (x1, x3, y);
   triangle2.stroke();
 
 
-  label2.beginPath();
-  label2.moveTo(895, 100);
-  label2.lineTo(800, 100);
-  label2.lineTo(550, 80);
-  label2.strokeStyle = "#FFFFFF";
-  label2.lineWidth = 3;
-  label2.stroke();
-
+ 
 
 
   // label1.lineTo(xp,170);

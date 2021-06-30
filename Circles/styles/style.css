@@ -497,7 +497,7 @@ body {
 
 .angle {
     height: 50rem;
-    width: 75rem; 
+    width: 90rem; 
     background-color: #FF69E240;
     outline: rgba(184, 163, 163, 0.284);
     z-index: 2;
@@ -507,6 +507,9 @@ body {
     font-size: 39rem;
     color: #FFFFFF;
     line-height: 60rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .anglep {
