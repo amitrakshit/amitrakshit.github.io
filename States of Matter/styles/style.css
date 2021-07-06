@@ -219,33 +219,15 @@ body {
 
 .gas_canvas {
     position: absolute;
-    width: 473rem;
-    height: 500rem;
+    /* width: 473rem;
+    height: 500rem; */
     top: 574rem;
     left: 551rem;
     z-index: 5;
 
 }
 
-.small_canvas {
-    position: absolute;
-    width: 473rem;
-    height: 200rem;
-    top: 875rem;
-    left: 551rem;
-    z-index: 5;
 
-}
-
-.smallest_canvas {
-    position: absolute;
-    width: 338rem;
-    height: 175rem;
-    top: 900rem;
-    left: 600rem;
-    z-index: 5;
-
-}
 
 
 
@@ -368,8 +350,10 @@ position: absolute; width: 100%; height: 100%; z-index: 3; opacity: 1;
     height: 60rem;
     background: linear-gradient(180deg, #FF9231 0%, #FC6076 100%);
 
-    border: none;
+    border: 3rem solid #FFFFFF;
     border-radius: 50%;
+    /* outline: 3;
+    outline: 3rem solid #a59595; */
     z-index: 3;
 }
 
@@ -380,7 +364,8 @@ position: absolute; width: 100%; height: 100%; z-index: 3; opacity: 1;
     background: linear-gradient(180deg, #FF9231 0%, #FC6076 100%);
 
     cursor: pointer;
-    border: none;
+    /* outline: 3rem solid #FFFFFF; */
+    border: 3rem solid #FFFFFF;
     border-radius: 50%;
     z-index: 3;
 }

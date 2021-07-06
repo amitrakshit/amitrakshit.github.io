@@ -51,7 +51,8 @@
 
                 <!-- For instruction Area. It is always a good practice to put the text in a paragraph element since it can contain inline mathJax. -->
                 <div class="instructino_area">
-                    <p> Tap to select the state of matter, then use the slider to change the temperature and observe its effect on the particles.</p>
+                    <p>Tap to select the state of matter, then use the slider to change the temperature and observe its effect on the particles.
+                    </p>
                 </div>
                 <!-- For Visual Area -->
                 <div class="visual_area">
@@ -73,8 +74,7 @@
 
                     </div>
                     <canvas id="mycanvas" class = "gas_canvas"></canvas>
-                    <canvas id = "liquid_canvas" class = "small_canvas"></canvas> 
-                    <canvas id ="solid_canvas" class = "smallest_canvas"></canvas>
+                   
 
 
                
@@ -92,12 +92,12 @@
                  
            
                 <div class="temp_slider">
-                    <input type="range" min="25" max="85" value="55" id="temp_change" class="input_slider">
+                    <input type="range" min="25" max="85" value="1" id="temp_change" class="input_slider">
                 
                 </div>
 
-                <div class = min_temp>25&#8451</div>
-                <div class = max_temp>85&#8451</div>
+                <div class = min_temp>25&deg;C</div>
+                <div class = max_temp>85&deg;C</div>
                 <div class="label">
                     <span>Temperature</span>
                 </div>
@@ -121,7 +121,8 @@
                 <div class="dynamic_panel_window">
                     <div class="scrollable_dynamic_panel">
                         <div class="question_area">
-                            <p>At room temperature, particles of which of the following states of matter have the maximum movement speed?</p><br>
+                            <p>What happens to movement and vibration of gas particles when the temperature is changed from 20&deg;C to -5&deg;C?
+                                </p><br>
                             
                         </div>
                         <div class="feedback-bar">
@@ -132,9 +133,10 @@
                             </div>
                         </div>
                         <div class="option-container">
-                            <div class="options" id="option1">Solid</div>
-                            <div class="options" id="option2">Liquid</div>
-                            <div class="options" id="option3"  title="solution">Gas</div>
+                            <div class="options" id="option1">Increases</div>
+                            <div class="options" id="option2" title = "solution">Decreases</div>
+                            <div class="options" id="option3">Remains same</div>
+                            <div class="options" id="option4">Increases then decreases</div>
                             
                         </div>
 
@@ -143,15 +145,18 @@
                            
                             <p id="Soltext">
 
-                                &bull;&nbsp;Solids and liquids have more closely packed particles as compared to gases.
+                                &bull;&nbsp;Gas particles have almost negligible force &nbsp;&nbsp;&nbsp;of attraction between them and hence &nbsp;&nbsp;&nbsp;are free to move around and vibrate at &nbsp;&nbsp;&nbsp;very high speeds.
+
         <br>
         <br>
-                                &bull;&nbsp;They are harder to compress as compared to gases because of strong forces of attraction between their particles.<br>
-                                <br>
-                                &bull;&nbsp; Gas particles do not have these strong force of attraction between them and hence are free to move around and vibrate at very high speeds.
+                                &bull;&nbsp;Since kinetic energy of the particles is &nbsp;&nbsp;&nbsp;dependent on the temperature, so when &nbsp;&nbsp;&nbsp;the temperature is decreased, the kinetic &nbsp;&nbsp;&nbsp;energy decreases too.
                                 <br>
                                 <br>
-                                &bull;&nbsp;Thus at a given temperature, gas particles show the maximum movement speed when compared to solid and liquid.  <br>
+                                &bull;&nbsp; Due to the decrease in kinetic energy of &nbsp;&nbsp;&nbsp;the particles, their vibration and speed of &nbsp;&nbsp;&nbsp;movement also decreases.
+
+                                <br>
+                                <br>
+                               
             
                             </p>
                         </div>
@@ -166,7 +171,9 @@
             <section class="LO_message">
                 <div class="popup">
                     <div class="text_container">
-                        <p>Wow! You have successfully learnt that gas particles have the maximum speed due to the minimum force of attraction between them.
+                        <p> <B>You just explored that </B>on decreasing the temperature, kinetic energy decreases, which decreases the movement and vibration of the particles.
+
+
 
                         </p>
                     </div>
