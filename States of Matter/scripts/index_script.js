@@ -45,18 +45,27 @@ function sleep(ms) {
 }
 
 var visual_div = document.getElementsByClassName("visual_area")[0];
-
+var oven_reading = document.getElementsByClassName("oven_reading")[0];
 var canvas = document.getElementById("mycanvas");
 var c = canvas.getContext("2d");
 
 
-canvas.width = (window.getComputedStyle(visual_div).width.slice(0, -2))/2.1;
-canvas.height = 0.95*((window.getComputedStyle(visual_div).height.slice(0, -2)));
+canvas.width = (window.getComputedStyle(visual_div).width.slice(0, -2));
+canvas.height = 1.1 * ((window.getComputedStyle(visual_div).height.slice(0, -2)));
 
 
 
 var temp_change = document.getElementById("temp_change");
 var slider_control = document.getElementsByClassName("temp_slider")[0];
+
+var min_temp = document.getElementsByClassName("min_temp")[0];
+var max_temp = document.getElementsByClassName("max_temp")[0];
+var label = document.getElementsByClassName("label")[0];
+
+var marker_1 = document.getElementsByClassName("marker")[0];
+var marker_2 = document.getElementsByClassName("marker")[1];
+
+
 
 var sound_onchange = document.getElementById("slider_onchange");
 
@@ -85,191 +94,370 @@ var hot_interior = document.getElementsByClassName("interior_hot")[0];
 var cold_interior = document.getElementsByClassName("interior_cold")[0];
 
 
-var scalar; var temp_mult_solid; var stop_animation; var last_value = 25; var ang =0; var angle=0; var animation_running = false; var plusx; var plusY; var temp_mult_liquid; var temp_mult_gas;
-var temp_value = 25; 
+var scalar; var temp_mult_solid; var stop_animation; var last_value = 25; var ang = 0; var angle = 0; var animation_running = false; var plusx; var plusY; var temp_mult_liquid; var temp_mult_gas;
+var temp_value = 25; var for_await = false; var solid_clicked = false;
 temp_change.disabled = true;
-slider_control.style.opacity = "0.3";
+slider_control.style.opacity = "0";
+min_temp.style.opacity = "0";
+max_temp.style.opacity = "0";
+label.style.opacity = "0";
 
-temp_change.oninput = function () {
+temp_change.oninput = async function () {
   this.innerHTML = this.value;
   temp_value = parseInt(this.value);
-    // animation_running = false;
-  feedback_box.style.opacity = "0";
-  feedback_box.style.transition = "opacity 2s";
+  oven_reading.innerText = temp_value + "\u00B0C";
 
-    if (gas_button.disabled == true) {
-    
-  gas_changes();
-  
-}
-
-  else if (liquid_button.disabled == true) {
-    
-    liquid_changes();
-    
-  }
-else if (solid_button.disabled ==true)
-{
-  solid_changes();
-}
-
-
-  // zoom_into();
-}
-
-  temp_change.onchange = function () {
-  sound_onchange.play();
-  // animation_running = false;
-
-  
-  feedback_box.style.opacity = "1.0";
-  feedback_box.style.transition = "opacity 2s";
-
-
-  // zoom_into();
-  
-  if (last_value - temp_change.value <= 0)
-  {  
-  
-  if (gas_button.disabled == true)
-  
-  {
-
-
-    if (temp_change.value == 25) {
-      remarks.innerText = "Due to minimal force of attraction, gas particles vibrate and move freely at high speeds.";
-    }
-   else if (temp_change.value <= 45) {
-    remarks.innerText = "Increase in temperature, increases the kinetic energy which increases the movement of the particles.";
-  }
-
-
-  else if (temp_change.value > 45  && temp_change.value <= 65) {
-
-        remarks.innerText = "On increasing the temperature, kinetic energy also increases and thus the movement of particles increases.";
-        
-    }
-
-    else if (temp_change.value > 65 && temp_change.value <= 85) {
-      
-        remarks.innerText = "On further increase in temperature and kinetic energy, movement of particles becomes even more rigorous.";    }
-  }
-
-  else if (liquid_button.disabled == true)
-
-  {
-
-    if (temp_change.value == 25) {
-      remarks.innerText = "As compared to solids, liquid particles are spaced apart from each other and show a lot of movement.";
-    }
-   else if (temp_change.value <= 45) {
-      remarks.innerText = "Increase in temperature, increases the kinetic energy which increases the movement of the particles.";
-    }
-  
-  
-    else if (temp_change.value > 45  && temp_change.value <= 65) {
-  
-          remarks.innerText = "On increasing the temperature, kinetic energy also increases and thus the movement of particles increases.";
-          
-      }
-  
-      else if (temp_change.value > 65 && temp_change.value <= 85) {
-        
-          remarks.innerText = "On further increase in temperature and kinetic energy, movement of particles becomes even more rigorous.";
-      }
-}
-
-else if (solid_button.disabled ==true)
-{
-
-
-  if (temp_change.value == 25) {
-    remarks.innerText = "Due to the very high force of attraction, solid particles show very less movement.";
-  } 
-
- else if (temp_change.value <= 45) {
-    remarks.innerText = "Increase in temperature, increases the kinetic energy which increases the vibration of the particles.";}
  
 
+  if (gas_button.disabled == true) {
 
-  else if (temp_change.value > 45  && temp_change.value <= 65) {
+    gas_changes();
 
-        remarks.innerText = "On increasing the temperature, kinetic energy also increases and thus the vibration of particles increases.";
+  }
+
+  else if (liquid_button.disabled == true) {
+
+    liquid_changes();
+
+  }
+  else if (solid_button.disabled == true) {
+    solid_changes();
+  }
+
+  if (last_value <= temp_value) {
+
+    if (gas_button.disabled == true || liquid_button.disabled == true) {
+
+
+
+      if (temp_value <= 45) {
+
+if (last_value == 25)
+{
+        if (remarks.innerText == "As compared to solids, liquid particles are spaced apart from each other and show a lot of movement." || remarks.innerText == "Due to minimal force of attraction, gas particles have large spaces between them and move freely at high speeds.") {
+
+
+
+          await sleep(500);
+          feedback_box.style.opacity = "0";
+          remarks.style.opacity = "0";
+          remarks.style.transition = "opacity 2s";
+          feedback_box.style.transition = "opacity 2s";
+          await sleep(500);
+          feedback_box.style.opacity = "1.0";
+          feedback_box.style.transition = "opacity 2s";
+          remarks.style.opacity = "1";
+          remarks.style.transition = "opacity 2s";
+        }
+
         
+
+        remarks.innerText = "Increase in temperature, increases the kinetic energy which increases the movement of the particles.";
+        }
+
+
+      }
+
+
+      else if (temp_value > 45 && temp_value <= 65) {
+
+
+
+        if (last_value <= 45) {
+
+          await sleep(500);
+          feedback_box.style.opacity = "0";
+          remarks.style.opacity = "0";
+          remarks.style.transition = "opacity 2s";
+          feedback_box.style.transition = "opacity 2s";
+          await sleep(500);
+          feedback_box.style.opacity = "1.0";
+          feedback_box.style.transition = "opacity 2s";
+          remarks.style.opacity = "1";
+          remarks.style.transition = "opacity 2s";
+
+        
+
+
+        remarks.innerText = "On increasing the temperature, kinetic energy also increases and thus the movement of particles increases.";
+        }
+      }
+
+
+      else if (temp_value > 65 && temp_value <= 85) {
+
+        if (last_value <= 65) {
+
+
+
+          await sleep(500);
+          feedback_box.style.opacity = "0";
+          remarks.style.opacity = "0";
+          remarks.style.transition = "opacity 2s";
+          feedback_box.style.transition = "opacity 2s";
+          await sleep(500);
+          feedback_box.style.opacity = "1.0";
+          feedback_box.style.transition = "opacity 2s";
+          remarks.style.opacity = "1";
+          remarks.style.transition = "opacity 2s";
+        
+
+
+        remarks.innerText = "On further increase in temperature, the particles acquire higher kinetic energy and move vigorously.";
+        }
+      }
     }
 
-    else if (temp_change.value > 65 && temp_change.value <= 85) {
-      
-        remarks.innerText = "On further increase in temperature and kinetic energy, vibration of particles becomes even more rigorous.";
-    } 
+    else if (solid_button.disabled == true) {
+
+
+      if (temp_value <= 45) {
+
+
+        if (last_value == 25) {
+
+          if (remarks.innerText == "Due to the very high force of attraction, solid particles show very less movement.")
+{
+          await sleep(500);
+          feedback_box.style.opacity = "0";
+          remarks.style.opacity = "0";
+          remarks.style.transition = "opacity 2s";
+          feedback_box.style.transition = "opacity 2s";
+          await sleep(500);
+          feedback_box.style.opacity = "1.0";
+          feedback_box.style.transition = "opacity 2s";
+          remarks.style.opacity = "1";
+          remarks.style.transition = "opacity 2s";
+
 }
+
+        
+
+        remarks.innerText = "Increase in temperature, increases the kinetic energy which increases the vibration of the particles.";
+        }
+
+      }
+
+
+      else if (temp_value > 45 && temp_value <= 65) {
+
+
+
+
+
+        if (last_value <= 45) {
+
+          await sleep(500);
+          feedback_box.style.opacity = "0";
+          remarks.style.opacity = "0";
+          remarks.style.transition = "opacity 2s";
+          feedback_box.style.transition = "opacity 2s";
+          await sleep(500);
+          feedback_box.style.opacity = "1.0";
+          feedback_box.style.transition = "opacity 2s";
+          remarks.style.opacity = "1";
+          remarks.style.transition = "opacity 2s";
+
+
+        
+
+        remarks.innerText = "On increasing the temperature, kinetic energy also increases and thus the vibration of particles increases.";
+        }
+      }
+
+      else if (temp_value > 65 && temp_value <= 85) {
+
+
+
+        if (last_value <= 65) {
+
+
+
+          await sleep(500);
+          feedback_box.style.opacity = "0";
+          remarks.style.opacity = "0";
+          remarks.style.transition = "opacity 2s";
+          feedback_box.style.transition = "opacity 2s";
+          await sleep(500);
+          feedback_box.style.opacity = "1.0";
+          feedback_box.style.transition = "opacity 2s";
+          remarks.style.opacity = "1";
+          remarks.style.transition = "opacity 2s";
+
+        
+
+        remarks.innerText = "On further increase in temperature, the particles acquire higher kinetic energy and vibrate vigorously.";
+      }}
+    }
+
+
   }
 
   else {
-    
-    if (gas_button.disabled == true)
-  
-    {
-  
-      if (temp_change.value <= 45) {
-      remarks.innerText = "On further fall in temperature, kinetic energy decreases and thus the movement of particles decreases too.";
-    }
-  
-  
-    else if (temp_change.value > 45  && temp_change.value <= 65) {
-  
-          remarks.innerText = "Decreasing the temperature, reduces the kinetic energy, thus the movement of particles decreases too."; }
-  
-      else if (temp_change.value > 65 && temp_change.value <= 85) {
+
+    if (gas_button.disabled == true || liquid_button.disabled == true) {
+
+      if (temp_value <= 45) {
+
+
+
+        if (last_value > 45) {
+
+          await sleep(500);
+          feedback_box.style.opacity = "0";
+          remarks.style.opacity = "0";
+          remarks.style.transition = "opacity 2s";
+          feedback_box.style.transition = "opacity 2s";
+          await sleep(500);
+          feedback_box.style.opacity = "1.0";
+          feedback_box.style.transition = "opacity 2s";
+          remarks.style.opacity = "1";
+          remarks.style.transition = "opacity 2s";
+
+
         
-          remarks.innerText = "Decreasing the temperature reduces the kinetic energy, which decreases the movement of the particles.";
-      }
-    }
-  
-    else if (liquid_button.disabled == true)
-  
-    {
-      if (temp_change.value <= 45) {
-        remarks.innerText = "On further fall in temperature, kinetic energy decreases and thus the movement of particles decreases too.";
-      }
-    
-    
-      else if (temp_change.value > 45  && temp_change.value <= 65) {
-    
-            remarks.innerText = "Decreasing the temperature, reduces the kinetic energy, thus the movement of particles decreases too.";
-            
-        }
-    
-        else if (temp_change.value > 65 && temp_change.value <= 85) {
-          
-            remarks.innerText = "Decreasing the temperature reduces the kinetic energy, which decreases the movement of the particles.";
-        }
-  }
-  
-  else if (solid_button.disabled ==true)
-  {
-  
-    if (temp_change.value <= 45) {
-      remarks.innerText = "On further fall in temperature, kinetic energy decreases and thus the vibration of particles decreases too.";
-    }
-  
-  
-    else if (temp_change.value > 45  && temp_change.value <= 65) {
-  
-          remarks.innerText = "Decreasing the temperature, reduces the kinetic energy, thus the vibration of particles decreases too.";
-          
-      }
-  
-      else if (temp_change.value > 65 && temp_change.value <= 85) {
+
         
-          remarks.innerText = "Decreasing the temperature reduces the kinetic energy, which decreases the vibration of the particles.";
-      } 
-  }
+          remarks.innerText = "On further fall in temperature, kinetic energy decreases and thus the movement of particles decreases too.";
+      }
+    }
+
+
+      else if (temp_value > 45 && temp_value <= 65) {
+
+
+        if (last_value > 65) {
+
+          await sleep(500);
+          feedback_box.style.opacity = "0";
+          remarks.style.opacity = "0";
+          remarks.style.transition = "opacity 2s";
+          feedback_box.style.transition = "opacity 2s";
+          await sleep(500);
+          feedback_box.style.opacity = "1.0";
+          feedback_box.style.transition = "opacity 2s";
+          remarks.style.opacity = "1";
+          remarks.style.transition = "opacity 2s";
+
+
+        
+
+        remarks.innerText = "Decreasing the temperature, reduces the kinetic energy, thus the movement of particles decreases too.";
+      }
+    }
+
+    //   else if (temp_value > 65 && temp_value <= 85) {
+
+
+    //     if (last_value == 85) {
+
+    //       if (remarks.innerText == "On further increase in temperature, the particles acquire higher kinetic energy and move vigorously.")
+    //       {
+    //       await sleep(500);
+    //       feedback_box.style.opacity = "0";
+    //       remarks.style.opacity = "0";
+    //       remarks.style.transition = "opacity 2s";
+    //       feedback_box.style.transition = "opacity 2s";
+    //       await sleep(500);
+    //       feedback_box.style.opacity = "1.0";
+    //       feedback_box.style.transition = "opacity 2s";
+    //       remarks.style.opacity = "1";
+    //       remarks.style.transition = "opacity 2s";
+    //       }
+
+        
+
+    //     remarks.innerText = "Decreasing the temperature reduces the kinetic energy, which decreases the movement of the particles.";
+    //   }
+    // }
+    }
+
+
+
+    else if (solid_button.disabled == true) {
+
+      if (temp_value <= 45) {
+
+        if (last_value > 45) {
+
+          await sleep(500);
+          feedback_box.style.opacity = "0";
+          remarks.style.opacity = "0";
+          remarks.style.transition = "opacity 2s";
+          feedback_box.style.transition = "opacity 2s";
+          await sleep(500);
+          feedback_box.style.opacity = "1.0";
+          feedback_box.style.transition = "opacity 2s";
+          remarks.style.opacity = "1";
+          remarks.style.transition = "opacity 2s";
+
+
+        
+
+        remarks.innerText = "On further fall in temperature, kinetic energy decreases and thus the vibration of particles decreases too.";
+      }
+    }
+
+
+      else if (temp_value > 45 && temp_value <= 65) {
+
+
+        if (last_value > 65) {
+
+          await sleep(500);
+          feedback_box.style.opacity = "0";
+          remarks.style.opacity = "0";
+          remarks.style.transition = "opacity 2s";
+          feedback_box.style.transition = "opacity 2s";
+          await sleep(500);
+          feedback_box.style.opacity = "1.0";
+          feedback_box.style.transition = "opacity 2s";
+          remarks.style.opacity = "1";
+          remarks.style.transition = "opacity 2s";
+
+
+        
+
+        remarks.innerText = "Decreasing the temperature, reduces the kinetic energy, thus the vibration of particles decreases too.";
+        }
+      }
+
+      // else if (temp_value > 65 && temp_value <= 85) {
+
+      //   if (last_value == 85) {
+
+      //     if ( remarks.innerText == "On further increase in temperature, the particles acquire higher kinetic energy and vibrate vigorously.")
+      //     {
+
+      //     await sleep(500);
+      //     feedback_box.style.opacity = "0";
+      //     remarks.style.opacity = "0";
+      //     remarks.style.transition = "opacity 2s";
+      //     feedback_box.style.transition = "opacity 2s";
+      //     await sleep(500);
+      //     feedback_box.style.opacity = "1.0";
+      //     feedback_box.style.transition = "opacity 2s";
+      //     remarks.style.opacity = "1";
+      //     remarks.style.transition = "opacity 2s";
+
+      //     }
+      //   remarks.innerText = "Decreasing the temperature reduces the kinetic energy, which decreases the vibration of the particles.";
+      //   }
+      // }
+    }
 
   }
-  next_button.style.top = "1717rem";
-  next_button.style.transition = "top 1s";
-  last_value = temp_change.value;
+
+  last_value = temp_value;
+
+}
+
+
+
+temp_change.onchange = function () {
+  sound_onchange.play();
+ 
+
 }
 
 
@@ -298,15 +486,15 @@ function gas_remove() {
 async function solid_instruction() {
 
 
-  // animation_running = false;
-  feedback_box.style.opacity = "0";
-  feedback_box.style.transition = "opacity 2s";
 
   temp_change.value = "25";
   temp_value = parseInt(temp_change.value);
+  last_value = 25;
+  oven_reading.innerText = "25\u00B0C";
 
-  solid_button.disabled = true;  liquid_button.disabled = false; gas_button.disabled = false;
-  solid_button.style.border = "3rem solid #FFFFFF";  liquid_button.style.border = "none"; gas_button.style.border = "none";
+
+  solid_button.disabled = true; liquid_button.disabled = false; gas_button.disabled = false;
+  solid_button.style.border = "3rem solid #FFFFFF"; liquid_button.style.border = "none"; gas_button.style.border = "none";
   water_normal.style.opacity = "0"; water_normal.style.transition = "1s opacity";
   water_hot.style.opacity = "0"; water_hot.style.transition = "1s opacity";
   water_cold.style.opacity = "0"; water_cold.style.transition = "1s opacity";
@@ -315,29 +503,40 @@ async function solid_instruction() {
 
   normal_interior.style.opacity = "0"; normal_interior.style.transition = "1s opacity";
   hot_interior.style.opacity = "0"; hot_interior.style.transition = "1s opacity";
-  cold_interior.style.opacity = "1"; cold_interior.style.transition = "1s opacity";
+  cold_interior.style.opacity = "0.5"; cold_interior.style.transition = "1s opacity";
+  solid_normal.style.opacity = "0.33"; solid_normal.style.transition = "1s opacity";
 
- solid_cold.style.opacity = "1"; solid_cold.style.transition = "1s opacity"; 
-  
+  solid_cold.style.opacity = "0.5"; solid_cold.style.transition = "1s opacity";
+
+
+
+
+  if (for_await == false) {
+    for_await = true;
+
+    zoom_box.style.opacity = "1"; zoom_box.style.transition = "1s opacity";
+    await sleep(1000);
+
+  }
 
   temp_change.disabled = false;
   slider_control.style.opacity = "1"; slider_control.style.transition = "1s opacity";
-  
-  await sleep(1000);
-  zoom_box.style.opacity = "1"; zoom_box.style.transition = "1s opacity";
+  min_temp.style.opacity = "1"; min_temp.style.transition = "1s opacity";
+  max_temp.style.opacity = "1"; max_temp.style.transition = "1s opacity";
+  label.style.opacity = "1"; label.style.transition = "1s opacity";
+  oven_reading.style.opacity = "1"; oven_reading.style.transition = "1s opacity";
 
-  
- 
-solid_changes();
+  solid_changes();
+  setup();
+  if (animation_running == false) {
+    animation_running = true;
+    animate();
+  }
 
-if (animation_running == false) {
-  animation_running = true;
-  animate();
-}
-  // zoom_into();
 
   feedback_box.style.opacity = "1.0";
   feedback_box.style.transition = "opacity 2s";
+
   remarks.innerText = "Due to the very high force of attraction, solid particles show very less movement.";
 
 
@@ -345,16 +544,28 @@ if (animation_running == false) {
 
 async function liquid_instruction() {
 
+  cold_interior.style.opacity = "0.5"; cold_interior.style.transition = "1s opacity";
+
+  water_cold.style.opacity = "1"; water_cold.style.transition = "1s opacity";
+
+  if (for_await == false) {
+    for_await = true;
+
+    zoom_box.style.opacity = "1"; zoom_box.style.transition = "1s opacity";
+    await sleep(1000);
+
+  }
+
+
   solid_button.click();
   solid_cold.style.display = "none";
-// console.log(solid_cold.style.opacity);
-  // animation_running = false;
-  feedback_box.style.opacity = "0";
-  feedback_box.style.transition = "opacity 2s";
 
-  
+
+
   temp_change.value = "25";
   temp_value = parseInt(temp_change.value);
+  last_value = 25;
+  oven_reading.innerText = "25\u00B0C";
 
 
   liquid_button.disabled = true; solid_button.disabled = false; gas_button.disabled = false;
@@ -362,8 +573,8 @@ async function liquid_instruction() {
 
   normal_interior.style.opacity = "0"; normal_interior.style.transition = "1s opacity";
   hot_interior.style.opacity = "0"; hot_interior.style.transition = "1s opacity";
-  cold_interior.style.opacity = "1"; cold_interior.style.transition = "1s opacity";
-  
+  cold_interior.style.opacity = "0.5"; cold_interior.style.transition = "1s opacity";
+
 
   water_cold.style.opacity = "1"; water_cold.style.transition = "1s opacity";
   solid_normal.style.opacity = "0"; solid_normal.style.transition = "1s opacity";
@@ -373,23 +584,30 @@ async function liquid_instruction() {
 
   temp_change.disabled = false;
   slider_control.style.opacity = "1"; slider_control.style.transition = "1s opacity";
-  
-  await sleep(1000);
-  zoom_box.style.opacity = "1"; zoom_box.style.transition = "1s opacity";
+  min_temp.style.opacity = "1"; min_temp.style.transition = "1s opacity";
+  max_temp.style.opacity = "1"; max_temp.style.transition = "1s opacity";
+  label.style.opacity = "1"; label.style.transition = "1s opacity";
+  oven_reading.style.opacity = "1"; oven_reading.style.transition = "1s opacity";
 
-  
 
-  
+
+
+
+
+ 
   liquid_changes();
+
+  setup();
+
   if (animation_running == false) {
-   
+
     animation_running = true;
     animate();
   }
-  // animate();
-  
 
-  // zoom_into();
+
+
+
 
   feedback_box.style.opacity = "1.0";
   feedback_box.style.transition = "opacity 2s";
@@ -400,20 +618,32 @@ async function liquid_instruction() {
 }
 async function gas_instruction() {
 
+
+  cold_interior.style.opacity = "0.5"; cold_interior.style.transition = "1s opacity";
+  gas_container.style.opacity = "1"; gas_container.style.transition = "1s opacity";
+
+  if (for_await == false) {
+    for_await = true;
+
+    zoom_box.style.opacity = "1"; zoom_box.style.transition = "1s opacity";
+    await sleep(1000);
+  }
+
+
   solid_button.click();
   solid_cold.style.display = "none";
-  // animation_running = false;
-  feedback_box.style.opacity = "0";
-  feedback_box.style.transition = "opacity 2s";
-  
+
+
   temp_change.value = "25";
   temp_value = parseInt(temp_change.value);
+  last_value = 25;
+  oven_reading.innerText = "25\u00B0C";
 
   gas_button.disabled = true; liquid_button.disabled = false; solid_button.disabled = false;
   gas_button.style.border = "3rem solid #FFFFFF"; solid_button.style.border = "none"; liquid_button.style.border = "none";
-  
+
   normal_interior.style.opacity = "0"; normal_interior.style.transition = "1s opacity";
-  cold_interior.style.opacity = "1"; cold_interior.style.transition = "1s opacity";
+  cold_interior.style.opacity = "0.5"; cold_interior.style.transition = "1s opacity";
   hot_interior.style.opacity = "0"; hot_interior.style.transition = "1s opacity";
 
   gas_container.style.opacity = "1"; gas_container.style.transition = "1s opacity";
@@ -426,28 +656,36 @@ async function gas_instruction() {
 
   temp_change.disabled = false;
   slider_control.style.opacity = "1"; slider_control.style.transition = "1s opacity";
+  min_temp.style.opacity = "1"; min_temp.style.transition = "1s opacity";
+  max_temp.style.opacity = "1"; max_temp.style.transition = "1s opacity";
+  label.style.opacity = "1"; label.style.transition = "1s opacity";
+  oven_reading.style.opacity = "1"; oven_reading.style.transition = "1s opacity";
   solid_cold.style.opacity = "0";
-  await sleep(1000);
 
-  zoom_box.style.opacity = "1"; zoom_box.style.transition = "1s opacity";
 
-  
-  
-  
+
+
+
+
+
+ 
+
   gas_changes();
+  setup();
+
   if (animation_running == false) {
     animation_running = true;
     animate();
   }
-  // animate();
-  
 
-  // zoom_into();
+
+
+
 
   feedback_box.style.opacity = "1.0";
   feedback_box.style.transition = "opacity 2s";
-  remarks.innerText = "Due to minimal force of attraction, gas particles vibrate and move freely at high speeds.";
- 
+  remarks.innerText = "Due to minimal force of attraction, gas particles have large spaces between them and move freely at high speeds.";
+
 
 }
 
@@ -455,7 +693,6 @@ async function gas_instruction() {
 
 
 
-// functions
 function randomIntFromRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
@@ -469,335 +706,277 @@ function distance(x1, y1, x2, y2) {
 var particles_num;
 
 function solid_changes() {
-  
-  // console.log(temp_value);
-  
-  if (temp_value % 7 == 0) {temp_value += 1;} 
 
-  else if ((temp_value-3) % 7 == 0 ) {
-    // console.log(temp_value);
-    temp_value -= 1;}
+
+
+  if (temp_value % 7 == 0) { temp_value += 1; }
+
+  else if ((temp_value - 3) % 7 == 0) {
+
+    temp_value -= 1;
+  }
   if (temp_value <= 55) {
-    // console.log(temp_value);
-    // particles_num = 30;
+
     scalar = temp_value / 5;
     plusx = temp_value / 100;
     plusY = temp_value / 5000;
     temp_mult_solid = (55 - temp_value) * (1 / 30);
-    solid_normal.style.opacity = 1 - temp_mult_solid;
-    solid_cold.style.opacity = temp_mult_solid;
+    solid_normal.style.opacity = 1 - temp_mult_solid / 1.5;
+    solid_cold.style.opacity = temp_mult_solid / 2;
     solid_hot.style.opacity = "0";
 
     normal_interior.style.opacity = 1 - temp_mult_solid;
-    cold_interior.style.opacity = temp_mult_solid;
+    cold_interior.style.opacity = temp_mult_solid / 2;
     hot_interior.style.opacity = "0";
-    
+
   }
   else {
 
-   if (temp_value == 82){temp_value += 1;}
-   else if (temp_value == 75){temp_value += 1;}
-   else if (temp_value == 69 || temp_value == 70 || temp_value == 71){temp_value = 68;}
-   else if (temp_value == 65 || temp_value == 66 || temp_value == 67|| temp_value == 61){temp_value = 64;}
-    // particles_num = 30;
+    if (temp_value == 82) { temp_value += 1; }
+    else if (temp_value == 75) { temp_value += 1; }
+    else if (temp_value == 69 || temp_value == 70 || temp_value == 71) { temp_value = 68; }
+    else if (temp_value == 65 || temp_value == 66 || temp_value == 67 || temp_value == 61) { temp_value = 64; }
+
     scalar = temp_value / 3;
     plusx = temp_value / 60;
     plusY = temp_value / 3500;
-    
+
     temp_mult_solid = (temp_value - 55) * (1 / 30);
 
     solid_cold.style.opacity = "0";
-    solid_normal.style.opacity = 1 - temp_mult_solid;
-    solid_hot.style.opacity = temp_mult_solid;
+    solid_normal.style.opacity = 1 - temp_mult_solid / 1.5;
+    solid_hot.style.opacity = temp_mult_solid / 2;
 
     cold_interior.style.opacity = "0";
     normal_interior.style.opacity = 1 - temp_mult_solid;
-    hot_interior.style.opacity = temp_mult_solid;
+    hot_interior.style.opacity = temp_mult_solid / 2;
   }
-  zoom_into();
- 
-  // console.log("Normal" + solid_normal.style.opacity, normal_interior.style.opacity );
-  // console.log("Hot" + solid_normal.style.opacity, normal_interior.style.opacity );
-  // console.log("Cold" + solid_normal.style.opacity, normal_interior.style.opacity );
+
 }
 
 function liquid_changes() {
 
 
-  
-  particles_num = 100;
+
+  particles_num = 200;
   if (temp_value <= 55) {
-    
-    scalar = temp_value / 10;
+
+    scalar = temp_value / 3;
     temp_mult_liquid = (55 - temp_value) * (1 / 30);
     water_normal.style.opacity = 1 - temp_mult_liquid;
     water_cold.style.opacity = temp_mult_liquid;
     normal_interior.style.opacity = 1 - temp_mult_liquid;
-    cold_interior.style.opacity = temp_mult_liquid;
+    cold_interior.style.opacity = temp_mult_liquid / 2;
     hot_interior.style.opacity = "0";
     water_hot.style.opacity = "0";
-    
+
   }
   else {
-    // particles_num = 50;
-    scalar = temp_value / 10;
+
+    scalar = temp_value / 4.5;
     temp_mult_liquid = (temp_value - 55) * (1 / 30);
     water_normal.style.opacity = 1 - temp_mult_liquid;
     water_hot.style.opacity = temp_mult_liquid;
     normal_interior.style.opacity = 1 - temp_mult_liquid;
-    hot_interior.style.opacity = temp_mult_liquid;
+    hot_interior.style.opacity = temp_mult_liquid / 2;
     cold_interior.style.opacity = "0";
     water_cold.style.opacity = "0";
 
   }
-  zoom_into();
- 
+
 }
 
 
 function gas_changes() {
-  // animation_running = true;
 
-  particles_num = 30;
+  particles_num = 75;
   if (temp_value <= 55) {
-    
-    scalar = temp_value / 4;
+
+    scalar = temp_value / 2;
     temp_mult_gas = (55 - temp_value) * (1 / 30);
     normal_interior.style.opacity = 1 - temp_mult_gas;
-    cold_interior.style.opacity = temp_mult_gas;
+    cold_interior.style.opacity = temp_mult_gas / 2;
     hot_interior.style.opacity = "0";
   }
   else {
-    // particles_num = 40;
-    scalar = temp_value / 2;
+
+    scalar = temp_value / 3;
     temp_mult_gas = (temp_value - 55) * (1 / 30);
     normal_interior.style.opacity = 1 - temp_mult_gas;
-    hot_interior.style.opacity = temp_mult_gas;
+    hot_interior.style.opacity = temp_mult_gas / 2;
     cold_interior.style.opacity = "0";
   }
 
-  zoom_into();
- 
+
+
 }
 
 
-function zoom_into() {
-
- 
-
-
-//   if (gas_button.disabled == true) {
-//     console.log("yes");
-//   gas_changes();
-  
-// }
-
-//   else if (liquid_button.disabled == true) {
-    
-//     liquid_changes();
-    
-//   }
-// else if (solid_button.disabled ==true)
-// {
-//   solid_changes();
-// }
 
 
 
-  class particle {
-   
-    constructor(x, y, radius, color) {
-      
-      
-      this.posX = x;
-      this.posY = y;
-     
-        this.x = x;
-        this.y = y;  
-      
-              if (solid_button.disabled ==true) {
 
-                
-                  this.velocity = {
-                    x: (Math.random() - 0.5)*scalar,
-                    y: (Math.random() - 0.5)*scalar/40
-                  };
 
-              }
-              else {
-      this.velocity = {
-        x: (Math.random() - 0.5) * scalar,
-        y: (Math.random() - 0.5) * scalar
-      };}
-      this.radius = radius;
-      this.color = color;
-      this.mass = 1;
-      this.phase = 100*(Math.random())*Math.PI;
 
-      // console.log("class");
-    }
-    
-    draw() {
-      
-      // console.log("draw");
-      var color = this.color;
-      color = c.createRadialGradient(this.x,this.y, this.radius/3, this.x,this.y,this.radius);
-      color.addColorStop(0, '#FFFAFA');
-      color.addColorStop(0.9, '#808080');
-      
-      c.beginPath();
-      c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-      c.fillStyle = color;
-      c.stroke();
-      c.fill();
-      c.closePath();
-    }
 
-    draw_solid() {
-      
-      // console.log("draw");
-      var color = this.color;
-      color = c.createRadialGradient(this.posX,this.posY, this.radius/3, this.posX,this.posY,this.radius);
-      color.addColorStop(0, '#FFFAFA');
-      color.addColorStop(0.9, '#808080');
-      
-      c.beginPath();
-      c.arc(this.posX, this.posY, this.radius, 0, Math.PI * 2, false);
-      c.fillStyle = color;
-      c.stroke();
-      c.fill();
-      c.closePath();
-    }
 
-    update() {
-      
-      // console.log("update");
-      for (let i = 0; i < particles.length; i++) {
-        if (this === particles[i]) {
+class particle {
+
+  constructor(x, y, radius, color) {
+
+
+    this.posX = x;
+    this.posY = y;
+
+    this.x = x;
+    this.y = y;
+    this.velocity = {
+      x: (Math.random() - 0.5) * scalar,
+      y: (Math.random() - 0.5) * scalar
+    };
+    this.radius = radius;
+    this.color = color;
+    this.mass = 1;
+    this.phase = 100 * (Math.random()) * Math.PI;
+
+  }
+
+  draw() {
+
+
+    var color = this.color;
+    color = c.createRadialGradient(this.x, this.y, this.radius / 3, this.x, this.y, this.radius);
+    color.addColorStop(0, '#FFFAFA');
+    color.addColorStop(0.9, '#808080');
+
+
+
+    c.beginPath();
+    c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+    c.fillStyle = color;
+    c.stroke();
+    c.fill();
+    c.closePath();
+
+
+  }
+
+  draw_solid() {
+
+
+    var color = this.color;
+    color = c.createRadialGradient(this.posX, this.posY, this.radius / 3, this.posX, this.posY, this.radius);
+    color.addColorStop(0, '#FFFAFA');
+    color.addColorStop(0.9, '#808080');
+
+    c.beginPath();
+    c.arc(this.posX, this.posY, this.radius, 0, Math.PI * 2, false);
+    c.fillStyle = color;
+    c.stroke();
+    c.fill();
+    c.closePath();
+  }
+
+  update() {
+
+
+
+    for (let i = 0; i < particles.length; i++) {
+      if (this === particles[i]) {
+        continue;
+      }
+      else if (distance(this.x, this.y, particles[i].x, particles[i].y) - this.radius * 2 < 0) {
+
+
+        if (solid_button.disabled == true) {
           continue;
-        }
-        else if (distance(this.x, this.y, particles[i].x, particles[i].y) - this.radius * 2 < 0) {
-
-
-           if (solid_button.disabled == true) {
-continue;
-                           
-                              }
-
-                              else {
-                                checkCollision(this, particles[i]);
-                              }
-
-                            
-        
-
 
         }
+
+        else {
+          checkCollision(this, particles[i]);
+        }
+
+
+
+
+
       }
-     
+    }
 
-      if (this.x - this.radius <= 0 || this.x + this.radius >= canvas.width) { this.velocity.x = - this.velocity.x; }
-      if (this.y - this.radius <= 0 || this.y + this.radius >= canvas.height) { this.velocity.y = - this.velocity.y; }
 
-      if (solid_button.disabled == true) 
-      {
+    if (this.x - this.radius <= 0 || this.x + this.radius >= canvas.width) { this.velocity.x = - this.velocity.x; }
+    if (this.y - this.radius <= 0 || this.y + this.radius >= canvas.height) { this.velocity.y = - this.velocity.y; }
 
-        angle += plusx;
-        ang += plusY;
-        this.posX = this.x;
-        this.posY = this.y;
-      this.posX += 0.1*scalar*Math.sin(this.phase*7 +  angle);
-      this.posY += 0.07*scalar*Math.sin(this.phase*7 + ang);
+    if (solid_button.disabled == true) {
+
+      angle += plusx;
+      ang += plusY;
+      this.posX = this.x;
+      this.posY = this.y;
+      this.posX += 0.1 * scalar * Math.sin(this.phase * 7 + angle);
+      this.posY += 0.07 * scalar * Math.sin(this.phase * 7 + ang);
       this.draw_solid();
-      // console.log(this.x, this.y);
-      }
-      else {
-      this.x += this.velocity.x;
-      this.y += this.velocity.y;
+    }
+    else {
+      this.x += 0.1 * scalar * this.velocity.x;
+      this.y += 0.1 * scalar * this.velocity.y;
       this.draw();
-      }
-      // this.draw();
     }
   }
+}
 
 
- 
 
-  // let particles;
 
-  function setup() {
-    // console.log("setup");
-      particles = [];
 
-      if (solid_button.disabled == true)
+function setup() {
 
-      { 
+  particles = [];
 
-        for(let i = 0; i < 15; i++) {
-          const radius = canvas.height / 30;
-          let x =  2*radius + 2.3*i*radius;
-      
-          for (j = 0; j < 12; j++) {
-          let y = 3*radius + 2.3*j*radius;
-          var color = c.createRadialGradient(x,y, radius/3, x,y,radius);
-           color.addColorStop(0, '#FFFAFA');
-          color.addColorStop(0.9, '#808080');
-          particles.push(new particle(x, y, radius, color));
+  if (solid_button.disabled == true) {
+
+    for (let i = 0; i < 15; i++) {
+      const radius = canvas.height / 35;
+      let x = 2 * radius + 2.3 * i * radius;
+
+      for (j = 0; j < 15; j++) {
+        let y = 3 * radius + 2.3 * j * radius;
+        var color = c.createRadialGradient(x, y, radius / 3, x, y, radius);
+        color.addColorStop(0, '#FFFAFA');
+        color.addColorStop(0.9, '#808080');
+        particles.push(new particle(x, y, radius, color));
       }
     }
   }
-      else 
-    {
-      
+  else {
+
     for (let i = 0; i < particles_num; i++) {
-      const radius = canvas.height / 30;
+      const radius = canvas.height / 35;
       let x = randomIntFromRange(radius, canvas.width - radius);
       let y = randomIntFromRange(radius, canvas.height - radius);
-      var color = c.createRadialGradient(x,y, radius/3, x,y,radius);
+      var color = c.createRadialGradient(x, y, radius / 3, x, y, radius);
       color.addColorStop(0, '#FFFAFA');
       color.addColorStop(0.9, '#808080');
       particles.push(new particle(x, y, radius, color));
-  
-    }
+
     }
   }
-
-  
-//   async function animate() {
-//     // // requestAnimationFrame(animate);
-//     while (animation_running == true)
-//     {
-     
-//     await sleep (60);
-//     c.clearRect(0, 0, canvas.width, canvas.height);
-    
-//     console.log("animate");
-    
-//     particles.forEach(particle => particle.update());
-//    }
-// }
-   
-  
-setup();
-// animate();
-  
 }
 
-// animate();
 async function animate() {
-  // // requestAnimationFrame(animate);
-  while (animation_running == true)
-  {
-   
-  await sleep (60);
-  c.clearRect(0, 0, canvas.width, canvas.height);
-  
-  // console.log("animate");
-  
-  particles.forEach(particle => particle.update(particles));
- }
+
+  while (animation_running == true) {
+
+    await sleep(60);
+    c.clearRect(0, 0, canvas.width, canvas.height);
+
+
+
+    particles.forEach(particle => particle.update(particles));
+  }
 }
- 
+
 
 
 
@@ -806,8 +985,8 @@ async function animate() {
 function rotate(velocity, angle) {
 
   const rotatedVelocities = {
-      x: velocity.x * Math.cos(angle) - velocity.y * Math.sin(angle),
-      y: velocity.x * Math.sin(angle) + velocity.y * Math.cos(angle)
+    x: velocity.x * Math.cos(angle) - velocity.y * Math.sin(angle),
+    y: velocity.x * Math.sin(angle) + velocity.y * Math.cos(angle)
   };
 
   return rotatedVelocities;
@@ -822,32 +1001,32 @@ function checkCollision(particle, otherParticle) {
   const xDiff = otherParticle.x - particle.x;
   const yDiff = otherParticle.y - particle.y;
 
-  
+
   if (xVelocityDiff * xDiff + yVelocityDiff * yDiff >= 0) {
 
-      
-      const angle = -Math.atan2(otherParticle.y - particle.y, otherParticle.x - particle.x);
 
-      
-     
-     
-      const u1 = rotate(particle.velocity, angle);
-      const u2 = rotate(otherParticle.velocity, angle);
+    const angle = -Math.atan2(otherParticle.y - particle.y, otherParticle.x - particle.x);
 
-   
-      const v1 = { x: u2.x , y: u1.y };
-      const v2 = { x: u1.x , y: u2.y };
 
-      
-      const vFinal1 = rotate(v1, -angle);
-      const vFinal2 = rotate(v2, -angle);
 
-      
-      particle.velocity.x = vFinal1.x;
-      particle.velocity.y = vFinal1.y;
 
-      otherParticle.velocity.x = vFinal2.x;
-      otherParticle.velocity.y = vFinal2.y;
+    const u1 = rotate(particle.velocity, angle);
+    const u2 = rotate(otherParticle.velocity, angle);
+
+
+    const v1 = { x: u2.x, y: u1.y };
+    const v2 = { x: u1.x, y: u2.y };
+
+
+    const vFinal1 = rotate(v1, -angle);
+    const vFinal2 = rotate(v2, -angle);
+
+
+    particle.velocity.x = vFinal1.x;
+    particle.velocity.y = vFinal1.y;
+
+    otherParticle.velocity.x = vFinal2.x;
+    otherParticle.velocity.y = vFinal2.y;
   }
 }
 

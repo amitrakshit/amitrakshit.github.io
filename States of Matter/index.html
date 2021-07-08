@@ -51,7 +51,7 @@
 
                 <!-- For instruction Area. It is always a good practice to put the text in a paragraph element since it can contain inline mathJax. -->
                 <div class="instructino_area">
-                    <p>Tap to select the state of matter, then use the slider to change the temperature and observe its effect on the particles.
+                    <p>Tap to select the state of matter, then change the temperature and observe its effect on the particles.
                     </p>
                 </div>
                 <!-- For Visual Area -->
@@ -59,6 +59,7 @@
                     <img class = "side_bg" src = "img/side_bg.png">
                     <img class = "bottom_layer" src = "img/bottom_layer.png">
                     <img class = "top_layer" src = "img/top_layer.png">
+                   
                     <img class = "interior_normal" src = "img/interior_normal.png">
                     <img class = "interior_hot" src = "img/interior_hot.png">
                     <img class = "interior_cold" src = "img/interior_cold.png">
@@ -71,11 +72,14 @@
                     <img class = "gas_container" src = "img/gas_container.png">
                     <img class = "zoom_container" src = "img/Zoombox.png">
                   
+                    <div class = "oven_reading">25&deg;C</div>
 
                     </div>
-                    <canvas id="mycanvas" class = "gas_canvas"></canvas>
-                   
 
+                    <div class = "gas_canvas">
+                    <canvas id="mycanvas" class = "my_canvas"></canvas>
+                   
+                </div>
 
                
 
@@ -93,6 +97,10 @@
            
                 <div class="temp_slider">
                     <input type="range" min="25" max="85" value="1" id="temp_change" class="input_slider">
+                     <div class="marker" id="marker1"></div>
+                    <div class="marker" id="marker2"></div>
+                    <div class="marker" id="marker3"></div>
+                    <div class="marker" id="marker4"></div>
                 
                 </div>
 
@@ -121,15 +129,13 @@
                 <div class="dynamic_panel_window">
                     <div class="scrollable_dynamic_panel">
                         <div class="question_area">
-                            <p>What happens to movement and vibration of gas particles when the temperature is changed from 20&deg;C to -5&deg;C?
+                            <p>What happens to movement of gas particles when the temperature is changed from 20&deg;C to -5&deg;C?
                                 </p><br>
                             
                         </div>
                         <div class="feedback-bar">
                             <div id="big">Oops!</div>
-                            <div id="small">You’ve missed something! Let’s go back to the observation tab and give it
-                                another
-                                shot!
+                            <div id="small">Try again or swipe left to figure out the right answer.
                             </div>
                         </div>
                         <div class="option-container">
@@ -145,14 +151,14 @@
                            
                             <p id="Soltext">
 
-                                &bull;&nbsp;Gas particles have almost negligible force &nbsp;&nbsp;&nbsp;of attraction between them and hence &nbsp;&nbsp;&nbsp;are free to move around and vibrate at &nbsp;&nbsp;&nbsp;very high speeds.
+                                &bull;&nbsp;Gas particles have almost negligible force &nbsp;&nbsp;&nbsp;of attraction between them and hence &nbsp;&nbsp;&nbsp;are free to move around and thus move &nbsp;&nbsp;&nbsp;at very high speeds.
 
         <br>
         <br>
                                 &bull;&nbsp;Since kinetic energy of the particles is &nbsp;&nbsp;&nbsp;dependent on the temperature, so when &nbsp;&nbsp;&nbsp;the temperature is decreased, the kinetic &nbsp;&nbsp;&nbsp;energy decreases too.
                                 <br>
                                 <br>
-                                &bull;&nbsp; Due to the decrease in kinetic energy of &nbsp;&nbsp;&nbsp;the particles, their vibration and speed of &nbsp;&nbsp;&nbsp;movement also decreases.
+                                &bull;&nbsp; Due to the decrease in kinetic energy of &nbsp;&nbsp;&nbsp;the particles, their movement decreases.
 
                                 <br>
                                 <br>
@@ -171,7 +177,9 @@
             <section class="LO_message">
                 <div class="popup">
                     <div class="text_container">
-                        <p> <B>You just explored that </B>on decreasing the temperature, kinetic energy decreases, which decreases the movement and vibration of the particles.
+                        <p>You just explored that on decreasing the temperature, the kinetic energy decreases. 
+                            As a result, movement of the particles decreases.
+                            
 
 
 
