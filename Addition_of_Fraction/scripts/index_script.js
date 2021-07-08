@@ -81,7 +81,7 @@ question_bar.onclick = function () {
 var instructionArea = document.createElement('div');
 background.append(instructionArea);
 instructionArea.id = 'instructionArea';
-instructionArea.innerHTML = "Let's explore additon of like fractions using the following interaction.";
+instructionArea.innerHTML = "Let's explore addition of like fractions using the following interaction.";
 
 //Two objects for the numbers
 var number1 = {};
