@@ -318,16 +318,16 @@ async function dropFunctionForLensHolder1(event) {
 
     if (secondDrop) {
         if (FirstDropzoneLens == 'convexLensImg' && SecondDropzoneLens == 'convexLensImg') {
-            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light converges first and then it converges further after passing through both the lenses.'; /*Convex - Convex Combination */
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light converges first and then it converges further after passing through both lenses.'; /*Convex - Convex Combination */
         }
         else if (FirstDropzoneLens == 'convexLensImg' && SecondDropzoneLens == 'concaveLensImg') {
-            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light converges first and then diverges after passing  through both the lenses.'; /*Convex - Concave Combination */
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light converges first and then diverges after passing  through both lenses.'; /*Convex - Concave Combination */
         }
         else if (FirstDropzoneLens == 'concaveLensImg' && SecondDropzoneLens == 'concaveLensImg') {
-            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light diverges first and then it diverges further after passing through both the lenses.'; /*Concave - Concave Combination */
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light diverges first and then it diverges further after passing through both lenses.'; /*Concave - Concave Combination */
         }
         else {
-            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light diverges first and then converges after passing through both the lenses.'; /* Else means Concave - Convex Combination */
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light diverges first and then converges after passing through both lenses.'; /* Else means Concave - Convex Combination */
         }
     }
     else {
@@ -371,16 +371,16 @@ async function dropFunctionForLensHolder2(event) {
     document.getElementById('obPopupWindow').classList.remove('obPopupWindowAdd');
     if (firstDrop) {
         if (FirstDropzoneLens == 'convexLensImg' && SecondDropzoneLens == 'convexLensImg') {
-            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light converges first and then it converges further after passing through both the lenses.'; /*Convex - Convex Combination */
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light converges first and then it converges further after passing through both lenses.'; /*Convex - Convex Combination */
         }
         else if (FirstDropzoneLens == 'convexLensImg' && SecondDropzoneLens == 'concaveLensImg') {
-            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light converges first and then diverges after passing  through both the lenses.'; /*Convex - Concave Combination */
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light converges first and then diverges after passing  through both lenses.'; /*Convex - Concave Combination */
         }
         else if (FirstDropzoneLens == 'concaveLensImg' && SecondDropzoneLens == 'concaveLensImg') {
-            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light diverges first and then it diverges further after passing through both the lenses.'; /*Concave - Concave Combination */
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light diverges first and then it diverges further after passing through both lenses.'; /*Concave - Concave Combination */
         }
         else {
-            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light diverges first and then converges after passing through both the lenses.'; /* Else means Concave - Convex Combination */
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light diverges first and then converges after passing through both lenses.'; /* Else means Concave - Convex Combination */
         }
     }
     else {
@@ -439,16 +439,16 @@ async function dropFunctionForLensHolder1Touch(event) {
 
     if (secondDrop) {
         if (FirstDropzoneLens == 'convexLensImg' && SecondDropzoneLens == 'convexLensImg') {
-            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light converges first and then it converges further after passing through both the lenses.'; /*Convex - Convex Combination */
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light converges first and then it converges further after passing through both lenses.'; /*Convex - Convex Combination */
         }
         else if (FirstDropzoneLens == 'convexLensImg' && SecondDropzoneLens == 'concaveLensImg') {
-            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light converges first and then diverges after passing  through both the lenses.'; /*Convex - Concave Combination */
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light converges first and then diverges after passing  through both lenses.'; /*Convex - Concave Combination */
         }
         else if (FirstDropzoneLens == 'concaveLensImg' && SecondDropzoneLens == 'concaveLensImg') {
-            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light diverges first and then it diverges further after passing through both the lenses.'; /*Concave - Concave Combination */
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light diverges first and then it diverges further after passing through both lenses.'; /*Concave - Concave Combination */
         }
         else {
-            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light diverges first and then converges after passing through both the lenses.'; /* Else means Concave - Convex Combination */
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light diverges first and then converges after passing through both lenses.'; /* Else means Concave - Convex Combination */
         }
     }
     else {
@@ -494,16 +494,16 @@ async function dropFunctionForLensHolder2Touch(event) {
     document.getElementById('obPopupWindow').classList.remove('obPopupWindowAdd');
     if (firstDrop) {
         if (FirstDropzoneLens == 'convexLensImg' && SecondDropzoneLens == 'convexLensImg') {
-            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light converges first and then it converges further after passing through both the lenses.'; /*Convex - Convex Combination */
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light converges first and then it converges further after passing through both lenses.'; /*Convex - Convex Combination */
         }
         else if (FirstDropzoneLens == 'convexLensImg' && SecondDropzoneLens == 'concaveLensImg') {
-            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light converges first and then diverges after passing  through both the lenses.'; /*Convex - Concave Combination */
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light converges first and then diverges after passing  through both lenses.'; /*Convex - Concave Combination */
         }
         else if (FirstDropzoneLens == 'concaveLensImg' && SecondDropzoneLens == 'concaveLensImg') {
-            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light diverges first and then it diverges further after passing through both the lenses.'; /*Concave - Concave Combination */
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light diverges first and then it diverges further after passing through both lenses.'; /*Concave - Concave Combination */
         }
         else {
-            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light diverges first and then converges after passing through both the lenses.'; /* Else means Concave - Convex Combination */
+            document.getElementById('obPopupWindow').innerHTML = 'Observe that the light diverges first and then converges after passing through both lenses.'; /* Else means Concave - Convex Combination */
         }
     }
     else {
