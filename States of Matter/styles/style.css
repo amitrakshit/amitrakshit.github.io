@@ -213,8 +213,8 @@ body {
     width: 984rem;
     height: 520rem;
     top: 564rem;
-    background-image: radial-gradient(119.99% 62.42% at 50% 36.33%, #2d0457 0%, #000108 100%);
-    border-radius: 24rem;
+    /* background-image: radial-gradient(119.99% 62.42% at 50% 36.33%, #2d0457 0%, #000108 100%); */
+    /* border-radius: 24rem; */
 }
 
 .gas_canvas {
@@ -241,7 +241,36 @@ body {
 
 }
 
+.label_matter {
 
+    position: relative;
+
+    height: 80rem;
+width: 475rem;
+
+   
+    top: -17.6%;
+    left: 51.0%;
+    z-index: 6;
+    border-radius: 0rem 0rem 24rem 24rem;
+    background: linear-gradient(90deg, #130E3E 0%, #302B63 50%, #130E3E 100%);
+
+    font-family: Gotham SSm;
+font-size: 36rem;
+font-style: normal;
+font-weight: 350;
+line-height: 43rem;
+letter-spacing: 0px;
+
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+color: #FFFFFF;
+
+
+
+}
 
 
 .visual_area P {
@@ -251,16 +280,16 @@ body {
 }
 
 .side_bg {
-    position: absolute; width: 100%; height: 100%; z-index: 1; border-radius: 30rem;
+    position: absolute; width: 100%; height: 100%; z-index: 1; border-radius: 24rem;
 }
 
 .top_layer {
-    position: absolute; width: 100%; height: 100%; z-index: 3; border-radius: 30rem;
+    position: absolute; width: 100%; height: 100%; z-index: 3; border-radius: 24rem;
 }
 
 
 .bottom_layer {
-    position: absolute; width: 100%; height: 100%; z-index: 2; border-radius: 30rem;
+    position: absolute; width: 100%; height: 100%; z-index: 2; border-radius: 24rem;
 }
 
 .oven_reading {
@@ -416,7 +445,7 @@ position: absolute; width: 100%; height: 100%; z-index: 3; opacity: 1;
     z-index: 1;
     height: 10%;
     border-radius: 6rem;
-    background: linear-gradient(to right, #FFFFFF 0.8%, #00A3FF 0.8%, #00A3FF 34.67%, #ffffFF 34.67%, #ffffFF 36.5%, #FFE600 36.5%, #FFE600 65.67%, #FFFFFF 65.67%,  #FFFFFF 67%,  #FF0F00 67%, #FF0F00 99.4%, #FFFFFF 99.4%, #FFFFFF 100% );
+    background: linear-gradient(to right, #FFFFFF 0.99%, #00A3FF 0.99%, #00A3FF 34.99%, #ffffFF 34.99%, #ffffFF 36.3%, #FFE600 36.3%, #FFE600 65.48%, #FFFFFF 65.48%,  #FFFFFF 67.2%,  #FF0F00 67.20%, #FF0F00 98.9%, #FFFFFF 98.9%, #FFFFFF 100% );
 
 
 }

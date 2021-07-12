@@ -54,7 +54,7 @@ canvas.width = (window.getComputedStyle(visual_div).width.slice(0, -2));
 canvas.height = 1.1 * ((window.getComputedStyle(visual_div).height.slice(0, -2)));
 
 
-
+var label_top = document.getElementsByClassName("label_matter")[0];
 var temp_change = document.getElementById("temp_change");
 var slider_control = document.getElementsByClassName("temp_slider")[0];
 
@@ -107,7 +107,7 @@ temp_change.oninput = async function () {
   temp_value = parseInt(this.value);
   oven_reading.innerText = temp_value + "\u00B0C";
 
-
+ 
 
   if (gas_button.disabled == true) {
 
@@ -132,26 +132,27 @@ temp_change.oninput = async function () {
 
       if (temp_value <= 45) {
 
-        if (last_value == 25) {
-          if (remarks.innerText == "As compared to solids, liquid particles are spaced apart from each other and show a lot of movement." || remarks.innerText == "Due to minimal force of attraction, gas particles have large spaces between them and move freely at high speeds.") {
+if (last_value == 25)
+{
+        if (remarks.innerText == "As compared to solids, liquid particles are spaced apart from each other and show a lot of movement." || remarks.innerText == "Due to minimal force of attraction, gas particles have large spaces between them and move freely at high speeds.") {
 
 
 
-            await sleep(500);
-            feedback_box.style.opacity = "0";
-            remarks.style.opacity = "0";
-            remarks.style.transition = "opacity 2s";
-            feedback_box.style.transition = "opacity 2s";
-            await sleep(500);
-            feedback_box.style.opacity = "1.0";
-            feedback_box.style.transition = "opacity 2s";
-            remarks.style.opacity = "1";
-            remarks.style.transition = "opacity 2s";
-          }
+          await sleep(500);
+          feedback_box.style.opacity = "0";
+          remarks.style.opacity = "0";
+          remarks.style.transition = "opacity 2s";
+          feedback_box.style.transition = "opacity 2s";
+          await sleep(500);
+          feedback_box.style.opacity = "1.0";
+          feedback_box.style.transition = "opacity 2s";
+          remarks.style.opacity = "1";
+          remarks.style.transition = "opacity 2s";
 
+        }
+        
 
-
-          remarks.innerText = "Increase in temperature, increases the kinetic energy which increases the movement of the particles.";
+        remarks.innerText = "At lower temperatures, particles have very less kinetic energy and thus move very slowly.";
         }
 
 
@@ -175,10 +176,10 @@ temp_change.oninput = async function () {
           remarks.style.opacity = "1";
           remarks.style.transition = "opacity 2s";
 
+        
 
 
-
-          remarks.innerText = "On increasing the temperature, kinetic energy also increases and thus the movement of particles increases.";
+        remarks.innerText = "Particle movement is more than the low-temperature range but less than the high-temperature range.";
         }
       }
 
@@ -199,10 +200,10 @@ temp_change.oninput = async function () {
           feedback_box.style.transition = "opacity 2s";
           remarks.style.opacity = "1";
           remarks.style.transition = "opacity 2s";
+        
 
 
-
-          remarks.innerText = "On further increase in temperature, the particles acquire higher kinetic energy and move vigorously.";
+        remarks.innerText = "At higher temperatures, particles move very fast due to high kinetic energy.";
         }
       }
     }
@@ -215,23 +216,24 @@ temp_change.oninput = async function () {
 
         if (last_value == 25) {
 
-          if (remarks.innerText == "Due to the very high force of attraction, solid particles show very less movement.") {
-            await sleep(500);
-            feedback_box.style.opacity = "0";
-            remarks.style.opacity = "0";
-            remarks.style.transition = "opacity 2s";
-            feedback_box.style.transition = "opacity 2s";
-            await sleep(500);
-            feedback_box.style.opacity = "1.0";
-            feedback_box.style.transition = "opacity 2s";
-            remarks.style.opacity = "1";
-            remarks.style.transition = "opacity 2s";
+          if (remarks.innerText == "Due to the very high force of attraction, solid particles show very less movement.")
+{
+          await sleep(500);
+          feedback_box.style.opacity = "0";
+          remarks.style.opacity = "0";
+          remarks.style.transition = "opacity 2s";
+          feedback_box.style.transition = "opacity 2s";
+          await sleep(500);
+          feedback_box.style.opacity = "1.0";
+          feedback_box.style.transition = "opacity 2s";
+          remarks.style.opacity = "1";
+          remarks.style.transition = "opacity 2s";
 
-          }
+}
 
+        
 
-
-          remarks.innerText = "Increase in temperature, increases the kinetic energy which increases the vibration of the particles.";
+        remarks.innerText = "At lower temperatures, particles have very less kinetic energy and thus vibrate slowly.";
         }
 
       }
@@ -257,9 +259,9 @@ temp_change.oninput = async function () {
           remarks.style.transition = "opacity 2s";
 
 
+        
 
-
-          remarks.innerText = "On increasing the temperature, kinetic energy also increases and thus the vibration of particles increases.";
+        remarks.innerText = "Particle vibration is more than the low-temperature range but less than the high-temperature range.";
         }
       }
 
@@ -282,11 +284,10 @@ temp_change.oninput = async function () {
           remarks.style.opacity = "1";
           remarks.style.transition = "opacity 2s";
 
+        
 
-
-          remarks.innerText = "On further increase in temperature, the particles acquire higher kinetic energy and vibrate vigorously.";
-        }
-      }
+        remarks.innerText = "At higher temperatures, particles have very high kinetic energy and thus vibrate very fast.";
+      }}
     }
 
 
@@ -314,12 +315,12 @@ temp_change.oninput = async function () {
           remarks.style.transition = "opacity 2s";
 
 
+        
 
-
-
-          remarks.innerText = "On further fall in temperature, kinetic energy decreases and thus the movement of particles decreases too.";
-        }
+        
+          remarks.innerText = "At lower temperatures, particles have very less kinetic energy and thus move very slowly.";
       }
+    }
 
 
       else if (temp_value > 45 && temp_value <= 65) {
@@ -339,36 +340,36 @@ temp_change.oninput = async function () {
           remarks.style.transition = "opacity 2s";
 
 
+        
 
-
-          remarks.innerText = "Decreasing the temperature, reduces the kinetic energy, thus the movement of particles decreases too.";
-        }
+        remarks.innerText = "Particle movement is more than the low-temperature range but less than the high-temperature range.";
       }
+    }
 
-      //   else if (temp_value > 65 && temp_value <= 85) {
-
-
-      //     if (last_value == 85) {
-
-      //       if (remarks.innerText == "On further increase in temperature, the particles acquire higher kinetic energy and move vigorously.")
-      //       {
-      //       await sleep(500);
-      //       feedback_box.style.opacity = "0";
-      //       remarks.style.opacity = "0";
-      //       remarks.style.transition = "opacity 2s";
-      //       feedback_box.style.transition = "opacity 2s";
-      //       await sleep(500);
-      //       feedback_box.style.opacity = "1.0";
-      //       feedback_box.style.transition = "opacity 2s";
-      //       remarks.style.opacity = "1";
-      //       remarks.style.transition = "opacity 2s";
-      //       }
+    //   else if (temp_value > 65 && temp_value <= 85) {
 
 
+    //     if (last_value == 85) {
 
-      //     remarks.innerText = "Decreasing the temperature reduces the kinetic energy, which decreases the movement of the particles.";
-      //   }
-      // }
+    //       if (remarks.innerText == "On further increase in temperature, the particles acquire higher kinetic energy and move vigorously.")
+    //       {
+    //       await sleep(500);
+    //       feedback_box.style.opacity = "0";
+    //       remarks.style.opacity = "0";
+    //       remarks.style.transition = "opacity 2s";
+    //       feedback_box.style.transition = "opacity 2s";
+    //       await sleep(500);
+    //       feedback_box.style.opacity = "1.0";
+    //       feedback_box.style.transition = "opacity 2s";
+    //       remarks.style.opacity = "1";
+    //       remarks.style.transition = "opacity 2s";
+    //       }
+
+        
+
+    //     remarks.innerText = "Decreasing the temperature reduces the kinetic energy, which decreases the movement of the particles.";
+    //   }
+    // }
     }
 
 
@@ -391,11 +392,11 @@ temp_change.oninput = async function () {
           remarks.style.transition = "opacity 2s";
 
 
+        
 
-
-          remarks.innerText = "On further fall in temperature, kinetic energy decreases and thus the vibration of particles decreases too.";
-        }
+        remarks.innerText = "At lower temperatures, particles have very less kinetic energy and thus vibrate slowly.";
       }
+    }
 
 
       else if (temp_value > 45 && temp_value <= 65) {
@@ -415,9 +416,9 @@ temp_change.oninput = async function () {
           remarks.style.transition = "opacity 2s";
 
 
+        
 
-
-          remarks.innerText = "Decreasing the temperature, reduces the kinetic energy, thus the vibration of particles decreases too.";
+        remarks.innerText = "Particle vibration is more than the low-temperature range but less than the high-temperature range.";
         }
       }
 
@@ -455,7 +456,7 @@ temp_change.oninput = async function () {
 
 temp_change.onchange = function () {
   sound_onchange.play();
-
+ 
 
 }
 
@@ -483,8 +484,10 @@ function gas_remove() {
 }
 
 async function solid_instruction() {
-  buttonAudio_Click.play();
 
+
+  buttonAudio_Click.play();
+ 
 
   temp_change.value = "25";
   temp_value = parseInt(temp_change.value);
@@ -517,7 +520,7 @@ async function solid_instruction() {
     await sleep(1000);
 
   }
-
+label_top.innerText = "Particles of Solid";
   temp_change.disabled = false;
   slider_control.style.opacity = "1"; slider_control.style.transition = "1s opacity";
   min_temp.style.opacity = "1"; min_temp.style.transition = "1s opacity";
@@ -542,7 +545,9 @@ async function solid_instruction() {
 }
 
 async function liquid_instruction() {
+
   buttonAudio_Click.play();
+
 
   cold_interior.style.opacity = "0.5"; cold_interior.style.transition = "1s opacity";
 
@@ -555,9 +560,10 @@ async function liquid_instruction() {
     await sleep(1000);
 
   }
-
-
+  
   solid_button.click();
+  label_top.innerText = "Particles of Liquid";
+
   solid_cold.style.display = "none";
 
 
@@ -594,7 +600,7 @@ async function liquid_instruction() {
 
 
 
-
+ 
   liquid_changes();
 
   setup();
@@ -617,7 +623,9 @@ async function liquid_instruction() {
 
 }
 async function gas_instruction() {
+
   buttonAudio_Click.play();
+
 
 
   cold_interior.style.opacity = "0.5"; cold_interior.style.transition = "1s opacity";
@@ -629,9 +637,10 @@ async function gas_instruction() {
     zoom_box.style.opacity = "1"; zoom_box.style.transition = "1s opacity";
     await sleep(1000);
   }
-
+  
 
   solid_button.click();
+  label_top.innerText = "Particles of Gas";
   solid_cold.style.display = "none";
 
 
@@ -669,7 +678,7 @@ async function gas_instruction() {
 
 
 
-
+ 
 
   gas_changes();
   setup();
