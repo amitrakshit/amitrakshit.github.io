@@ -166,7 +166,7 @@ body {
     font-family: Gotham SSm;
     font-style: normal;
     font-weight: 325;
-    font-size: 50rem;
+    font-size: 40rem;
     line-height: 120.5%;
     text-align: center;
     color: #333333;
@@ -176,13 +176,22 @@ body {
 .options#option1 {
     top: 34rem;
 }
+#option1 p{
+    width: 95%;
+}
 
 #option2 {
     top: 203rem;
 }
+#option2 p{
+    width: 95%;
+}
 
 #option3 {
     top: 372rem;
+}
+#option3 p{
+    width: 74%;
 }
 
 #option4 {
@@ -197,7 +206,7 @@ body {
 .solution {
     position: absolute;
     width: 984rem;
-    height: 980rem;
+    height: 1020rem;
     top: 1925rem;
     padding-bottom: 150rem;
     display: flex;
@@ -212,6 +221,7 @@ body {
     transition: top 0.5s ease-out;
     line-height: 60rem;
     scrollbar-width: 0;
+    
 }
 
 .solution p {
