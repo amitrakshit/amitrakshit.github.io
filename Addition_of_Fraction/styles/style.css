@@ -16,6 +16,20 @@ html {
     margin: 0;
 }
 
+html {
+    --vwidth: 100vw;
+    --vheight: calc(16/9*var(--vwidth));
+    font-size: calc(1/1080*var(--vwidth));
+}
+
+@media (min-aspect-ratio: 9/16) {
+    html {
+        --vheight: 100vh;
+        --vwidth: calc(9/16*var(--vheight));
+        font-size: calc(1/1920*var(--vheight));
+    }
+}
+
 body {
     min-height: 100vh;
     min-width: 100vw;
@@ -26,7 +40,7 @@ body {
     overflow-y: scroll;
 }
 
-#loading-screen{
+#loading-screen {
     z-index: 1;
 }
 
@@ -34,17 +48,17 @@ body {
     position: relative;
     display: flex;
     justify-content: center;
-    height: 1920px;
-    width: 1080px;
+    height: 1920rem;
+    width: 1080rem;
     overflow: hidden;
 }
 
 .movable_parent {
     position: absolute;
-    top: 0px;
-    left: 0px;
-    --width: 1080px;
-    height: 1920px;
+    top: 0rem;
+    left: 0rem;
+    --width: 1080rem;
+    height: 1920rem;
     width: auto;
     display: flex;
     flex-direction: row;
@@ -54,19 +68,19 @@ body {
 
 #loading-screen {
     position: relative;
-    width: 1080px;
-    height: 1920px;
+    width: 1080rem;
+    height: 1920rem;
     display: flex;
 }
 
 #background {
     margin: 0;
     position: relative;
-    width: 1080px;
-    height: 1920px;
+    width: 1080rem;
+    height: 1920rem;
     /* height: 100vh; */
     /*background: radial-gradient(119.99% 62.42% at 50% 36.33%, #7B16E1 0%, #000E87 100%);*/
-    /* border: 1px solid rgb(128, 128, 128); */
+    /* border: 1rem solid rgb(128, 128, 128); */
     display: flex;
     justify-content: center;
     /* font-family: Gotham SSm A, Gotham SSm B, Helvetica, sans-serif; */
@@ -76,8 +90,9 @@ body {
 #background .navigation_bar {
     display: none;
 }
+
 .BG_SVG {
-    width: 1080px;
+    width: 1080rem;
     height: auto;
 }
 
@@ -86,8 +101,8 @@ body {
     width: 55%;
     height: 5.6%;
     top: 5.3%;
-    /* border: 1px solid black; */
-    border-radius: 200px;
+    /* border: 1rem solid black; */
+    border-radius: 200rem;
     background: rgb(109, 42, 244);
     display: flex;
     align-items: center;
@@ -100,18 +115,18 @@ body {
 .observation_bar {
     height: 100%;
     width: 50%;
-    /* border: 1px solid black; */
-    border-radius: 200px;
+    /* border: 1rem solid black; */
+    border-radius: 200rem;
     background: white;
     color: rgb(54, 18, 175);
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 4px 2px 10px 2px rgba(0, 0, 0, 0.284);
+    box-shadow: 4rem 2rem 10rem 2rem rgba(0, 0, 0, 0.284);
     font-family: Gotham SSm;
     font-weight: 325;
-    font-size: 36px;
+    font-size: 36rem;
     line-height: 144.2%;
     /* font-size: 2.5em; */
     cursor: pointer;
@@ -120,8 +135,8 @@ body {
 .question_bar {
     height: 100%;
     width: 50%;
-    /* border: 1px solid black; */
-    border-radius: 200px;
+    /* border: 1rem solid black; */
+    border-radius: 200rem;
     /* background:white; */
     color: white;
     text-align: center;
@@ -130,7 +145,7 @@ body {
     align-items: center;
     font-style: normal;
     font-family: Gotham SSm;
-    font-size: 36px;
+    font-size: 36rem;
     font-weight: 325;
     line-height: 144.2%;
     /* font-size: 2.5em; */
@@ -141,23 +156,39 @@ body {
     position: absolute;
     width: 90%;
     height: 6.88%;
-    /* border: 1px solid black;
+    /* border: 1rem solid black;
     background: linear-gradient(yellow,orange); */
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 0px;
+    padding-left: 0rem;
     top: 15%;
     color: white;
-    font-size: 39px;
+    font-size: 39rem;
     font-weight: 325;
     font-family: Gotham SSm;
-    line-height: 60px;
+    line-height: 60rem;
+}
+
+/* For Visual area */
+
+.visual_area {
+    position: absolute;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    width: 984rem;
+    height: 631rem;
+    top: 23.5%;
+    /* background-image: radial-gradient(119.99% 62.42% at 50% 36.33%, #2d0457 0%, #000108 100%); */
+    border-radius: 20rem;
+    z-index: 0;
+    overflow: hidden;
 }
 
 canvas {
     position: absolute;
-    border-radius: 20px;
+    border-radius: 20rem;
     top: 23.5%;
     /* width:91.1%;
     height: 32.86; */
@@ -169,13 +200,13 @@ canvas {
 
 .symbol {
     position: absolute;
-    /* border: 1px solid white; */
+    /* border: 1rem solid white; */
     width: 9.2%;
     height: 5.2%;
     top: 47.38%;
     transform: translateY(-50%);
     color: white;
-    font-size: 96px;
+    font-size: 96rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -183,29 +214,29 @@ canvas {
 
 .Number {
     position: absolute;
-    border: 5px solid white;
+    border: 5rem solid white;
     height: 4%;
     width: 7%;
     top: 49.2%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 50px;
+    font-size: 50rem;
     color: white;
     /* background:#26bca4; */
     font-family: Gotham SSm;
-    border-radius: 10px;
+    border-radius: 10rem;
     transform: translateX(-50%);
 }
 
 .bars {
     position: absolute;
-    width: 140px;
-    height: 15px;
-    left: 156px;
-    top: 904px;
+    width: 140rem;
+    height: 15rem;
+    left: 156rem;
+    top: 904rem;
     background: #ffffff;
-    border-radius: 5px;
+    border-radius: 5rem;
     transform: translatex(-50%);
     top: 47%;
 }
@@ -214,8 +245,8 @@ canvas {
     position: absolute;
     width: 91.1%;
     height: 9.375%;
-    /* padding: 15px 20px 15px 20px; */
-    border-radius: 25px;
+    /* padding: 15rem 20rem 15rem 20rem; */
+    border-radius: 25rem;
     background: linear-gradient(#ffe401, #e98a2e);
     background-repeat: no-repeat;
     display: flex;
@@ -231,8 +262,8 @@ canvas {
     /* top: 0%; */
     width: 90%;
     /* height: max-content; */
-    font-size: 36px;
-    line-height: 50px;
+    font-size: 36rem;
+    line-height: 50rem;
     font-family: Gotham SSm;
     vertical-align: center;
 }
@@ -241,10 +272,10 @@ canvas {
     position: absolute;
     width: 94%;
     height: 75%;
-    border: 4px solid #17ada4; border-radius: 20px;
+    border: 4rem solid #17ada4; border-radius: 20rem;
     background: transparent;
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.493);
-    border-top-style: 0px 5px inset;
+    box-shadow: 0rem 5rem 5rem rgba(0, 0, 0, 0.493);
+    border-top-style: 0rem 5rem inset;
 } */
 
 .numerical_pointer {
@@ -252,23 +283,23 @@ canvas {
     top: 70%;
     width: 14%;
     height: 6%;
-    border: 6px solid rgb(255, 255, 255);
-    border-radius: 20px;
+    border: 6rem solid rgb(255, 255, 255);
+    border-radius: 20rem;
     background: linear-gradient(0deg, #1db3aa, #4dd3cc);
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: Gotham SSm;
-    font-size: 50px;
+    font-size: 50rem;
     color: rgb(241, 247, 246);
     transform: translateX(-50%);
 }
 
 .numerical_pointer::after {
     content: '';
-    border-top: 20px solid #ffffff;
-    border-left: 20px solid rgba(0, 0, 0, 0);
-    border-right: 20px solid rgba(0, 0, 0, 0);
+    border-top: 20rem solid #ffffff;
+    border-left: 20rem solid rgba(0, 0, 0, 0);
+    border-right: 20rem solid rgba(0, 0, 0, 0);
     position: absolute;
     bottom: -20%;
     left: 50%;
@@ -282,7 +313,7 @@ canvas {
     height: 0.5%;
     width: 85%;
     top: 80%;
-    /* border-radius: 50px; */
+    /* border-radius: 50rem; */
     overflow: none;
     /* background:#4935DD; */
     /* direction:rtl; */
@@ -294,8 +325,8 @@ canvas {
 
 .Slider::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 60px;
-    height: 60px;
+    width: 60rem;
+    height: 60rem;
     background: linear-gradient(#fb8d34, #f96074);
     /* background-image: url("/V2/Scale 2.png");
     background-repeat: no-repeat;
@@ -310,8 +341,8 @@ canvas {
 
 .Slider::-moz-range-thumb {
     -webkit-appearance: none;
-    width: 80px;
-    height: 80px;
+    width: 80rem;
+    height: 80rem;
     background: linear-gradient(#fb8d34, #f96074);
     /* background-image: url("/V2/Scale 2.png");
     background-repeat: no-repeat;
@@ -328,8 +359,8 @@ canvas {
     position: absolute;
     top: 78%;
     width:100%;
-    height:200px;
-    border: 1px solid black;
+    height:200rem;
+    border: 1rem solid black;
     transform: translate(-50%, -50%);
     z-index: 1;
     cursor: pointer;
@@ -339,14 +370,14 @@ canvas {
 
 .RangeValues {
     position: absolute;
-    /* border: 1px solid white; */
-    height: 100px;
-    width: 100px;
+    /* border: 1rem solid white; */
+    height: 100rem;
+    width: 100rem;
     bottom: 11.5%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3em;
+    font-size: 43rem;
     font-family: Gotham SSm;
     color: white;
     /* display: none; */
@@ -358,15 +389,15 @@ button.Next-Button {
     height: 6.7%;
     top: 88.5%;
     border: none;
-    border-radius: 200px;
+    border-radius: 200rem;
     background: linear-gradient(90deg, #10dca3, #3988fa);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-family: Gotham SSm;
-    font-size: 42px;
-    line-height: 42px;
+    font-size: 42rem;
+    line-height: 42rem;
     font-weight: 350;
     cursor: pointer;
 }
@@ -377,15 +408,15 @@ button#reset {
     height: 6.7%;
     top: 80%;
     border: none;
-    border-radius: 200px;
+    border-radius: 200rem;
     background: linear-gradient(45deg, #10dca3, #3988fa);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-family: Gotham SSm;
-    font-size: 42px;
-    line-height: 42px;
+    font-size: 42rem;
+    line-height: 42rem;
     font-weight: 350;
     cursor: pointer;
 }

@@ -11,8 +11,8 @@ body {
 #background2 {
     margin: 0;
     position: relative;
-    width: 1080px;
-    height: 1920px;
+    width: 1080rem;
+    height: 1920rem;
     /* height: 100vh; */
     background: radial-gradient(119.99% 62.42% at 50% 36.33%, #7B16E1 0%, #000E87 100%);
     display: flex;
@@ -26,8 +26,8 @@ body {
     width: 55%;
     height: 5.6%;
     top: 5.3%;
-    /* border: 1px solid black; */
-    border-radius: 200px;
+    /* border: 1rem solid black; */
+    border-radius: 200rem;
     background: rgb(109, 42, 244);
     display: flex;
     align-items: center;
@@ -39,8 +39,8 @@ body {
 .observation_bar2 {
     height: 100%;
     width: 50%;
-    /* border: 1px solid black; */
-    border-radius: 200px;
+    /* border: 1rem solid black; */
+    border-radius: 200rem;
     color: white;
     text-align: center;
     display: flex;
@@ -48,7 +48,7 @@ body {
     align-items: center;
     font-family: Gotham SSm;
     font-weight: 325;
-    font-size: 36px;
+    font-size: 36rem;
     line-height: 144.2%;
     /* font-size: 2.5em; */
     cursor: pointer;
@@ -58,10 +58,10 @@ body {
 .question_bar2 {
     height: 100%;
     width: 50%;
-    /* border: 1px solid black; */
-    border-radius: 200px;
+    /* border: 1rem solid black; */
+    border-radius: 200rem;
     /* background:white; */
-    box-shadow: -4px 2px 10px 2px rgba(0, 0, 0, 0.284);
+    box-shadow: -4rem 2rem 10rem 2rem rgba(0, 0, 0, 0.284);
     background: white;
     color: rgb(54, 18, 175);
     text-align: center;
@@ -70,7 +70,7 @@ body {
     align-items: center;
     font-style: normal;
     font-family: Gotham SSm;
-    font-size: 36px;
+    font-size: 36rem;
     font-weight: 325;
     line-height: 144.2%;
     /* font-size: 2.5em; */
@@ -79,11 +79,11 @@ body {
 
 .scrollable_dynamic_panel {
     position: absolute;
-    width: 1080px;
+    width: 1080rem;
     height: 196%;
-    left: 0px;
-    top: -249px;
-    /* outline: 1px solid rgb(255, 190, 190); */
+    left: 0rem;
+    top: -249rem;
+    /* outline: 1rem solid rgb(255, 190, 190); */
     box-sizing: border-box;
     display: flex;
     justify-content: center;
@@ -93,10 +93,10 @@ body {
 .dynamic_panel_window {
     position: absolute;
     top: 13%;
-    left: 0px;
+    left: 0rem;
     width: 100%;
     height: 85%;
-    /* outline: 1px solid wheat; */
+    /* outline: 1rem solid wheat; */
     overflow-y: hidden;
     overflow-x: hidden;
 }
@@ -109,19 +109,19 @@ body {
     position: absolute;
     width: 90%;
     height: auto;
-    /* border: 1px solid black;
+    /* border: 1rem solid black;
     background: linear-gradient(yellow,orange); */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-left: 0px;
+    padding-left: 0rem;
     top: 8%;
     color: white;
-    font-size: 43px;
+    font-size: 43rem;
     font-weight: 325;
     font-family: Gotham SSm;
-    line-height: 60px;
+    line-height: 60rem;
     transition: opacity 0.5s;
 }
 
@@ -138,25 +138,25 @@ body {
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    width: 1080px;
-    height: 160px;
-    left: 0px;
-    top: 1050px;
+    width: 1080rem;
+    height: 160rem;
+    left: 0rem;
+    top: 1050rem;
     opacity: 0;
     transition: top 0.5s ease-out, opacity 0.5s;
 }
 
 .feedback-bar #big {
     /* position: absolute; */
-    width: 912px;
-    height: 56px;
-    left: 84px;
-    /* top: 1052px; */
+    width: 912rem;
+    height: 56rem;
+    left: 84rem;
+    /* top: 1052rem; */
     font-family: Gotham SSm;
     font-style: normal;
     font-weight: bold;
-    font-size: 45px;
-    line-height: 54px;
+    font-size: 45rem;
+    line-height: 54rem;
     /* or 120% */
     text-align: center;
     color: #FF8181;
@@ -164,16 +164,16 @@ body {
 
 .feedback-bar #small {
     /* position: absolute; */
-    width: 650px;
+    width: 650rem;
     height: auto;
-    left: 48px;
-    top: 60px;
-    margin-top: 10px;
+    left: 48rem;
+    top: 60rem;
+    margin-top: 10rem;
     font-family: Gotham SSm;
     font-style: normal;
     font-weight: 325;
-    font-size: 36px;
-    line-height: 43px;
+    font-size: 36rem;
+    line-height: 43rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -187,67 +187,67 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 724px;
-    left: 0px;
-    top: 1196px;
+    height: 724rem;
+    left: 0rem;
+    top: 1196rem;
     /* background: chartreuse; */
 }
 
 .options {
     position: absolute;
-    width: 1004px;
-    height: 140px;
-    /* left: 41px; */
+    width: 1004rem;
+    height: 140rem;
+    /* left: 41rem; */
     display: flex;
     align-items: center;
     justify-content: center;
     background: white;
-    border-radius: 20px;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.507);
+    border-radius: 20rem;
+    box-shadow: 0rem 5rem 10rem rgba(0, 0, 0, 0.507);
     font-family: Gotham SSm;
     font-style: normal;
     font-weight: 325;
-    font-size: 50px;
+    font-size: 50rem;
     line-height: 120.5%;
-    /* or 43px */
+    /* or 43rem */
     text-align: center;
     color: #333333;
     cursor: pointer;
 }
 
 .options#option1 {
-    top: 34px;
+    top: 34rem;
 }
 
 #option2 {
-    top: 203px;
+    top: 203rem;
 }
 
 #option3 {
-    top: 372px;
+    top: 372rem;
 }
 
 #option4 {
-    top: 541px;
+    top: 541rem;
 }
 
 .solution #SolHead {
     text-align: center;
-    font-size: 46px;
+    font-size: 46rem;
 }
 
 .solution {
     position: absolute;
-    width: 984px;
+    width: 984rem;
     height: auto;
-    top: 1925px;
-    padding-bottom: 150px;
+    top: 1925rem;
+    padding-bottom: 150rem;
     display: flex;
     align-items: center;
     flex-direction: column;
     background: #D718A1;
-    border-radius: 20px;
-    font-size: 39px;
+    border-radius: 20rem;
+    font-size: 39rem;
     font-family: Gotham SSm;
     font-weight: 300;
     color: white;
@@ -265,24 +265,24 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1080px;
-    height: 240px;
-    left: 0px;
-    bottom: -760px;
+    width: 1080rem;
+    height: 240rem;
+    left: 0rem;
+    bottom: -760rem;
     background: linear-gradient(0deg, #5a19db, #4a13b900);
     transition: bottom 0.5s ease-out;
 }
 
 .finish-button {
     width: 45%;
-    height: 128.64px;
+    height: 128.64rem;
     border: none;
-    border-radius: 200px;
+    border-radius: 200rem;
     background: linear-gradient(90deg, #10dca3, #3988fa);
     color: white;
     font-family: Gotham SSm;
     font-weight: 350;
-    font-size: 42px;
+    font-size: 42rem;
     cursor: pointer;
     /* z-index: -1; */
 }

@@ -28,7 +28,7 @@ var movable_parent = document.getElementsByClassName('movable_parent')[0];
 question_tab.onclick = function () {
     buttonAudio_Click.play();
     buttonAudio_Click.playbackRate = 1.5;
-    movable_parent.style = "left: -1080px;";
+    movable_parent.style = "left: -1080rem;";
     observation_tab.className = "observation_bar2";
     question_tab.className = "question_bar2";
 }
@@ -36,7 +36,7 @@ question_tab.onclick = function () {
 observation_tab.onclick = function () {
     buttonAudio_Click.play();
     buttonAudio_Click.playbackRate = 1.5;
-    movable_parent.style = "left: 0px";
+    movable_parent.style = "left: 0rem";
     observation_tab.className = "observation_bar";
     question_tab.className = "question_bar";
 }
@@ -53,6 +53,18 @@ sliderAudio_oninputForward.src = "sounds/Slider_oninput_forward.mp3";
 var sliderAudio_oninputBackward = new Audio();
 sliderAudio_oninputBackward.src = "sounds/Slider_oninput_forward.mp3";
 
+
+var feedback_1 = new Audio();
+feedback_1.src = "sounds/Feedback_1.mp3";
+
+var feedback_2 = new Audio();
+feedback_2.src = "sounds/Feedback_2.mp3";
+
+var feedback_3 = new Audio();
+feedback_3.src = "sounds/Feedback_3.mp3";
+
+var feedback_4 = new Audio();
+feedback_4.src = "sounds/Feedback_4.mp3";
 
 //This is the main background
 var background = document.getElementById("background");
@@ -88,25 +100,33 @@ var number1 = {};
 var number2 = {};
 
 //Visual Area canvases defined here
+var visualAreaDiv = document.getElementsByClassName('visual_area')[0];
+var visualAreaDivStyle = window.getComputedStyle(visualAreaDiv);
+var canWidthForResize = visualAreaDivStyle.width.slice(0, -2);
+var canHeightForResize = visualAreaDivStyle.height.slice(0, -2);
+
+var canvasXUnit = canWidthForResize / 984;
+var canvasYUnit = canHeightForResize / 631;
+
 var VisualArea = document.createElement("canvas");
-VisualArea.height = '631';
-VisualArea.width = '984';
+VisualArea.height = canHeightForResize;
+VisualArea.width = canWidthForResize;
 VisualArea.id = 'VisualArea';
 
 var VisualArea2 = document.createElement("canvas");
-VisualArea2.height = '631';
-VisualArea2.width = '984';
+VisualArea2.height = canHeightForResize;
+VisualArea2.width = canWidthForResize;
 VisualArea2.id = "VisualArea2";
 
 var VisualArea3 = document.createElement("canvas");
-VisualArea3.height = '631';
-VisualArea3.width = '984';
+VisualArea3.height = canHeightForResize;
+VisualArea3.width = canWidthForResize;
 VisualArea3.id = "VisualArea3";
 VisualArea3.style = "opacity:0.5;";
 
 var VisualArea4 = document.createElement("canvas");
-VisualArea4.height = '631';
-VisualArea4.width = '984';
+VisualArea4.height = canHeightForResize;
+VisualArea4.width = canWidthForResize;
 VisualArea4.id = "VisualArea4";
 
 var ctx = VisualArea.getContext("2d");
@@ -127,7 +147,7 @@ background.append(VisualArea3);
 box1DenominatorDiv = document.createElement('div'); // Div for the denominator of first number
 box1DenominatorDiv.className = 'Number';
 background.append(box1DenominatorDiv);
-box1DenominatorDiv.style = "left: 228px; background:#40d6ce;"
+box1DenominatorDiv.style = "left: 228rem; background:#40d6ce;"
 
 //second fraction box in the visual area
 // var box2 = document.createElement('img');
@@ -137,29 +157,29 @@ box1DenominatorDiv.style = "left: 228px; background:#40d6ce;"
 box2DenominatorDiv = document.createElement('div'); // Div for the denominator of the second number
 box2DenominatorDiv.className = 'Number';
 background.append(box2DenominatorDiv);
-box2DenominatorDiv.style = "left: 540px; background:#40d6ce;"
+box2DenominatorDiv.style = "left: 540rem; background:#40d6ce;"
 
 //Div for the first number numerator
 box1NumeratorDiv = document.createElement('div');
 box1NumeratorDiv.className = 'Number';
 background.append(box1NumeratorDiv);
-box1NumeratorDiv.style = "left: 228px; top:779px; background:#e99d52;";
+box1NumeratorDiv.style = "left: 228rem; top:779rem; background:#e99d52;";
 
 //Div for the second number numerator
 box2NumeratorDiv = document.createElement('div');
 box2NumeratorDiv.className = 'Number';
 background.append(box2NumeratorDiv);
-box2NumeratorDiv.style = "left: 50%; top:779px; background:#ff78ca;";
+box2NumeratorDiv.style = "left: 50%; top:779rem; background:#ff78ca;";
 
 //Div for the resulting number
 var box3 = document.createElement('img');
 // box3.src = "Sum of Like fracions/Elements/Box 03.png";
 // background.append(box3);
-// box3.style = "position: absolute; width: 100%; top: -30px; left: -15px; display:none;";
+// box3.style = "position: absolute; width: 100%; top: -30rem; left: -15rem; display:none;";
 box3NumeratorDiv = document.createElement('div');
 box3NumeratorDiv.className = 'Number';
 background.append(box3NumeratorDiv);
-box3NumeratorDiv.style = "left: 78.8%; top:779px; background:linear-gradient(0deg, #e99d52,#ff78ca); opacity:0.5;";
+box3NumeratorDiv.style = "left: 78.8%; top:779rem; background:linear-gradient(0deg, #e99d52,#ff78ca); opacity:0.5;";
 box3DenominatorDiv = document.createElement('div'); // Div for the denominator of the third number
 box3DenominatorDiv.className = 'Number';
 background.append(box3DenominatorDiv);
@@ -173,7 +193,7 @@ background.append(bar1, bar2, bar3);
 bar1.className = 'bars';
 bar2.className = 'bars';
 bar3.className = 'bars';
-bar1.style = "left:228px;";
+bar1.style = "left:228rem;";
 bar2.style = "left: 50%;";
 bar3.style = "left: 78.8%; opacity:0.5";
 
@@ -183,8 +203,8 @@ var equalSymbolDiv = document.createElement('div');
 background.append(plusSymbolDiv, equalSymbolDiv);
 plusSymbolDiv.className = 'symbol';
 equalSymbolDiv.className = 'symbol';
-plusSymbolDiv.style = 'left:330px';
-equalSymbolDiv.style = 'left: 645px; opacity:0.5;';
+plusSymbolDiv.style = 'left:330rem';
+equalSymbolDiv.style = 'left: 645rem; opacity:0.5;';
 plusSymbolDiv.innerHTML = '+';
 equalSymbolDiv.innerHTML = '=';
 
@@ -193,42 +213,46 @@ equalSymbolDiv.innerHTML = '=';
 var feedbackArea = document.createElement('div');
 feedbackArea.id = 'feedbackArea';
 var imageArray = new Array();
+
 imageArray.length = 4;
 for (let index = 0; index < imageArray.length; index++) {
     imageArray[index] = new Image();
     imageArray[index].src = "image/feedbackArea (" + (index + 1).toString() + ").png";
-    imageArray[index].style = 'position:absolute; left:0px; top:-18px; width: 100%;';
+    imageArray[index].style = 'position:absolute; left:0rem; top:-18rem; width: 100%;';
 }
 background.append(feedbackArea);
 feedbackArea.append(imageArray[0]);
+feedback_1.currentTime = 0;
+feedback_1.play();
+
 var inside_feedback = document.createElement('p');
 feedbackArea.append(inside_feedback);
 
 
 //The Initial Circle 1
 ctx.beginPath()
-ctx.arc(180, 165, //position
-    120, //radius
+ctx.arc(180 * canvasXUnit, 165 * canvasYUnit, //position
+    120 * canvasXUnit, //radius
     0, 2 * Math.PI);
 ctx.strokeStyle = 'rgb(255, 255, 255)';
-ctx.lineWidth = '5';
+ctx.lineWidth = `${5 * canvasXUnit}`;
 ctx.fillStyle = '#40d6ce';
 ctx.fill();
 ctx.stroke();
 //The Initial Circle 2
 ctx2.beginPath()
-ctx2.arc(492, 165, 120, 0, 2 * Math.PI);
+ctx2.arc(492 * canvasXUnit, 165 * canvasYUnit, 120 * canvasXUnit, 0, 2 * Math.PI);
 ctx2.strokeStyle = 'rgb(255, 255, 255)';
-ctx2.lineWidth = '5';
+ctx2.lineWidth = `${5 * canvasXUnit}`;
 ctx2.fillStyle = '#40d6ce';
 ctx2.fill();
 ctx2.stroke();
 
 //The Initial Circle 3
 ctx3.beginPath()
-ctx3.arc(804, 165, 120, 0, 2 * Math.PI);
+ctx3.arc(804 * canvasXUnit, 165 * canvasYUnit, 120 * canvasXUnit, 0, 2 * Math.PI);
 ctx3.strokeStyle = 'rgb(255, 255, 255)';
-ctx3.lineWidth = '5';
+ctx3.lineWidth = `${5 * canvasXUnit}`;
 ctx3.fillStyle = '#40d6ce';
 ctx3.fill();
 ctx3.stroke();
@@ -243,19 +267,19 @@ function set_denominator(number) {
     ctx2.clearRect(0, 0, VisualArea2.width, VisualArea2.height);
     //The Initial Circle 1
     ctx.beginPath()
-    ctx.arc(180, 165, //position
-        120, //radius
+    ctx.arc(180 * canvasXUnit, 165 * canvasYUnit, //position
+        120 * canvasXUnit, //radius
         0, 2 * Math.PI);
     ctx.strokeStyle = 'rgb(255, 255, 255)';
-    ctx.lineWidth = '5';
+    ctx.lineWidth = `${5 * canvasXUnit}`;
     ctx.fillStyle = '#40d6ce';
     ctx.fill();
     ctx.stroke();
     //The Initial Circle 2
     ctx2.beginPath()
-    ctx2.arc(492, 165, 120, 0, 2 * Math.PI);
+    ctx2.arc(492 * canvasXUnit, 165 * canvasYUnit, 120 * canvasXUnit, 0, 2 * Math.PI);
     ctx2.strokeStyle = 'rgb(255, 255, 255)';
-    ctx2.lineWidth = '5';
+    ctx2.lineWidth = `${5 * canvasXUnit}`;
     ctx2.fillStyle = '#40d6ce';
     ctx2.fill();
     ctx2.stroke();
@@ -263,21 +287,21 @@ function set_denominator(number) {
         sector_angle = (2 * Math.PI / number);
         for (let i = 0; i <= number; i++) {
             ctx.beginPath();
-            ctx.arc(180, 165, 120, i * sector_angle, (i + 1) * sector_angle);
-            ctx.lineTo(180, 165);
+            ctx.arc(180 * canvasXUnit, 165 * canvasYUnit, 120 * canvasXUnit, i * sector_angle, (i + 1) * sector_angle);
+            ctx.lineTo(180 * canvasXUnit, 165 * canvasYUnit);
             //ctx.fillStyle = '#4b9c98';
             //ctx.fill();
             ctx.strokeStyle = 'white';
-            ctx.lineWidth = '5';
+            ctx.lineWidth = `${5 * canvasXUnit}`;
             ctx.stroke();
 
             ctx2.beginPath();
-            ctx2.arc(492, 165, 120, i * sector_angle, (i + 1) * sector_angle);
-            ctx2.lineTo(492, 165);
+            ctx2.arc(492 * canvasXUnit, 165 * canvasYUnit, 120 * canvasXUnit, i * sector_angle, (i + 1) * sector_angle);
+            ctx2.lineTo(492 * canvasXUnit, 165 * canvasYUnit);
             //ctx2.fillStyle = '#4b9c98';
             //ctx2.fill();
             ctx2.strokeStyle = 'white';
-            ctx2.lineWidth = '5';
+            ctx2.lineWidth = `${5 * canvasXUnit}`;
             ctx2.stroke();
         }
 
@@ -311,8 +335,8 @@ var minValue = document.createElement('div');
 var maxValue = document.createElement('div');
 minValue.className = 'RangeValues';
 maxValue.className = 'RangeValues';
-minValue.style.left = '50px';
-maxValue.style.right = '50px';
+minValue.style.left = '50rem';
+maxValue.style.right = '50rem';
 minValue.innerHTML = number_slider.min;
 maxValue.innerHTML = number_slider.max;
 background.append(minValue, maxValue);
@@ -326,7 +350,7 @@ var marking = {
         d = 100 / (parseInt(this.number) - 1);
         for (let i = 0; i < divArray.length; i++) {
             divArray[i] = document.createElement('div');
-            divArray[i].style = "position:absolute; border-radius: 5px; background:#ffffff; height:80%; width:10px; transform: translate(-50%, -50%); top:50%;";
+            divArray[i].style = "position:absolute; border-radius: 5rem; background:#ffffff; height:80%; width:10rem; transform: translate(-50%, -50%); top:50%;";
             divArray[i].style.left = (i * d).toString() + '%';
             parent.append(divArray[i]);
         }
@@ -342,7 +366,7 @@ var marking = {
 
 //marking container div
 var marking_container = document.createElement('div');
-marking_container.style = "position:absolute; width:80%; height: 60px; transform: translateY(-50%);";
+marking_container.style = "position:absolute; width:80%; height: 60rem; transform: translateY(-50%);";
 marking_container.style.top = "80%";
 background.append(marking_container);
 marking.number = 8;
@@ -360,29 +384,29 @@ function set_numeratorOne(number, denominator) {
         ctx.clearRect(0, 0, VisualArea.width, VisualArea.height);
         ctx.beginPath()
         //Initial Circle fill
-        ctx.arc(180, 165, //position
-            120, //radius
+        ctx.arc(180 * canvasXUnit, 165 * canvasYUnit, //position
+            120 * canvasXUnit, //radius
             0, 2 * Math.PI);
         ctx.strokeStyle = 'rgb(255, 255, 255)';
-        ctx.lineWidth = '5';
+        ctx.lineWidth = `${5 * canvasXUnit}`;
         ctx.fillStyle = '#40d6ce';
         ctx.fill();
         ctx.stroke();
 
         ctx.beginPath();
-        ctx.arc(180, 165, 120, 0, number * sector_angle);
-        ctx.lineTo(180, 165);
+        ctx.arc(180 * canvasXUnit, 165 * canvasYUnit, 120 * canvasXUnit, 0, number * sector_angle);
+        ctx.lineTo(180 * canvasXUnit, 165 * canvasYUnit);
         ctx.fillStyle = '#e99d52';
         ctx.fill();
 
         for (let i = 0; i <= denominator; i++) {
             ctx.beginPath();
-            ctx.arc(180, 165, 120, i * sector_angle, (i + 1) * sector_angle);
-            ctx.lineTo(180, 165);
+            ctx.arc(180 * canvasXUnit, 165 * canvasYUnit, 120 * canvasXUnit, i * sector_angle, (i + 1) * sector_angle);
+            ctx.lineTo(180 * canvasXUnit, 165 * canvasYUnit);
             //ctx.fillStyle = '#4b9c98';
             //ctx.fill();
             ctx.strokeStyle = 'white';
-            ctx.lineWidth = '5';
+            ctx.lineWidth = `${5 * canvasXUnit}`;
             ctx.stroke();
         }
     }
@@ -390,8 +414,8 @@ function set_numeratorOne(number, denominator) {
         ctx.clearRect(0, 0, VisualArea.width, VisualArea.height);
         if (number == 1) {
             ctx.beginPath()
-            ctx.arc(180, 165, //position
-                120, //radius
+            ctx.arc(180 * canvasXUnit, 165 * canvasYUnit, //position
+                120 * canvasXUnit, //radius
                 0, 2 * Math.PI);
             ctx.strokeStyle = 'rgb(255, 255, 255)';
             ctx.lineWidth = '5';
@@ -401,11 +425,11 @@ function set_numeratorOne(number, denominator) {
         }
         else {
             ctx.beginPath()
-            ctx.arc(180, 165, //position
-                120, //radius
+            ctx.arc(180 * canvasXUnit, 165 * canvasYUnit, //position
+                120 * canvasXUnit, //radius
                 0, 2 * Math.PI);
             ctx.strokeStyle = 'rgb(255, 255, 255)';
-            ctx.lineWidth = '5';
+            ctx.lineWidth = `${5 * canvasXUnit}`;
             ctx.fillStyle = '#40d6ce';
             ctx.fill();
             ctx.stroke();
@@ -422,29 +446,29 @@ function set_numeratorTwo(number, denominator) {
     if (denominator != 1) {
         ctx2.clearRect(0, 0, VisualArea.width, VisualArea.height);
         ctx2.beginPath()
-        ctx2.arc(492, 165, //position
-            120, //radius
+        ctx2.arc(492 * canvasXUnit, 165 * canvasYUnit, //position
+            120 * canvasXUnit, //radius
             0, 2 * Math.PI);
         ctx2.strokeStyle = 'rgb(255, 255, 255)';
-        ctx2.lineWidth = '5';
+        ctx2.lineWidth = `${5 * canvasXUnit}`;
         ctx2.fillStyle = '#40d6ce';
         ctx2.fill();
         ctx2.stroke();
 
         ctx2.beginPath();
-        ctx2.arc(492, 165, 120, (denominator - number) * sector_angle, 2 * Math.PI);
-        ctx2.lineTo(492, 165);
+        ctx2.arc(492 * canvasXUnit, 165 * canvasYUnit, 120 * canvasXUnit, (denominator - number) * sector_angle, 2 * Math.PI);
+        ctx2.lineTo(492 * canvasXUnit, 165 * canvasYUnit);
         ctx2.fillStyle = '#ff78ca';
         ctx2.fill();
 
         for (let i = 0; i <= denominator; i++) {
             ctx2.beginPath();
-            ctx2.arc(492, 165, 120, i * sector_angle, (i + 1) * sector_angle);
-            ctx2.lineTo(492, 165);
+            ctx2.arc(492 * canvasXUnit, 165 * canvasYUnit, 120 * canvasXUnit, i * sector_angle, (i + 1) * sector_angle);
+            ctx2.lineTo(492 * canvasXUnit, 165 * canvasYUnit);
             //ctx.fillStyle = '#4b9c98';
             //ctx.fill();
             ctx2.strokeStyle = 'white';
-            ctx2.lineWidth = '5';
+            ctx2.lineWidth = `${5 * canvasXUnit}`;
             ctx2.stroke();
         }
     }
@@ -452,22 +476,22 @@ function set_numeratorTwo(number, denominator) {
         ctx2.clearRect(0, 0, VisualArea.width, VisualArea.height);
         if (number == 1) {
             ctx2.beginPath()
-            ctx2.arc(492, 165, //position
-                120, //radius
+            ctx2.arc(492 * canvasXUnit, 165 * canvasYUnit, //position
+                120 * canvasXUnit, //radius
                 0, 2 * Math.PI);
             ctx2.strokeStyle = 'rgb(255, 255, 255)';
-            ctx2.lineWidth = '5';
+            ctx2.lineWidth = `${5 * canvasXUnit}`;
             ctx2.fillStyle = '#ff78ca';
             ctx2.fill();
             ctx2.stroke();
         }
         else {
             ctx2.beginPath()
-            ctx2.arc(492, 165, //position
-                120, //radius
+            ctx2.arc(492 * canvasXUnit, 165 * canvasYUnit, //position
+                120 * canvasXUnit, //radius
                 0, 2 * Math.PI);
             ctx2.strokeStyle = 'rgb(255, 255, 255)';
-            ctx2.lineWidth = '5';
+            ctx2.lineWidth = `${5 * canvasXUnit}`;
             ctx2.fillStyle = '#40d6ce';
             ctx2.fill();
             ctx2.stroke();
@@ -535,56 +559,56 @@ function AddedResult(num1, num2, denom) {
         if (denom !== 1) {
             //The Initial Circle 3
             ctx3.beginPath()
-            ctx3.arc(804, 165, 120, 0, 2 * Math.PI);
+            ctx3.arc(804 * canvasXUnit, 165 * canvasYUnit, 120 * canvasXUnit, 0, 2 * Math.PI);
             ctx3.strokeStyle = 'rgb(255, 255, 255)';
-            ctx3.lineWidth = '5';
+            ctx3.lineWidth = `${5 * canvasXUnit}`;
             ctx3.fillStyle = '#40d6ce';
             ctx3.fill();
             ctx3.stroke();
 
             ctx3.beginPath();
-            ctx3.arc(804, 165, 120, 0, num1 * sector_angle);
-            ctx3.lineTo(804, 165);
+            ctx3.arc(804 * canvasXUnit, 165 * canvasYUnit, 120 * canvasXUnit, 0, num1 * sector_angle);
+            ctx3.lineTo(804 * canvasXUnit, 165 * canvasYUnit);
             ctx3.fillStyle = '#e99d52';
             ctx3.fill();
             ctx3.beginPath();
-            ctx3.arc(804, 165, 120, (denom - num2) * sector_angle, 2 * Math.PI);
-            ctx3.lineTo(804, 165);
+            ctx3.arc(804 * canvasXUnit, 165 * canvasYUnit, 120 * canvasXUnit, (denom - num2) * sector_angle, 2 * Math.PI);
+            ctx3.lineTo(804 * canvasXUnit, 165 * canvasYUnit);
             ctx3.fillStyle = '#ff78ca';
             ctx3.fill();
             for (let i = 0; i <= denom; i++) {
                 ctx3.beginPath();
-                ctx3.arc(804, 165, 120, i * sector_angle, (i + 1) * sector_angle);
-                ctx3.lineTo(804, 165);
+                ctx3.arc(804 * canvasXUnit, 165 * canvasYUnit, 120 * canvasXUnit, i * sector_angle, (i + 1) * sector_angle);
+                ctx3.lineTo(804 * canvasXUnit, 165 * canvasYUnit);
                 ctx3.strokeStyle = 'white';
-                ctx3.lineWidth = '5';
+                ctx3.lineWidth = `${5 * canvasXUnit}`;
                 ctx3.stroke();
             }
         }
         else {
             if (num1 == 1) {
                 ctx3.beginPath();
-                ctx3.arc(804, 165, 120, 0, num1 * sector_angle);
+                ctx3.arc(804 * canvasXUnit, 165 * canvasYUnit, 120 * canvasXUnit, 0, num1 * sector_angle);
                 ctx3.strokeStyle = 'white';
-                ctx3.lineWidth = 5;
+                ctx3.lineWidth = `${5 * canvasXUnit}`;
                 ctx3.fillStyle = '#e99d52'; // orange
                 ctx3.fill();
                 ctx3.stroke();
             }
             else if (num2 == 1) {
                 ctx3.beginPath();
-                ctx3.arc(804, 165, 120, (denom - num2) * sector_angle, 2 * Math.PI);
+                ctx3.arc(804 * canvasXUnit, 165 * canvasYUnit, 120 * canvasXUnit, (denom - num2) * sector_angle, 2 * Math.PI);
                 ctx3.strokeStyle = 'white';
-                ctx3.lineWidth = 5;
+                ctx3.lineWidth = `${5 * canvasXUnit}`;
                 ctx3.fillStyle = '#ff78ca'; // red
                 ctx3.fill();
                 ctx3.stroke();
             }
             else {
                 ctx3.beginPath()
-                ctx3.arc(804, 165, 120, 0, 2 * Math.PI);
+                ctx3.arc(804 * canvasXUnit, 165 * canvasYUnit, 120 * canvasXUnit, 0, 2 * Math.PI);
                 ctx3.strokeStyle = 'rgb(255, 255, 255)';
-                ctx3.lineWidth = '5';
+                ctx3.lineWidth = `${5 * canvasXUnit}`;
                 ctx3.fillStyle = '#40d6ce'; // Green
                 ctx3.fill();
                 ctx3.stroke();
@@ -606,6 +630,11 @@ NextButton.onclick = function () {
         setTimeout(() => {
             feedbackArea.removeChild(imageArray[0]);
             feedbackArea.appendChild(imageArray[1]);
+            feedback_1.pause();
+            feedback_2.currentTime = 0;
+            feedback_2.play();
+
+
             feedbackArea.style = "opacity:1; top: 58.3%;";
         }, 500);
 
@@ -648,6 +677,9 @@ NextButton.onclick = function () {
         setTimeout(() => {
             feedbackArea.removeChild(imageArray[1]);
             feedbackArea.appendChild(imageArray[2]);
+            feedback_2.pause();
+            feedback_3.currentTime = 0;
+            feedback_3.play();
             feedbackArea.style = "opacity:1; top: 58.3%;";
         }, 500);
         VisualArea2.style.opacity = "1";
@@ -689,8 +721,11 @@ NextButton.onclick = function () {
         feedbackArea.style = "opacity:0; top: 60%;";
         setTimeout(() => {
             feedbackArea.removeChild(imageArray[2]);
-            inside_feedback.innerHTML = 'On adding two like fractions, the numerator of the fractions gets added and the denominator remains the same.';
+            inside_feedback.innerHTML = 'On adding two like fractions, the numerators of the fractions get added and the denominator remains the same.';
             feedbackArea.style = "opacity:1; top: 58.3%;";
+            feedback_3.pause();
+            feedback_4.currentTime = 0;
+            feedback_4.play();
         }, 500);
         VisualArea.style.opacity = "1";
         box1DenominatorDiv.style.opacity = "1";
@@ -714,7 +749,7 @@ NextButton.onclick = function () {
         reset_button.style.display = '';
     }
     else {
-        movable_parent.style = "left: -1080px;";
+        movable_parent.style = "left: -1080rem;";
         observation_tab.className = "observation_bar2";
         question_tab.className = "question_bar2";
     }
@@ -736,29 +771,29 @@ function reset_this() {
     ctx3.clearRect(0, 0, VisualArea.width, VisualArea.height);
 
     ctx.beginPath()
-    ctx.arc(180, 165, //position
-        120, //radius
+    ctx.arc(180 * canvasXUnit, 165 * canvasYUnit, //position
+        120 * canvasXUnit, //radius
         0, 2 * Math.PI);
     ctx.strokeStyle = 'rgb(255, 255, 255)';
-    ctx.lineWidth = '5';
+    ctx.lineWidth = `${5 * canvasXUnit}`;
     ctx.fillStyle = '#40d6ce';
     ctx.fill();
     ctx.stroke();
 
     //The Initial Circle 2
     ctx2.beginPath()
-    ctx2.arc(492, 165, 120, 0, 2 * Math.PI);
+    ctx2.arc(492 * canvasXUnit, 165 * canvasYUnit, 120 * canvasXUnit, 0, 2 * Math.PI);
     ctx2.strokeStyle = 'rgb(255, 255, 255)';
-    ctx2.lineWidth = '5';
+    ctx2.lineWidth = `${5 * canvasXUnit}`;
     ctx2.fillStyle = '#40d6ce';
     ctx2.fill();
     ctx2.stroke();
 
     //The Initial Circle 3
     ctx3.beginPath()
-    ctx3.arc(804, 165, 120, 0, 2 * Math.PI);
+    ctx3.arc(804 * canvasXUnit, 165 * canvasYUnit, 120 * canvasXUnit, 0, 2 * Math.PI);
     ctx3.strokeStyle = 'rgb(255, 255, 255)';
-    ctx3.lineWidth = '5';
+    ctx3.lineWidth = `${5 * canvasXUnit}`;
     ctx3.fillStyle = '#40d6ce';
     ctx3.fill();
     ctx3.stroke();
@@ -793,6 +828,9 @@ function reset_this() {
     //reset feedback area
     // feedbackArea.removeChild(feedbackArea.firstChild);
     feedbackArea.append(imageArray[0]);
+    feedback_4.pause();
+    feedback_1.currentTime = 0;
+    feedback_1.play();
 
     //reset slider
     number_slider.min = 1;

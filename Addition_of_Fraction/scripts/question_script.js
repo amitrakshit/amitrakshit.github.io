@@ -48,11 +48,11 @@ for (let index = 0; index < options.length; index++) {
             this.style = "background:linear-gradient(180deg, #3CA35A, #389B60); color: white;";
             dynamic_panel_window.style = "overflow-y:scroll;";
             dynamic_panel_window.scroll({ top: 800, behavior: "smooth" });
-            footer.style = "bottom:0px";
+            footer.style = "bottom:0rem";
             Right_ANS.play();
             LO_message.style = "z-index : 1;";
             LO_message.style.backgroundColor = '#000000cc';
-            popup.style = 'opacity:1; top: 601px'
+            popup.style = 'opacity:1; top: 601rem'
             circle_stroke_animation();
             setTimeout(function () {
                 close_button.style.opacity = 1;
@@ -61,7 +61,7 @@ for (let index = 0; index < options.length; index++) {
         else if (this.title !== "solution" && solution_clicked == false) {
             options[which_button_clicked - 1].style = "background: white; color: black;"
             this.style = "background:linear-gradient(180deg, #FB6F6F, #EB5151); color: white;";
-            feedback_bar.style = "opacity:1; top: 1000px";
+            feedback_bar.style = "opacity:1; top: 1000rem";
             Wrong_ANS.play();
         }
         which_button_clicked = (this.id).charAt(this.id.length - 1);
