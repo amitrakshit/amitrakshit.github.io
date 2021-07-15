@@ -64,7 +64,7 @@ async function obOnClick() {
     document.getElementsByClassName('onlyBG')[0].style = 'left: calc(0*var(--width));';
     document.getElementsByClassName('onlyBG')[1].style = 'left: calc(1*var(--width));';
     //obDiv.style.display='block';
-    //qeDiv.style.display='none';
+    //qeDiv.style.display='none'; 
     obDiv.style.marginLeft = '4.00%';
     qeDiv.style.marginLeft = '104.0%';
     await sleep(150);
@@ -241,7 +241,6 @@ function Ray(x0, y0) {
 }
 
 window.onload = async function () {
-    document.getElementById('observationBar').click();
     backgroundANDlaserImg();
     ray = new Ray(0.5, 1);
     ray.draw(1);
@@ -370,7 +369,7 @@ async function dropFunctionForLensHolder1(event) {
             feedback_1.play();
         }
         else {
-
+           
             document.getElementById('obPopupWindow').innerHTML = 'Observe that the concave lens diverges the light ray. Go ahead and try out the other combinations as well.';
             feedback_3.currentTime = 0;
             feedback_3.play();
@@ -526,11 +525,12 @@ async function dropFunctionForLensHolder1Touch(event) {
             document.getElementById('obPopupWindow').innerHTML = 'Observe that the convex lens converges the light ray. Go ahead and try out the other combinations as well.';
             feedback_1.currentTime = 0;
             feedback_1.play();
-
+        
         }
         else {
             document.getElementById('obPopupWindow').innerHTML = 'Observe that the concave lens diverges the light ray. Go ahead and try out the other combinations as well.';
-       feedback_2.play();
+       feedback_3.currentTime = 0;
+            feedback_3.play();
         }
     }
 
@@ -600,12 +600,12 @@ async function dropFunctionForLensHolder2Touch(event) {
            feedback_1.currentTime = 0;
             feedback_1.play();
 
-
+        
         }
         else {
             document.getElementById('obPopupWindow').innerHTML = 'Observe that the concave lens diverges the light ray. Go ahead and try out the other combinations as well.';
-            feedback_2.currentTime = 0;
-            feedback_2.play();
+            feedback_3.currentTime = 0;
+            feedback_3.play();
         }
     }
 }
@@ -622,7 +622,7 @@ document.getElementById('reloadButton').onclick = async function () {
     ray.lensPos2State = 0;
     ray.draw(1);
     ray.draw(-1);
-    this.style.display = 'block';
+    this.style.display = 'none';
     firstDrop = false;
     secondDrop = false;
     document.getElementById('obPopupWindow').style = 'opacity: 0';

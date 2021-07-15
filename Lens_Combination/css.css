@@ -248,6 +248,7 @@ canvas {
   margin-top: 74%;
   margin-left: 79%;
   cursor: pointer;
+  display: none;
 }
 
 #obPopupWindow {
