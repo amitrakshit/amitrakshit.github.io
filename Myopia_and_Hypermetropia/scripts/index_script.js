@@ -167,8 +167,8 @@ function inspectMyopia() {
    visualAreaHeading.children[0].innerHTML = "Myopic condition";
 
    typeOfEyeDefect = 'myopic';
-   leftButton.innerHTML = 'Far object';
-   rightButton.innerHTML = 'Near object';
+   leftButton.innerHTML = 'Faraway plant';
+   rightButton.innerHTML = 'Nearby plant';
    Object.assign(feedbackArea.style, { opacity: 0 });
    setTimeout(function () {
       feedbackArea.children[0].innerHTML = myopiaFeedback;
@@ -414,8 +414,8 @@ rightButton.onclick = function () {
 function inspectHypermetropia() {
    visualAreaHeading.children[0].innerHTML = "Hypermetropic condition";
    typeOfEyeDefect = 'hyperopic';
-   leftButton.innerHTML = 'Far object';
-   rightButton.innerHTML = 'Near object';
+   leftButton.innerHTML = 'Faraway plant';
+   rightButton.innerHTML = 'Nearby plant';
    Object.assign(feedbackArea.style, { opacity: 0 });
    setTimeout(function () {
       feedbackArea.children[0].innerHTML = hypermetropiaFeedback;

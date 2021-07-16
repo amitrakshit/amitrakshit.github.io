@@ -23,7 +23,7 @@ html {
 }
 
 body {
-    min-height: 100vh;
+    /* min-height: 100vh; */
     margin: 0;
     display: flex;
     justify-content: center;
@@ -547,7 +547,7 @@ body {
 }
 
 .buttonSelected {
-    border: 1rem solid white;
+    border: 3rem solid white;
 }
 
 .interactionOptions:active {
