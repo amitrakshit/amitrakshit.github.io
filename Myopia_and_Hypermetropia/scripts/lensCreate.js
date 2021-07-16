@@ -83,6 +83,27 @@ class lens {
                 ctx2D.fill();
                 // ctx2D.stroke();
             }
+            else if (ctx2D !== 'undefined' && this.type === 'convexE') {
+                //Drawing
+                ctx2D.clearRect(originX - width / 2, originY - height / 2, width, height);
+                ctx2D.beginPath();
+                ctx2D.ellipse(originX, originY, (0.5 + 0.5 * power) * width / 2, height / 2, 0, 0, 2 * Math.PI); //(x, y, radiusX, radiusY, rotation, startAngle, endAngle)
+                ctx2D.strokeStyle = 'white';
+
+
+                //Linear gradient
+                var linearGradient = ctx2D.createLinearGradient(originX - width / 2, originY, originX + width / 2, originY);
+                // Add three color stops
+                linearGradient.addColorStop(0., '#74B5A8');
+                linearGradient.addColorStop(0.35, '#90E3D3');
+                linearGradient.addColorStop(0.5, '#C5FFF4');
+                linearGradient.addColorStop(0.67, '#90E3D3');
+                linearGradient.addColorStop(1, '#74B5A8');
+
+                ctx2D.fillStyle = linearGradient;
+                ctx2D.fill();
+                // ctx2D.stroke();
+            }
             else if (ctx2D !== 'undefined' && this.type === 'concave') {
                 var xOffset = width / 4 * (2 - power);  //Power variable has to be put here
                 var xOff2 = width / 2 - xOffset;

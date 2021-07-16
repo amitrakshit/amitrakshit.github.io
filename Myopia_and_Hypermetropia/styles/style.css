@@ -251,6 +251,26 @@ body {
     overflow: hidden;
 }
 
+.visual_area .heading {
+    position: relative;
+    top: 0rem;
+    width: 100%;
+    height: 85rem;
+    background-color: #C3A7FE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading p {
+    position: absolute;
+    width: 100%;
+    font-family: Gotham SSm;
+    color: black;
+    font-size: 36rem;
+    text-align: center;
+}
+
 .visualCanvas {
     position: absolute;
     top: 0rem;
@@ -294,18 +314,18 @@ body {
 }
 
 .forBlur .myopia {
-    -webkit-mask: radial-gradient(15% 30% at 49% 43%, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+    -webkit-mask: radial-gradient(30% 42% at 51% 42%, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 68%, rgba(0, 0, 0, 0) 100%);
     --blurValue: 2rem;
     filter: blur(var(--blurValue));
 }
 
 .forBlur .hyperopia {
-    -webkit-mask: radial-gradient(15% 30% at 49% 39%, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%);
+    -webkit-mask: radial-gradient(35% 43% at 51% 25%, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%);
     --blurValue: 2rem;
     filter: blur(var(--blurValue));
 }
 
-.visual_area .forBlur, #blendingGradient {
+.visual_area .forBlur {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -317,6 +337,38 @@ body {
     overflow: hidden;
     outline: 5rem solid black;
     box-sizing: border-box;
+}
+
+.visual_area .plantImageContainer {
+    position: absolute;
+}
+
+.visual_area #farAwayPlant {
+    bottom: 41%;
+    transform-origin: bottom;
+    transform: scale(0.12);
+}
+
+.visual_area #nearByPlant {
+    bottom: 10%;
+    transform-origin: bottom;
+    transform: scale(0.3);
+}
+
+.plantImageContainer .leftScreenPlantImg {
+    width: 100%;
+    height: auto;
+    z-index: 0;
+}
+
+.plantBlur {
+    --blurValue: 10rem;
+    filter: blur(var(--blurValue));
+}
+
+.plantBlurSmall {
+    --blurValue: 2rem;
+    filter: blur(var(--blurValue));
 }
 
 .visual_area #sideView {
@@ -368,13 +420,13 @@ body {
 }
 
 #plantImg {
-    opacity: 0;
+    opacity: 1;
     width: 100%;
     height: auto;
 }
 
 #plantImg2 {
-    opacity: 0;
+    opacity: 1;
     width: 100%;
     height: auto;
 }
@@ -394,6 +446,48 @@ body {
     height: auto;
 }
 
+/* For the status bar */
+
+.statusDotContainer {
+    position: absolute;
+    /* border: 1rem solid white; */
+    top: 1030rem;
+    width: 270rem;
+    height: 30rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.statusDotContainer .statusDots {
+    position: relative;
+    width: 30rem;
+    height: 30rem;
+    border-radius: 50%;
+    background-color: #ffffff;
+    opacity: 0.5;
+}
+
+.statusDotContainer #dot1 {
+    background: white;
+    opacity: 1;
+}
+
+.statusDotContainer .statusBar {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 5rem;
+    --minValue: 30rem;
+    background-image: linear-gradient(to right, #0000 0%, #0000 calc(var(--minValue)*1), #fff8 calc(var(--minValue)*1), #fff8 calc(var(--minValue)*2), #0000 calc(var(--minValue)*2), #0000 calc(var(--minValue)*3), #fff8 calc(var(--minValue)*3), #fff8 calc(var(--minValue)*4), #0000 calc(var(--minValue)*4), #0000 calc(var(--minValue)*5), #fff8 calc(var(--minValue)*5), #fff8 calc(var(--minValue)*6), #0000 calc(var(--minValue)*6), #0000 calc(var(--minValue)*7), #fff8 calc(var(--minValue)*7), #fff8 calc(var(--minValue)*8), #0000 calc(var(--minValue)*8), #0000 calc(var(--minValue)*9));
+}
+
+.statusDotContainer #frontBar {
+    background-color: #ffffff;
+    width: 0%;
+}
+
 /* For feedback bar */
 
 .feedback_bar {
@@ -402,11 +496,11 @@ body {
     width: 984rem;
     height: 180rem;
     top: 1090rem;
-    background: linear-gradient(180deg, #FFE601 0%, #E8882F 100%);
+    background: linear-gradient(180deg, #12EAFA 0%, #0787E2 100%);
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.5s;
 }
 
@@ -438,7 +532,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 140rem;
+    height: 180rem;
     width: 472rem;
     z-index: 0;
     background: linear-gradient(180deg, #CF47FF 0%, #7E00EE 100%);
@@ -449,14 +543,25 @@ body {
     color: white;
     cursor: pointer;
     transition: opacity 0.4s;
+    transform: translateY(-50%);
 }
 
-.interaction_area #myopia {
-    top: 5%;
+.buttonSelected {
+    border: 1rem solid white;
 }
 
-.interaction_area #hyperopia {
-    top: 55%;
+.interactionOptions:active {
+    transform: scale(0.95) translateY(-50%);
+}
+
+.interaction_area #leftButton {
+    top: 50%;
+    left: 0%;
+}
+
+.interaction_area #rightButton {
+    top: 50%;
+    right: 0%;
 }
 
 .interaction_area .input_slider {
@@ -471,6 +576,7 @@ body {
     z-index: 1;
     opacity: 0;
     transition: opacity 0.4s;
+    display: none;
 }
 
 .interaction_area .marker {
@@ -556,4 +662,5 @@ body {
     font-weight: 350;
     font-size: 39rem;
     cursor: pointer;
+    display: none;
 }

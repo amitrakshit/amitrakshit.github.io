@@ -64,14 +64,23 @@
                     </svg> -->
 
                     <div class="imageContainer" id="frontView">
-                        <img src="./img/wallFrontView.png" alt="" id="blurBackImg">
+                        <img src="./img/wallWithoutPlant.png" alt="" id="blurBackImg">
                         <div class="forBlur">
-                            <img src="./img/wallFrontView.png" alt="" id="blurFrontImg" class="">
+                            <img src="./img/wallWithoutPlant.png" alt="" id="blurFrontImg" class="">
+                        </div>
+
+                        <!--The plant image in the environment-->
+                        <div class="plantImageContainer" id="farAwayPlant">
+                            <img src="./img/plant.png" class="leftScreenPlantImg">
+                        </div>
+
+                        <div class="plantImageContainer" id="nearByPlant">
+                            <img src="./img/plant.png" class="leftScreenPlantImg">
                         </div>
                     </div>
 
                     <div class="imageContainer" id="sideView">
-                        <img src="./img/wallSideView.png" alt="">
+                        <!-- <img src="./img/wallSideView.png" alt=""> -->
                     </div>
 
                     <div class="imageContainer" id="eye">
@@ -95,25 +104,42 @@
                     <div class="resetButtonContainter">
                         <img src="./img/resetButton.svg" alt="resetButton" id="resetButtonImg">
                     </div>
+                    <!-- The top heading -->
+                    <div class="heading" id="visualAreaHeading">
+                        <p>Normal Condition</p>
+                    </div>
+
+
+                </div>
+
+                <div class="statusDotContainer">
+                    <div class="statusDots" id="dot1"></div>
+                    <div class="statusDots"></div>
+                    <div class="statusDots"></div>
+                    <div class="statusDots"></div>
+                    <div class="statusDots"></div>
+                    <div class="statusBar" id="behindBar"></div>
+                    <div class="statusBar" id="frontBar"></div>
 
                 </div>
 
                 <!-- For Feedback bar -->
                 <div class="feedback_bar">
-                    <p id="para"> </p>
+                    <p id="para">Tap on the buttons to explore eye defect</p>
                 </div>
 
                 <!-- For Interaction area -->
                 <div class="interaction_area">
-                    <input type="range" min="-1" max="1" step="0.1" value="0" id="slider1" class="input_slider">
+                    <input type="range" min="-1" max="1" step="0.1" value="0" id="slider1" class="input_slider"
+                        disabled="true">
                     <div class="marker" id="markerLeft"></div>
                     <div class="marker" id="markerMiddle"></div>
                     <div class="marker" id="markerRight"></div>
                     <div class="interactionAreaText" id="diverging">Diverging</div>
                     <div class="interactionAreaText" id="converging">Converging</div>
                     <div class="interactionAreaText" id="curvature">Curvature of the lens</div>
-                    <button class="interactionOptions" id="myopia">Myopic</button>
-                    <button class="interactionOptions" id="hyperopia">Hyperopic</button>
+                    <button class="interactionOptions" id="leftButton">Inspect myopia</button>
+                    <button class="interactionOptions" id="rightButton">Inspect <br> Hypermetropia</button>
 
                 </div>
 
