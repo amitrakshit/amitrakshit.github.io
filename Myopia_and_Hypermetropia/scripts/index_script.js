@@ -385,6 +385,7 @@ function rectifyMyopia() {
    Object.assign(statusBar.style, { width: '100%' });
 
    if (whichDefectAlreadyInspected == 'hypermetropia') {
+      Object.assign(nextButton.style, { display: 'none' });
       nextButton.innerHTML = "Next";
       nextButton.onclick = function () {
          buttonAudio_Click.play();
@@ -394,7 +395,8 @@ function rectifyMyopia() {
       }
    }
    else {
-      nextButton.innerHTML = "Inspect <br> hypermetropia";
+      nextButton.innerHTML = "Inspect hypermetropia";
+      Object.assign(nextButton.style, { width: '600rem', display: 'none' });
       nextButton.onclick = function () {
          buttonAudio_Click.play();
          inspectHypermetropia();
@@ -475,7 +477,7 @@ function inspectHypermetropia() {
          setTimeout(function () {
             feedbackArea.children[0].innerHTML = "The faraway pot is clearly visible. Let’s rectify hypermetropia."; //hyperopia far second feedback
             Object.assign(feedbackArea.style, { opacity: '1', background: yellowGradient });
-            Object.assign(nextButton.style, { display: 'block' });
+            Object.assign(nextButton.style, { display: 'block', width: '480rem' });
          }, 500);
 
          // For the status bar updation
@@ -537,7 +539,7 @@ function inspectHypermetropia() {
          setTimeout(function () {
             feedbackArea.children[0].innerHTML = "The nearby pot is not clearly visible since its image is formed behind the retina."; // hyperopia near second feedback
             Object.assign(feedbackArea.style, { opacity: '1', background: yellowGradient });
-            Object.assign(nextButton.style, { display: 'block' });
+            Object.assign(nextButton.style, { display: 'block', width: '480rem' });
          }, 500);
 
          // For the status bar updation
@@ -631,6 +633,7 @@ function rectifyHypermetropia() {
 
    if (whichDefectAlreadyInspected == 'myopia') {
       nextButton.innerHTML = "Next";
+      Object.assign(nextButton.style, { display: "none" });
       nextButton.onclick = function () {
          buttonAudio_Click.play();
          movable_parent.style = "left: -1080rem;";
@@ -639,7 +642,8 @@ function rectifyHypermetropia() {
       }
    }
    else {
-      nextButton.innerHTML = "Inspect <br> myopia";
+      nextButton.innerHTML = "Inspect myopia";
+      Object.assign(nextButton.style, { display: "none" });
       nextButton.onclick = function () {
          buttonAudio_Click.play();
          inspectMyopia();
@@ -813,6 +817,11 @@ function sliderFunction() {
             }, 500);
          }
 
+         // Bringing back the button
+         if (inputSlider.value == -1) {
+            Object.assign(nextButton.style, { display: 'block' });
+         }
+
          // drawing the lens
          Lens.clearRect(contexts[1]);
          Lens.type = 'concave';
@@ -872,7 +881,10 @@ function sliderFunction() {
                Object.assign(feedbackArea.style, { opacity: 1, background: yellowGradient });
             }, 500);
          }
-
+         // Bringing back the button
+         if (inputSlider.value == 1) {
+            Object.assign(nextButton.style, { display: 'block', width: '480rem' });
+         }
 
          var focalLength = lensFocalLength / (Math.abs(inputSlider.value));
          var imageDistance = (-nearObjectDistance * focalLength) / (-nearObjectDistance + focalLength);

@@ -267,7 +267,7 @@ body {
     width: 100%;
     font-family: Gotham SSm;
     color: black;
-    font-size: 36rem;
+    font-size: 48rem;
     text-align: center;
 }
 
@@ -439,6 +439,7 @@ body {
     width: 179rem;
     /* background-color: white; */
     cursor: pointer;
+    display: none;
 }
 
 .resetButtonContainter #resetButtonImg {
