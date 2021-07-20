@@ -37,7 +37,7 @@ body {
     position: relative;
     height: 1920rem;
     width: 1080rem;
-    /* overflow: hidden; */
+    overflow: hidden;
     display: flex;
     align-items: center;
     flex-direction: column;
