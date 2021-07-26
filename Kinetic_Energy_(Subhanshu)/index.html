@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/question_style.css">
+    <link rel="stylesheet" href="styles/LO_style.css">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Simulation Template V1</title>
+</head>
+
+<body>
+    <div class="window">
+        <!-- For Navigation Bar -->
+        <div class="navigation_bar">
+            <div class="observation_bar nav_selected">Observation</div>
+            <div class="question_bar">Question</div>
+        </div>
+        <!-- For the corss mark -->
+        <div class="cross_symbol_container">
+            <div class="cross_oval">
+                <div class="cross_hand" id="hand1"></div>
+                <div class="cross_hand" id="hand2"></div>
+            </div>
+        </div>
+        <div class="movable_parent">
+            <!-- This section is for the observation -->
+            <section class="background">
+
+                <img src="img/BG_(Observation)_1_200521.svg" class='BG_svg'>
+
+                <!-- For instruction Area. It is always a good practice to put the text in a paragraph element since it can contain inline mathJax. -->
+                <div class="instructino_area">
+                    <p> A ball is pushed into a block to transfer all of its kinetic energy to move the block. Let's check out how Kinetic Energy is effected. </p>
+                </div>
+                <!-- For Visual Area -->
+                <!-- <div class="visual_area"> -->
+                     <canvas class="visual_area" id="myCanvas" width="1540" height="820"style="border:1px solid #000000;"></canvas>
+                     <img id="table" src="Table.png" alt="The Scream">
+                     <img id="ball" src="Ball.png" alt="The Scream">
+                     <img id="box" src="Box.png" alt="The Scream">
+                     <img id="triangle" src="triangle.png" alt="The Scream">
+
+
+                <!-- </div> -->
+
+                <!-- For Feedback bar -->
+                <div class="feedback_bar">
+                    <p id="para"> Select a parameter to check how it is on the kinetic energy </p>
+                </div>
+
+                <!-- For Interaction area -->
+                <div class="interaction_area">
+                    <button class="mass">Mass</button>
+                    <button class="velocity">Velocity</button>
+                    <input type="range" min="1" max="100"  steps = "25" value="0.1" id="slider1" class="input_slider">
+                    <span id="v2">1</span>
+                    <span id="v3">2</span>
+                    <span id="v4">3</span>
+                    <span id="v5">4</span>
+                    <span id="v6"><img src="marker.png"></img></span>
+                    <span id="v7"><img src="marker.png"></img></span>
+                    <span id="v8"><img src="marker.png"></img></span>
+                    <span id="v9"><img src="marker.png"></img></span>
+
+                    <p id ="p1" >Mass <p><span id="v1"></span></p>
+                    <!-- <input type="range"  min="0" max="100" value="0" id="slider2" class="input_slider"> -->
+                    <!-- <p style="font-size: 80px; position: absolute;color:white; top:35%">Ball Velocity <p><span id="v2" style="font-size: 80px;position: absolute;color:white; top:50%; left: 75%;"></span></p> -->
+                </div>
+                <!-- For the Next Buttons -->
+                <button class="next_button">Next</button>
+            </section>
+
+            <!-- This section is for the question -->
+            <section class="background2">
+                <img src="img/BG_(Question)_1_200521.svg" class='BG_svg'>
+
+                <div class="dynamic_panel_window">
+                    <div class="scrollable_dynamic_panel">
+                        <div class="question_area">
+                            <p>Which of the following will produce maximum increment in the kinetic energy of a car?
+                            </p>
+                        </div>
+                        <div class="feedback-bar">
+                            <div id="big">Oops!</div>
+                            <div id="small">Try again or swipe left to figure out the right answer.
+                            </div>
+                        </div>
+                        <div class="option-container">
+                            <div class="options" id="option1">Reducing weight to half or original.
+                            </div>
+                            <div class="options" id="option2">Doubling the weight.
+                            </div>
+                            <div class="options" id="option3">Reducing velocity to half or original.</div>
+                            <div class="options" id="option4" title="solution">Doubling the velocity.
+                            </div>
+                        </div>
+
+                        <div class="solution">
+                            <p id="SolHead">Solution</p>
+                            <p><ul><li>Kinetic energy is directly proportional to mass and the square of the velocity.</li>
+                           <li>Kinetic energy will increase by doubling the mass and the velocity.
+                        </li>
+                        <li>But doubling the velocity will increase kinetic energy more.
+                        </li>
+                            </ul>
+                            </p>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <footer class="button-container">
+                    <button class="finish-button">Finish</button>
+                </footer>
+            </section>
+            <!-- LO message -->
+            <section class="LO_message">
+                <div class="popup">
+                    <div class="text_container">
+                        <p>You just explored that the kinetic energy is directly proportional to the mass and the square of the velocity of the object.
+                        </p>
+                    </div>
+                    <div class="tick_mark_container">
+                        <div class="ellipse2"></div>
+                        <svg class="round_stroke" width="200" height="200">
+                            <path d=""></path>
+                        </svg>
+                        <div class="ellipse1"></div>
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                    </div>
+                    <button class="close_button">Close</button>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="./scripts/TouchDragDropscript.js"></script>
+    <script src="scripts/index_script.js"></script>
+    <script src="scripts/question_script.js"></script>
+    <script src="scripts/LO_script.js"></script>
+
+</body>
+
+</html>
