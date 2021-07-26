@@ -1,0 +1,879 @@
+@font-face {
+    font-family: Gotham SSm;
+    /* src: url('/fonts/Gotham-SSm/GothamSSm-Black.otf'); */
+    src: url('../fonts/Gotham-SSm/GothamSSm-Light.otf');
+    /* src: url('/fonts/Gotham-SSm/GothamSSm-BlackItalic.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-Bold.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-BoldItalic.otf'); 
+    src: url('fonts/Gotham-SSm/GothamSSm-Book.otf'); */
+    /* src: url('/fonts/Gotham-SSm/GothamSSm-BookItalic.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-LightItalic.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-Medium.otf');
+    src: url('/fonts/Gotham-SSm/GothamSSm-MediumItalic.otf'); */
+}
+
+html {
+    --vwidth: 100vw;
+    --vheight: calc(16/9*var(--vwidth));
+    font-size: calc(1/1080*var(--vwidth));
+}
+
+@media (min-aspect-ratio: 9/16) {
+    html {
+        --vheight: 100vh;
+        --vwidth: calc(9/16*var(--vheight));
+        font-size: calc(1/1920*var(--vheight));
+    }
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* This part is for showing the slider animation */
+
+.window {
+    position: relative;
+    height: 1920rem;
+    width: 1080rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.movable_parent {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    --width: 1080rem;
+    height: 1920rem;
+    width: calc(var(--width)*3);
+    display: flex;
+    flex-direction: row;
+    transition: left 0.5s linear;
+}
+
+.background {
+    position: relative;
+    width: 1080rem;
+    height: 1920rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.background2 {
+    position: relative;
+    top: -10rem;
+    width: 1080rem;
+    height: 1920rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.bg {
+    height: 100%;
+    width: 100%;
+}
+
+.bg2 {
+    height: 100%;
+    width: 100%;
+}
+
+/* For the cross symbol */
+
+.cross_symbol_container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 108rem;
+    height: 108rem;
+    left: 48rem;
+    top: 102rem;
+    opacity: 0.5;
+    /* background: grey; */
+    z-index: 1;
+}
+
+.cross_symbol_container .cross_oval {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    /* background-color: blue; */
+}
+
+.cross_oval .cross_hand {
+    position: absolute;
+    width: 54rem;
+    height: 6rem;
+    top: 50%;
+    left: 50%;
+    background-color: #9C88D8;
+}
+
+.cross_oval #hand1 {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.cross_oval #hand2 {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* For navigation bar. When selected the 'nav_selected' class is to be added in js. And the direction of the box shadow should be changed depending on the situation */
+
+.navigation_bar {
+    position: absolute;
+    width: 55%;
+    height: 5.6%;
+    top: 5.3%;
+    border-radius: 200rem;
+    background: rgb(109, 42, 244);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 36rem;
+    text-align: center;
+    font-family: Gotham SSm;
+    font-weight: 325;
+    line-height: 144.2%;
+    cursor: pointer;
+    color: white;
+    z-index: 2;
+}
+
+.observation_bar {
+    height: 100%;
+    width: 50%;
+    border-radius: 200rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.question_bar {
+    height: 100%;
+    width: 50%;
+    border-radius: 200rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav_selected {
+    background: white;
+    color: rgb(54, 18, 175);
+    box-shadow: 4rem 2rem 10rem 2rem rgba(0, 0, 0, 0.284);
+    /*The direction needs to be changed by putting a 'minus' sign befer '4px'*/
+}
+
+.nav_selected2 {
+    background: white;
+    color: rgb(54, 18, 175);
+    box-shadow: -4rem 2rem 10rem 2rem rgba(0, 0, 0, 0.284);
+}
+
+/* For the instruction area */
+
+.instructino_area {
+    position: absolute;
+    width: 984rem;
+    height: 114rem;
+    top: 288rem;
+    left: 48rem;
+}
+
+.instructino_area p {
+    margin: 0;
+    font-family: Gotham SSm;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 36rem;
+    line-height: 60rem;
+    /* or 154% */
+    color: #FFFDFD;
+}
+
+/* For Visual area */
+
+.visual_area {
+    position: absolute;
+    width: 984rem;
+    height: 520rem;
+    top: 564rem;
+    /* background-image: radial-gradient(119.99% 62.42% at 50% 36.33%, #2d0457 0%, #000108 100%);
+    border-radius: 24rem; */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+.visual_area P {
+    font-family: Gotham SSm;
+    font-weight: 80;
+    font-size: 36rem;
+}
+
+
+
+
+
+
+
+/* For feedback bar */
+
+.feedback_bar {
+    position: absolute;
+    border-radius: 20rem;
+    width: 984rem;
+    height: 180rem;
+    top: 1120rem;
+    background: linear-gradient(180deg, #12EAFA 0%, #0787E2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.feedback_bar p {
+    font-family: Gotham SSm;
+    font-weight: 80;
+    font-size: 36rem;
+    margin: 10rem;
+    width: 95%;
+    text-align: center;
+    color: black;
+}
+
+.velocity_slider {
+    position: absolute;
+    /* top: 76%;
+    width: 90%;
+    height: 5%; */
+    /* outline: 1px solid white; */
+    top: 1318rem;
+    /* left:165rem; */
+    width: 984rem;
+    height: 70rem;
+    border-radius: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+
+.force_slider {
+    position: absolute;
+    /* top: 76%;
+    width: 90%;
+    height: 5%; */
+    /* outline: 1px solid white; */
+    top: 1505rem;
+    /* left:165rem; */
+    width: 984rem;
+    height: 70rem;
+    border-radius: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+
+
+.marker {
+    position: absolute;
+    width: 12rem;
+    height: 38rem;
+    /* background-color: white; */
+    
+     /* #2510A2; */
+    border-radius: 5rem;
+    /* z-index: 3; */
+    overflow: hidden;
+    background: WHITE;
+    
+}
+
+
+
+
+#marker1 {
+    /* top: 64.3%;
+    left: 5%; */
+    position: absolute;
+    /* top: 1270rem; */
+    left: 35%;
+    
+    
+    
+}
+
+#marker3 {
+    /* top: 64.3%;
+    left: 5%; */
+    position: absolute;
+    /* top: 1270rem; */
+    left: 0%;
+   
+    
+    
+}
+
+#marker4 {
+    /* top: 64.3%;
+    left: 5%; */
+    position: absolute;
+    /* top: 1270rem; */
+    right: 0%;
+   
+    
+    
+}
+
+
+#marker2 {
+    /* top: 64.3%;
+    right: 4%; */
+    position: absolute;
+    /* top: 1270rem; */
+    right: 33%;
+    
+}
+
+.mark {
+    position: absolute;
+    width: 12rem;
+    height: 38rem;
+    /* background-color: white; */
+    
+     /* #2510A2; */
+    border-radius: 5rem;
+    /* z-index: 3; */
+    overflow: hidden;
+    background: WHITE;
+    
+}
+
+
+
+#marker5 {
+    /* top: 64.3%;
+    left: 5%; */
+    position: absolute;
+    /* top: 1270rem; */
+    left: 35%;
+    
+    
+    
+}
+
+#marker6 {
+    /* top: 64.3%;
+    left: 5%; */
+    position: absolute;
+    /* top: 1270rem; */
+    left: 0%;
+   
+    
+    
+}
+
+#marker7 {
+    /* top: 64.3%;
+    left: 5%; */
+    position: absolute;
+    /* top: 1270rem; */
+    right: 0%;
+   
+    
+    
+}
+
+
+#marker8 {
+    /* top: 64.3%;
+    right: 4%; */
+    position: absolute;
+    /* top: 1270rem; */
+    right: 33%;
+    
+}
+
+.input_slider {
+    -webkit-appearance: none;
+    outline: none;
+    overflow: none;
+    width: 100%;
+    /* position: absolute;
+    top: 50%;
+    transform: translateY(-50%); */
+    z-index: 1;
+    height: 10%;
+    border-radius: 6rem;
+    background:  solid #FFFFFF;
+
+}
+
+.input_slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 60rem;
+    height: 60rem;
+    background: linear-gradient(180deg, #FF9231 0%, #FC6076 100%);
+
+    border: 3rem solid #FFFFFF;
+    border-radius: 50%;
+    /* outline: 3;
+    outline: 3rem solid #a59595; */
+    z-index: 3;
+}
+
+.input_slider::-moz-range-thumb {
+    -webkit-appearance: none;
+    width: 60rem;
+    height: 60rem;
+    background: linear-gradient(180deg, #FF9231 0%, #FC6076 100%);
+
+    cursor: pointer;
+    /* outline: 3rem solid #FFFFFF; */
+    border: 3rem solid #FFFFFF;
+    border-radius: 50%;
+    z-index: 3;
+}
+
+
+
+.label {
+  
+        position: absolute;
+        
+        top: 25%;
+    /* background-color: black; */
+    width: 100%;
+    height: 128.64rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#label2 {
+    /* top: 64.3%;
+    left: 5%; */
+    position: absolute;
+    /* top: 1270rem; */
+    left: 30%;
+    
+    
+    
+}
+
+#label1 {
+    /* top: 64.3%;
+    left: 5%; */
+    position: absolute;
+    /* top: 1270rem; */
+    left: -4%;
+   
+    
+    
+}
+
+#label4 {
+    /* top: 64.3%;
+    left: 5%; */
+    position: absolute;
+    /* top: 1270rem; */
+    right: -4%;
+   
+    
+    
+
+}
+
+#label3 {
+    /* top: 64.3%;
+    left: 5%; */
+    position: absolute;
+    /* top: 1270rem; */
+    right: 29%;
+   
+    
+    
+
+}
+
+#label6 {
+    /* top: 64.3%;
+    left: 5%; */
+    position: absolute;
+    /* top: 1270rem; */
+    left: 31%;
+    
+    
+    
+}
+
+#label5 {
+    /* top: 64.3%;
+    left: 5%; */
+    position: absolute;
+    /* top: 1270rem; */
+    left: -3%;
+   
+    
+    
+}
+
+#label8 {
+    /* top: 64.3%;
+    left: 5%; */
+    position: absolute;
+    /* top: 1270rem; */
+    right: -2%;
+   
+    
+    
+
+}
+
+#label7 {
+    /* top: 64.3%;
+    left: 5%; */
+    position: absolute;
+    /* top: 1270rem; */
+    right: 31%;
+   
+    
+    
+
+}
+
+.label span {
+    
+    margin: 0;
+    font-family: Gotham SSm;
+    font-style: normal;
+    font-weight: 325;
+    font-size: 36rem;
+    line-height: 50.83rem;
+    color: #FFFDFD;
+}
+
+.velocity {
+
+    position: absolute;
+        
+        top: 110%;
+   
+    width: 100%;
+    height: 128.64rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-family: Gotham SSm;
+    font-style: normal;
+    font-weight: 325;
+    font-size: 36rem;
+    line-height: 50.83rem;
+    color: #FFFDFD;
+    z-index: 1;
+
+}
+
+.friction {
+    position: absolute;
+        
+    top: 100%;
+
+width: 100%;
+height: 128.64rem;
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 0;
+font-family: Gotham SSm;
+font-style: normal;
+font-weight: 325;
+font-size: 36rem;
+line-height: 50.83rem;
+color: #FFFDFD;
+z-index: 1;
+
+
+}
+/* .interaction_area .movable span {
+    position: absolute;
+    bottom: 105%;
+    width: 15%;
+    height: 100%;
+    border: 6px solid rgb(255, 255, 255);
+    border-radius: 20px;
+    background: linear-gradient(#fb8d34, #f96074);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Gotham SSm;
+    font-size: 40px;
+    color: rgb(241, 247, 246);
+    transform: translateX(-50%);
+}
+
+.interaction_area .movable span::after {
+    content: '';
+    border-top: 20px solid #ffffff;
+    border-left: 20px solid rgba(0, 0, 0, 0);
+    border-right: 20px solid rgba(0, 0, 0, 0);
+    position: absolute;
+    bottom: -025%;
+    left: 50%;
+    transform: translateX(-50%);
+} */
+
+.next_button {
+    position: absolute;
+    top: 1717rem;
+    width: 45%;
+    height: 128.64rem;
+    border: none;
+    border-radius: 200rem;
+    background: linear-gradient(90deg, #10dca3, #3988fa);
+    color: white;
+    font-family: Gotham SSm;
+    font-weight: 350;
+    font-size: 39rem;
+    cursor: pointer;
+    /* top: 100%; */
+}
+
+.reset_button {
+    position: absolute;
+    top: 1537rem;
+    width: 45%;
+    height: 128.64rem;
+    border: none;
+    border-radius: 200rem;
+    background: #FFFFFF;
+    color: black;
+    font-family: Gotham SSm;
+    font-weight: 350;
+    font-size: 39rem;
+    cursor: pointer;
+    opacity: 0;
+
+}
+
+.context_button {
+    position: absolute;
+    left: 924rem;
+    top: 102rem;
+    height: 108rem;
+    width: 108rem;
+    z-index: 1;
+}
+
+
+
+/* For all the images */
+
+.table {
+    position: absolute; width: 100%; height: 100%;  border-radius: 24rem;
+}
+
+.block_div {
+    position: absolute; left: 50rem; top: 65%; height: 80rem; width: 80rem; 
+}
+
+.block {
+    position:absolute; width: 100%; height: 100%; 
+
+}
+
+.rough_surface {
+
+position: absolute; top : 87%; left: 50%; width: 316rem; height: 60rem; background-color: #00000030;  
+font-family: Gotham SSm;
+font-weight: 350;
+font-size: 36rem;
+color: #FFFFFF;
+align-items: center;
+justify-content: center;
+text-align: top;
+display: flex;
+}
+
+.smooth_surface {
+
+    position: absolute; top : 87%; left: 0.5%; width: 316rem; height: 60rem; background-color: #00000030;  
+    font-family: Gotham SSm;
+    font-weight: 350;
+    font-size: 36rem;
+    color: #FFFFFF;
+    align-items: center;
+    justify-content: center;
+    text-align: top;
+    display: flex;
+    }
+
+.legend_KE{
+    position: absolute; top : 5%; left: 1%; width: 350rem; height: 60rem; background-color: #00000030;  
+    align-items: center;
+    justify-content: center;
+    text-align: top;
+    display: flex;
+    border-radius: 10rem;
+} 
+
+.text_KE {
+    margin-left: 17%;
+    font-family: Gotham SSm;
+    font-weight: 350;
+    font-size: 36rem;
+    color: #FFFFFF;
+    text-align: right;
+
+}
+
+.color_KE {
+    position: absolute;
+    height: 58rem;
+    width: 60rem;
+    left: 2%;
+    background-color: rgb(255, 196, 0);
+}
+.distance {
+    position: absolute; left: 275rem; top: 78%; height: 40rem; width: 120rem; background-color: transparent; color: white;
+    font-family: Gotham SSm;
+    font-weight: 350;
+    font-size: 28rem;
+    text-align: left;
+}
+
+.legend_work{
+    position: absolute; top : 5%; left: 48%; width: 500rem; height: 60rem; background-color: #00000030;  
+    align-items: center;
+    justify-content: center;
+    text-align: top;
+    display: flex;
+    border-radius: 10rem;
+} 
+
+.text_work {
+    margin-left: 14.5%;
+    font-family: Gotham SSm;
+    font-weight: 350;
+    font-size: 36rem;
+    color: #FFFFFF;
+    text-align: right;
+
+}
+
+.color_work {
+    position: absolute;
+    height: 58rem;
+    width: 60rem;
+    left: 2%;
+    background-color: #FF2288;
+}
+
+.KE_bar {
+    position: absolute; top : 30%; width: 500rem; height: 60rem; background-color: #00000030;  
+    align-items: center;
+    justify-content: center;
+    text-align: top;
+    display: flex;
+    border-radius: 10rem;
+    align-items: left;
+    justify-content: left;
+
+}
+
+.fill_KE {
+    position: absolute; width: 100%; height: 100%; background-color: rgb(255, 196, 0); opacity: 0; border-radius: 10rem;
+display: flex; justify-content: center; text-align: center; align-items: center; font-family: Gotham SSm;
+font-weight: 700;
+font-size: 36rem;
+color: black;
+}
+
+.fill_work {
+    position: absolute; width: 100%; height: 100%; background-color: #FF2288; opacity: 0; border-radius: 10rem;
+    display: flex; justify-content: center; text-align: center; align-items: center; font-family: Gotham SSm;
+font-weight: 700;
+font-size: 36rem;
+color: white;
+}
+.work_bar {
+    position: absolute; top : 45%; width: 500rem; height: 60rem; background-color: #00000030;  
+    align-items: center;
+    justify-content: center;
+    text-align: top;
+    display: flex;
+    border-radius: 10rem;
+    align-items: left;
+    justify-content: left;
+}
+
+.arrow_div {
+    position: absolute; left:328rem; top: 81%; 
+    
+    width: 10rem;
+    height: 4rem;
+    border-radius: 4rem;
+    background-color: #FFFFFF;
+      opacity: 0;
+
+      
+}
+
+    .arrow_div:after {
+        content: "";
+        display: inline-block;
+        width:20rem ;
+        height: 4rem;
+        background-color: #FFFFFF;
+        transform: rotate(45deg);
+        position: absolute;
+        right: -2rem;
+        bottom: 5rem;
+
+    }
+
+    .arrow_div:before {
+        content: "";
+        display: inline-block;
+        width:20rem ;
+        height: 1rem;
+        background-color: #FFFFFF;
+        transform: rotate(-45deg);
+        position: absolute;
+        right: -2rem;
+        bottom: -3rem;
+
+    }
+
+/* .arrow {
+    position:absolute; width: 100%; height: 100%; 
+
+} */
