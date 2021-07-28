@@ -51,97 +51,105 @@
 
                 <!-- For instruction Area. It is always a good practice to put the text in a paragraph element since it can contain inline mathJax. -->
                 <div class="instructino_area">
-                    <p> Move the block (mass = 1 kg) from smooth to rough surface and observe how work done by frictional force is related to change in the kinetic energy of the block.
+                    <p> Move the block (mass = 1 kg) from smooth to rough surface and observe how work done by
+                        frictional force is related to change in the kinetic energy of the block.
 
                     </p>
                 </div>
                 <!-- For Visual Area -->
                 <div class="visual_area">
-                   
-                  <img class = "table" src = "img/BG.png">
-                  <div class = "rough_surface">Rough surface</div>
-                  <div class = "smooth_surface">Smooth surface</div>
-                  <div class = "legend_KE">
-                      <div class = "color_KE"></div>
-                      <div class = "text_KE">Kinetic energy</div>
-                  </div>
-                  <div class = "legend_work">
-                    <div class = "color_work"></div>
-                    <div class = "text_work">Work done by friction</div>
-                </div>
-                
-                <div class = "KE_bar">
-                <div class = "fill_KE"></div>
-            <div class = "defill_KE"></div>
-            <div class = "change_in_KE">Change in K.E.</div>
-                </div>
-                <div class = "work_bar">
-                    <div class = "fill_work"></div>
-                </div>
-                  <div class = "block_div">
-                      <img class = "block" src = "img/block2.svg">
-                  </div>
-                  <div class = "distance"></div>
-                 <div class = "arrow_div">
-                     <!-- <img class = "arrow" src = "img/Arrow1.svg"> -->
-                 </div>
+
+                    <img class="table" src="img/BG.png">
+                    <div class="rough_surface">Rough surface</div>
+                    <div class="smooth_surface">Smooth surface</div>
+                    <div class="legend_KE">
+                        <div class="color_KE"></div>
+                        <div class="text_KE">Kinetic energy</div>
+                    </div>
+                    <div class="legend_work">
+                        <div class="color_work"></div>
+                        <div class="text_work">Work done by friction</div>
                     </div>
 
+                    <div class="KE_bar">
+                        <div class="fill_KE"></div>
+                        <div class="defill_KE"></div>
+                        <div class="change_in_KE"> Change in K.E.
+                            <div class="double_arrow">
+                                <div class="arrow_right"></div>
+                                <div class="arrow_left"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="work_bar">
+                        <div class="fill_work"></div>
+                    </div>
+                    <div class="block_div">
+                        <img class="block" src="img/block2.svg">
+                    </div>
+                    <div class="distance"></div>
+                    <div class="arrow_div">
+                        <div class="arrow"></div>
+                        <div class="arrow_line"></div>
+                    </div>
+                </div>
 
-                
+
+
 
                 <!-- For Feedback bar -->
                 <div class="feedback_bar">
-                    <p id="message"> Set the initial velocity of the block and the force of friction applied by the surface.
+                    <p id="message"> Set the initial velocity of the block and the force of friction applied by the
+                        surface.
                     </p>
                 </div>
 
                 <!-- For Interaction area -->
 
-            
-                 
-           
+
+
+
                 <div class="velocity_slider">
                     <input type="range" min="2" max="5" value="2" id="velocity_change" class="input_slider">
-                     <div class="marker" id="marker1"></div>
+                    <div class="marker" id="marker1"></div>
                     <div class="marker" id="marker2"></div>
                     <div class="marker" id="marker3"></div>
                     <div class="marker" id="marker4"></div>
                     <div class="label">
-                       <span id = "label1">2 m/s</span>
-                       <span id = "label2">3 m/s</span>
-                       <span id = "label3">4 m/s</span>
-                       <span id = "label4">5 m/s</span>
-                       
+                        <span id="label1">2 m/s</span>
+                        <span id="label2">3 m/s</span>
+                        <span id="label3">4 m/s</span>
+                        <span id="label4">5 m/s</span>
+
                     </div>
-                    <div class = "velocity">Velocity of the block</div>
+                    <div class="velocity">Velocity of the block</div>
                 </div>
 
                 <div class="force_slider">
                     <input type="range" min="2" max="5" value="2" id="force_change" class="input_slider">
-                     <div class="mark" id="marker5"></div>
+                    <div class="mark" id="marker5"></div>
                     <div class="mark" id="marker6"></div>
                     <div class="mark" id="marker7"></div>
                     <div class="mark" id="marker8"></div>
                     <div class="label">
-                       <span id = "label5">2 N</span>
-                       <span id = "label6">3 N</span>
-                       <span id = "label7">4 N</span>
-                       <span id = "label8">5 N</span>
+                        <span id="label5">2 N</span>
+                        <span id="label6">3 N</span>
+                        <span id="label7">4 N</span>
+                        <span id="label8">5 N</span>
                     </div>
-                    <div class = "friction">Frictional force</div>
+                    <div class="friction">Frictional force</div>
                 </div>
 
-               
-               
 
-              
+
+
+
 
 
 
                 <!-- For the Next Buttons -->
                 <button class="next_button" onclick="next_instruction()">Start</button>
-                <button class = "reset_button" onclick = "reset_instruction()">Reset</button> 
+                <button class="reset_button" onclick="reset_instruction()">Reset</button>
             </section>
 
             <!-- This section is for the question -->
@@ -155,10 +163,11 @@
                 <div class="dynamic_panel_window">
                     <div class="scrollable_dynamic_panel">
                         <div class="question_area">
-                            <p>The work done (in J) by a car engine to change the velocity of the car of mass m from 5 m/s to 10 m/s will be _.
+                            <p>The work done (in J) by a car engine to change the velocity of the car of mass m from 5
+                                m/s to 10 m/s will be _.
 
-                                </p><br>
-                            
+                            </p><br>
+
                         </div>
                         <div class="feedback-bar">
                             <div id="big">Oops!</div>
@@ -168,33 +177,37 @@
                         <div class="option-container">
                             <div class="options" id="option1">\(\frac{25}{2} \times m\)</div>
                             <div class="options" id="option2">\(\frac{50}{2} \times m\)</div>
-                            <div class="options" id="option3" title = "solution">\(\frac{75}{2} \times m\)</div>
+                            <div class="options" id="option3" title="solution">\(\frac{75}{2} \times m\)</div>
                             <div class="options" id="option4">\(\frac{100}{2} \times m\)</div>
-                            
+
                         </div>
 
                         <div class="solution">
                             <p id="SolHead">Solution</p>
-                           
+
                             <p id="Soltext">
 
-                                &bull;&nbsp; As the work done is equal to the change &nbsp;&nbsp;&nbsp; in the kinetic energy.
+                                &bull;&nbsp; As the work done is equal to the change &nbsp;&nbsp;&nbsp; in the kinetic
+                                energy.
                                 <br>
-        <br>
-                                &bull;&nbsp; The velocity of the car changes from &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;5 m/s to 10 m/s.
-<br>
                                 <br>
-                                &bull;&nbsp; The kinetic energy of the car changes &nbsp;&nbsp;&nbsp;&nbsp;from 1/2 &times; m &times; 5&#xb2; to
-                            1/2 &times; m &times; 10&#xb2;.
+                                &bull;&nbsp; The velocity of the car changes from &nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;5 m/s to 10 m/s.
                                 <br>
-<br>                                
-                                &bull;&nbsp; The work done by the engine will be &nbsp;&nbsp;&nbsp;&nbsp;change in K.E i.e. <br>
+                                <br>
+                                &bull;&nbsp; The kinetic energy of the car changes &nbsp;&nbsp;&nbsp;&nbsp;from 1/2
+                                &times; m &times; 5&#xb2; to
+                                1/2 &times; m &times; 10&#xb2;.
+                                <br>
+                                <br>
+                                &bull;&nbsp; The work done by the engine will be &nbsp;&nbsp;&nbsp;&nbsp;change in K.E
+                                i.e. <br>
                                 &nbsp;&nbsp;&nbsp;
-                            1/2 &times; m &times; (10&#xb2; - 5&#xb2;) = 75/2 &times; m.
+                                1/2 &times; m &times; (10&#xb2; - 5&#xb2;) = 75/2 &times; m.
                                 <br>
                                 <br>
-                               
-            
+
+
                             </p>
                         </div>
                     </div>
@@ -208,10 +221,11 @@
             <section class="LO_message">
                 <div class="popup">
                     <div class="text_container">
-                        <p>You just explored that according to work energy theorem the work done is equal to the change in the kinetic energy.
+                        <p>You just explored that according to work energy theorem the work done is equal to the change
+                            in the kinetic energy.
 
 
-                            
+
 
 
 
