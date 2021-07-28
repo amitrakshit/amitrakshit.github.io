@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles/question_style.css">
     <link rel="stylesheet" href="styles/LO_style.css">
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <title>Kinetic Energy</title>
+    <title>Simulation Template V1</title>
 </head>
 
 <body>
@@ -34,47 +34,44 @@
 
                 <!-- For instruction Area. It is always a good practice to put the text in a paragraph element since it can contain inline mathJax. -->
                 <div class="instructino_area">
-                    <p> A ball is pushed into a block to transfer all of its kinetic energy to move the block. Let's
-                        check out how Kinetic Energy is effected. </p>
+                    <p> A ball is pushed into a block to transfer all of its kinetic energy to move the block. Let's check out how Kinetic Energy is effected. </p>
                 </div>
                 <!-- For Visual Area -->
                 <!-- <div class="visual_area"> -->
-                <canvas class="visual_area" id="myCanvas" width="1540" height="820"
-                    style="border:1px solid #000000;"></canvas>
-                <img id="table" src="Table.png" alt="The Scream">
-                <img id="ball" src="Ball.png" alt="The Scream">
-                <img id="box" src="Box.png" alt="The Scream">
-                <img id="triangle" src="triangle.png" alt="The Scream">
+                     <canvas class="visual_area" id="myCanvas" width="1540" height="820"></canvas>
+                     <img id="table" src="img/Table.png" alt="The Scream">
+                     <img id="ball" src="img/Ball.png" alt="The Scream">
+                     <img id="box" src="img/Box.png" alt="The Scream">
+                     <img id="triangle" src="img/triangle.png" alt="The Scream">
 
 
                 <!-- </div> -->
 
                 <!-- For Feedback bar -->
                 <div class="feedback_bar">
-                    <p id="para"> Select a parameter to check how it is on the kinetic energy </p>
+                    <p id="para"> Select a parameter to check how it is dependent on the kinetic energy </p>
                 </div>
 
                 <!-- For Interaction area -->
                 <div class="interaction_area">
                     <button class="mass">Mass</button>
                     <button class="velocity">Velocity</button>
-                    <input type="range" min="1" max="100" steps="25" value="0.1" id="slider1" class="input_slider">
+                    <input type="range" min="1" max="100"  steps = "25" value="0.1" id="slider1" class="input_slider">
                     <span id="v2">1</span>
                     <span id="v3">2</span>
                     <span id="v4">3</span>
                     <span id="v5">4</span>
-                    <span id="v6"><img src="marker.png"></img></span>
-                    <span id="v7"><img src="marker.png"></img></span>
-                    <span id="v8"><img src="marker.png"></img></span>
-                    <span id="v9"><img src="marker.png"></img></span>
+                    <span id="v6"><img src="img/marker.png"></img></span>
+                    <span id="v7"><img src="img/marker.png"></img></span>
+                    <span id="v8"><img src="img/marker.png"></img></span>
+                    <span id="v9"><img src="img/marker.png"></img></span>
 
-                    <p id="p1">Mass
-                    <p><span id="v1"></span></p>
+                    <p id ="p1" ><p><span id="v1"></span></p>
                     <!-- <input type="range"  min="0" max="100" value="0" id="slider2" class="input_slider"> -->
                     <!-- <p style="font-size: 80px; position: absolute;color:white; top:35%">Ball Velocity <p><span id="v2" style="font-size: 80px;position: absolute;color:white; top:50%; left: 75%;"></span></p> -->
                 </div>
                 <!-- For the Next Buttons -->
-                <button class="next_button">Next</button>
+                <button class="next_button">Play</button>
             </section>
 
             <!-- This section is for the question -->
@@ -104,15 +101,13 @@
 
                         <div class="solution">
                             <p id="SolHead">Solution</p>
-                            <p>
-                            <ul>
-                                <li>Kinetic energy is directly proportional to mass and the square of the velocity.</li>
-                                <li>Kinetic energy will increase by doubling the mass and the velocity.
-                                </li>
-                                <li>But doubling the velocity will increase kinetic energy more.
-                                </li>
+                            <ul><li>Kinetic energy is directly proportional to mass and the square of the velocity.</li>
+                           <li>Kinetic energy will increase by doubling the mass and the velocity.
+                        </li>
+                        <li>But doubling the velocity will increase kinetic energy more.
+                        </li>
                             </ul>
-                            </p>
+                           
                         </div>
 
 
@@ -127,8 +122,7 @@
             <section class="LO_message">
                 <div class="popup">
                     <div class="text_container">
-                        <p>You just explored that the kinetic energy is directly proportional to the mass and the square
-                            of the velocity of the object.
+                        <p>You just explored that the kinetic energy is directly proportional to the mass and the square of the velocity of the object.
                         </p>
                     </div>
                     <div class="tick_mark_container">

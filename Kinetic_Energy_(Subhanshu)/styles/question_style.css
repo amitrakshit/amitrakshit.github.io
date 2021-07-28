@@ -135,7 +135,7 @@ body {
     font-family: Gotham SSm;
     font-style: normal;
     font-weight: 325;
-    font-size: 50rem;
+    font-size: 40rem;
     line-height: 120.5%;
     /* or 43rem */
     text-align: center;
@@ -161,7 +161,7 @@ body {
 
 .solution #SolHead {
     text-align: center;
-    font-size: 55rem;
+    font-size: 40rem;
 }
 
 .solution {
@@ -175,7 +175,7 @@ body {
     flex-direction: column;
     background: #D718A1;
     border-radius: 20rem;
-    font-size: 55rem;
+    font-size: 40rem;
     font-family: Gotham SSm;
     font-weight: 300;
     color: white;

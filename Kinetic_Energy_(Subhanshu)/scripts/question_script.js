@@ -96,9 +96,14 @@ var velocity_slider_flag = 1; // velocity slider not clicked
 var mass_slider_flag = 1; // velocity slider not clicked
 var rotation_angle = 0;
 var display_mass_slider = 0;//when mass button is clicked the slider should take in mass value
-var display_velocity_slider = 0;//when mass velocity button is clicked the slider should take in velocity value
-var degrees = 5;
+var display_velocity_slider = 0;//when velocity button is clicked the slider should take in velocity value
+var degrees = 0;
 var collided = 1;// collision not yet occured
+var nxt_clicked = 1;//next button not clicked
+var mass_played = 1;//mass animation is not played yet
+var recently_mass_tapped = 1; //mass button was tapped recently
+var recently_velocity_tapped = 1//velocity button was tapped recently
+var velocity_played = 1//velocity animation is not played yet.
 
 function axis(){
 // var c = document.getElementById("myCanvas");
@@ -177,11 +182,21 @@ var c = document.getElementById("myCanvas");
     ctx.translate( -mid1x -(((26+1.22*mass_ball))/14),- mid1y-(((26+1.22*mass_ball))/14));
     // ctx.translate(0,0);
     // ctx.drawImage(img,5,10,-img.width/2,-img.width/2);
-     ctx.drawImage(img,  mid1x -((mass_ball+(26+1.22*mass_ball))/2), mid1y-((mass_ball+(26+1.22*mass_ball))/2),mass_ball+(26+1.22*mass_ball),mass_ball+(26+1.22*mass_ball));
+    //  ctx.drawImage(img,  mid1x  -((mass_ball+(26+1.22*mass_ball))/2), mid1y-((mass_ball+(10+26+1.22*mass_ball))/2),mass_ball+(26+1.22*mass_ball),mass_ball+(26+1.22*mass_ball));
+    if((degrees>=110 && degrees<230))//210
+    ctx.drawImage(img,  mid1x  -((mass_ball+(26+1.22*mass_ball))/2), mid1y-((mass_ball+(-degrees/6+26+1.22*mass_ball))/2),mass_ball+(26+1.22*mass_ball),mass_ball+(26+1.22*mass_ball));
+    else if((degrees>=200 && degrees<380))
+    ctx.drawImage(img,  mid1x  -((mass_ball+(26+1.22*mass_ball))/2), mid1y-((mass_ball+(+26+1.22*mass_ball))/2),mass_ball+(26+1.22*mass_ball),mass_ball+(26+1.22*mass_ball));
+    
+    else
+     ctx.drawImage(img,  mid1x  -((mass_ball+(26+1.22*mass_ball))/2), mid1y-((mass_ball+(26+1.22*mass_ball))/2),mass_ball+(26+1.22*mass_ball),mass_ball+(26+1.22*mass_ball));
     
     ctx.restore();
-    if (collided == 1)
-    degrees = degrees + 1;
+    if ((collided == 1) && (nxt_clicked==0))
+    degrees = degrees + 0.6;
+    // var output = document.getElementById("v1");
+    // output.innerHTML = degrees;
+    //     ball_initial_velocity = this.value;
     }
     
     // ctx.drawImage(img, mid1x-mass_ball-(3+(0.6*mass_ball)), mid1y-mass_ball-(1+(0.5*mass_ball)),mass_ball+(26+1.22*mass_ball),mass_ball+(26+1.22*mass_ball));
@@ -278,7 +293,7 @@ function box (position_box){
     function friction_velocity_box(time){// for box
         speed_box = box_initial_velocity - (ufriction*9.8*time);
        if (speed_box>=0){
-       position_box_at =position_box +  (((speed_box*speed_box) - (box_initial_velocity*box_initial_velocity))/(-2*ufriction*9.8));
+       position_box_at =position_box +  ((((speed_box*speed_box) - (box_initial_velocity*box_initial_velocity))/(-2*ufriction*9.8))*5);
 //            var output = document.getElementById("v1");
 //    output.innerHTML = speed_box;
 }
@@ -339,10 +354,22 @@ function sleep(ms) {
     var i =0;
     while( (distance(mid1x,mid1y,mid2x,mid2y)> (parseInt(mass_ball)+120)) && colliision_flag == 1){
        await sleep(5);
-    //    document.getElementById("slider1").disabled = true;
+       document.getElementById("slider1").disabled = true;
        document.getElementsByClassName('velocity')[0].disabled = true;
        document.getElementsByClassName('mass')[0].disabled= true;
        document.getElementsByClassName('next_button')[0].disabled= true;
+       document.getElementById("slider1").style.opacity = 0;
+       document.getElementsByClassName('velocity')[0].style.opacity = 0.5;
+       document.getElementsByClassName('mass')[0].style.opacity= 0.5;
+       document.getElementsByClassName('next_button')[0].style.opacity= 0.5;
+       document.getElementById('v2').style.opacity=0;
+       document.getElementById('v3').style.opacity=0;
+       document.getElementById('v4').style.opacity=0;
+       document.getElementById('v5').style.opacity=0;
+       document.getElementById('v6').style.opacity=0;
+       document.getElementById('v7').style.opacity=0;
+       document.getElementById('v8').style.opacity=0;
+       document.getElementById('v9').style.opacity=0;
        i++;
     
     var c1 = document.getElementById("myCanvas");
@@ -367,6 +394,7 @@ function sleep(ms) {
     if (distance(mid1x,mid1y,mid2x,mid2y)<= (parseInt(mass_ball)+120))
     collided = 0; 
     flag_box = 0;
+    // degrees = 0;
     if (colliision_flag ==1){
 
         // mass_ball * velocity of ball = mass_box* velocity of box  condition for perfectly elastic collission
@@ -396,18 +424,154 @@ function sleep(ms) {
 
     }
     if (flag_box == 1){
-    document.getElementById("slider1").disabled = false; 
+        document.getElementById("slider1").disabled = false; 
+    document.getElementById("slider1").style.opacity = 1; 
     document.getElementsByClassName('velocity')[0].disabled = false;
     document.getElementsByClassName('mass')[0].disabled= false;
     document.getElementsByClassName('next_button')[0].disabled= false;
+    document.getElementsByClassName('velocity')[0].style.opacity = 1;
+       document.getElementsByClassName('mass')[0].style.opacity= 1;
+       document.getElementsByClassName('next_button')[0].style.opacity= 1;
+       document.getElementById('v2').style.opacity=1;
+       document.getElementById('v3').style.opacity=1;
+       document.getElementById('v4').style.opacity=1;
+       document.getElementById('v5').style.opacity=1;
+       document.getElementById('v6').style.opacity=1;
+       document.getElementById('v7').style.opacity=1;
+       document.getElementById('v8').style.opacity=1;
+       document.getElementById('v9').style.opacity=1;
     collided = 1;
+    degrees = 0;
+    nxt_clicked = 1;
 }
 return;
 
   }
     var next = document.getElementsByClassName('next_button')[0];
- next.onclick=function(){
-     animation();
+ next.onclick= function(){
+     nxt_clicked = 0;
+     buttonAudio_Click.play();
+     
+     if(mass_flag == 0 && mass_played >= 0 && recently_mass_tapped == 0){
+         mass_played--;
+        let ItemElement = document.createElement("p");
+        document.getElementById("para").style.fontSize =" 40rem";
+        document.getElementById("para").style.lineHeight =" 50rem";
+        document.getElementById("para").style.paddingTop =" 10rem";
+        document.getElementById("para").style.paddingLeft =" 20rem";
+        // fade(document.getElementsByClassName('feedback_bar')[0]);
+        // await sleep(5);
+        unfade(document.getElementsByClassName('feedback_bar')[0]);
+        document.getElementById("para").innerHTML="Ball transfers all of its kinetic energy to the block and displaces it. Use ball of different mass and compare kinetic energies. ";
+        // document.getElementsByClassName('feedback_bar')[0].style.transition= "top 0.4s ease-out, opacity 0.4s";
+        // let content = "Use ball of different mass and compare K E.";
+        // document.getElementById("para").style.fontSize ="40rem";
+        // let TitleElement = document.createElement("b");
+        // TitleElement.style.fontSize="40rem";
+        // TitleElement.style.paddingLeft="0rem";
+        // TitleElement.textContent = content;
+        // ItemElement.appendChild(TitleElement);
+        // document.getElementById("para").appendChild(ItemElement);
+        
+    }
+    else if(mass_played<0 && mass_flag == 0 && velocity_flag == 1 && recently_mass_tapped==0 ){
+        let ItemElement = document.createElement("p");
+        document.getElementById("para").style.fontSize =" 40rem";
+        document.getElementById("para").style.lineHeight =" 50rem";
+        document.getElementById("para").style.paddingTop =" 10rem";
+        document.getElementById("para").style.paddingLeft =" 20rem";
+        unfade(document.getElementsByClassName('feedback_bar')[0]);
+        document.getElementById("para").innerHTML="As the mass of the ball increases its kinetic energy also increases.Tap on velocity button to check effects of velocity.";
+        // document.getElementById("para").style.lineHeight =" 40rem";
+        // let content = "Tap on velocity button to check effects of velocity.";
+        // document.getElementById("para").style.fontSize ="40rem";
+        // document.getElementById("para").style.lineHeight =" 45rem";
+        // let TitleElement = document.createElement("b");
+        // TitleElement.style.fontSize="34rem";
+        // TitleElement.textContent = content;
+        // ItemElement.appendChild(TitleElement);
+        // document.getElementById("para").appendChild(ItemElement);
+
+    }
+    else if(mass_played<0 && mass_flag == 0 && velocity_flag == 0 && recently_mass_tapped==0 ){
+        let ItemElement = document.createElement("p");
+        document.getElementById("para").style.fontSize =" 40rem";
+        document.getElementById("para").style.lineHeight =" 50rem";
+        document.getElementById("para").style.paddingTop =" 10rem";
+        document.getElementById("para").style.paddingLeft =" 20rem";
+        unfade(document.getElementsByClassName('feedback_bar')[0]);
+        document.getElementById("para").innerHTML="The kinetic energy of an object is directly proportional to the mass of the object.";
+        // document.getElementById("para").style.lineHeight =" 40rem";
+        // let content = "Tap on velocity button to check effects of velocity.";
+        // document.getElementById("para").style.fontSize ="40rem";
+        // document.getElementById("para").style.lineHeight =" 45rem";
+        // let TitleElement = document.createElement("b");
+        // TitleElement.style.fontSize="34rem";
+        // TitleElement.textContent = content;
+        // ItemElement.appendChild(TitleElement);
+        // document.getElementById("para").appendChild(ItemElement);
+
+    }
+    else if(velocity_flag == 0 && velocity_played >= 0 && recently_velocity_tapped == 0){
+        velocity_played--;
+       let ItemElement = document.createElement("p");
+       document.getElementById("para").style.fontSize =" 36.5rem";
+       document.getElementById("para").style.lineHeight ="50rem";
+       document.getElementById("para").style.paddingTop =" 10rem";
+       document.getElementById("para").style.paddingLeft =" 20rem";
+       unfade(document.getElementsByClassName('feedback_bar')[0]);
+       document.getElementById("para").innerHTML="The ball hits the block it transfers all of its kinetic energy and displaces the block. Push ball with different velocities to observe its effect on K.E.";
+    //    let content = "Push ball with different velocities to observe its effect on K.E";
+    // //    document.getElementById("para").style.fontSize ="40rem";
+    //    let TitleElement = document.createElement("b");
+    //    TitleElement.style.fontSize="29rem";
+    //    TitleElement.style.lineHeight="30rem";
+    //    TitleElement.style.paddingLeft="0rem";
+    //    TitleElement.textContent = content;
+    //    ItemElement.appendChild(TitleElement);
+    //    document.getElementById("para").appendChild(ItemElement);
+       
+   }
+
+   else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 1 && recently_velocity_tapped==0 ){
+    let ItemElement = document.createElement("p");
+    document.getElementById("para").style.fontSize =" 39.5rem";
+    // document.getElementById("para").style.lineHeight =" 50rem";
+    document.getElementById("para").style.paddingTop =" 10rem";
+    document.getElementById("para").style.paddingLeft =" 20rem";
+    unfade(document.getElementsByClassName('feedback_bar')[0]);
+    document.getElementById("para").innerHTML="The K.E of an object is directly proportional to the square of the velocity of the object. Tap on mass button to check effects of mass.";
+    // document.getElementById("para").style.lineHeight =" 40rem";
+    // let content = "Tap on mass button to check effects of mass.";
+    // document.getElementById("para").style.fontSize ="40rem";
+    document.getElementById("para").style.lineHeight =" 50rem";
+    // let TitleElement = document.createElement("b");
+    // TitleElement.style.fontSize="39rem";
+    // TitleElement.textContent = content;
+    // ItemElement.appendChild(TitleElement);
+    // document.getElementById("para").appendChild(ItemElement);
+
+}
+else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 0 && recently_velocity_tapped==0 ){
+    let ItemElement = document.createElement("p");
+    document.getElementById("para").style.fontSize =" 40rem";
+    // document.getElementById("para").style.lineHeight =" 50rem";
+    document.getElementById("para").style.paddingTop =" 10rem";
+    document.getElementById("para").style.paddingLeft =" 20rem";
+    unfade(document.getElementsByClassName('feedback_bar')[0]);
+    document.getElementById("para").innerHTML="The kinetic energy of an object is directly proportional to the square of the velocity of the object";
+    document.getElementById("para").style.lineHeight =" 50rem";
+    // let content = "Tap on mass button to check effects of mass.";
+    // document.getElementById("para").style.fontSize ="40rem";
+    // document.getElementById("para").style.lineHeight =" 45rem";
+    // let TitleElement = document.createElement("b");
+    // TitleElement.style.fontSize="39rem";
+    // TitleElement.textContent = content;
+    // ItemElement.appendChild(TitleElement);
+    // document.getElementById("para").appendChild(ItemElement);
+
+}
+    animation();
     }
 
 
@@ -429,9 +593,12 @@ return;
 
     var next1 = document.getElementsByClassName('mass')[0]; // mass button
     next1.onclick=function(){
+        buttonAudio_Click.play();
         next2.style.border = "unset";
-        next1.style.border="solid";
+        next1.style.border="solid 2.5rem";
         ball_mass_change();
+        recently_mass_tapped = 0; // mass button tapped recently
+        recently_velocity_tapped = 1; // velocity button is not tapped recently
         mass_flag = 0;// mass button clicked
         display_mass_slider = 1;
         display_velocity_slider = 0;
@@ -450,31 +617,33 @@ return;
             document.getElementById("v7").style.opacity=1;
             document.getElementById("v8").style.opacity=1;
             document.getElementById("v9").style.opacity=1;
-     document.getElementById("p1").innerHTML="Mass";
+    //  document.getElementById("p1").innerHTML="Mass";
      if(mass_slider_flag == 1){
      document.getElementById("para").style.fontSize =" 40rem";
-     document.getElementById("para").style.lineHeight =" 60rem";
-     document.getElementById("para").innerHTML=("Vary the mass of the ball and observe how it affects its kinetic energy");
+     document.getElementById("para").style.lineHeight =" 50rem";
+     document.getElementById("para").style.paddingTop =" 10rem";
+     unfade(document.getElementsByClassName('feedback_bar')[0]);
+     document.getElementById("para").innerHTML=("Vary the mass of the ball using the slider and press play to observe how the kinetic energy of the ball is affected.");
     }
-     else if(mass_slider_flag == 0){
+    //  else if(velocity_flag ==1){  //mass_slider_flag == 0
 
-        let ItemElement = document.createElement("p");
-        document.getElementById("para").style.fontSize =" 40rem";
-        document.getElementById("para").style.lineHeight =" 50rem";
-        document.getElementById("para").style.paddingTop =" 20rem";
-        document.getElementById("para").style.paddingLeft =" 20rem";
-        document.getElementById("para").innerHTML="The kinetic energy of an object is directly proportional to the mass of the object.";
-        document.getElementById("para").style.lineHeight =" 40rem";
-        let content = "Let’s explore how velocity affects the K E.";
-        document.getElementById("para").style.fontSize ="40rem";
-        document.getElementById("para").style.lineHeight =" 45rem";
-        let TitleElement = document.createElement("b");
-        TitleElement.style.fontSize="40rem";
-        TitleElement.textContent = content;
-        ItemElement.appendChild(TitleElement);
-        document.getElementById("para").appendChild(ItemElement);
+    //     let ItemElement = document.createElement("p");
+    //     document.getElementById("para").style.fontSize =" 40rem";
+    //     document.getElementById("para").style.lineHeight =" 50rem";
+    //     document.getElementById("para").style.paddingTop =" 20rem";
+    //     document.getElementById("para").style.paddingLeft =" 20rem";
+    //     document.getElementById("para").innerHTML="The kinetic energy of an object is directly proportional to the mass of the object.";
+    //     document.getElementById("para").style.lineHeight =" 40rem";
+    //     let content = "Let’s explore how velocity affects the K E.";
+    //     document.getElementById("para").style.fontSize ="40rem";
+    //     document.getElementById("para").style.lineHeight =" 45rem";
+    //     let TitleElement = document.createElement("b");
+    //     TitleElement.style.fontSize="40rem";
+    //     TitleElement.textContent = content;
+    //     ItemElement.appendChild(TitleElement);
+    //     document.getElementById("para").appendChild(ItemElement);
 
-     }
+    //  }
 
 
 
@@ -483,9 +652,13 @@ return;
 
      var slider1 = document.getElementById("slider1");
 
-     slider1.value = (mass_ball - 40)*2;//added
+     slider1.value = 1;//added
+     mass_ball = 40;
+     ball_mass_change();
+     ball_initial_velocity = 50 ;
 
          slider1.oninput = function() {
+            buttonAudio_Click.play();
              mass_slider_flag = 0;//mass slider clicked
     //     var output = document.getElementById("v1");
     // output.innerHTML = this.value+"kg";
@@ -498,67 +671,71 @@ return;
         else 
            this.value = 100;
         mass_ball =  ((this.value/2) + 40) ;
+        ball_mass_change();
         
-        if (velocity_flag ==1){
-        let ItemElement = document.createElement("p");
-        document.getElementById("para").style.fontSize =" 65rem";
-        document.getElementById("para").style.lineHeight =" 50rem";
-        document.getElementById("para").style.paddingTop =" 20rem";
-        document.getElementById("para").style.paddingLeft =" 20rem";
-        document.getElementById("para").innerHTML="Ball transfers all of its kinetic energy . ";
-        let content = "Use ball of different mass and compare K E.";
-        document.getElementById("para").style.fontSize ="40rem";
-        let TitleElement = document.createElement("b");
-        TitleElement.style.fontSize="40rem";
-        TitleElement.style.paddingLeft="0rem";
-        TitleElement.textContent = content;
-        ItemElement.appendChild(TitleElement);
-        document.getElementById("para").appendChild(ItemElement);
-    }
+    //     if (mass_slider_flag == 0){
+    //     let ItemElement = document.createElement("p");
+    //     document.getElementById("para").style.fontSize =" 65rem";
+    //     document.getElementById("para").style.lineHeight =" 50rem";
+    //     document.getElementById("para").style.paddingTop =" 20rem";
+    //     document.getElementById("para").style.paddingLeft =" 20rem";
+    //     document.getElementById("para").innerHTML="Ball transfers all of its kinetic energy . ";
+    //     let content = "Use ball of different mass and compare K E.";
+    //     document.getElementById("para").style.fontSize ="40rem";
+    //     let TitleElement = document.createElement("b");
+    //     TitleElement.style.fontSize="40rem";
+    //     TitleElement.style.paddingLeft="0rem";
+    //     TitleElement.textContent = content;
+    //     ItemElement.appendChild(TitleElement);
+    //     document.getElementById("para").appendChild(ItemElement);
+    // }
 
-   else if (velocity_flag ==0){
-       if(mass_flag == 0){
-        let ItemElement = document.createElement("p");
-        document.getElementById("para").style.fontSize =" 40rem";
-        document.getElementById("para").style.lineHeight =" 50rem";
-        document.getElementById("para").style.paddingTop =" 20rem";
-        document.getElementById("para").style.paddingLeft =" 20rem";
-        document.getElementById("para").innerHTML="The kinetic energy of an object is directly proportional to the mass of the object.";
-        document.getElementById("para").style.lineHeight =" 40rem";
-        let content = "Let’s explore how velocity affects the K E.";
-        document.getElementById("para").style.fontSize ="40rem";
-        document.getElementById("para").style.lineHeight =" 45rem";
-        let TitleElement = document.createElement("b");
-        TitleElement.style.fontSize="40rem";
-        TitleElement.textContent = content;
-        ItemElement.appendChild(TitleElement);
-        document.getElementById("para").appendChild(ItemElement);}
-        else{
-            let ItemElement = document.createElement("p");
-            document.getElementById("para").style.fontSize =" 30rem";
-            document.getElementById("para").innerHTML="The K.E of an object is directly proportional to the square of the velocity of the object. ";
-            document.getElementById("para").style.lineHeight =" 40rem";
-            let content = "Tap on mass button to check effects of mass.";
-            document.getElementById("para").style.fontSize ="35rem";
-            document.getElementById("para").style.lineHeight =" 40rem";
-            let TitleElement = document.createElement("b");
-            TitleElement.style.fontSize="32rem";
-            TitleElement.textContent = content;
-            ItemElement.appendChild(TitleElement);
-            document.getElementById("para").appendChild(ItemElement);}
+//    else if (velocity_flag ==0){
+//        if(mass_flag == 0){
+//         let ItemElement = document.createElement("p");
+//         document.getElementById("para").style.fontSize =" 40rem";
+//         document.getElementById("para").style.lineHeight =" 50rem";
+//         document.getElementById("para").style.paddingTop =" 20rem";
+//         document.getElementById("para").style.paddingLeft =" 20rem";
+//         document.getElementById("para").innerHTML="The kinetic energy of an object is directly proportional to the mass of the object.";
+//         document.getElementById("para").style.lineHeight =" 40rem";
+//         let content = "Let’s explore how velocity affects the K E.";
+//         document.getElementById("para").style.fontSize ="40rem";
+//         document.getElementById("para").style.lineHeight =" 45rem";
+//         let TitleElement = document.createElement("b");
+//         TitleElement.style.fontSize="40rem";
+//         TitleElement.textContent = content;
+//         ItemElement.appendChild(TitleElement);
+//         document.getElementById("para").appendChild(ItemElement);}
+        // else{
+        //     let ItemElement = document.createElement("p");
+        //     document.getElementById("para").style.fontSize =" 30rem";
+        //     document.getElementById("para").innerHTML="The K.E of an object is directly proportional to the square of the velocity of the object. ";
+        //     document.getElementById("para").style.lineHeight =" 40rem";
+        //     let content = "Tap on mass button to check effects of mass.";
+        //     document.getElementById("para").style.fontSize ="35rem";
+        //     document.getElementById("para").style.lineHeight =" 40rem";
+        //     let TitleElement = document.createElement("b");
+        //     TitleElement.style.fontSize="32rem";
+        //     TitleElement.textContent = content;
+        //     ItemElement.appendChild(TitleElement);
+        //     document.getElementById("para").appendChild(ItemElement);}
     }
 
 
         ball_mass_change();
     }
 
-        }
+        
 
 
         var next2 = document.getElementsByClassName('velocity')[0];
         next2.onclick=function(){
+            buttonAudio_Click.play();
             next1.style.border = "unset";
-        next2.style.border="solid";
+        next2.style.border="solid 2.5rem";
+        recently_velocity_tapped = 0; // recently velocity button was tapped
+        recently_mass_tapped = 1;// recently mass button was not tapped
             document.getElementById("p1").style.opacity=1;
             document.getElementById("v2").style.opacity=1;
             document.getElementById("v2").innerHTML = "1 m/s";
@@ -583,16 +760,23 @@ return;
             // document.getElementById("slider2").style.opacity=0;
          document.getElementById("slider1").style.opacity=1;
          ball_mass_change();
-         document.getElementById("p1").innerHTML="Velocity";
+        //  document.getElementById("p1").innerHTML="Velocity";
          document.getElementById("para").style.fontSize =" 40rem";
-         document.getElementById("para").style.lineHeight =" 60rem";
-         document.getElementById("para").innerHTML=("Vary the velocity of the ball and observe how it affects its kinetic energy");
+         document.getElementById("para").style.lineHeight =" 50rem";
+         document.getElementById("para").style.paddingTop =" 10rem";
+         unfade(document.getElementsByClassName('feedback_bar')[0]);
+         document.getElementById("para").innerHTML=("Vary the velocity of the ball using the slider and press play to observe how the kinetic energy of the ball is affected.");
     //      var output = document.getElementById("v1");
     //  output.innerHTML = (ball_initial_velocity)+"m/s";
     
          var slider2 = document.getElementById("slider1");
-          slider2.value = (ball_initial_velocity-50)*2;
+          slider2.value = 1;
+          mass_ball = 40;
+          ball_initial_velocity = 50 ;
+
+     ball_mass_change();
              slider2.oninput = function() {
+                buttonAudio_Click.play();
         //     var output = document.getElementById("v1");
         // output.innerHTML = ((this.value/2)+50)+"m/s";
         if (this.value < 5)
@@ -604,37 +788,37 @@ return;
         else 
            this.value = 100;
             ball_initial_velocity =  (((this.value/2)+50)) ;
-            if(mass_flag == 0){
-            let ItemElement = document.createElement("p");
-            document.getElementById("para").style.fontSize =" 34rem";
-            document.getElementById("para").style.lineHeight =" 45rem";
-            document.getElementById("para").style.paddingTop =" 25rem";
-            document.getElementById("para").style.paddingLeft =" 20rem";
-            document.getElementById("para").innerHTML="When the ball hits the block it transfers all of its K.E. ";
-            let content = "Push ball with different velocities to observe its effect on Kinetic Energy. ";
-            // document.getElementById("para").style.fontSize ="30rem";
-            // document.getElementById("para").style.lineHeight =" 30rem";
-            let TitleElement = document.createElement("b");
-            TitleElement.style.fontSize="35rem";
-            TitleElement.style.lineHeight="10rem";
-            TitleElement.textContent = content;
-            ItemElement.appendChild(TitleElement);
-            document.getElementById("para").appendChild(ItemElement);}
-            else{
-                let ItemElement = document.createElement("p");
-                document.getElementById("para").style.fontSize =" 35rem";
-                document.getElementById("para").style.paddingTop =" 20rem";
-                document.getElementById("para").style.paddingLeft =" 20rem";
-                document.getElementById("para").innerHTML="The K.E of an object is directly proportional to the square of the velocity of the object. ";
-                document.getElementById("para").style.lineHeight =" 30rem";
-                let content = "Tap on mass button to check effects of mass.";
-                document.getElementById("para").style.fontSize ="40rem";
-                document.getElementById("para").style.lineHeight =" 40rem";
-                let TitleElement = document.createElement("b");
-                TitleElement.style.fontSize="36rem";
-                TitleElement.textContent = content;
-                ItemElement.appendChild(TitleElement);
-                document.getElementById("para").appendChild(ItemElement);}
+            // if(mass_flag == 0){
+            // let ItemElement = document.createElement("p");
+            // document.getElementById("para").style.fontSize =" 34rem";
+            // document.getElementById("para").style.lineHeight =" 45rem";
+            // document.getElementById("para").style.paddingTop =" 25rem";
+            // document.getElementById("para").style.paddingLeft =" 20rem";
+            // document.getElementById("para").innerHTML="When the ball hits the block it transfers all of its K.E. ";
+            // let content = "Push ball with different velocities to observe its effect on Kinetic Energy. ";
+            // // document.getElementById("para").style.fontSize ="30rem";
+            // // document.getElementById("para").style.lineHeight =" 30rem";
+            // let TitleElement = document.createElement("b");
+            // TitleElement.style.fontSize="35rem";
+            // TitleElement.style.lineHeight="10rem";
+            // TitleElement.textContent = content;
+            // ItemElement.appendChild(TitleElement);
+            // document.getElementById("para").appendChild(ItemElement);}
+            // else{
+            //     let ItemElement = document.createElement("p");
+            //     document.getElementById("para").style.fontSize =" 35rem";
+            //     document.getElementById("para").style.paddingTop =" 20rem";
+            //     document.getElementById("para").style.paddingLeft =" 20rem";
+            //     document.getElementById("para").innerHTML="The K.E of an object is directly proportional to the square of the velocity of the object. ";
+            //     document.getElementById("para").style.lineHeight =" 30rem";
+            //     let content = "Tap on mass button to check effects of mass.";
+            //     document.getElementById("para").style.fontSize ="40rem";
+            //     document.getElementById("para").style.lineHeight =" 40rem";
+            //     let TitleElement = document.createElement("b");
+            //     TitleElement.style.fontSize="36rem";
+            //     TitleElement.textContent = content;
+            //     ItemElement.appendChild(TitleElement);
+            //     document.getElementById("para").appendChild(ItemElement);}
 
 
             ball_mass_change();
@@ -707,3 +891,28 @@ var c = document.getElementById("myCanvas");
 
 //     ctx.restore();
 // }
+// function fade(element) {
+//     var op = 1;  // initial opacity
+//     var timer = setInterval(function () {
+//         if (op <= 0.1){
+//             clearInterval(timer);
+//             element.style.display = 'none';
+//         }
+//         element.style.opacity = op;
+//         element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+//         op -= op * 0.1;
+//     }, 50);
+// }
+
+function unfade(element) {
+    var op = 0.1;  // initial opacity
+    element.style.display = 'block';
+    var timer = setInterval(function () {
+        if (op > 1){
+            clearInterval(timer);
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op += op * 0.1;
+    }, 50);
+}
