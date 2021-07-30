@@ -1,7 +1,10 @@
 
 // SFX files
 var Right_ANS = new Audio();
+
 Right_ANS.src = "sounds/Right_ANS.mp3";
+var slider_input = new Audio();
+slider_input.src ="sounds/Slider_onchange.mp3";
 var Wrong_ANS = new Audio();
 Wrong_ANS.src = "sounds/Wrong_ANS.mp3";
 var buttonAudio_Click = new Audio();
@@ -41,7 +44,7 @@ for (let index = 0; index < options.length; index++) {
             this.style = "background:linear-gradient(180deg, #3CA35A, #389B60); color: white;";
             dynamic_panel_window.style = "overflow-y:scroll;";
             dynamic_panel_window.scroll({ top: 800, behavior: "smooth" });
-            footer.style = "bottom:0rem";
+            footer.style = "bottom:425rem";
             Right_ANS.play();
 
             //Lo message
@@ -104,6 +107,10 @@ var mass_played = 1;//mass animation is not played yet
 var recently_mass_tapped = 1; //mass button was tapped recently
 var recently_velocity_tapped = 1//velocity button was tapped recently
 var velocity_played = 1//velocity animation is not played yet.
+var animation_going_on = 1;//animation is not going on.
+var mass_slider_value_changed = 0;//mass slider is not changed
+var velocity_slider_value_changed = 0;
+var marker_to_disappear = 'v9';
 
 function axis(){
 // var c = document.getElementById("myCanvas");
@@ -126,8 +133,8 @@ function axis(){
 // ball(position);
 // box(position_box);
 function ball (position){
-var c = document.getElementById("myCanvas");
-    var ctx1 = c.getContext("2d");
+// var c = document.getElementById("myCanvas");
+    // var ctx1 = c.getContext("2d");
     // ctx1.clearRect(0, 0, c.width, c.height);
     var y1 = 600;
     var x1 = position;
@@ -147,14 +154,14 @@ var c = document.getElementById("myCanvas");
     // ctx1.globalAlpha = 1;
     // ctx1.fill();
 
-    var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height);
+    // var c = document.getElementById("myCanvas");
+    // var ctx = c.getContext("2d");
+    // ctx.clearRect(0, 0, c.width, c.height);
     
     // ctx.rotate(20 * Math.PI / 180);
-    var img = document.getElementById("ball");
-    var width = img.width;
-    var height =img.height;
+    // var img = document.getElementById("ball");
+    // var width = img.width;
+    // var height =img.height;
     // drawRotated(90);
     // drawImage(img, mid1x-mass_ball-(3+(0.6*mass_ball)), mid1y-mass_ball-(1+(0.5*mass_ball)),1,2*Math.PI/180);
     // ctx.translate(width / 2,height / 2);
@@ -171,38 +178,45 @@ var c = document.getElementById("myCanvas");
 //     ctx.restore();
 
 
-{
-    ctx.save();
-    // ctx.translate( mid1x-mass_ball-(3+(0.6*mass_ball)), mid1y-mass_ball-(1+(0.5*mass_ball)));
-    // ctx.translate(mid1x ,mid2x-(2.2*mass_ball));
-    // ctx.translate(mid1x-mass_ball, mid1y-mass_ball)
-    // ctx.translate( mid1x -(((26+1.22*mass_ball))/14),mid1y-(((26+1.22*mass_ball))/14));
-    ctx.translate( mid1x -(((26+1.22*mass_ball))/14),mid1y-(((26+1.22*mass_ball))/14));
-    ctx.rotate(degrees*Math.PI/180);
-    ctx.translate( -mid1x -(((26+1.22*mass_ball))/14),- mid1y-(((26+1.22*mass_ball))/14));
-    // ctx.translate(0,0);
-    // ctx.drawImage(img,5,10,-img.width/2,-img.width/2);
-    //  ctx.drawImage(img,  mid1x  -((mass_ball+(26+1.22*mass_ball))/2), mid1y-((mass_ball+(10+26+1.22*mass_ball))/2),mass_ball+(26+1.22*mass_ball),mass_ball+(26+1.22*mass_ball));
-    if((degrees>=110 && degrees<230))//210
-    ctx.drawImage(img,  mid1x  -((mass_ball+(26+1.22*mass_ball))/2), mid1y-((mass_ball+(-degrees/6+26+1.22*mass_ball))/2),mass_ball+(26+1.22*mass_ball),mass_ball+(26+1.22*mass_ball));
-    else if((degrees>=200 && degrees<380))
-    ctx.drawImage(img,  mid1x  -((mass_ball+(26+1.22*mass_ball))/2), mid1y-((mass_ball+(+26+1.22*mass_ball))/2),mass_ball+(26+1.22*mass_ball),mass_ball+(26+1.22*mass_ball));
+// {
+//     ctx.save();
+//     // ctx.translate( mid1x-mass_ball-(3+(0.6*mass_ball)), mid1y-mass_ball-(1+(0.5*mass_ball)));
+//     // ctx.translate(mid1x ,mid2x-(2.2*mass_ball));
+//     // ctx.translate(mid1x-mass_ball, mid1y-mass_ball)
+//     // ctx.translate( mid1x -(((26+1.22*mass_ball))/14),mid1y-(((26+1.22*mass_ball))/14));
+//     ctx.translate( mid1x -(((26+1.22*mass_ball))/14),mid1y-(((26+1.22*mass_ball))/14));
+//     ctx.rotate(degrees*Math.PI/180);
+//     ctx.translate( -mid1x -(((26+1.22*mass_ball))/14),- mid1y-(((26+1.22*mass_ball))/14));
+//     // ctx.translate(0,0);
+//     // ctx.drawImage(img,5,10,-img.width/2,-img.width/2);
+//     //  ctx.drawImage(img,  mid1x  -((mass_ball+(26+1.22*mass_ball))/2), mid1y-((mass_ball+(10+26+1.22*mass_ball))/2),mass_ball+(26+1.22*mass_ball),mass_ball+(26+1.22*mass_ball));
+//     if((degrees>=110 && degrees<230))//210
+//     ctx.drawImage(img,  mid1x  -((mass_ball+(26+1.22*mass_ball))/2), mid1y-((mass_ball+(-degrees/6+26+1.22*mass_ball))/2),mass_ball+(26+1.22*mass_ball),mass_ball+(26+1.22*mass_ball));
+//     else if((degrees>=200 && degrees<380))
+//     ctx.drawImage(img,  mid1x  -((mass_ball+(26+1.22*mass_ball))/2), mid1y-((mass_ball+(+26+1.22*mass_ball))/2),mass_ball+(26+1.22*mass_ball),mass_ball+(26+1.22*mass_ball));
     
-    else
-     ctx.drawImage(img,  mid1x  -((mass_ball+(26+1.22*mass_ball))/2), mid1y-((mass_ball+(26+1.22*mass_ball))/2),mass_ball+(26+1.22*mass_ball),mass_ball+(26+1.22*mass_ball));
-    
-    ctx.restore();
-    if ((collided == 1) && (nxt_clicked==0))
-    degrees = degrees + 0.6;
-    // var output = document.getElementById("v1");
-    // output.innerHTML = degrees;
-    //     ball_initial_velocity = this.value;
-    }
+//     else
+//      ctx.drawImage(img,  mid1x  -((mass_ball+(28+1.22*mass_ball))/2), mid1y-((mass_ball+(28+1.22*mass_ball))/2),mass_ball+(28+1.22*mass_ball),mass_ball+(26+1.22*mass_ball));
+// //    var output = document.getElementById("v1");
+// //     output.innerHTML =((mass_ball+(26+1.2*mass_ball))/2);
+
+//     ctx.restore();
+  
+//     if ((collided == 1) && (nxt_clicked==0))
+//     degrees = (degrees + 0.6);
+//     //0.6
+//     // var output = document.getElementById("v1");
+//     // output.innerHTML = degrees;
+//     //     ball_initial_velocity = this.value;
+//     }
     
     // ctx.drawImage(img, mid1x-mass_ball-(3+(0.6*mass_ball)), mid1y-mass_ball-(1+(0.5*mass_ball)),mass_ball+(26+1.22*mass_ball),mass_ball+(26+1.22*mass_ball));
     // ctx.rotate(-20 * Math.PI / 180);
-    var img = document.getElementById("table");
-    ctx.drawImage(img, 0, 600,1540,220);
+    // var img = document.getElementById("table");
+    // ctx.drawImage(img, 0, 600,1540,220);
+    // var output = document.getElementById("v1");
+    // output.innerHTML =  degrees;
+   
 
 }
 // var slider1 = document.getElementById("slider1");
@@ -223,12 +237,12 @@ var c = document.getElementById("myCanvas");
 function box (position_box){
    
 
-    var c = document.getElementById("myCanvas");
-    var ctx1 = c.getContext("2d");
-    var x1 = 650-100+position_box;//to draw a rectangle we have to pass the left topmost point on the rectangle
-    var y1 = 525-75;
-    mid2x = 650+position_box;
-    mid2y= 600;
+    // var c = document.getElementById("myCanvas");
+    // var ctx1 = c.getContext("2d");
+    // var x1 = 650-100+position_box;//to draw a rectangle we have to pass the left topmost point on the rectangle
+    // var y1 = 525-75;
+    // mid2x = 650+position_box;
+    // mid2y= 600;
     // var angle = 90;
     // var rad = angle *Math.PI/180;
     
@@ -245,13 +259,13 @@ function box (position_box){
     // ctx1.globalAlpha = 1;
     // ctx1.fill();
     
-    var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
-    var img = document.getElementById("box");
-    ctx.drawImage(img, mid2x-100, 455,200,150); 
-    var img = document.getElementById("triangle");
-    ctx.drawImage(img, 650-140, 590,100,90); 
-    ctx.drawImage(img, mid2x+50, 590,100,90); 
+    // var c = document.getElementById("myCanvas");
+    // var ctx = c.getContext("2d");
+    // var img = document.getElementById("box");
+    // ctx.drawImage(img, mid2x-100, 455,200,150); 
+    // var img = document.getElementById("triangle");
+    // ctx.drawImage(img, 650-140, 590,100,90); 
+    // ctx.drawImage(img, mid2x+50, 590,100,90); 
 }
 
     function distance(mid1x,mid1y,mid2x,mid2y){
@@ -269,12 +283,12 @@ function box (position_box){
     function friction_velocity(time){// for ball
          speed = ball_initial_velocity - (ufriction*9.8*time);
         if (speed>0){ //ball has some velocity and is moving
-        position_at =position +  (((speed*speed) - (ball_initial_velocity*ball_initial_velocity))/(-2*ufriction*9.8));
+        k =50 +  (((speed*speed) - (ball_initial_velocity*ball_initial_velocity))/(-2*ufriction*9.8));
     //         var output = document.getElementById("v1");
     // output.innerHTML = speed;
 }
         else // if ball stops before colliding
-        {position_at =position -  (((0) - (ball_initial_velocity*ball_initial_velocity))/(2*ufriction*9.8));
+        {k =50 -  (((0) - (ball_initial_velocity*ball_initial_velocity))/(2*ufriction*9.8));
             colliision_flag = 0;
         return;}
 
@@ -293,7 +307,7 @@ function box (position_box){
     function friction_velocity_box(time){// for box
         speed_box = box_initial_velocity - (ufriction*9.8*time);
        if (speed_box>=0){
-       position_box_at =position_box +  ((((speed_box*speed_box) - (box_initial_velocity*box_initial_velocity))/(-2*ufriction*9.8))*5);
+       q =400 +  (((((speed_box*speed_box) - (box_initial_velocity*box_initial_velocity))/(-2*ufriction*9.8))*5)/2);
 //            var output = document.getElementById("v1");
 //    output.innerHTML = speed_box;
 }
@@ -301,6 +315,7 @@ function box (position_box){
        {
         //    position_box_at =position -  (((0) - (box_initial_velocity*box_initial_velocity))/(2*ufriction*mass_box*9.8));
            flag_box = 1;
+           animation_going_on = 1;
        return;}
 
     
@@ -335,12 +350,13 @@ function sleep(ms) {
 // }
 
  async function animation(){
-    var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height);
-    axis();
-    ball(position);
-    box(position_box);
+     animation_going_on = 0;// animation is going on
+    // var c = document.getElementById("myCanvas");
+    // var ctx = c.getContext("2d");
+    // ctx.clearRect(0, 0, c.width, c.height);
+    // axis();
+    // ball(position);
+    // box(position_box);
   
     // for (let i =1; i<100;1++){
     //     position++;
@@ -350,38 +366,54 @@ function sleep(ms) {
     // axis();
     // ball(position);
     // box(position_box);
+    {
+        document.getElementById("block").style.left= "400rem";
+        document.getElementById("triangle2").style.left= "521rem";
+        document.getElementById("ball").style.top=top+"rem";
+        document.getElementById("ball").style.height=height+"rem";
+        document.getElementById("ball").style.width=height+"rem";
+        document.getElementById("ball").style.webkitTransform = 'rotate(0deg)';
+    }
+
+
+
     // }
     var i =0;
-    while( (distance(mid1x,mid1y,mid2x,mid2y)> (parseInt(mass_ball)+120)) && colliision_flag == 1){
-       await sleep(5);
-       document.getElementById("slider1").disabled = true;
+    while( (k<=left_stop) && colliision_flag == 1){
+       await sleep(2.5);
+    //    document.getElementById("slider1").disabled = true;
        document.getElementsByClassName('velocity')[0].disabled = true;
        document.getElementsByClassName('mass')[0].disabled= true;
        document.getElementsByClassName('next_button')[0].disabled= true;
-       document.getElementById("slider1").style.opacity = 0;
-       document.getElementsByClassName('velocity')[0].style.opacity = 0.5;
-       document.getElementsByClassName('mass')[0].style.opacity= 0.5;
-       document.getElementsByClassName('next_button')[0].style.opacity= 0.5;
-       document.getElementById('v2').style.opacity=0;
-       document.getElementById('v3').style.opacity=0;
-       document.getElementById('v4').style.opacity=0;
-       document.getElementById('v5').style.opacity=0;
-       document.getElementById('v6').style.opacity=0;
-       document.getElementById('v7').style.opacity=0;
-       document.getElementById('v8').style.opacity=0;
-       document.getElementById('v9').style.opacity=0;
+       document.getElementById("slider1").style.opacity = 0.6;
+       document.getElementsByClassName('velocity')[0].style.opacity = 0.6;
+       document.getElementsByClassName('mass')[0].style.opacity= 0.6;
+       document.getElementsByClassName('next_button')[0].style.opacity= 0.6;
+       document.getElementById('v2').style.opacity=0.6;
+       document.getElementById('v3').style.opacity=0.6;
+       document.getElementById('v4').style.opacity=0.6;
+       document.getElementById('v5').style.opacity=0.6;
+       document.getElementById('v6').style.opacity=0.6;
+       document.getElementById('v7').style.opacity=0.6;
+       document.getElementById('v8').style.opacity=0.6;
+       document.getElementById('v9').style.opacity=0.6;
+       document.getElementById(marker_to_disappear).style.opacity=0;
        i++;
+       document.getElementById("ball").style.webkitTransform = 'rotate(' + degrees + 'deg)';
+       document.getElementById("ball").style.left= k + "rem";
+       
+       degrees+=(ball_initial_velocity/25);
     
-    var c1 = document.getElementById("myCanvas");
-    var ctx1 = c1.getContext("2d");
-    ctx1.clearRect(0, 0, c.width, c.height);
-    axis();
-    friction_velocity(i/50);// dis function calculates and assigns the velocity and position of the ball at a given time
+    // var c1 = document.getElementById("myCanvas");
+    // var ctx1 = c1.getContext("2d");
+    // ctx1.clearRect(0, 0, c.width, c.height);
+    // axis();
+    friction_velocity(i/40);// dis function calculates and assigns the velocity and position of the ball at a given time
     // position_at1 = position_at;
     // position_at = (position + (ball_velocity*i/50));
     // ball_position(i/50);
-    ball(position_at);//drawing ball at the given position calculated in friction_velocity function
-    box(position_box);
+    // ball(position_at);//drawing ball at the given position calculated in friction_velocity function
+    // box(position_box);
     // var output = document.getElementById("v1");
     // output.innerHTML = distance(mid1x,mid1y,mid2x,mid2y);
     
@@ -391,7 +423,7 @@ function sleep(ms) {
     }
     // var output = document.getElementById("v1");
     // output.innerHTML = ball_velocity;
-    if (distance(mid1x,mid1y,mid2x,mid2y)<= (parseInt(mass_ball)+120))
+    if (k<= (parseInt(left_stop)))
     collided = 0; 
     flag_box = 0;
     // degrees = 0;
@@ -405,17 +437,19 @@ function sleep(ms) {
         {
             var i =0;
             while(flag_box ==0){
-                await sleep(5);
+                await sleep(2.5);
                 i++;
-                var c2 = document.getElementById("myCanvas");
-    var ctx2 = c2.getContext("2d");
-    ctx2.clearRect(0, 0, c.width, c.height);
+                // var c2 = document.getElementById("myCanvas");
+    // var ctx2 = c2.getContext("2d");
+    // ctx2.clearRect(0, 0, c.width, c.height);
     axis();
      friction_velocity_box(i/50);
     ball(position_at);
     // var output = document.getElementById("v1");
     // output.innerHTML = position_box_at;
-    box(position_box_at);// draw the box at the given position
+    document.getElementById("block").style.left= q + "rem";
+    document.getElementById("triangle2").style.left= (q+121) + "rem";
+    // box(position_box_at);// draw the box at the given position
 
             }
 
@@ -448,9 +482,26 @@ return;
 
   }
     var next = document.getElementsByClassName('next_button')[0];
- next.onclick= function(){
+ next.onclick= async function(){
+    document.getElementsByClassName('feedback_bar')[0].style.opacity = 0;
      nxt_clicked = 0;
      buttonAudio_Click.play();
+     k=0;
+     degrees = 0;
+     animation();
+    // ball_play();
+     if(recently_mass_tapped == 0){
+     mass_flag = 0;
+     mass_slider_value_changed++;}
+     else if (recently_velocity_tapped == 0){
+     velocity_flag = 0;
+     velocity_slider_value_changed++;}
+    
+     await sleep(2000);
+     document.getElementsByClassName('feedback_bar')[0].style.opacity = 0;
+     document.getElementById("para").style.color =" black";
+        document.getElementsByClassName('feedback_bar')[0].style.background = "linear-gradient(rgb(255, 230, 1) 0%, rgb(232, 136, 47) 100%)";
+     
      
      if(mass_flag == 0 && mass_played >= 0 && recently_mass_tapped == 0){
          mass_played--;
@@ -458,11 +509,11 @@ return;
         document.getElementById("para").style.fontSize =" 40rem";
         document.getElementById("para").style.lineHeight =" 50rem";
         document.getElementById("para").style.paddingTop =" 10rem";
-        document.getElementById("para").style.paddingLeft =" 20rem";
+        // document.getElementById("para").style.paddingLeft =" 20rem";
         // fade(document.getElementsByClassName('feedback_bar')[0]);
         // await sleep(5);
         unfade(document.getElementsByClassName('feedback_bar')[0]);
-        document.getElementById("para").innerHTML="Ball transfers all of its kinetic energy to the block and displaces it. Use ball of different mass and compare kinetic energies. ";
+        document.getElementById("para").innerHTML="Ball transfers all of its kinetic energy to the block and displaces it." + " Use ball of different mass and compare kinetic energies.".bold();
         // document.getElementsByClassName('feedback_bar')[0].style.transition= "top 0.4s ease-out, opacity 0.4s";
         // let content = "Use ball of different mass and compare K E.";
         // document.getElementById("para").style.fontSize ="40rem";
@@ -479,9 +530,11 @@ return;
         document.getElementById("para").style.fontSize =" 40rem";
         document.getElementById("para").style.lineHeight =" 50rem";
         document.getElementById("para").style.paddingTop =" 10rem";
-        document.getElementById("para").style.paddingLeft =" 20rem";
+        // document.getElementById("para").style.paddingLeft =" 20rem";
+        // document.getElementById("para").style.color =" black";
+        // document.getElementsByClassName('feedback_bar')[0].style.background = "linear-gradient(rgb(255, 230, 1) 0%, rgb(232, 136, 47) 100%)";
         unfade(document.getElementsByClassName('feedback_bar')[0]);
-        document.getElementById("para").innerHTML="As the mass of the ball increases its kinetic energy also increases.Tap on velocity button to check effects of velocity.";
+        document.getElementById("para").innerHTML="As the mass of the ball increases its kinetic energy also increases. Tap on velocity button to check effects of velocity.";
         // document.getElementById("para").style.lineHeight =" 40rem";
         // let content = "Tap on velocity button to check effects of velocity.";
         // document.getElementById("para").style.fontSize ="40rem";
@@ -497,8 +550,8 @@ return;
         let ItemElement = document.createElement("p");
         document.getElementById("para").style.fontSize =" 40rem";
         document.getElementById("para").style.lineHeight =" 50rem";
-        document.getElementById("para").style.paddingTop =" 10rem";
-        document.getElementById("para").style.paddingLeft =" 20rem";
+        document.getElementById("para").style.paddingTop =" 35rem";
+        // document.getElementById("para").style.paddingLeft =" 20rem";
         unfade(document.getElementsByClassName('feedback_bar')[0]);
         document.getElementById("para").innerHTML="The kinetic energy of an object is directly proportional to the mass of the object.";
         // document.getElementById("para").style.lineHeight =" 40rem";
@@ -515,12 +568,15 @@ return;
     else if(velocity_flag == 0 && velocity_played >= 0 && recently_velocity_tapped == 0){
         velocity_played--;
        let ItemElement = document.createElement("p");
-       document.getElementById("para").style.fontSize =" 36.5rem";
+       
        document.getElementById("para").style.lineHeight ="50rem";
        document.getElementById("para").style.paddingTop =" 10rem";
-       document.getElementById("para").style.paddingLeft =" 20rem";
+    //    document.getElementById("para").style.paddingLeft =" 20rem";
        unfade(document.getElementsByClassName('feedback_bar')[0]);
-       document.getElementById("para").innerHTML="The ball hits the block it transfers all of its kinetic energy and displaces the block. Push ball with different velocities to observe its effect on K.E.";
+    //    document.getElementById("para").style.color =" black";
+    //    document.getElementsByClassName('feedback_bar')[0].style.background = "linear-gradient(rgb(255, 230, 1) 0%, rgb(232, 136, 47) 100%)";
+    document.getElementById("para").style.fontSize =" 37.5rem";  
+    document.getElementById("para").innerHTML="The ball hits the block it transfers all of its kinetic energy and displaces the block." + " Push ball with different velocities to observe its effect on K.E.".bold();
     //    let content = "Push ball with different velocities to observe its effect on K.E";
     // //    document.getElementById("para").style.fontSize ="40rem";
     //    let TitleElement = document.createElement("b");
@@ -538,8 +594,10 @@ return;
     document.getElementById("para").style.fontSize =" 39.5rem";
     // document.getElementById("para").style.lineHeight =" 50rem";
     document.getElementById("para").style.paddingTop =" 10rem";
-    document.getElementById("para").style.paddingLeft =" 20rem";
+    // document.getElementById("para").style.paddingLeft =" 20rem";
     unfade(document.getElementsByClassName('feedback_bar')[0]);
+    // document.getElementById("para").style.color =" black";
+    // document.getElementsByClassName('feedback_bar')[0].style.background = "linear-gradient(rgb(255, 230, 1) 0%, rgb(232, 136, 47) 100%)";
     document.getElementById("para").innerHTML="The K.E of an object is directly proportional to the square of the velocity of the object. Tap on mass button to check effects of mass.";
     // document.getElementById("para").style.lineHeight =" 40rem";
     // let content = "Tap on mass button to check effects of mass.";
@@ -557,9 +615,11 @@ else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 0 && recently_ve
     document.getElementById("para").style.fontSize =" 40rem";
     // document.getElementById("para").style.lineHeight =" 50rem";
     document.getElementById("para").style.paddingTop =" 10rem";
-    document.getElementById("para").style.paddingLeft =" 20rem";
+    // document.getElementById("para").style.paddingLeft =" 20rem";
     unfade(document.getElementsByClassName('feedback_bar')[0]);
-    document.getElementById("para").innerHTML="The kinetic energy of an object is directly proportional to the square of the velocity of the object";
+    document.getElementById("para").style.color =" black";
+    // document.getElementsByClassName('feedback_bar')[0].style.background = "linear-gradient(rgb(255, 230, 1) 0%, rgb(232, 136, 47) 100%)";
+    document.getElementById("para").innerHTML="The kinetic energy of an object is directly proportional to the square of the velocity of the object.";
     document.getElementById("para").style.lineHeight =" 50rem";
     // let content = "Tap on mass button to check effects of mass.";
     // document.getElementById("para").style.fontSize ="40rem";
@@ -571,7 +631,7 @@ else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 0 && recently_ve
     // document.getElementById("para").appendChild(ItemElement);
 
 }
-    animation();
+   
     }
 
 
@@ -593,13 +653,17 @@ else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 0 && recently_ve
 
     var next1 = document.getElementsByClassName('mass')[0]; // mass button
     next1.onclick=function(){
+        document.getElementById("ball").style.webkitTransform = 'rotate(0deg)';
+        marker_to_disappear='v9';
+        document.getElementById("para").style.color =" white";
+        document.getElementsByClassName('feedback_bar')[0].style.background = "linear-gradient(180deg, #12EAFA 0%, #0787E2 100%)";
         buttonAudio_Click.play();
         next2.style.border = "unset";
         next1.style.border="solid 2.5rem";
         ball_mass_change();
         recently_mass_tapped = 0; // mass button tapped recently
         recently_velocity_tapped = 1; // velocity button is not tapped recently
-        mass_flag = 0;// mass button clicked
+        // mass_flag = 0;// mass button clicked
         display_mass_slider = 1;
         display_velocity_slider = 0;
      document.getElementById("slider1").style.opacity=1;// mass slider
@@ -612,17 +676,20 @@ else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 0 && recently_ve
             document.getElementById("v4").style.opacity=1;
             document.getElementById("v4").innerHTML = "3 kg";
             document.getElementById("v5").style.opacity=1;
+            document.getElementById("v5").style.right="-3%";
             document.getElementById("v5").innerHTML = "4 kg";
             document.getElementById("v6").style.opacity=1;
             document.getElementById("v7").style.opacity=1;
             document.getElementById("v8").style.opacity=1;
             document.getElementById("v9").style.opacity=1;
     //  document.getElementById("p1").innerHTML="Mass";
-     if(mass_slider_flag == 1){
+     if(display_mass_slider == 1){
      document.getElementById("para").style.fontSize =" 40rem";
      document.getElementById("para").style.lineHeight =" 50rem";
      document.getElementById("para").style.paddingTop =" 10rem";
      unfade(document.getElementsByClassName('feedback_bar')[0]);
+    //  document.getElementById("para").style.color =" black";
+    //  document.getElementsByClassName('feedback_bar')[0].style.background = "linear-gradient(rgb(255, 230, 1) 0%, rgb(232, 136, 47) 100%)";
      document.getElementById("para").innerHTML=("Vary the mass of the ball using the slider and press play to observe how the kinetic energy of the ball is affected.");
     }
     //  else if(velocity_flag ==1){  //mass_slider_flag == 0
@@ -653,25 +720,84 @@ else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 0 && recently_ve
      var slider1 = document.getElementById("slider1");
 
      slider1.value = 1;//added
-     mass_ball = 40;
-     ball_mass_change();
+    //  mass_ball = 40;
+    document.getElementById("ball").style.left="50rem";
+    document.getElementById("ball").style.top="339rem";
+    document.getElementById("ball").style.height="80rem";
+    document.getElementById("ball").style.width="80rem";
+    document.getElementById("block").style.left= "400rem";
+    document.getElementById("triangle2").style.left= "521rem";
+    degrees = 0;
+    document.getElementById("ball").style.webkitTransform = 'rotate(0deg)';
+    //  ball_mass_change();
      ball_initial_velocity = 50 ;
 
          slider1.oninput = function() {
-            buttonAudio_Click.play();
+             if (animation_going_on == 1){
+            slider_input.play();
+            document.getElementById("block").style.left= "400rem";
+            document.getElementById("triangle2").style.left= "521rem";
+            document.getElementById("ball").style.webkitTransform = 'rotate(0deg)';
+            degrees = 0;
+            // mass_slider_value_changed++;
+            if (mass_slider_value_changed>=1)
+            document.getElementsByClassName('feedback_bar')[0].style.opacity = 0;
+            // document.getElementById("para").innerHTML=" ";
              mass_slider_flag = 0;//mass slider clicked
     //     var output = document.getElementById("v1");
     // output.innerHTML = this.value+"kg";
-       if (this.value < 5)
+       if (this.value < 5){
         this.value = 1;
-      else if(this.value<=34)
+        k =50;
+        left = 50;
+        top_p = 339;
+        height = 80;
+        left_stop = 322;
+        document.getElementById("ball").style.top=top_p+"rem";
+    document.getElementById("ball").style.height=height+"rem";
+    document.getElementById("ball").style.width=height+"rem";
+    document.getElementById("ball").style.left=left+"rem";
+    
+    marker_to_disappear = 'v9'}
+      else if(this.value<=34){
           this.value = 34;
-        else if (this.value>34 && this.value <= 70)
+          k = 50;
+          left = 50;
+        top_p = 319;
+        height = 100;
+        left_stop = 302;
+        document.getElementById("ball").style.top=top_p+"rem";
+    document.getElementById("ball").style.height=height+"rem";
+    document.getElementById("ball").style.width=height+"rem";
+    document.getElementById("ball").style.left=left+"rem";
+          marker_to_disappear = 'v8'}
+        else if (this.value>34 && this.value <= 70){
             this.value = 70;
-        else 
+            k=50;
+            left = 50;
+        top_p = 299;
+        height = 120;
+        left_stop = 282;
+        document.getElementById("ball").style.top=top_p+"rem";
+    document.getElementById("ball").style.height=height+"rem";
+    document.getElementById("ball").style.width=height+"rem";
+    document.getElementById("ball").style.left=left+"rem";
+            marker_to_disappear = 'v7'
+        }
+        else {
            this.value = 100;
+           k = 50;
+           left = 50;
+        top_p = 279;
+        height = 140;
+        left_stop = 260;
+        document.getElementById("ball").style.top=top_p+"rem";
+    document.getElementById("ball").style.height=height+"rem";
+    document.getElementById("ball").style.width=height+"rem";
+    document.getElementById("ball").style.left=left+"rem";
+           marker_to_disappear = 'v6'}
         mass_ball =  ((this.value/2) + 40) ;
-        ball_mass_change();
+        // ball_mass_change();
         
     //     if (mass_slider_flag == 0){
     //     let ItemElement = document.createElement("p");
@@ -720,18 +846,36 @@ else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 0 && recently_ve
         //     TitleElement.textContent = content;
         //     ItemElement.appendChild(TitleElement);
         //     document.getElementById("para").appendChild(ItemElement);}
-    }
+        ball_mass_change();}
+        else
+        this.value = (mass_ball-40)*2;
 
 
-        ball_mass_change();
+       }
     }
 
         
 
 
         var next2 = document.getElementsByClassName('velocity')[0];
-        next2.onclick=function(){
+        next2.onclick= function(){
+            marker_to_disappear='v9';
+            document.getElementById("ball").style.left="50rem";
+            document.getElementById("ball").style.top="339rem";
+            document.getElementById("ball").style.height="80rem";
+            document.getElementById("ball").style.width="80rem";
+            document.getElementById("block").style.left= "400rem";
+            document.getElementById("triangle2").style.left= "521rem";
+            document.getElementById("ball").style.webkitTransform = 'rotate(0deg)';
+            k=0;
+            degrees = 0;
+            left = 50;
+            top_p = 339;
+            height = 80;
+            left_stop = 322;
             buttonAudio_Click.play();
+            document.getElementById("para").style.color =" white";
+        document.getElementsByClassName('feedback_bar')[0].style.background = "linear-gradient(180deg, #12EAFA 0%, #0787E2 100%)";
             next1.style.border = "unset";
         next2.style.border="solid 2.5rem";
         recently_velocity_tapped = 0; // recently velocity button was tapped
@@ -744,6 +888,7 @@ else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 0 && recently_ve
             document.getElementById("v4").style.opacity=1;
             document.getElementById("v4").innerHTML = "3 m/s";
             document.getElementById("v5").style.opacity=1;
+            document.getElementById("v5").style.right="-5%";
             document.getElementById("v5").innerHTML = "4 m/s";
             document.getElementById("v6").style.opacity=1;
             document.getElementById("v7").style.opacity=1;
@@ -756,7 +901,7 @@ else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 0 && recently_ve
             // // ball(position);
             // // box(position_box);
            
-            velocity_flag = 0;// velocity button clicked
+            // velocity_flag = 0;// velocity button clicked
             // document.getElementById("slider2").style.opacity=0;
          document.getElementById("slider1").style.opacity=1;
          ball_mass_change();
@@ -765,6 +910,8 @@ else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 0 && recently_ve
          document.getElementById("para").style.lineHeight =" 50rem";
          document.getElementById("para").style.paddingTop =" 10rem";
          unfade(document.getElementsByClassName('feedback_bar')[0]);
+    //       document.getElementById("para").style.color =" black";
+    //  document.getElementsByClassName('feedback_bar')[0].style.background = "linear-gradient(rgb(255, 230, 1) 0%, rgb(232, 136, 47) 100%)";
          document.getElementById("para").innerHTML=("Vary the velocity of the ball using the slider and press play to observe how the kinetic energy of the ball is affected.");
     //      var output = document.getElementById("v1");
     //  output.innerHTML = (ball_initial_velocity)+"m/s";
@@ -774,19 +921,41 @@ else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 0 && recently_ve
           mass_ball = 40;
           ball_initial_velocity = 50 ;
 
-     ball_mass_change();
+    //  ball_mass_change();
              slider2.oninput = function() {
-                buttonAudio_Click.play();
+                if (animation_going_on == 1){
+                    document.getElementById("ball").style.left="50rem";
+            document.getElementById("ball").style.top="339rem";
+            document.getElementById("ball").style.height="80rem";
+            document.getElementById("ball").style.width="80rem";
+            document.getElementById("block").style.left= "400rem";
+            document.getElementById("triangle2").style.left= "521rem";
+            document.getElementById("ball").style.webkitTransform = 'rotate(0deg)';
+            left = 50;
+            top_p = 339;
+            height = 80;
+            left_stop = 322;
+            k = 0;
+            degrees = 0;
+                slider_input.play();
+                // velocity_slider_value_changed++;
+                // document.getElementById("para").innerHTML=" ";
+                if (velocity_slider_value_changed>=1)
+            document.getElementsByClassName('feedback_bar')[0].style.opacity = 0;
         //     var output = document.getElementById("v1");
         // output.innerHTML = ((this.value/2)+50)+"m/s";
-        if (this.value < 5)
+        if (this.value < 5){
         this.value = 1;
-      else if(this.value<=34)
+    marker_to_disappear='v9';}
+      else if(this.value<=34){
           this.value = 34;
-        else if (this.value>34 && this.value <= 70)
+          marker_to_disappear='v8'; }
+        else if (this.value>34 && this.value <= 70){
             this.value = 70;
-        else 
+            marker_to_disappear='v7';}
+        else {
            this.value = 100;
+           marker_to_disappear='v6';}
             ball_initial_velocity =  (((this.value/2)+50)) ;
             // if(mass_flag == 0){
             // let ItemElement = document.createElement("p");
@@ -821,7 +990,9 @@ else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 0 && recently_ve
             //     document.getElementById("para").appendChild(ItemElement);}
 
 
-            ball_mass_change();
+            ball_mass_change();}
+            else
+            this.value = (ball_initial_velocity-50)*2;
             
         }
     
@@ -829,10 +1000,10 @@ else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 0 && recently_ve
 
 
         function ball_mass_change(){ // function to change the mass of the ball
-            var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height);
-    axis();
+            // var c = document.getElementById("myCanvas");
+    // var ctx = c.getContext("2d");
+    // ctx.clearRect(0, 0, c.width, c.height);
+    // axis();
     ball(150);
     box(0);
 
@@ -842,18 +1013,77 @@ else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 0 && recently_ve
 
 
 
-    axis();
-ball(position);
-box(position_box);
+//     axis();
+// ball(position);
+// box(position_box);
+var q = 400;
+var k = 50;
+var left = 50;
+var top_p = 339;
+var height = 80;
+var left_stop = 322;
+
+// async function ball_play(){
+//     document.getElementById("ball").style.top=top+"rem";
+//     document.getElementById("ball").style.height=height+"rem";
+//     document.getElementById("ball").style.width=height+"rem";
+//  while(k<=left_stop){
+//      await sleep(5);
+//      document.getElementById("ball").style.webkitTransform = 'rotate(' + degrees + 'deg)';
+//     document.getElementById("ball").style.left= k + "rem";
+//     k++;
+//     degrees++;
+//     }}
+   
+
 window.onload = function() {
 var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
-    // ctx.clearRect(0, 0, c.width, c.height);
-    var img = document.getElementById("table");
-    // ctx.beginPath();
-    ctx.drawImage(img, 0, 600,1540,220);
+    document.getElementsByClassName('feedback_bar')[0].style.background = "linear-gradient(180deg, #12EAFA 0%, #0787E2 100%)";
+    document.getElementById("para").style.color="white";
 
-    var img = document.getElementById("ball");
+    //option 1
+   
+    // document.getElementById("ball").style.left="50rem";
+    // document.getElementById("ball").style.top="339rem";
+    // document.getElementById("ball").style.height="80rem";
+    // document.getElementById("ball").style.width="80rem";
+    // document.getElementById("ball").style.left="322rem"; touch
+    
+    
+
+    // option 2
+    
+    // document.getElementById("ball").style.left="50rem";
+    // document.getElementById("ball").style.top="319rem";
+    // document.getElementById("ball").style.height="100rem";
+    // document.getElementById("ball").style.width="100rem";
+    // document.getElementById("ball").style.left="302rem";touch
+
+    // option 3
+    
+    // document.getElementById("ball").style.left="50rem";
+    // document.getElementById("ball").style.top="299rem";
+    // document.getElementById("ball").style.height="120rem";
+    // document.getElementById("ball").style.width="120rem";
+    // document.getElementById("ball").style.left="282rem"; touch
+
+     // option 4
+    
+    // document.getElementById("ball").style.left="50rem";
+    // document.getElementById("ball").style.top="279rem";
+    // document.getElementById("ball").style.height="140rem";
+    // document.getElementById("ball").style.width="140rem";
+    //document.getElementById("ball").style.left="260rem"; touch
+
+
+
+    // ctx.clearRect(0, 0, c.width, c.height);
+    // var img = document.getElementById("table");
+    // ctx.beginPath();
+    // ctx.drawImage(img, 0, 600,1540,220);
+
+    // var img = document.getElementById("ball");
     
     // ctx.beginPath();
     //ctx.drawImage(img, mid1x-mass_ball-3, mid1y-mass_ball-7.5,mass_ball+47,mass_ball+47); initial ball position
@@ -863,11 +1093,11 @@ var c = document.getElementById("myCanvas");
     // ctx.drawImage(img, mid1x-mass_ball-(3+(0.6*mass_ball)), mid1y-mass_ball-(1+(0.5*mass_ball)),mass_ball+(26+1.22*mass_ball),mass_ball+(26+1.22*mass_ball));
 
 
-    var img = document.getElementById("box");
-    ctx.drawImage(img, 550, 455,200,150); // inital box position
-    var img = document.getElementById("triangle");
-    ctx.drawImage(img, 650-140, 590,100,90); 
-    ctx.drawImage(img, mid2x+50, 590,100,90); 
+    // var img = document.getElementById("box");
+    // ctx.drawImage(img, 550, 455,200,150); // inital box position
+    // var img = document.getElementById("triangle");
+    // ctx.drawImage(img, 650-140, 590,100,90); 
+    // ctx.drawImage(img, mid2x+50, 590,100,90); 
 }
 // function drawImage(image, x, y, scale, rotation){
 //     var c = document.getElementById("myCanvas");
@@ -875,7 +1105,7 @@ var c = document.getElementById("myCanvas");
 //     ctx.setTransform(scale, 0, 0, scale, x, y); // sets scale and origin
 //     ctx.rotate(rotation);
 //     ctx.drawImage(image, -image.width / 2, -image.height / 2);
-// } 
+// } s
     
 // function drawRotated(degrees){
 //     var c = document.getElementById("myCanvas");
@@ -914,5 +1144,5 @@ function unfade(element) {
         element.style.opacity = op;
         element.style.filter = 'alpha(opacity=' + op * 100 + ")";
         op += op * 0.1;
-    }, 50);
+    }, 20);
 }

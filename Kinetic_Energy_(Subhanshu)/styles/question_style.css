@@ -170,6 +170,7 @@ body {
     height: auto;
     top: 1925rem;
     padding-bottom: 150rem;
+    padding-right: 30rem;
     display: flex;
     align-items: center;
     flex-direction: column;
