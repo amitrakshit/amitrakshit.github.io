@@ -121,6 +121,20 @@ function next_instruction() {
     force_slider.style.opacity = "0";
     moving_block();
 
+
+    feedback_box.style = "opacity:0; top: 60%;";
+        feedback_box.style.background = "linear-gradient(180deg, #12EAFA 0%, #0787E2 100%);"
+        setTimeout(() => {
+
+
+          // remarks.innerText = "The work done by the force of friction is equal to product of frictional force and the distance travelled which is equal to the change in K.E. of a body.";
+          // feedback_box.style = "opacity:1; top: 58.3%;";
+          // feedback_box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)";
+
+        }, 300);
+
+
+
     KE = 0.5 * velocity_value * velocity_value;
 
     width_value = 500 - KE * (500 / 12.5);
