@@ -44,7 +44,7 @@ for (let index = 0; index < options.length; index++) {
             this.style = "background:linear-gradient(180deg, #3CA35A, #389B60); color: white;";
             dynamic_panel_window.style = "overflow-y:scroll;";
             dynamic_panel_window.scroll({ top: 800, behavior: "smooth" });
-            footer.style = "bottom:425rem";
+            footer.style = "bottom:0rem";
             Right_ANS.play();
 
             //Lo message
@@ -402,7 +402,7 @@ function sleep(ms) {
        document.getElementById("ball").style.webkitTransform = 'rotate(' + degrees + 'deg)';
        document.getElementById("ball").style.left= k + "rem";
        
-       degrees+=(ball_initial_velocity/25);
+       degrees+=(ball_initial_velocity/20);
     
     // var c1 = document.getElementById("myCanvas");
     // var ctx1 = c1.getContext("2d");
@@ -499,21 +499,21 @@ return;
     
      await sleep(2000);
      document.getElementsByClassName('feedback_bar')[0].style.opacity = 0;
-     document.getElementById("para").style.color =" black";
+    //  document.getElementById("para").style.color =" black";
         document.getElementsByClassName('feedback_bar')[0].style.background = "linear-gradient(rgb(255, 230, 1) 0%, rgb(232, 136, 47) 100%)";
      
      
      if(mass_flag == 0 && mass_played >= 0 && recently_mass_tapped == 0){
          mass_played--;
         let ItemElement = document.createElement("p");
-        document.getElementById("para").style.fontSize =" 40rem";
+        document.getElementById("para").style.fontSize =" 36rem";
         document.getElementById("para").style.lineHeight =" 50rem";
         document.getElementById("para").style.paddingTop =" 10rem";
         // document.getElementById("para").style.paddingLeft =" 20rem";
         // fade(document.getElementsByClassName('feedback_bar')[0]);
         // await sleep(5);
         unfade(document.getElementsByClassName('feedback_bar')[0]);
-        document.getElementById("para").innerHTML="Ball transfers all of its kinetic energy to the block and displaces it." + " Use ball of different mass and compare kinetic energies.".bold();
+        document.getElementById("para").innerHTML="Ball transfers all of its kinetic energy to the block and displaces it.\n"  +" Use ball of different mass and compare kinetic energies.".bold();
         // document.getElementsByClassName('feedback_bar')[0].style.transition= "top 0.4s ease-out, opacity 0.4s";
         // let content = "Use ball of different mass and compare K E.";
         // document.getElementById("para").style.fontSize ="40rem";
@@ -527,14 +527,14 @@ return;
     }
     else if(mass_played<0 && mass_flag == 0 && velocity_flag == 1 && recently_mass_tapped==0 ){
         let ItemElement = document.createElement("p");
-        document.getElementById("para").style.fontSize =" 40rem";
+        document.getElementById("para").style.fontSize =" 36rem";
         document.getElementById("para").style.lineHeight =" 50rem";
         document.getElementById("para").style.paddingTop =" 10rem";
         // document.getElementById("para").style.paddingLeft =" 20rem";
         // document.getElementById("para").style.color =" black";
         // document.getElementsByClassName('feedback_bar')[0].style.background = "linear-gradient(rgb(255, 230, 1) 0%, rgb(232, 136, 47) 100%)";
         unfade(document.getElementsByClassName('feedback_bar')[0]);
-        document.getElementById("para").innerHTML="As the mass of the ball increases its kinetic energy also increases. Tap on velocity button to check effects of velocity.";
+        document.getElementById("para").innerHTML="As the mass of the ball increases its kinetic energy also increases." +" Tap on velocity button to check effects of velocity.".bold();
         // document.getElementById("para").style.lineHeight =" 40rem";
         // let content = "Tap on velocity button to check effects of velocity.";
         // document.getElementById("para").style.fontSize ="40rem";
@@ -548,7 +548,7 @@ return;
     }
     else if(mass_played<0 && mass_flag == 0 && velocity_flag == 0 && recently_mass_tapped==0 ){
         let ItemElement = document.createElement("p");
-        document.getElementById("para").style.fontSize =" 40rem";
+        document.getElementById("para").style.fontSize =" 36rem";
         document.getElementById("para").style.lineHeight =" 50rem";
         document.getElementById("para").style.paddingTop =" 35rem";
         // document.getElementById("para").style.paddingLeft =" 20rem";
@@ -575,7 +575,7 @@ return;
        unfade(document.getElementsByClassName('feedback_bar')[0]);
     //    document.getElementById("para").style.color =" black";
     //    document.getElementsByClassName('feedback_bar')[0].style.background = "linear-gradient(rgb(255, 230, 1) 0%, rgb(232, 136, 47) 100%)";
-    document.getElementById("para").style.fontSize =" 37.5rem";  
+    document.getElementById("para").style.fontSize =" 36rem";  
     document.getElementById("para").innerHTML="The ball hits the block it transfers all of its kinetic energy and displaces the block." + " Push ball with different velocities to observe its effect on K.E.".bold();
     //    let content = "Push ball with different velocities to observe its effect on K.E";
     // //    document.getElementById("para").style.fontSize ="40rem";
@@ -591,14 +591,14 @@ return;
 
    else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 1 && recently_velocity_tapped==0 ){
     let ItemElement = document.createElement("p");
-    document.getElementById("para").style.fontSize =" 39.5rem";
+    document.getElementById("para").style.fontSize =" 36rem";
     // document.getElementById("para").style.lineHeight =" 50rem";
     document.getElementById("para").style.paddingTop =" 10rem";
     // document.getElementById("para").style.paddingLeft =" 20rem";
     unfade(document.getElementsByClassName('feedback_bar')[0]);
     // document.getElementById("para").style.color =" black";
     // document.getElementsByClassName('feedback_bar')[0].style.background = "linear-gradient(rgb(255, 230, 1) 0%, rgb(232, 136, 47) 100%)";
-    document.getElementById("para").innerHTML="The K.E of an object is directly proportional to the square of the velocity of the object. Tap on mass button to check effects of mass.";
+    document.getElementById("para").innerHTML="The K.E of an object is directly proportional to the square of the velocity of the object."+ " Tap on mass button to check effects of mass.".bold();
     // document.getElementById("para").style.lineHeight =" 40rem";
     // let content = "Tap on mass button to check effects of mass.";
     // document.getElementById("para").style.fontSize ="40rem";
@@ -612,12 +612,12 @@ return;
 }
 else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 0 && recently_velocity_tapped==0 ){
     let ItemElement = document.createElement("p");
-    document.getElementById("para").style.fontSize =" 40rem";
+    document.getElementById("para").style.fontSize =" 36rem";
     // document.getElementById("para").style.lineHeight =" 50rem";
     document.getElementById("para").style.paddingTop =" 10rem";
     // document.getElementById("para").style.paddingLeft =" 20rem";
     unfade(document.getElementsByClassName('feedback_bar')[0]);
-    document.getElementById("para").style.color =" black";
+    // document.getElementById("para").style.color =" black";
     // document.getElementsByClassName('feedback_bar')[0].style.background = "linear-gradient(rgb(255, 230, 1) 0%, rgb(232, 136, 47) 100%)";
     document.getElementById("para").innerHTML="The kinetic energy of an object is directly proportional to the square of the velocity of the object.";
     document.getElementById("para").style.lineHeight =" 50rem";
@@ -655,7 +655,7 @@ else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 0 && recently_ve
     next1.onclick=function(){
         document.getElementById("ball").style.webkitTransform = 'rotate(0deg)';
         marker_to_disappear='v9';
-        document.getElementById("para").style.color =" white";
+        // document.getElementById("para").style.color =" white";
         document.getElementsByClassName('feedback_bar')[0].style.background = "linear-gradient(180deg, #12EAFA 0%, #0787E2 100%)";
         buttonAudio_Click.play();
         next2.style.border = "unset";
@@ -684,7 +684,7 @@ else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 0 && recently_ve
             document.getElementById("v9").style.opacity=1;
     //  document.getElementById("p1").innerHTML="Mass";
      if(display_mass_slider == 1){
-     document.getElementById("para").style.fontSize =" 40rem";
+     document.getElementById("para").style.fontSize =" 36rem";
      document.getElementById("para").style.lineHeight =" 50rem";
      document.getElementById("para").style.paddingTop =" 10rem";
      unfade(document.getElementsByClassName('feedback_bar')[0]);
@@ -874,7 +874,7 @@ else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 0 && recently_ve
             height = 80;
             left_stop = 322;
             buttonAudio_Click.play();
-            document.getElementById("para").style.color =" white";
+            // document.getElementById("para").style.color =" white";
         document.getElementsByClassName('feedback_bar')[0].style.background = "linear-gradient(180deg, #12EAFA 0%, #0787E2 100%)";
             next1.style.border = "unset";
         next2.style.border="solid 2.5rem";
@@ -906,7 +906,7 @@ else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 0 && recently_ve
          document.getElementById("slider1").style.opacity=1;
          ball_mass_change();
         //  document.getElementById("p1").innerHTML="Velocity";
-         document.getElementById("para").style.fontSize =" 40rem";
+         document.getElementById("para").style.fontSize =" 36rem";
          document.getElementById("para").style.lineHeight =" 50rem";
          document.getElementById("para").style.paddingTop =" 10rem";
          unfade(document.getElementsByClassName('feedback_bar')[0]);
@@ -1040,7 +1040,7 @@ window.onload = function() {
 var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
     document.getElementsByClassName('feedback_bar')[0].style.background = "linear-gradient(180deg, #12EAFA 0%, #0787E2 100%)";
-    document.getElementById("para").style.color="white";
+    // document.getElementById("para").style.color="white";
 
     //option 1
    

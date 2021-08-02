@@ -244,7 +244,7 @@ body {
     line-height: 60rem;
     text-align: center;
     /* or 154% */
-    color: white;
+    color:#333333;
 }
 
 .interaction_area {
@@ -505,7 +505,7 @@ align-items: center;
     cursor: pointer;
 }
 .table {
-    position: absolute; width: 100%; height: 20%;  top: 80%;
+    position: absolute; width: 100%; height: 20%;  top: 80%; border-bottom-left-radius: 24rem; border-bottom-right-radius: 24rem;
 }
 .ball_div {
     position: absolute; left: 50rem; top: 339rem; height: 80rem; width: 80rem; 
@@ -524,7 +524,7 @@ align-items: center;
 
 }
 .triangel1_div {
-    position: absolute; left: 479rem; top: 79%; height: 60rem; width: 60rem; 
+    position: absolute; left: 521rem; top: 79%; height: 60rem; width: 60rem; 
 }
 
 .triangle1 {
