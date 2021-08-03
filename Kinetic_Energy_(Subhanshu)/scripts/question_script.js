@@ -686,11 +686,11 @@ else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 0 && recently_ve
      if(display_mass_slider == 1){
      document.getElementById("para").style.fontSize =" 36rem";
      document.getElementById("para").style.lineHeight =" 50rem";
-     document.getElementById("para").style.paddingTop =" 10rem";
+     document.getElementById("para").style.paddingTop =" 30rem";
      unfade(document.getElementsByClassName('feedback_bar')[0]);
     //  document.getElementById("para").style.color =" black";
     //  document.getElementsByClassName('feedback_bar')[0].style.background = "linear-gradient(rgb(255, 230, 1) 0%, rgb(232, 136, 47) 100%)";
-     document.getElementById("para").innerHTML=("Vary the mass of the ball using the slider and press play to observe how the kinetic energy of the ball is affected.");
+     document.getElementById("para").innerHTML=("Vary the ball's mass using the slider. Tap play to observe how kinetic energy is affected.");
     }
     //  else if(velocity_flag ==1){  //mass_slider_flag == 0
 
