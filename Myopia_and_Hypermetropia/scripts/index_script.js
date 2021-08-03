@@ -467,7 +467,7 @@ function inspectHypermetropia() {
    Object.assign(labels[3].style, { opacity: '0' });
 
    // Arrow and light text
-   Object.assign(arrowContainer.style, {opacity: 0});
+   Object.assign(arrowContainer.style, { opacity: 0 });
 
    // For the status bar updation
    Object.assign(statusBar.style, { width: '25%' });
@@ -491,14 +491,14 @@ function inspectHypermetropia() {
          setTimeout(function () {
             feedbackArea.children[0].innerHTML = "The tree is clearly visible as its image forms on retina. <br> <b>Let’s rectify hypermetropia.</b>"; //hyperopia far second feedback
             Object.assign(feedbackArea.style, { opacity: '1', background: yellowGradient });
-            Object.assign(nextButton.style, { display: 'block', width: '480rem' });
+            Object.assign(nextButton.style, { display: 'block', width: '600rem' });
          }, 500);
 
          // For the status bar updation
          Object.assign(statusBar.style, { width: '75%' });
          Object.assign(statusDots[3].style, { opacity: 1 });
 
-         nextButton.innerHTML = "Rectify <br> hypermetropia";
+         nextButton.innerHTML = "Rectify hypermetropia";
          nextButton.onclick = function () {
             buttonAudio_Click.play();
             rectifyHypermetropia();
@@ -528,7 +528,7 @@ function inspectHypermetropia() {
       labels[2].children[0].innerHTML = "Image formed on the retina";
 
       // Arrow and light text
-      Object.assign(arrowContainer.style, {opacity: 1, left: "50%"});
+      Object.assign(arrowContainer.style, { opacity: 1, left: "50%" });
 
       // label hand postion change
       Object.assign(labels[2].children[2].style, { right: "48rem" });
@@ -564,14 +564,14 @@ function inspectHypermetropia() {
          setTimeout(function () {
             feedbackArea.children[0].innerHTML = "The juice can is not clearly visible as its image forms behind retina. <br> <b>Let’s rectify hypermetropia.</b>"; // hyperopia near second feedback
             Object.assign(feedbackArea.style, { opacity: '1', background: yellowGradient });
-            Object.assign(nextButton.style, { display: 'block', width: '480rem' });
+            Object.assign(nextButton.style, { display: 'block', width: '600rem' });
          }, 500);
 
          // For the status bar updation
          Object.assign(statusBar.style, { width: '75%' });
          Object.assign(statusDots[3].style, { opacity: 1 });
 
-         nextButton.innerHTML = "Rectify <br> hypermetropia";
+         nextButton.innerHTML = "Rectify hypermetropia";
          nextButton.onclick = function () {
             buttonAudio_Click.play();
             rectifyHypermetropia();
@@ -600,7 +600,7 @@ function inspectHypermetropia() {
       labels[2].children[0].innerHTML = "Image is not formed on the retina";
 
       // Arrow and light text
-      Object.assign(arrowContainer.style, {opacity: 1, left: "52%"});
+      Object.assign(arrowContainer.style, { opacity: 1, left: "52%" });
 
       // label hand postion change
       Object.assign(labels[2].children[2].style, { right: "30rem" });
@@ -653,7 +653,7 @@ function rectifyHypermetropia() {
    Object.assign(rightTree.style, { opacity: '0' });
 
    // Arrow and light text
-   Object.assign(arrowContainer.style, {opacity: 1, left: "46%"});
+   Object.assign(arrowContainer.style, { opacity: 1, left: "46%" });
 
    // Drawing the lens and rays
    changeCanvasVariablesZoomIn();
