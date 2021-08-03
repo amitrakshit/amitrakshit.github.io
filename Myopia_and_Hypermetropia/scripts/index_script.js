@@ -75,6 +75,13 @@ for (let i = 0; i < canvases.length; i++) {
    contexts[i] = canvases[i].getContext('2d');
 }
 
+/* Arrow and light text */
+var arrowContainer = document.querySelector('.lightArrowContainer');
+
+
+/* The right side image */
+var rightSideImageArea = document.getElementById("rightSide");
+
 // Reset Button
 var resetButton = document.getElementsByClassName('resetButtonContainter')[0];
 resetButton.onclick = function () {
@@ -86,69 +93,29 @@ resetButton.onclick = function () {
 var statusDots = document.getElementsByClassName("statusDots");
 var statusBar = document.getElementById('frontBar');
 
-//Drawing and positioning the lenses
-var Lens = new lens(canvasWidth * 0.68, canvasHeight * 0.45);
-Lens.height = canvasHeight * 0.28;
-Lens.width = canvasWidth * 0.04;
-Lens.power = 0.5;
-
-var lensFocalLength = canvasWidth * 0.35; //Lens focal length
-
-// Variables for ray calculation
-var ratinaPosition = canvasWidth * 0.9;
-var focusOffsetValue = canvasWidth * 0.02;
-var ray1StartingPositionX = canvasWidth * 0.35;
-var ray1StartingPositionY = canvasHeight * 0.46;
-// var lineWidth = 3 * canvasHeight / 520;
-var lineWidth = 2;
-var nearObjectDistance = lensFocalLength / 3;
-
-// Defining the rays
-var ray1 = new xParallelRays(ray1StartingPositionX, ray1StartingPositionY);
-ray1.spread = canvasHeight * 0.04;
-ray1.type = 'parallel';
-ray1.startX = ray1StartingPositionX;
-ray1.focusPoint = ray1StartingPositionX;
-ray1.endX = Lens.x;
-ray1.strokeStyle = "#ffffff";
-ray1.fillStyle = "#ffffff00";
-ray1.lineWidth = lineWidth;
-// parallelRays.draw(contexts[2]);
-
-var ray2 = new xParallelRays(ray1.endX, ray1.startY);
-ray2.spread = ray1.getEndSpread();
-ray2.endX = canvasWidth * 0.76;
-ray2.strokeStyle = "#ffffff";
-ray2.fillStyle = "#ffffff00";
-ray2.type = 'parallel';
-ray2.lineWidth = lineWidth;
-// ray1.draw(contexts[2]);
-
-var ray3 = new xParallelRays(ray2.endX, ray2.startY);
-ray3.spread = ray2.getEndSpread();
-ray3.endX = ratinaPosition;
-ray3.focusPoint = ray3.endX;
-ray3.strokeStyle = "#ffffff";
-ray3.fillStyle = "#ffffff00";
-ray3.type = 'convergent';
-ray3.lineWidth = lineWidth;
-// ray2.draw(contexts[2]); 
+// Labels
+var labels = document.getElementsByClassName("labels");
+Object.assign(labels[2].style, { opacity: '0' });
+Object.assign(labels[3].style, { opacity: '0' });
+labelColor = {
+   green: "#23BB60",
+   red: "#F92E5E",
+   blue: "#0099BB"
+}
 
 // Myopic and hyperopic button
 var leftButton = document.getElementById('leftButton');
 var rightButton = document.getElementById('rightButton');
 
-// For Myopic and hyperopic blur styles
-var frontImg = document.getElementById('blurBackImg');
-var blurFrontImg = document.getElementById('blurFrontImg');
+// images in the visual Area (LEFT)
+var leftBG = document.getElementById('leftBackground'); //backGround of left side
+var treeImg = document.getElementsByClassName('treeImgContainer')[0]; //tree image of left side
+var leftFG = document.getElementsByClassName('foreGroundImgContainer')[0]; //foreGround of left side
 
-// For positioning the small plants on right side screen
-var plantsInRightScreen = document.getElementsByClassName('plantImg');
+// images in the visual Area (Right)
+var rightTree = document.getElementsByClassName("treeImgContainerRight")[0]; // tree img of Right side
+var rightJuiceCan = document.getElementsByClassName("juiceCanImgContainerRight")[0]; // juice can of right side
 
-// For bluring the plants on the left side screen
-var plantsInLeftScreen = document.getElementsByClassName('leftScreenPlantImg');
-var farawayPlant = plantsInLeftScreen[0];
-var nearbyPlant = plantsInLeftScreen[1];
 
 // input slider and the other texts
 var inputSlider = document.getElementById('slider1');
@@ -167,16 +134,13 @@ function inspectMyopia() {
    visualAreaHeading.children[0].innerHTML = "Myopic condition";
 
    typeOfEyeDefect = 'myopic';
-   leftButton.innerHTML = 'Faraway plant';
-   rightButton.innerHTML = 'Nearby plant';
+   leftButton.innerHTML = 'Tree';
+   rightButton.innerHTML = 'Juice can';
    Object.assign(feedbackArea.style, { opacity: 0 });
    setTimeout(function () {
       feedbackArea.children[0].innerHTML = myopiaFeedback;
       Object.assign(feedbackArea.style, { opacity: 1, background: blueGradient })
    }, 500);
-
-   Object.assign(plantsInRightScreen[1].style, { opacity: 0.5 }); // Rightside plant opacity reducing
-   Object.assign(plantsInRightScreen[0].style, { opacity: 1 }); // Rightside plant opacity reducing
 
    contexts[1].clearRect(0, 0, canvasWidth, canvasHeight);
    contexts[2].clearRect(0, 0, canvasWidth, canvasHeight);
@@ -191,16 +155,29 @@ function inspectMyopia() {
       Object.assign(sliderMarkers[i].style, { opacity: '0' });
    }
 
-   // for bluring the images of the plants and the environment
-   farawayPlant.classList.add('plantBlur');
-   nearbyPlant.classList.remove('plantBlur');
-   plantsInRightScreen[0].classList.add('plantBlurSmall');
-   plantsInRightScreen[1].classList.remove('plantBlurSmall');
-   blurFrontImg.classList.add('myopia');
-   blurFrontImg.classList.remove('hyperopia');
-
    leftButton.disabled = false;
    rightButton.disabled = false;
+
+   // The images
+   rightSideImageArea.classList.remove('zoomRight');
+   Object.assign(rightJuiceCan.style, { opacity: '1' });
+   Object.assign(rightTree.style, { opacity: '1' });
+   leftBG.classList.add("blur");
+   treeImg.classList.add("blur");
+   leftFG.classList.remove("blur");
+   rightTree.classList.add("blur");
+   rightJuiceCan.classList.remove("blur");
+
+   // labels
+   labels[0].children[0].innerHTML = "Blurred vision";
+   labels[1].children[0].innerHTML = "Clear vision";
+   Object.assign(labels[0].style, { backgroundColor: labelColor.red, opacity: '1' });
+   Object.assign(labels[1].style, { backgroundColor: labelColor.blue, opacity: '1' });
+   Object.assign(labels[2].style, { backgroundColor: labelColor.blue, opacity: '0' });
+   Object.assign(labels[3].style, { opacity: '0' });
+
+   // Arrow and light text
+   Object.assign(arrowContainer.style, { opacity: 0 });
 
    //For removing selected button outline
    leftButton.classList.remove('buttonSelected');
@@ -220,16 +197,13 @@ function inspectMyopia() {
       buttonAudio_Click.play();
       whichObjectSelected = 'far';
 
-      Object.assign(plantsInRightScreen[1].style, { opacity: 0.5 }); // Rightside plant opacity reducing
-      Object.assign(plantsInRightScreen[0].style, { opacity: 1 }); // Rightside plant opacity reducing
-
       if (whichObjectAlreadyVisited == 'near') {
          whichObjectAlreadyVisited = 'far';
          Object.assign(feedbackArea.style, { opacity: 0 });
          Object.assign(nextButton.style, { opacity: '1' });
          nextButton.disabled = false;
          setTimeout(function () {
-            feedbackArea.children[0].innerHTML = "The faraway pot is not clearly visible since its image is formed in front of the retina. Let’s rectify myopia."; //myopia far second feedback
+            feedbackArea.children[0].innerHTML = "The tree is not visible as its image forms in front of retina. <br> <b>Let’s rectify myopia.</b>"; //myopia far second feedback
             Object.assign(feedbackArea.style, { opacity: '1', background: yellowGradient });
             Object.assign(nextButton.style, { display: 'block' });
          }, 500);
@@ -247,7 +221,7 @@ function inspectMyopia() {
          whichObjectAlreadyVisited = 'far';
          Object.assign(feedbackArea.style, { opacity: 0 });
          setTimeout(function () {
-            feedbackArea.children[0].innerHTML = "The faraway pot is not clearly visible since its image is formed in front of the retina. Let’s Explore the nearby pot."; //myopia far first feedback
+            feedbackArea.children[0].innerHTML = "The tree is not clearly visible as its image forms in front of retina. <br> <b> Now, let's observe the juice can. </b>"; //myopia far first feedback
             Object.assign(feedbackArea.style, { opacity: '1', background: yellowGradient });
          }, 500);
 
@@ -256,24 +230,40 @@ function inspectMyopia() {
          Object.assign(statusDots[2].style, { opacity: 1 });
       }
 
+      // labels and images
+      rightSideImageArea.classList.remove('zoomRight');
+      Object.assign(labels[0].style, { backgroundColor: labelColor.red, opacity: '1' });
+      Object.assign(labels[1].style, { backgroundColor: labelColor.blue, opacity: '0' });
+      Object.assign(labels[2].style, { backgroundColor: labelColor.blue, opacity: '1' });
+      Object.assign(rightJuiceCan.style, { opacity: '0' });
+      Object.assign(rightTree.style, { opacity: '1' });
+      labels[0].children[0].innerHTML = "Blurred vision";
+      labels[2].children[0].innerHTML = "Image formed infront of retina";
+
+      // Arrow and light text
+      Object.assign(arrowContainer.style, { opacity: 1, left: "50%" });
+
+      // label hand postion change
+      Object.assign(labels[2].children[2].style, { right: "70rem" });
+      Object.assign(labels[2].children[3].style, { right: "70rem" });
+
+
       //For selected button outline
       leftButton.classList.add('buttonSelected');
       rightButton.classList.remove('buttonSelected');
 
 
       // Drawing the lens and rays
+      changeCanvasVariablesZoomOut();
+      contexts[1].clearRect(0, 0, canvasWidth, canvasHeight);
       contexts[2].clearRect(0, 0, canvasWidth, canvasHeight);
-      // Lens.draw(contexts[1]);
-      ray1.type = 'parallel';
-      ray1.startX = ray1StartingPositionX;
-      ray2.type = 'parallel';
-      ray2.spread = ray1.getEndSpread();
-      ray3.spread = ray2.getEndSpread();
-      ray3.endX = ratinaPosition - focusOffsetValue;
-      ray3.focusPoint = ratinaPosition - focusOffsetValue;
+      ray4.focusPoint = retinaPosition - focusOffsetValue;
+      ray4.endX = ray4.focusPoint;
       ray1.draw(contexts[2]);
       ray2.draw(contexts[2]);
       ray3.draw(contexts[2]);
+      ray4.draw(contexts[2]);
+
    }
 
    /* Following code for myopia near object */
@@ -281,16 +271,13 @@ function inspectMyopia() {
       buttonAudio_Click.play();
       whichObjectSelected = 'near';
 
-      Object.assign(plantsInRightScreen[1].style, { opacity: 1 }); // Rightside plant opacity reducing
-      Object.assign(plantsInRightScreen[0].style, { opacity: 0.5 }); // Rightside plant opacity reducing
-
       if (whichObjectAlreadyVisited == 'far') {
          whichObjectAlreadyVisited = 'near';
          Object.assign(feedbackArea.style, { opacity: 0 });
          Object.assign(nextButton.style, { opacity: '1' });
          nextButton.disabled = false;
          setTimeout(function () {
-            feedbackArea.children[0].innerHTML = "The nearby pot is clearly visible."; // myopia near second feedback
+            feedbackArea.children[0].innerHTML = "The juice can is clearly visible as its image forms on retina. <br> <b> Let’s rectify myopia. </b>"; // myopia near second feedback
             Object.assign(feedbackArea.style, { opacity: '1', background: yellowGradient });
             Object.assign(nextButton.style, { display: 'block' });
          }, 500);
@@ -309,7 +296,7 @@ function inspectMyopia() {
          whichObjectAlreadyVisited = 'near';
          Object.assign(feedbackArea.style, { opacity: 0 });
          setTimeout(function () {
-            feedbackArea.children[0].innerHTML = "The nearby pot is clearly visible, let’s explore the faraway pot."; // myopia near first feedback
+            feedbackArea.children[0].innerHTML = "The juice can is clearly visible as its image forms on retina. <br> <b>Now, let’s observe the tree.</b>"; // myopia near first feedback
             Object.assign(feedbackArea.style, { opacity: '1', background: yellowGradient });
          }, 500);
 
@@ -318,27 +305,34 @@ function inspectMyopia() {
          Object.assign(statusDots[2].style, { opacity: 1 });
       }
 
+      // labels and images
+      rightSideImageArea.classList.add('zoomRight');
+      Object.assign(labels[0].style, { backgroundColor: labelColor.red, opacity: '0' });
+      Object.assign(labels[1].style, { backgroundColor: labelColor.blue, opacity: '1' });
+      Object.assign(labels[2].style, { backgroundColor: labelColor.blue, opacity: '1' });
+      Object.assign(rightJuiceCan.style, { opacity: '1' });
+      Object.assign(rightTree.style, { opacity: '0' });
+      labels[2].children[0].innerHTML = "Image is formed on retina";
+
+      // Arrow and light text
+      Object.assign(arrowContainer.style, { opacity: 1, left: "52%" });
+
+      // label hand postion change
+      Object.assign(labels[2].children[2].style, { right: "48rem" });
+      Object.assign(labels[2].children[3].style, { right: "48rem" });
+
       //For selected button outline
       leftButton.classList.remove('buttonSelected');
       rightButton.classList.add('buttonSelected');
 
       // Drawing the lens and rays
+      changeCanvasVariablesZoomIn();
+      contexts[1].clearRect(0, 0, canvasWidth, canvasHeight);
       contexts[2].clearRect(0, 0, canvasWidth, canvasHeight);
-      // Lens.draw(contexts[1]);
-      ray1.type = 'divergent'; // For diverging lens when starting point is the focus point, then providing endSpread value is mandatory
-      ray1.endSpread = ray1.spread;
-      ray1.startX = Lens.x - nearObjectDistance;
-      ray1.focusPoint = ray1.startX;
-      ray2.type = 'divergent';
-      ray2.spread = ray1.getEndSpread();
-      ray2.focusPoint = ray1.focusPoint;
-      ray3.spread = ray2.getEndSpread();
-      ray3.endX = ratinaPosition;
-      ray3.focusPoint = ratinaPosition;
       ray1.draw(contexts[2]);
       ray2.draw(contexts[2]);
       ray3.draw(contexts[2]);
-
+      ray4.draw(contexts[2]);
 
    }
 }
@@ -347,8 +341,6 @@ function rectifyMyopia() {
    userInteractedWithSlider = false;
    whichObjectSelected = 'far';
 
-   Object.assign(plantsInRightScreen[1].style, { opacity: 0.5 }); // Rightside plant opacity reducing
-   Object.assign(plantsInRightScreen[0].style, { opacity: 1 }); // Rightside plant opacity reducing
 
    // for removing the buttons and bringing the slider
    Object.assign(inputSlider.style, { opacity: '1', display: 'block' });
@@ -363,20 +355,33 @@ function rectifyMyopia() {
    leftButton.disabled = true;
    rightButton.disabled = true;
 
+   // bringing back the tree and removing the juice and the labels
+   rightSideImageArea.classList.remove('zoomRight');
+   Object.assign(labels[0].style, { backgroundColor: labelColor.red, opacity: '1' });
+   Object.assign(labels[1].style, { backgroundColor: labelColor.blue, opacity: '0' });
+   Object.assign(labels[2].style, { backgroundColor: labelColor.blue, opacity: '1' });
+   Object.assign(labels[3].style, { backgroundColor: labelColor.blue, opacity: '1' });
+   labels[3].classList.remove('zoomOut');
+   labels[3].children[2].classList.remove('zoomOutHand');
+   Object.assign(rightJuiceCan.style, { opacity: '0' });
+   Object.assign(rightTree.style, { opacity: '1' });
+   labels[2].children[0].innerHTML = "Image formed in front of retina";
+
+   // Arrow and light text
+   Object.assign(arrowContainer.style, { left: "50%" });
+
    // Drawing the lens and rays
+   changeCanvasVariablesZoomOut();
+   contexts[1].clearRect(0, 0, canvasWidth, canvasHeight);
    contexts[2].clearRect(0, 0, canvasWidth, canvasHeight);
+   ray4.focusPoint = retinaPosition - focusOffsetValue;
+   ray4.endX = ray4.focusPoint;
    Lens.draw(contexts[1]);
-   ray1.type = 'parallel';
-   ray1.spread = canvasHeight * 0.04;
-   ray1.startX = ray1StartingPositionX;
-   ray2.type = 'parallel';
-   ray2.spread = ray1.getEndSpread();
-   ray3.spread = ray2.getEndSpread();
-   ray3.endX = ratinaPosition - focusOffsetValue;
-   ray3.focusPoint = ray3.endX;
    ray1.draw(contexts[2]);
    ray2.draw(contexts[2]);
    ray3.draw(contexts[2]);
+   ray4.draw(contexts[2]);
+
 
    sliderFunction();
 
@@ -416,16 +421,14 @@ rightButton.onclick = function () {
 function inspectHypermetropia() {
    visualAreaHeading.children[0].innerHTML = "Hypermetropic condition";
    typeOfEyeDefect = 'hyperopic';
-   leftButton.innerHTML = 'Faraway plant';
-   rightButton.innerHTML = 'Nearby plant';
+   leftButton.innerHTML = 'Tree';
+   rightButton.innerHTML = 'Juice can';
+
    Object.assign(feedbackArea.style, { opacity: 0 });
    setTimeout(function () {
       feedbackArea.children[0].innerHTML = hypermetropiaFeedback;
-      Object.assign(feedbackArea.style, { opacity: 1, background: blueGradient })
-   }, 500);
-
-   Object.assign(plantsInRightScreen[1].style, { opacity: 1 }); // Rightside plant opacity reducing
-   Object.assign(plantsInRightScreen[0].style, { opacity: 1 }); // Rightside plant opacity reducing
+      Object.assign(feedbackArea.style, { opacity: 1, background: blueGradient });
+   }, 500); //0.5s
 
    contexts[1].clearRect(0, 0, canvasWidth, canvasHeight);
    contexts[2].clearRect(0, 0, canvasWidth, canvasHeight);
@@ -440,17 +443,31 @@ function inspectHypermetropia() {
    }
    leftButton.disabled = false;
    rightButton.disabled = false;
+
    //For removing selected button outline
    leftButton.classList.remove('buttonSelected');
    rightButton.classList.remove('buttonSelected');
 
-   // for bluring the images of the plants
-   farawayPlant.classList.remove('plantBlur');
-   nearbyPlant.classList.add('plantBlur');
-   plantsInRightScreen[0].classList.remove('plantBlurSmall');
-   plantsInRightScreen[1].classList.add('plantBlurSmall');
-   blurFrontImg.classList.remove('myopia');
-   blurFrontImg.classList.add('hyperopia');
+   // The images
+   rightSideImageArea.classList.remove('zoomRight');
+   Object.assign(rightJuiceCan.style, { opacity: '1' });
+   Object.assign(rightTree.style, { opacity: '1' });
+   leftBG.classList.remove("blur");
+   treeImg.classList.remove("blur");
+   leftFG.classList.add("blur");
+   rightTree.classList.remove("blur");
+   rightJuiceCan.classList.add("blur");
+
+   // labels
+   labels[0].children[0].innerHTML = "Clear vision";
+   labels[1].children[0].innerHTML = "Blurred vision";
+   Object.assign(labels[0].style, { backgroundColor: labelColor.blue, opacity: '1' });
+   Object.assign(labels[1].style, { backgroundColor: labelColor.red, opacity: '1' });
+   Object.assign(labels[2].style, { backgroundColor: labelColor.blue, opacity: '0' });
+   Object.assign(labels[3].style, { opacity: '0' });
+
+   // Arrow and light text
+   Object.assign(arrowContainer.style, {opacity: 0});
 
    // For the status bar updation
    Object.assign(statusBar.style, { width: '25%' });
@@ -466,16 +483,13 @@ function inspectHypermetropia() {
       buttonAudio_Click.play();
       whichObjectSelected = 'far';
 
-      Object.assign(plantsInRightScreen[1].style, { opacity: 0.5 }); // Rightside plant opacity reducing
-      Object.assign(plantsInRightScreen[0].style, { opacity: 1 }); // Rightside plant opacity reducing
-
       if (whichObjectAlreadyVisited == 'near') {
          whichObjectAlreadyVisited = 'far';
          Object.assign(feedbackArea.style, { opacity: 0 });
          Object.assign(nextButton.style, { opacity: '1' });
          nextButton.disabled = false;
          setTimeout(function () {
-            feedbackArea.children[0].innerHTML = "The faraway pot is clearly visible. Let’s rectify hypermetropia."; //hyperopia far second feedback
+            feedbackArea.children[0].innerHTML = "The tree is clearly visible as its image forms on retina. <br> <b>Let’s rectify hypermetropia.</b>"; //hyperopia far second feedback
             Object.assign(feedbackArea.style, { opacity: '1', background: yellowGradient });
             Object.assign(nextButton.style, { display: 'block', width: '480rem' });
          }, 500);
@@ -494,7 +508,7 @@ function inspectHypermetropia() {
          whichObjectAlreadyVisited = 'far';
          Object.assign(feedbackArea.style, { opacity: 0 });
          setTimeout(function () {
-            feedbackArea.children[0].innerHTML = "The faraway pot is clearly visible.  Let’s explore the other pot."; //hyperopia far first feedback
+            feedbackArea.children[0].innerHTML = "The tree is clearly visible as its image forms on retina. <br> <b>Now, let's observe the juice can.</b>"; //hyperopia far first feedback
             Object.assign(feedbackArea.style, { opacity: '1', background: yellowGradient });
          }, 500);
 
@@ -504,23 +518,37 @@ function inspectHypermetropia() {
 
       }
 
+      // labels and images
+      rightSideImageArea.classList.remove('zoomRight');
+      Object.assign(labels[0].style, { backgroundColor: labelColor.blue, opacity: '1' });
+      Object.assign(labels[1].style, { backgroundColor: labelColor.red, opacity: '0' });
+      Object.assign(labels[2].style, { backgroundColor: labelColor.blue, opacity: '1' });
+      Object.assign(rightJuiceCan.style, { opacity: '0' });
+      Object.assign(rightTree.style, { opacity: '1' });
+      labels[2].children[0].innerHTML = "Image formed on the retina";
+
+      // Arrow and light text
+      Object.assign(arrowContainer.style, {opacity: 1, left: "50%"});
+
+      // label hand postion change
+      Object.assign(labels[2].children[2].style, { right: "48rem" });
+      Object.assign(labels[2].children[3].style, { right: "48rem" });
+
       //For selected button outline
       leftButton.classList.add('buttonSelected');
       rightButton.classList.remove('buttonSelected');
 
       // Drawing the lens and rays
+      changeCanvasVariablesZoomOut();
+      contexts[1].clearRect(0, 0, canvasWidth, canvasHeight);
       contexts[2].clearRect(0, 0, canvasWidth, canvasHeight);
-      // Lens.draw(contexts[1]);
-      ray1.type = 'parallel';
-      ray1.startX = ray1StartingPositionX;
-      ray2.type = 'parallel';
-      ray2.spread = ray1.getEndSpread();
-      ray3.spread = ray2.getEndSpread();
-      ray3.endX = ratinaPosition;
-      ray3.focusPoint = ratinaPosition;
+      ray4.focusPoint = retinaPosition;
+      ray4.endX = ray4.focusPoint;
       ray1.draw(contexts[2]);
       ray2.draw(contexts[2]);
       ray3.draw(contexts[2]);
+      ray4.draw(contexts[2]);
+
    }
 
    /* Following code for hypermetropia near object */
@@ -528,16 +556,13 @@ function inspectHypermetropia() {
       buttonAudio_Click.play();
       whichObjectSelected = 'near';
 
-      Object.assign(plantsInRightScreen[1].style, { opacity: 1 }); // Rightside plant opacity reducing
-      Object.assign(plantsInRightScreen[0].style, { opacity: 0.5 }); // Rightside plant opacity reducing
-
       if (whichObjectAlreadyVisited == 'far') {
          whichObjectAlreadyVisited = 'near';
          Object.assign(feedbackArea.style, { opacity: 0 });
          Object.assign(nextButton.style, { opacity: '1' });
          nextButton.disabled = false;
          setTimeout(function () {
-            feedbackArea.children[0].innerHTML = "The nearby pot is not clearly visible since its image is formed behind the retina."; // hyperopia near second feedback
+            feedbackArea.children[0].innerHTML = "The juice can is not clearly visible as its image forms behind retina. <br> <b>Let’s rectify hypermetropia.</b>"; // hyperopia near second feedback
             Object.assign(feedbackArea.style, { opacity: '1', background: yellowGradient });
             Object.assign(nextButton.style, { display: 'block', width: '480rem' });
          }, 500);
@@ -556,7 +581,7 @@ function inspectHypermetropia() {
          whichObjectAlreadyVisited = 'near';
          Object.assign(feedbackArea.style, { opacity: 0 });
          setTimeout(function () {
-            feedbackArea.children[0].innerHTML = "The nearby pot is not clearly visible since its image is formed behind the retina. Let’s explore the other pot."; // hyperopia near first feedback
+            feedbackArea.children[0].innerHTML = "The juice can is not clearly visible as its image forms behind retina. <br> <b>Let's observe the tree.</b>"; // hyperopia near first feedback
             Object.assign(feedbackArea.style, { opacity: '1', background: yellowGradient });
          }, 500);
 
@@ -565,35 +590,43 @@ function inspectHypermetropia() {
          Object.assign(statusDots[2].style, { opacity: 1 });
       }
 
+      // labels and images
+      rightSideImageArea.classList.add('zoomRight');
+      Object.assign(labels[0].style, { backgroundColor: labelColor.blue, opacity: '0' });
+      Object.assign(labels[1].style, { backgroundColor: labelColor.red, opacity: '1' });
+      Object.assign(labels[2].style, { backgroundColor: labelColor.blue, opacity: '1' });
+      Object.assign(rightJuiceCan.style, { opacity: '1' });
+      Object.assign(rightTree.style, { opacity: '0' });
+      labels[2].children[0].innerHTML = "Image is not formed on the retina";
+
+      // Arrow and light text
+      Object.assign(arrowContainer.style, {opacity: 1, left: "52%"});
+
+      // label hand postion change
+      Object.assign(labels[2].children[2].style, { right: "30rem" });
+      Object.assign(labels[2].children[3].style, { right: "30rem" });
+
       //For selected button outline
       leftButton.classList.remove('buttonSelected');
       rightButton.classList.add('buttonSelected');
 
       // Drawing the lens and rays
+      changeCanvasVariablesZoomIn();
+      contexts[1].clearRect(0, 0, canvasWidth, canvasHeight);
       contexts[2].clearRect(0, 0, canvasWidth, canvasHeight);
-      // Lens.draw(contexts[1]);
-      ray1.type = 'divergent'; // For diverging lens when starting point is the focus point, then providing endSpread value is mandatory
-      ray1.endSpread = ray1.spread;
-      ray1.startX = Lens.x - nearObjectDistance;
-      ray1.focusPoint = ray1.startX;
-      ray2.type = 'divergent';
-      ray2.spread = ray1.getEndSpread();
-      ray2.focusPoint = ray1.focusPoint;
-      ray3.spread = ray2.getEndSpread();
-      ray3.endX = ratinaPosition + focusOffsetValue;
-      ray3.focusPoint = ratinaPosition + focusOffsetValue;
+      ray4.focusPoint = retinaPosition + focusOffsetValue;
+      ray4.endX = ray4.focusPoint;
       ray1.draw(contexts[2]);
       ray2.draw(contexts[2]);
       ray3.draw(contexts[2]);
+      ray4.draw(contexts[2]);
+
    }
 }
 
 function rectifyHypermetropia() {
    userInteractedWithSlider = false;
    whichObjectSelected = 'near';
-
-   Object.assign(plantsInRightScreen[1].style, { opacity: 1 }); // Rightside plant opacity reducing
-   Object.assign(plantsInRightScreen[0].style, { opacity: 0.5 }); // Rightside plant opacity reducing
 
    // for removing the buttons and bringing the slider
    Object.assign(inputSlider.style, { opacity: '1', display: 'block' });
@@ -608,23 +641,32 @@ function rectifyHypermetropia() {
    leftButton.disabled = true;
    rightButton.disabled = true;
 
+   // labels and images
+   rightSideImageArea.classList.add('zoomRight');
+   Object.assign(labels[0].style, { backgroundColor: labelColor.blue, opacity: '0' });
+   Object.assign(labels[1].style, { backgroundColor: labelColor.red, opacity: '1' });
+   Object.assign(labels[2].style, { backgroundColor: labelColor.blue, opacity: '1' });
+   Object.assign(labels[3].style, { opacity: '1' });
+   labels[3].classList.add('zoomOut');
+   labels[3].children[2].classList.add('zoomOutHand');
+   Object.assign(rightJuiceCan.style, { opacity: '1' });
+   Object.assign(rightTree.style, { opacity: '0' });
+
+   // Arrow and light text
+   Object.assign(arrowContainer.style, {opacity: 1, left: "46%"});
+
    // Drawing the lens and rays
+   changeCanvasVariablesZoomIn();
+   contexts[1].clearRect(0, 0, canvasWidth, canvasHeight);
    contexts[2].clearRect(0, 0, canvasWidth, canvasHeight);
+   ray4.focusPoint = retinaPosition + focusOffsetValue;
+   ray4.endX = ray4.focusPoint;
    Lens.draw(contexts[1]);
-   ray1.type = 'divergent';
-   ray1.spread = canvasHeight * 0.04;
-   ray1.endSpread = ray1.spread; // For diverging lens when starting point is the focus point, then providing endSpread value is mandatory
-   ray1.startX = Lens.x - nearObjectDistance;
-   ray1.focusPoint = ray1.startX;
-   ray2.type = 'divergent';
-   ray2.spread = ray1.getEndSpread();
-   ray2.focusPoint = ray1.focusPoint;
-   ray3.spread = ray2.getEndSpread();
-   ray3.endX = ratinaPosition + focusOffsetValue;
-   ray3.focusPoint = ratinaPosition + focusOffsetValue;
    ray1.draw(contexts[2]);
    ray2.draw(contexts[2]);
    ray3.draw(contexts[2]);
+   ray4.draw(contexts[2]);
+
    sliderFunction();
 
    // For updating the status bar and dots
@@ -681,12 +723,6 @@ function reset() {
       Object.assign(sliderMarkers[i].style, { opacity: '0' });
    }
 
-   // The image of small plants
-   Object.assign(plantsInRightScreen[0].style, { opacity: '1' }); // Left image
-   Object.assign(plantsInRightScreen[1].style, { opacity: '1' }); // Right image
-   plantsInRightScreen[0].style.setProperty('--blurValue', '0rem');
-   plantsInRightScreen[1].style.setProperty('--blurValue', '0rem');
-
    lens.type = 'parallel';
    sliderFunction();
    for (let i = 0; i < canvases.length; i++) {
@@ -696,12 +732,7 @@ function reset() {
    setTimeout(function () {
       Object.assign(feedbackArea.style, { opacity: '1', background: blueGradient })
    }, 500);
-   feedbackArea.children[0].innerHTML = "Tap on the buttons to explore eye defect";
-
-   blurFrontImg.classList.remove('myopia');
-   blurFrontImg.classList.remove('hyperopia');
-   nearbyPlant.classList.remove('plantBlur');
-   farawayPlant.classList.remove('plantBlur');
+   feedbackArea.children[0].innerHTML = "Inspect the eye defects by tapping the buttons.";
 
    // button functions resetting
    leftButton.innerHTML = "Inspect myopia";
@@ -729,16 +760,20 @@ function reset() {
 }
 
 // feedback texts and feedbackArea
-var hypermetropiaFeedback = "Nearby objects are not clearly visible in hypermetropia. Tap the options below to observe why.";
-var myopiaFeedback = "Faraway objects are not clearly visible in myopia. Tap the options bellow to observe why.";
+var hypermetropiaFeedback = "In hypermetropia, nearby objects are not clearly visible, but faraway objects are. <br> <b>Tap and observe why.</b>";
+var myopiaFeedback = "In myopia, nearby objects are seen clearly; faraway objects appear blurry. <br> <b>Tap to observe why</b>.";
 
 // var planeGlassSlabFeedback = "Try changing the curvature of lens to correct the defect in the eye.";
 
+var hypermetropiaDivergingFeedbackEnd = "Oh! The image has become more blurry. With this corrective lens the rays diverge before reaching the eye, shifting the image farther and blurring it.";
+var hypermetropiaDivergingFeedback = 'Oh! The image is getting blurrier. This corrective lens diverges the rays before reaching the eye, shifting the image away from retina.';
+var hypermetropiaConvergingFeedbackEnd = "Awesome! Juice can can be seen clearly now. With this corrective lens the rays converge before reaching the eye, shifting the image towards retina.";
+var hypermetropiaConvergingFeedback = 'Great! The image is getting clearer. This corrective lens converges the rays  before reaching the eye, shifting the image towards retina.';
 
-var hypermetropiaDivergingFeedback = "This lens diverges the rays before they reach the eye lens shifting the image even farther.";
-var hypermetropiaConvergingFeedback = "This lens converges the rays before the eye lens, shifting the image towards the retina.";
-var myopiaDivergingFeedback = "This lens diverges the rays before reaching the eye lens, shifting the image towards retina.";
-var myopiaConvergingFeedback = "This lens converges the rays before the eye lens, shifting the image farther from the retina.";
+var myopiaDivergingFeedbackEnd = "Yay, we’ve rectified myopia! With this corrective lens the rays diverge before reaching the eye, forming the image on retina.";
+var myopiaDivergingFeedback = 'Great! The image is getting clearer. This corrective lens diverges the rays before reaching the eye, shifting the image towards retina.';
+var myopiaConvergingFeedbackEnd = "Uh-Oh! The image has become more blurry. With this corrective lens the rays converge before reaching the eye, blurring the image by moving it away from the retina.";
+var myopiaConvergingFeedback = 'Uh-Oh! The image is getting blurrier. This corrective lens converges the rays before reaching the eye, shifting the image away from retina.';
 
 var feedbackArea = document.getElementsByClassName('feedback_bar')[0];
 var yellowGradient = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)";
@@ -753,18 +788,22 @@ inputSlider.oninput = function () {
 inputSlider.onchange = function () {
    sliderOnChangeAudio.play();
 }
+
 // Global variables for changing state and detecting it
 var previousSliderValue = 0.0;
 var stateChanged = false;
 var userInteractedWithSlider = false;
 function sliderFunction() {
-   if (previousSliderValue < 0 && inputSlider.value > 0) {
+   if (previousSliderValue < 0 && (inputSlider.value > 0 || inputSlider.value == -1)) {
       stateChanged = true;
    }
-   else if (previousSliderValue > 0 && inputSlider.value < 0) {
+   else if (previousSliderValue > 0 && (inputSlider.value < 0 || inputSlider.value == 1)) {
       stateChanged = true;
    }
    else if (previousSliderValue == 0 && inputSlider.value < 0 || previousSliderValue == 0 && inputSlider.value > 0) {
+      stateChanged = true;
+   }
+   else if ((previousSliderValue == -1 || previousSliderValue == 1) && (inputSlider.value != 1 || inputSlider.value != -1)) {
       stateChanged = true;
    }
    else {
@@ -772,18 +811,31 @@ function sliderFunction() {
    }
 
    if (typeOfEyeDefect == 'myopic' && whichObjectSelected == 'far') {
-      blurFrontImg.style.setProperty('--blurValue', `${2 + 2 * inputSlider.value}rem`);
-      farawayPlant.style.setProperty('--blurValue', `${10 + 10 * inputSlider.value}rem`);
-      plantsInRightScreen[0].style.setProperty('--blurValue', `${2 + 2 * inputSlider.value}rem`)
+      leftBG.style.setProperty('--blurValue', `${5 + 5 * inputSlider.value}rem`);
+      treeImg.style.setProperty('--blurValue', `${5 + 5 * inputSlider.value}rem`);
+      rightTree.style.setProperty('--blurValue', `${5 + 5 * inputSlider.value}rem`);
+      // Changing the position of the label hand
+      Object.assign(labels[2].children[2].style, { right: `${70 + (inputSlider.value) * (75 - 55)}rem` });
+      Object.assign(labels[2].children[3].style, { right: `${70 + (inputSlider.value) * (75 - 55)}rem` });
+
       if (userInteractedWithSlider == false) {
          Object.assign(feedbackArea.style, { opacity: 0 });
          setTimeout(function () {
-            feedbackArea.children[0].innerHTML = "Lets try to rectify myopia by focusing the rays on to the retina using a corrective lens.";
+            feedbackArea.children[0].innerHTML = "Let’s rectify myopia by focusing the rays onto the retina using a corrective lens.";
             Object.assign(feedbackArea.style, { opacity: 1, background: blueGradient });
          }, 500);
       }
       if (inputSlider.value > 0) {
-         if (stateChanged) {
+
+         // For the end feedbacks
+         if (inputSlider.value == 1) {
+            Object.assign(feedbackArea.style, { opacity: 0 });
+            setTimeout(function () {
+               feedbackArea.children[0].innerHTML = myopiaConvergingFeedbackEnd;
+               Object.assign(feedbackArea.style, { opacity: 1, background: yellowGradient });
+            }, 500);
+         }
+         else if (inputSlider.value != 1 && stateChanged == true) {
             Object.assign(feedbackArea.style, { opacity: 0 });
             setTimeout(function () {
                feedbackArea.children[0].innerHTML = myopiaConvergingFeedback;
@@ -797,29 +849,43 @@ function sliderFunction() {
          Lens.power = inputSlider.value;
          Lens.draw(contexts[1]);
 
-         // Drawing the ray diagram
+         // Drawing the lens and rays
          contexts[2].clearRect(0, 0, canvasWidth, canvasHeight);
-         ray1.draw(contexts[2]);
          ray2.type = 'convergent';
-         ray2.focusPoint = Lens.x + 1 * lensFocalLength / (inputSlider.value);
-         ray3.endX = ratinaPosition - focusOffsetValue * (1 + Math.abs(inputSlider.value));
-         ray3.focusPoint = ratinaPosition - focusOffsetValue * (1 + Math.abs(inputSlider.value));
+         ray2.focusPoint = Lens.x + 0.8 * lensFocalLength / (inputSlider.value);
          ray3.spread = ray2.getEndSpread();
+         ray4.focusPoint = retinaPosition - focusOffsetValue * (1 + Math.abs(inputSlider.value));
+         ray4.endX = ray4.focusPoint;
+         ray4.spread = ray3.getEndSpread();
+         ray1.draw(contexts[2]);
          ray2.draw(contexts[2]);
          ray3.draw(contexts[2]);
+         ray4.draw(contexts[2]);
+
       }
       else if (inputSlider.value < 0) {
-         if (stateChanged) {
+
+         // For the end feedbacks and bringing back the buttons
+         if (inputSlider.value == -1) {
+            Object.assign(nextButton.style, { display: 'block' });
+            Object.assign(labels[0].style, { backgroundColor: labelColor.green });
+            labels[0].children[0].innerHTML = "Clear vision";
+            labels[2].children[0].innerHTML = "Image is formed on retina";
+            Object.assign(feedbackArea.style, { opacity: 0 });
+            setTimeout(function () {
+               feedbackArea.children[0].innerHTML = myopiaDivergingFeedbackEnd;
+               Object.assign(feedbackArea.style, { opacity: 1, background: yellowGradient });
+            }, 500);
+         }
+         else if (inputSlider.value != -1 && stateChanged == true) {
             Object.assign(feedbackArea.style, { opacity: 0 });
             setTimeout(function () {
                feedbackArea.children[0].innerHTML = myopiaDivergingFeedback;
                Object.assign(feedbackArea.style, { opacity: 1, background: yellowGradient });
             }, 500);
-         }
-
-         // Bringing back the button
-         if (inputSlider.value == -1) {
-            Object.assign(nextButton.style, { display: 'block' });
+            Object.assign(labels[0].style, { backgroundColor: labelColor.red });
+            labels[0].children[0].innerHTML = "Blurred vision";
+            labels[2].children[0].innerHTML = "Image formed in front of retina";
          }
 
          // drawing the lens
@@ -828,16 +894,19 @@ function sliderFunction() {
          Lens.power = Math.abs(inputSlider.value);
          Lens.draw(contexts[1]);
 
-         // Drawing the ray diagram
+         // Drawing the lens and rays
          contexts[2].clearRect(0, 0, canvasWidth, canvasHeight);
-         ray1.draw(contexts[2]);
          ray2.type = 'divergent';
-         ray2.focusPoint = Lens.x - (0.3 * lensFocalLength / Math.abs(inputSlider.value));
-         ray3.endX = ratinaPosition - focusOffsetValue * (1 - Math.abs(inputSlider.value));
-         ray3.focusPoint = ratinaPosition - focusOffsetValue * (1 - Math.abs(inputSlider.value));
+         ray2.focusPoint = Lens.x - (0.8 * lensFocalLength / Math.abs(inputSlider.value));
          ray3.spread = ray2.getEndSpread();
+         ray4.focusPoint = retinaPosition - focusOffsetValue * (1 - Math.abs(inputSlider.value));
+         ray4.endX = ray4.focusPoint;
+         ray4.spread = ray3.getEndSpread();
+         ray1.draw(contexts[2]);
          ray2.draw(contexts[2]);
          ray3.draw(contexts[2]);
+         ray4.draw(contexts[2]);
+
 
       }
       else if (inputSlider.value == 0) {
@@ -849,46 +918,67 @@ function sliderFunction() {
             }, 500);
          }
 
+         // Drawing the lenses
          Lens.clearRect(contexts[1]);
          Lens.type = 'parallel';
          Lens.draw(contexts[1]);
 
          // Drawing the ray diagram
+         contexts[2].clearRect(0, 0, canvasWidth, canvasHeight);
          ray2.type = 'parallel';
-
-         ray3.endX = ratinaPosition - focusOffsetValue * (1);
-         ray3.focusPoint = ratinaPosition - focusOffsetValue * (1);
          ray3.spread = ray2.getEndSpread();
+         ray4.focusPoint = retinaPosition - focusOffsetValue * (1);
+         ray4.endX = ray4.focusPoint;
+         ray4.spread = ray3.getEndSpread();
+         ray1.draw(contexts[2]);
+         ray2.draw(contexts[2]);
          ray3.draw(contexts[2]);
+         ray4.draw(contexts[2]);
       }
    }
    else if (typeOfEyeDefect == 'hyperopic' && whichObjectSelected == 'near') {
-      blurFrontImg.style.setProperty('--blurValue', `${2 - 2 * inputSlider.value}rem`);
-      nearbyPlant.style.setProperty('--blurValue', `${10 - 10 * inputSlider.value}rem`);
-      plantsInRightScreen[1].style.setProperty('--blurValue', `${2 - 2 * inputSlider.value}rem`)
+      leftFG.style.setProperty('--blurValue', `${5 - 5 * inputSlider.value}rem`);
+      rightJuiceCan.style.setProperty('--blurValue', `${5 - 5 * inputSlider.value}rem`);
+
+      // Changing the position of the label hand
+      Object.assign(labels[2].children[2].style, { right: `${30 + (inputSlider.value) * (75 - 55)}rem` });
+      Object.assign(labels[2].children[3].style, { right: `${30 + (inputSlider.value) * (75 - 55)}rem` });
+
       if (userInteractedWithSlider == false) {
          Object.assign(feedbackArea.style, { opacity: 0 });
          setTimeout(function () {
-            feedbackArea.children[0].innerHTML = "Lets try to rectify hypermetropia by focusing the rays on to the retina using a corrective lens.";
+            feedbackArea.children[0].innerHTML = "Let’s rectify hypermetropia by focusing the rays onto the retina using a corrective lens.";
             Object.assign(feedbackArea.style, { opacity: 1, background: blueGradient });
          }, 500);
       }
       if (inputSlider.value > 0) {
-         if (stateChanged) {
+
+         // Bringing back the button and end feedback
+         if (inputSlider.value == 1) {
+            Object.assign(nextButton.style, { display: 'block', width: '480rem' });
+            Object.assign(labels[1].style, { backgroundColor: labelColor.green });
+            labels[1].children[0].innerHTML = "Clear vision";
+            labels[2].children[0].innerHTML = "Image is formed on retina";
+            Object.assign(feedbackArea.style, { opacity: 0 });
+            setTimeout(function () {
+               feedbackArea.children[0].innerHTML = hypermetropiaConvergingFeedbackEnd;
+               Object.assign(feedbackArea.style, { opacity: 1, background: yellowGradient });
+            }, 500);
+         }
+         else if (inputSlider.value != 1 && stateChanged == true) {
+            Object.assign(labels[1].style, { backgroundColor: labelColor.red });
+            labels[1].children[0].innerHTML = "Blurred vision";
+            labels[2].children[0].innerHTML = "Image is not formed on the retina";
             Object.assign(feedbackArea.style, { opacity: 0 });
             setTimeout(function () {
                feedbackArea.children[0].innerHTML = hypermetropiaConvergingFeedback;
                Object.assign(feedbackArea.style, { opacity: 1, background: yellowGradient });
             }, 500);
          }
-         // Bringing back the button
-         if (inputSlider.value == 1) {
-            Object.assign(nextButton.style, { display: 'block', width: '480rem' });
-         }
 
-         var focalLength = lensFocalLength / (Math.abs(inputSlider.value));
-         var imageDistance = (-nearObjectDistance * focalLength) / (-nearObjectDistance + focalLength);
-         ray2.focusPoint = Lens.x + imageDistance;
+         // var focalLength = lensFocalLength / (Math.abs(inputSlider.value));
+         // var imageDistance = (-nearObjectDistance * focalLength) / (-nearObjectDistance + focalLength);
+         // ray2.focusPoint = Lens.x + imageDistance;
 
 
          // Drawing the lens
@@ -897,18 +987,31 @@ function sliderFunction() {
          Lens.power = inputSlider.value;
          Lens.draw(contexts[1]);
 
-         // Drawing the ray diagram
+         // Drawing the lens and rays
          contexts[2].clearRect(0, 0, canvasWidth, canvasHeight);
          ray2.type = 'convergent';
-         ray3.focusPoint = ratinaPosition + focusOffsetValue * (1 - Math.abs(inputSlider.value));
-         ray3.endX = ray3.focusPoint;
+         ray2.focusPoint = Lens.x + 0.8 * lensFocalLength / (inputSlider.value);
          ray3.spread = ray2.getEndSpread();
+         ray4.focusPoint = retinaPosition + focusOffsetValue * (1 - Math.abs(inputSlider.value));
+         ray4.endX = ray4.focusPoint;
+         ray4.spread = ray3.getEndSpread();
          ray1.draw(contexts[2]);
          ray2.draw(contexts[2]);
          ray3.draw(contexts[2]);
+         ray4.draw(contexts[2]);
+
       }
       else if (inputSlider.value < 0) {
-         if (stateChanged) {
+
+         // For the end feedbacks
+         if (inputSlider.value == -1) {
+            Object.assign(feedbackArea.style, { opacity: 0 });
+            setTimeout(function () {
+               feedbackArea.children[0].innerHTML = hypermetropiaDivergingFeedbackEnd;
+               Object.assign(feedbackArea.style, { opacity: 1, background: yellowGradient });
+            }, 500);
+         }
+         else if (inputSlider.value != -1 && stateChanged == true) {
             Object.assign(feedbackArea.style, { opacity: 0 });
             setTimeout(function () {
                feedbackArea.children[0].innerHTML = hypermetropiaDivergingFeedback;
@@ -916,27 +1019,25 @@ function sliderFunction() {
             }, 500);
          }
 
-
-         var focalLength = lensFocalLength / (Math.abs(inputSlider.value));
-         var imageDistance = (nearObjectDistance * focalLength) / (-nearObjectDistance - focalLength);
-         ray2.focusPoint = Lens.x + imageDistance;
-
          // drawing the lens
          Lens.clearRect(contexts[1]);
          Lens.type = 'concave';
          Lens.power = Math.abs(inputSlider.value);
          Lens.draw(contexts[1]);
 
-         // Drawing the ray diagram
+         // Drawing the lens and rays
          contexts[2].clearRect(0, 0, canvasWidth, canvasHeight);
-         ray2.type = 'divergent';
-         // ray2.focusPoint = Lens.x - (lensFocalLength / Math.abs(inputSlider.value));
-         ray3.focusPoint = ratinaPosition + focusOffsetValue * (1 + Math.abs(inputSlider.value));
-         ray3.endX = ray3.focusPoint;
+         ray2.type = 'convergent';
+         ray2.focusPoint = Lens.x + 1.2 * lensFocalLength / (inputSlider.value);
          ray3.spread = ray2.getEndSpread();
+         ray4.focusPoint = retinaPosition + focusOffsetValue * (1 + Math.abs(inputSlider.value));
+         ray4.endX = ray4.focusPoint;
+         ray4.spread = ray3.getEndSpread();
          ray1.draw(contexts[2]);
          ray2.draw(contexts[2]);
          ray3.draw(contexts[2]);
+         ray4.draw(contexts[2]);
+
       }
       else if (inputSlider.value == 0) {
          if (stateChanged) {
@@ -947,30 +1048,181 @@ function sliderFunction() {
             }, 500);
          }
 
-         var imageDistance = -nearObjectDistance;
-         // Drawing the ray diagram
-         contexts[2].clearRect(0, 0, canvasWidth, canvasHeight);
+         // Drawing the lens
          Lens.clearRect(contexts[1]);
          Lens.type = 'parallel';
          Lens.draw(contexts[1]);
 
          // Drawing the ray diagram
-
-         ray2.type = 'divergent';
-         ray2.focusPoint = ray1.focusPoint;
-         ray3.focusPoint = ratinaPosition + focusOffsetValue * (1);
-         ray3.endX = ray3.focusPoint;
+         contexts[2].clearRect(0, 0, canvasWidth, canvasHeight);
+         ray2.type = 'parallel';
          ray3.spread = ray2.getEndSpread();
+         ray4.focusPoint = retinaPosition + focusOffsetValue * (1);
+         ray4.endX = ray4.focusPoint;
+         ray4.spread = ray3.getEndSpread();
          ray1.draw(contexts[2]);
          ray2.draw(contexts[2]);
          ray3.draw(contexts[2]);
+         ray4.draw(contexts[2]);
       }
-   }
-   else if (typeOfEyeDefect == 'myopic' && whichObjectSelected == 'near') {
-
-   }
-   else if (typeOfEyeDefect == 'hyperopic' && whichObjectSelected == 'far') {
-
    }
    previousSliderValue = inputSlider.value;
 }
+
+// The following are for the ray diagrams of on the eye
+
+//Drawing and positioning the lenses
+var Lens = new lens(canvasWidth * 0.73, canvasHeight * 0.45);
+Lens.height = canvasHeight * 0.28;
+Lens.width = canvasWidth * 0.04;
+Lens.power = 0.5;
+
+var lensFocalLength = canvasWidth * 0.35; //Lens focal length
+
+// Variables for ray calculation
+var retinaPosition = canvasWidth * 0.925;
+var focusOffsetValue = canvasWidth * 0.02;
+var ray1StartingPositionX = canvasWidth * 0.40;
+var ray1StartingPositionY = canvasHeight * 0.462;
+// var lineWidth = 3 * canvasHeight / 520;
+var lineWidth = 2;
+var nearObjectDistance = lensFocalLength / 3;
+var pointsX = [canvasWidth * 0.40, Lens.x, canvasWidth * 0.785, canvasWidth * 0.801, retinaPosition];
+
+// Defining the rays
+var ray1 = new xParallelRays(ray1StartingPositionX, ray1StartingPositionY);
+ray1.spread = canvasHeight * 0.09;
+ray1.type = 'parallel';
+ray1.startX = ray1StartingPositionX;
+ray1.focusPoint = ray1StartingPositionX;
+ray1.endX = pointsX[1];
+ray1.strokeStyle = "#ffffff80";
+ray1.fillStyle = "#ffffff80";
+ray1.lineWidth = lineWidth;
+// parallelRays.draw(contexts[2]);
+
+var ray2 = new xParallelRays(ray1.endX, ray1.startY);
+ray2.spread = ray1.getEndSpread();
+ray2.endX = pointsX[2];
+ray2.strokeStyle = "#ffffff80";
+ray2.fillStyle = "#ffffff80";
+ray2.type = 'parallel';
+ray2.lineWidth = lineWidth;
+// ray1.draw(contexts[2]);
+
+var ray3 = new xParallelRays(ray2.endX, ray2.startY);
+ray3.spread = ray2.getEndSpread();
+ray3.endX = pointsX[3];
+ray3.focusPoint = ray3.endX + canvasWidth * 0.03;
+ray3.strokeStyle = "#ffffff80";
+ray3.fillStyle = "#ffffff80";
+ray3.type = 'convergent';
+ray3.lineWidth = lineWidth;
+// ray2.draw(contexts[2]);
+
+var ray4 = new xParallelRays(ray3.endX, ray3.startY);
+ray4.spread = ray3.getEndSpread();
+ray4.endX = pointsX[4];
+ray4.focusPoint = ray4.endX;
+ray4.strokeStyle = "#ffffff80";
+ray4.fillStyle = '#ffffff80';
+ray4.type = 'convergent';
+ray4.lineWidth = lineWidth;
+
+ray1.stroke = false;
+ray2.stroke = false;
+ray3.stroke = false;
+ray4.stroke = false;
+
+/* Four functions for four type of ray diagrams */
+function drawRayDiagramMyopiaNear() {
+   changeCanvasVariablesZoomIn();
+   Lens.draw(contexts[1]);
+   ray1.draw(contexts[0]);
+   ray2.draw(contexts[0]);
+   ray3.draw(contexts[0]);
+   ray4.draw(contexts[0]);
+}
+
+function changeCanvasVariablesZoomOut() {
+   // Variables for ray calculation
+   retinaPosition = canvasWidth * 0.925;
+   focusOffsetValue = canvasWidth * 0.02;
+   ray1StartingPositionX = canvasWidth * 0.40;
+   ray1StartingPositionY = canvasHeight * 0.465;
+
+   // Lens variables
+   Lens.x = canvasWidth * 0.73;
+   Lens.y = canvasHeight * 0.45
+   Lens.height = canvasHeight * 0.28;
+   Lens.width = canvasWidth * 0.04;
+
+   pointsX = [ray1StartingPositionX, Lens.x, canvasWidth * 0.785, canvasWidth * 0.801, retinaPosition];
+
+   // Ray variables
+   ray1.startX = ray1StartingPositionX;
+   ray1.startY = ray1StartingPositionY;
+   ray1.spread = canvasHeight * 0.1;
+   ray1.endX = pointsX[1];
+
+   ray2.type = 'parallel';
+   ray2.startX = ray1.endX;
+   ray2.startY = ray1StartingPositionY;
+   ray2.endX = pointsX[2];
+   ray2.spread = ray1.getEndSpread();
+
+   ray3.startX = ray2.endX;
+   ray3.startY = ray1StartingPositionY;
+   ray3.endX = pointsX[3];
+   ray3.focusPoint = ray3.endX + canvasWidth * 0.03;
+   ray3.spread = ray2.getEndSpread();
+
+   ray4.startX = ray3.endX;
+   ray4.startY = ray1StartingPositionY;
+   ray4.endX = pointsX[4];
+   ray4.spread = ray3.getEndSpread();
+   ray4.focusPoint = ray4.endX;
+}
+
+function changeCanvasVariablesZoomIn() {
+   rightSideImageArea.classList.add('zoomRight');
+   // Variables for ray calculation
+   retinaPosition = canvasWidth * 0.90;
+   focusOffsetValue = canvasWidth * 0.02 * 1.3;
+   ray1StartingPositionX = canvasWidth * 0.46;
+   ray1StartingPositionY = canvasHeight * 0.462;
+
+   // Lens variables
+   Lens.x = canvasWidth * 0.65;
+   Lens.y = canvasHeight * 0.45
+   Lens.height = canvasHeight * 0.28 * 1.3;
+   Lens.width = canvasWidth * 0.04 * 1.3;
+
+   pointsX = [ray1StartingPositionX, Lens.x, canvasWidth * 0.715, canvasWidth * 0.737, retinaPosition];
+
+   // Ray variables
+   ray1.startX = ray1StartingPositionX;
+   ray1.startY = ray1StartingPositionY;
+   ray1.spread = canvasHeight * 0.10 * 1.3;
+   ray1.endX = pointsX[1];
+
+   ray2.type = 'parallel';
+   ray2.startX = ray1.endX;
+   ray2.startY = ray1StartingPositionY;
+   ray2.endX = pointsX[2];
+   ray2.spread = ray1.getEndSpread();
+
+   ray3.startX = ray2.endX;
+   ray3.startY = ray1StartingPositionY;
+   ray3.endX = pointsX[3];
+   ray3.focusPoint = ray3.endX + canvasWidth * 0.03 * 1.3;
+   ray3.spread = ray2.getEndSpread();
+
+   ray4.startX = ray3.endX;
+   ray4.startY = ray1StartingPositionY;
+   ray4.endX = pointsX[4];
+   ray4.spread = ray3.getEndSpread();
+   ray4.focusPoint = ray4.endX;
+}
+
+// drawRayDiagramMyopiaNear();

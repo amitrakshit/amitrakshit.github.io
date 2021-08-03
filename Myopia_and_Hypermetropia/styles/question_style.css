@@ -15,7 +15,8 @@ body {
     border-radius: 20rem;
 }
 
-.questionImage #questionImg {
+.questionImageContainer #questionImg {
+    position: relative;
     width: auto;
     height: 100%;
 }
@@ -122,6 +123,26 @@ body {
     color: #FF8F8F;
 }
 
+#MSQinstruction {
+    position: absolute;
+    width: 80%;
+    height: 88rem;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 1000rem;
+    font-family: Gotham SSm;
+    font-style: normal;
+    font-weight: 325;
+    font-size: 36rem;
+    line-height: 43rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    opacity: 1;
+}
+
 .option-container {
     position: absolute;
     display: flex;
@@ -182,9 +203,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(8, 71, 32, 0.5);
-    border-radius: 20rem;
-    box-shadow: 0rem 5rem 10rem rgba(0, 0, 0, 0.507);
+    background: linear-gradient(0deg, rgba(54, 167, 92, 0.4), rgba(54, 167, 92, 0.4));
+    border-radius: 24rem;
     font-family: Gotham SSm;
     font-style: normal;
     font-weight: 325;
@@ -324,6 +344,7 @@ footer {
 
 .innerCheckBox {
     position: relative;
+    display: block;
     width: 35rem;
     height: 35rem;
     background-color: #33333300;
@@ -335,6 +356,7 @@ footer {
 }
 
 .checkBox .rightAns {
+    display: block;
     width: 45rem;
     height: 45rem;
     background-color: #33333300;
@@ -345,6 +367,7 @@ footer {
 }
 
 .checkBox .wrongAns {
+    display: block;
     position: relative;
     width: 45rem;
     height: 45rem;

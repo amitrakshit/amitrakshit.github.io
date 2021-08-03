@@ -124,40 +124,6 @@ body {
     transform: translate(-50%, -50%) rotate(45deg);
 }
 
-/* 
-.bubble {
-    position: absolute;
-    border: none;
-    border-radius: 50%;
-}
-
-.bubble.bubble1 {
-    width: 531rem;
-    height: 531rem;
-    left: -144rem;
-    top: -267rem;
-    background: radial-gradient(53.31% 53.31% at 50% 50%, rgba(137, 27, 233, 0) 0%, rgba(137, 27, 233, 0.27907) 85.42%, #B663FF 100%);
-    opacity: 0.4;
-}
-
-.bubble.bubble2 {
-    width: 336rem;
-    height: 336rem;
-    left: 912rem;
-    top: 156rem;
-    background: radial-gradient(53.31% 53.31% at 50% 50%, rgba(137, 27, 233, 0) 0%, rgba(137, 27, 233, 0.27907) 85.42%, #891BE9 100%);
-    opacity: 0.3;
-}
-
-.bubble.bubble3 {
-    width: 381rem;
-    height: 381rem;
-    left: 606rem;
-    top: 1647rem;
-    background: radial-gradient(53.31% 53.31% at 58.96% 50.8%, rgba(0, 102, 255, 0) 47.4%, rgba(96, 140, 255, 0.5) 100%);
-    opacity: 0.36;
-} */
-
 /* For navigation bar. When selected the 'nav_selected' class is to be added in js. And the direction of the box shadow should be changed depending on the situation */
 
 .navigation_bar {
@@ -260,6 +226,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 }
 
 .heading p {
@@ -289,6 +256,11 @@ body {
     top: 0%;
 }
 
+.blur {
+    --blurValue: 5rem;
+    filter: blur(var(--blurValue));
+}
+
 .visual_area .imageContainer {
     position: absolute;
     display: flex;
@@ -297,7 +269,7 @@ body {
     overflow: hidden;
 }
 
-.visual_area #frontView {
+.visual_area #leftSide {
     position: absolute;
     top: 0rem;
     left: 0rem;
@@ -305,73 +277,42 @@ body {
     width: 30%;
     /* outline: 2rem solid white; */
     border-right: 2rem solid white;
+    z-index: 1;
 }
 
-.visual_area #frontView img {
-    position: relative;
-    height: 100%;
-    left: 8rem;
-}
-
-.forBlur .myopia {
-    -webkit-mask: radial-gradient(30% 42% at 51% 42%, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1) 68%, rgba(0, 0, 0, 0) 100%);
-    --blurValue: 2rem;
-    filter: blur(var(--blurValue));
-}
-
-.forBlur .hyperopia {
-    -webkit-mask: radial-gradient(35% 43% at 51% 25%, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%);
-    --blurValue: 2rem;
-    filter: blur(var(--blurValue));
-}
-
-.visual_area .forBlur {
+.visual_area #leftSide #leftBackground {
     position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0rem;
-    left: 0rem;
-    height: 100%;
     width: 100%;
-    overflow: hidden;
-    outline: 5rem solid black;
-    box-sizing: border-box;
+    left: 0rem;
+    bottom: 0rem;
+    z-index: -1;
 }
 
-.visual_area .plantImageContainer {
+.foreGroundImgContainer, .treeImgContainer {
     position: absolute;
 }
 
-.visual_area #farAwayPlant {
-    bottom: 41%;
-    transform-origin: bottom;
-    transform: scale(0.12);
+.treeImgContainer {
+    width: 60%;
+    left: 36%;
+    bottom: 26.7%;
 }
 
-.visual_area #nearByPlant {
-    bottom: 10%;
-    transform-origin: bottom;
-    transform: scale(0.3);
+.foreGroundImgContainer {
+    bottom: 0rem;
+    left: 0rem;
+    width: 75%;
 }
 
-.plantImageContainer .leftScreenPlantImg {
+#leftForeground, #leftTree {
+    position: relative;
     width: 100%;
     height: auto;
-    z-index: 0;
 }
 
-.plantBlur {
-    --blurValue: 10rem;
-    filter: blur(var(--blurValue));
-}
+/* for the right side images */
 
-.plantBlurSmall {
-    --blurValue: 2rem;
-    filter: blur(var(--blurValue));
-}
-
-.visual_area #sideView {
+.visual_area #rightSide {
     position: absolute;
     top: 0rem;
     right: 0rem;
@@ -379,57 +320,272 @@ body {
     width: 69.7%;
     border-left: 2rem solid white;
     background-image: radial-gradient(119.99% 62.42% at 50% 36.33%, #2d0457 0%, #000108 100%);
+    transform-origin: right;
+    transition: transform 0.5s;
 }
 
-.visual_area #sideView img {
-    position: relative;
-    left: -160rem;
-    transform: scaleX(-1);
-    height: 100%;
-    opacity: 0.0;
+.zoomRight {
+    transform-origin: right;
+    transform: scale(1.31);
 }
 
-.visual_area #eye {
+.treeImgContainerRight {
     position: absolute;
-    width: 50%;
-    height: 50%;
-    top: 42%;
-    transform: translateY(-50%);
-    right: -80rem;
+    width: 20%;
+    bottom: 40%;
+    left: 5%;
+    transition: opacity 0.5s;
 }
 
-.visual_area #eye img {
-    width: 100%;
-    height: auto;
-}
-
-.visual_area #plant {
+.juiceCanImgContainerRight {
     position: absolute;
+    width: 20%;
     left: 32%;
-    bottom: 40%;
-    width: 7%;
-    z-index: 0;
+    bottom: 33%;
+    transition: opacity 0.5s;
+    z-index: 99;
 }
 
-.visual_area #plant2 {
+#rightTree, #rightJuiceCan {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.eyeImageContainer {
     position: absolute;
-    left: 53%;
-    bottom: 40%;
-    width: 7%;
-    z-index: 0;
+    width: 70%;
+    right: -15%;
+    top: 15%;
 }
 
-#plantImg {
-    opacity: 1;
+.eyeImageContainer #eyeImg {
+    position: relative;
     width: 100%;
     height: auto;
 }
 
-#plantImg2 {
-    opacity: 1;
-    width: 100%;
-    height: auto;
+/* Styles for the labels */
+
+.visual_area .labels {
+    --vHeight: 0;
+    position: absolute;
+    bottom: 15%;
+    width: 120rem;
+    height: 80rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-50%);
+    transition: opacity 0.5s;
 }
+
+.visual_area #label1 {
+    background-color: #0099BB;
+    width: 150rem;
+    left: 15%;
+    height: 80rem;
+}
+
+.visual_area #label2 {
+    background-color: #0099BB;
+    width: 150rem;
+    left: 41%;
+    height: 80rem;
+}
+
+.visual_area #label3 {
+    background-color: #0099BB;
+    width: 299rem;
+    left: 75%;
+    height: 80rem;
+}
+
+#label3 #vStick3, #round3 {
+    right: 50rem;
+}
+
+#label3 #vStick3 {
+    height: 112rem;
+}
+
+#label3 #round3 {
+    bottom: calc(100% + 112rem);
+    transform: translateX(40%);
+}
+
+/* .zoomOut and .zoomOutHand are only four 'corrective lens' label styles */
+.visual_area .zoomOut { 
+    top: 25% !important;
+    left: 20% !important;
+    transform-origin: right;
+    transform: scale(0.77);
+}
+.visual_area #label4 {
+    background-color: #0099BB;
+    width: 221rem;
+    left: 33%;
+    top: 20%;
+    height: 34rem;
+}
+
+#label4 #lensLabel {
+    transform-origin: top;
+    transform: rotate(-83deg) translateX(50%);
+    height: 80rem;
+}
+#label4 .zoomOutHand{
+    transform: rotate(-90deg) translateX(50%) !important;
+
+}
+
+#label4 #lensLabelRound {
+    top: 100%;
+}
+
+.labels p {
+    font-family: Gotham SSm;
+    text-align: center;
+    color: white;
+    font-style: normal;
+    font-weight: 325;
+    font-size: 28rem;
+    line-height: 34rem;
+    margin: 5rem 0rem;
+}
+
+.labels .hTopBar {
+    position: absolute;
+    top: -6rem;
+    width: 100%;
+    border-top: 4rem solid white;
+}
+
+.labels .hBottomBar {
+    position: absolute;
+    bottom: -6rem;
+    width: 100%;
+    border-bottom: 4rem solid white;
+}
+
+.labels .vMiddleBar {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 6rem);
+    height: 60rem;
+    width: 2rem;
+    background-color: white;
+    transform: translateX(-50%);
+}
+
+.labels .vRightBar {
+    position: absolute;
+    right: 0%;
+    bottom: calc(100% + 6rem);
+    height: 60rem;
+    width: 2rem;
+    background-color: white;
+}
+
+.labels .vRightBarDown {
+    position: absolute;
+    right: 0%;
+    top: calc(100% + 6rem);
+    height: 60rem;
+    width: 2rem;
+    background-color: white;
+}
+
+.labels .roundTop {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 60rem);
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    background-color: #ffffff;
+    transform: translateX(-50%);
+}
+
+.labels .roundTopRight {
+    position: absolute;
+    right: 0%;
+    bottom: calc(100% + 60rem);
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    background-color: #ffffff;
+    transform: translateX(40%);
+}
+
+.labels .roundTopRightDown {
+    position: absolute;
+    right: 0%;
+    top: calc(100% + 60rem);
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    background-color: #ffffff;
+    transform: translateX(40%);
+}
+
+/* The ray arrow on the light rays */
+.lightArrowContainer{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    top: 210rem;
+    left: 50%;
+    width: 160rem; height: 65rem;
+    opacity: 0;
+    /* outline: 1rem solid rgb(201, 201, 201); */
+}
+.lightArrowContainer .textLight{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 35rem;
+}
+.lightArrowContainer .textLight p{
+    
+    color: #000000;
+    font-family: Gotham SSm;
+    font-size: 28rem;
+    font-weight: 325;
+}
+.lightArrowContainer .rays{
+    position: relative;
+    left: 5%;
+    width: 90%;
+    height: 3rem;
+    background-color: #F3F3F3;
+}
+.rays .arrowHead1{
+    position: absolute;
+    right: 0rem;
+    height: 3rem;
+    width: 10rem;
+    transform-origin: right;
+    transform: rotate(45deg);
+    background-color: #F3F3F3;
+    border-radius: 50%;
+}
+.rays .arrowHead2{
+    position: absolute;
+    right: 0rem;
+    height: 3rem;
+    width: 10rem;
+    transform-origin: right;
+    transform: rotate(-45deg);
+    background-color: #F3F3F3;
+    border-radius: 50%;
+}
+
+
+
+/* reset button */
 
 .visual_area .resetButtonContainter {
     position: absolute;
@@ -502,14 +658,14 @@ body {
     justify-content: center;
     align-items: center;
     opacity: 1;
-    transition: opacity 0.5s;
+    transition: opacity 0.5s, top 0.5s;
 }
 
 .feedback_bar p {
     font-family: Gotham SSm;
     font-weight: 80;
     font-size: 36rem;
-    margin: 0rem 50rem;
+    margin: 5rem 50rem;
     width: 100%;
     text-align: center;
 }

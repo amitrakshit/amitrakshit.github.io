@@ -63,47 +63,87 @@
                         </defs>
                     </svg> -->
 
-                    <div class="imageContainer" id="frontView">
-                        <img src="./img/wallWithoutPlant.png" alt="" id="blurBackImg">
-                        <div class="forBlur">
-                            <img src="./img/wallWithoutPlant.png" alt="" id="blurFrontImg" class="">
+                    <div class="imageContainer" id="leftSide">
+                        <!-- leftSide BG -->
+                        <img src="./img/leftBackground.png" alt="" id="leftBackground" class="">
+                        <div class="treeImgContainer">
+                            <img src="./img/tree.png" alt="" id="leftTree">
+                        </div>
+                        <div class="foreGroundImgContainer">
+                            <img src="./img/leftForeground.png" alt="" id="leftForeground">
                         </div>
 
-                        <!--The plant image in the environment-->
-                        <div class="plantImageContainer" id="farAwayPlant">
-                            <img src="./img/plant.png" class="leftScreenPlantImg">
+                    </div>
+
+                    <div class="imageContainer " id="rightSide">
+                        <div class="treeImgContainerRight">
+                            <img src="./img/tree.png" alt="" id="rightTree">
+                        </div>
+                        <div class="juiceCanImgContainerRight">
+                            <img src="./img/onlyJuiceCan.png" alt="" id="rightJuiceCan">
+                        </div>
+                        <div class="eyeImageContainer" id="eye">
+                            <img src="./img/eye.png" alt="" id="eyeImg">
                         </div>
 
-                        <div class="plantImageContainer" id="nearByPlant">
-                            <img src="./img/plant.png" class="leftScreenPlantImg">
+                        <!-- Labels -->
+                        <div class="labels" id="label1">
+                            <p>Clear vision</p>
+                            <div class="hTopBar"></div>
+                            <div class="vMiddleBar"></div>
+                            <div class="roundTop"></div>
                         </div>
+                        <div class="labels" id="label2">
+                            <p>Clear vision</p>
+                            <div class="hTopBar"></div>
+                            <div class="vMiddleBar"></div>
+                            <div class="roundTop"></div>
+                        </div>
+                        <div class="labels" id="label3">
+                            <p>Lorem ipsum</p>
+                            <div class="hTopBar"></div>
+                            <div class="vRightBar" id="vStick3"></div>
+                            <div class="roundTopRight" id="round3"></div>
+                        </div>
+                        <div class="labels zoomOut" id="label4">
+                            <p>Corrective lens</p>
+                            <div class="hBottomBar"></div>
+                            <div class="vRightBarDown zoomOutHand" id="lensLabel">
+                                <div class="roundTopRightDown" id="lensLabelRound"></div>
+                            </div>
+
+                        </div>
+
                     </div>
 
-                    <div class="imageContainer" id="sideView">
-                        <!-- <img src="./img/wallSideView.png" alt=""> -->
-                    </div>
-
-                    <div class="imageContainer" id="eye">
-                        <img src="./img/eye.png" alt="">
-                    </div>
-
-                    <div class="imageContainer" id="plant">
-                        <img src="./img/plant.png" class="plantImg" id="plantImg" alt="">
-                    </div>
-
-                    <div class="imageContainer" id="plant2">
-                        <img src="./img/plant.png" class="plantImg" id="plantImg2" alt="">
-                    </div>
-
+                    
+                    
+                    
                     <!-- canvas in visual area -->
                     <canvas class=visualCanvas id="canvas0"></canvas>
                     <canvas class=visualCanvas id="canvas1"></canvas>
                     <canvas class=visualCanvas id="canvas2"></canvas>
+                    
+                    <!-- Light ray diagram arrow and 'light' text -->
+                    <div class="lightArrowContainer">
+                        <div class="rays ray1" id="ray1">
+                            <div class="arrowHead1"></div>
+                            <div class="arrowHead2"></div>
+                        </div>
+                        <div class="textLight">
+                            <p>Light</p>
+                        </div>
+                        <div class="rays ray2" id="ray2">
+                            <div class="arrowHead1"></div>
+                            <div class="arrowHead2"></div>
+                        </div>
+                    </div>
 
                     <!-- The reset button -->
                     <div class="resetButtonContainter">
                         <img src="./img/resetButton.svg" alt="resetButton" id="resetButtonImg">
                     </div>
+
                     <!-- The top heading -->
                     <div class="heading" id="visualAreaHeading">
                         <p>Normal Condition</p>
@@ -125,12 +165,13 @@
 
                 <!-- For Feedback bar -->
                 <div class="feedback_bar">
-                    <p id="para">Tap on the buttons to explore eye defect</p>
+                    <p id="para">Inspect the eye defects by tapping the buttons.
+                    </p>
                 </div>
 
                 <!-- For Interaction area -->
                 <div class="interaction_area">
-                    <input type="range" min="-1" max="1" step="0.1" value="0" id="slider1" class="input_slider"
+                    <input type="range" min="-1" max="1" step="0.05" value="0" id="slider1" class="input_slider"
                         disabled="true">
                     <div class="marker" id="markerLeft"></div>
                     <div class="marker" id="markerMiddle"></div>
@@ -159,13 +200,13 @@
                             </p>
                         </div>
                         <div class="questionImageContainer">
-                            <img src="./img/Temporary IMG.svg" alt="" id="questionImg">
+                            <img src="./img/TempIMG.svg" alt="" id="questionImg">
                         </div>
                         <div class="feedback-bar">
                             <div id="big">Oops!</div>
-                            <div id="small">Try again or swipe left to figure out the right answer.
-                            </div>
+                            <div id="small">Try again or swipe left to figure out the right answer.</div>
                         </div>
+                        <div id="MSQinstruction">More than one option can be correct</div>
 
                         <div class="option-container">
                             <div class="behindText" id="behind1">
@@ -213,9 +254,9 @@
                         <div class="solution">
                             <p id="SolHead">Solution</p>
                             <ul>
-                                <li>In a myopic eye, the image forms before the retina.</li>
-                                <li>By reducing the converging power, the image can be focused on the retina.</li>
-                                <li>Thus, the corrective lens decreases the converging power.</li>
+                                <li>Faraway objects are not clearly visible in myopia; a concave lens is used to correct it.</li>
+                                <li>Nearby objects are not clearly visible in hypermetropia; a convex lens is used to correct it.</li>
+                                <li>Hence, A - I and B - II are the correct answers.</li>
                             </ul>
                         </div>
 
