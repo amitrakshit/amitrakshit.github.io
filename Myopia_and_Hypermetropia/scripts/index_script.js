@@ -142,10 +142,10 @@ function inspectMyopia() {
    typeOfEyeDefect = 'myopic';
    leftButton.innerHTML = 'Tree';
    rightButton.innerHTML = 'Juice can';
-   Object.assign(feedbackArea.style, { opacity: 0 });
+   Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
    setTimeout(function () {
       feedbackArea.children[0].innerHTML = myopiaFeedback;
-      Object.assign(feedbackArea.style, { opacity: 1, background: blueGradient })
+      Object.assign(feedbackArea.style, { opacity: 1, top: '1090rem', background: blueGradient })
    }, 500);
 
    contexts[1].clearRect(0, 0, canvasWidth, canvasHeight);
@@ -205,12 +205,12 @@ function inspectMyopia() {
 
       if (whichObjectAlreadyVisited == 'near') {
          whichObjectAlreadyVisited = 'far';
-         Object.assign(feedbackArea.style, { opacity: 0 });
+         Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
          Object.assign(nextButton.style, { opacity: '1' });
          nextButton.disabled = false;
          setTimeout(function () {
             feedbackArea.children[0].innerHTML = "The tree is not visible as its image forms in front of retina. <br> <b>Let’s rectify myopia.</b>"; //myopia far second feedback
-            Object.assign(feedbackArea.style, { opacity: '1', background: yellowGradient });
+            Object.assign(feedbackArea.style, { opacity: '1', top: '1090rem', background: yellowGradient });
             Object.assign(nextButton.style, { display: 'block' });
          }, 500);
 
@@ -225,10 +225,10 @@ function inspectMyopia() {
       }
       else if (whichObjectAlreadyVisited == 'none') {
          whichObjectAlreadyVisited = 'far';
-         Object.assign(feedbackArea.style, { opacity: 0 });
+         Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
          setTimeout(function () {
             feedbackArea.children[0].innerHTML = "The tree is not clearly visible as its image forms in front of retina. <br> <b> Now, let's observe the juice can. </b>"; //myopia far first feedback
-            Object.assign(feedbackArea.style, { opacity: '1', background: yellowGradient });
+            Object.assign(feedbackArea.style, { opacity: '1', top: '1090rem', background: yellowGradient });
          }, 500);
 
          // For the status bar updation
@@ -279,12 +279,12 @@ function inspectMyopia() {
 
       if (whichObjectAlreadyVisited == 'far') {
          whichObjectAlreadyVisited = 'near';
-         Object.assign(feedbackArea.style, { opacity: 0 });
+         Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
          Object.assign(nextButton.style, { opacity: '1' });
          nextButton.disabled = false;
          setTimeout(function () {
             feedbackArea.children[0].innerHTML = "The juice can is clearly visible as its image forms on retina. <br> <b> Let’s rectify myopia. </b>"; // myopia near second feedback
-            Object.assign(feedbackArea.style, { opacity: '1', background: yellowGradient });
+            Object.assign(feedbackArea.style, { opacity: '1', top: '1090rem', background: yellowGradient });
             Object.assign(nextButton.style, { display: 'block' });
          }, 500);
 
@@ -300,10 +300,10 @@ function inspectMyopia() {
       }
       else if (whichObjectAlreadyVisited == 'none') {
          whichObjectAlreadyVisited = 'near';
-         Object.assign(feedbackArea.style, { opacity: 0 });
+         Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
          setTimeout(function () {
             feedbackArea.children[0].innerHTML = "The juice can is clearly visible as its image forms on retina. <br> <b>Now, let’s observe the tree.</b>"; // myopia near first feedback
-            Object.assign(feedbackArea.style, { opacity: '1', background: yellowGradient });
+            Object.assign(feedbackArea.style, { opacity: '1', top: '1090rem', background: yellowGradient });
          }, 500);
 
          // For the status bar updation
@@ -430,10 +430,10 @@ function inspectHypermetropia() {
    leftButton.innerHTML = 'Tree';
    rightButton.innerHTML = 'Juice can';
 
-   Object.assign(feedbackArea.style, { opacity: 0 });
+   Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
    setTimeout(function () {
       feedbackArea.children[0].innerHTML = hypermetropiaFeedback;
-      Object.assign(feedbackArea.style, { opacity: 1, background: blueGradient });
+      Object.assign(feedbackArea.style, { opacity: 1, top: '1090rem', background: blueGradient });
    }, 500); //0.5s
 
    contexts[1].clearRect(0, 0, canvasWidth, canvasHeight);
@@ -491,12 +491,12 @@ function inspectHypermetropia() {
 
       if (whichObjectAlreadyVisited == 'near') {
          whichObjectAlreadyVisited = 'far';
-         Object.assign(feedbackArea.style, { opacity: 0 });
+         Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
          Object.assign(nextButton.style, { opacity: '1' });
          nextButton.disabled = false;
          setTimeout(function () {
             feedbackArea.children[0].innerHTML = "The tree is clearly visible as its image forms on retina. <br> <b>Let’s rectify hypermetropia.</b>"; //hyperopia far second feedback
-            Object.assign(feedbackArea.style, { opacity: '1', background: yellowGradient });
+            Object.assign(feedbackArea.style, { opacity: '1', top: '1090rem', background: yellowGradient });
             Object.assign(nextButton.style, { display: 'block', width: '600rem' });
          }, 500);
 
@@ -512,10 +512,10 @@ function inspectHypermetropia() {
       }
       else if (whichObjectAlreadyVisited == 'none') {
          whichObjectAlreadyVisited = 'far';
-         Object.assign(feedbackArea.style, { opacity: 0 });
+         Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
          setTimeout(function () {
             feedbackArea.children[0].innerHTML = "The tree is clearly visible as its image forms on retina. <br> <b>Now, let's observe the juice can.</b>"; //hyperopia far first feedback
-            Object.assign(feedbackArea.style, { opacity: '1', background: yellowGradient });
+            Object.assign(feedbackArea.style, { opacity: '1', top: '1090rem', background: yellowGradient });
          }, 500);
 
          // For the status bar updation
@@ -564,12 +564,12 @@ function inspectHypermetropia() {
 
       if (whichObjectAlreadyVisited == 'far') {
          whichObjectAlreadyVisited = 'near';
-         Object.assign(feedbackArea.style, { opacity: 0 });
+         Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
          Object.assign(nextButton.style, { opacity: '1' });
          nextButton.disabled = false;
          setTimeout(function () {
             feedbackArea.children[0].innerHTML = "The juice can is not clearly visible as its image forms behind retina. <br> <b>Let’s rectify hypermetropia.</b>"; // hyperopia near second feedback
-            Object.assign(feedbackArea.style, { opacity: '1', background: yellowGradient });
+            Object.assign(feedbackArea.style, { opacity: '1', top: '1090rem', background: yellowGradient });
             Object.assign(nextButton.style, { display: 'block', width: '600rem' });
          }, 500);
 
@@ -585,10 +585,10 @@ function inspectHypermetropia() {
       }
       else if (whichObjectAlreadyVisited == 'none') {
          whichObjectAlreadyVisited = 'near';
-         Object.assign(feedbackArea.style, { opacity: 0 });
+         Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
          setTimeout(function () {
             feedbackArea.children[0].innerHTML = "The juice can is not clearly visible as its image forms behind retina. <br> <b>Let's observe the tree.</b>"; // hyperopia near first feedback
-            Object.assign(feedbackArea.style, { opacity: '1', background: yellowGradient });
+            Object.assign(feedbackArea.style, { opacity: '1', top: '1090rem', background: yellowGradient });
          }, 500);
 
          // For the status bar updation
@@ -734,9 +734,9 @@ function reset() {
    for (let i = 0; i < canvases.length; i++) {
       contexts[i].clearRect(0, 0, canvasWidth, canvasHeight);
    }
-   Object.assign(feedbackArea.style, { opacity: '0' }); // hiding the feedback
+   Object.assign(feedbackArea.style, { opacity: '0', top: '1122rem' }); // hiding the feedback
    setTimeout(function () {
-      Object.assign(feedbackArea.style, { opacity: '1', background: blueGradient })
+      Object.assign(feedbackArea.style, { opacity: '1', top: '1090rem', background: blueGradient })
    }, 500);
    feedbackArea.children[0].innerHTML = "Inspect the eye defects by tapping the buttons.";
 
@@ -825,27 +825,27 @@ function sliderFunction() {
       Object.assign(labels[2].children[3].style, { right: `${70 + (inputSlider.value) * (75 - 55)}rem` });
 
       if (userInteractedWithSlider == false) {
-         Object.assign(feedbackArea.style, { opacity: 0 });
+         Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
          setTimeout(function () {
             feedbackArea.children[0].innerHTML = "Let’s rectify myopia by focusing the rays onto the retina using a corrective lens.";
-            Object.assign(feedbackArea.style, { opacity: 1, background: blueGradient });
+            Object.assign(feedbackArea.style, { opacity: 1, top: '1090rem', background: blueGradient });
          }, 500);
       }
       if (inputSlider.value > 0) {
 
          // For the end feedbacks
          if (inputSlider.value == 1) {
-            Object.assign(feedbackArea.style, { opacity: 0 });
+            Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
             setTimeout(function () {
                feedbackArea.children[0].innerHTML = myopiaConvergingFeedbackEnd;
-               Object.assign(feedbackArea.style, { opacity: 1, background: yellowGradient });
+               Object.assign(feedbackArea.style, { opacity: 1, top: '1090rem', background: yellowGradient });
             }, 500);
          }
          else if (inputSlider.value != 1 && stateChanged == true) {
-            Object.assign(feedbackArea.style, { opacity: 0 });
+            Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
             setTimeout(function () {
                feedbackArea.children[0].innerHTML = myopiaConvergingFeedback;
-               Object.assign(feedbackArea.style, { opacity: 1, background: yellowGradient });
+               Object.assign(feedbackArea.style, { opacity: 1, top: '1090rem', background: yellowGradient });
             }, 500);
          }
 
@@ -877,17 +877,17 @@ function sliderFunction() {
             Object.assign(labels[0].style, { backgroundColor: labelColor.green });
             labels[0].children[0].innerHTML = "Clear vision";
             labels[2].children[0].innerHTML = "Image is formed on retina";
-            Object.assign(feedbackArea.style, { opacity: 0 });
+            Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
             setTimeout(function () {
                feedbackArea.children[0].innerHTML = myopiaDivergingFeedbackEnd;
-               Object.assign(feedbackArea.style, { opacity: 1, background: yellowGradient });
+               Object.assign(feedbackArea.style, { opacity: 1, top: '1090rem', background: yellowGradient });
             }, 500);
          }
          else if (inputSlider.value != -1 && stateChanged == true) {
-            Object.assign(feedbackArea.style, { opacity: 0 });
+            Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
             setTimeout(function () {
                feedbackArea.children[0].innerHTML = myopiaDivergingFeedback;
-               Object.assign(feedbackArea.style, { opacity: 1, background: yellowGradient });
+               Object.assign(feedbackArea.style, { opacity: 1, top: '1090rem', background: yellowGradient });
             }, 500);
             Object.assign(labels[0].style, { backgroundColor: labelColor.red });
             labels[0].children[0].innerHTML = "Blurred vision";
@@ -917,10 +917,10 @@ function sliderFunction() {
       }
       else if (inputSlider.value == 0) {
          if (stateChanged) {
-            Object.assign(feedbackArea.style, { opacity: 0 });
+            Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
             setTimeout(function () {
                feedbackArea.children[0].innerHTML = planeGlassSlabFeedback;
-               Object.assign(feedbackArea.style, { opacity: 1, background: yellowGradient });
+               Object.assign(feedbackArea.style, { opacity: 1, top: '1090rem', background: yellowGradient });
             }, 500);
          }
 
@@ -951,10 +951,10 @@ function sliderFunction() {
       Object.assign(labels[2].children[3].style, { right: `${30 + (inputSlider.value) * (75 - 55)}rem` });
 
       if (userInteractedWithSlider == false) {
-         Object.assign(feedbackArea.style, { opacity: 0 });
+         Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
          setTimeout(function () {
             feedbackArea.children[0].innerHTML = "Let’s rectify hypermetropia by focusing the rays onto the retina using a corrective lens.";
-            Object.assign(feedbackArea.style, { opacity: 1, background: blueGradient });
+            Object.assign(feedbackArea.style, { opacity: 1, top: '1090rem', background: blueGradient });
          }, 500);
       }
       if (inputSlider.value > 0) {
@@ -965,20 +965,20 @@ function sliderFunction() {
             Object.assign(labels[1].style, { backgroundColor: labelColor.green });
             labels[1].children[0].innerHTML = "Clear vision";
             labels[2].children[0].innerHTML = "Image is formed on retina";
-            Object.assign(feedbackArea.style, { opacity: 0 });
+            Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
             setTimeout(function () {
                feedbackArea.children[0].innerHTML = hypermetropiaConvergingFeedbackEnd;
-               Object.assign(feedbackArea.style, { opacity: 1, background: yellowGradient });
+               Object.assign(feedbackArea.style, { opacity: 1, top: '1090rem', background: yellowGradient });
             }, 500);
          }
          else if (inputSlider.value != 1 && stateChanged == true) {
             Object.assign(labels[1].style, { backgroundColor: labelColor.red });
             labels[1].children[0].innerHTML = "Blurred vision";
             labels[2].children[0].innerHTML = "Image is not formed on the retina";
-            Object.assign(feedbackArea.style, { opacity: 0 });
+            Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
             setTimeout(function () {
                feedbackArea.children[0].innerHTML = hypermetropiaConvergingFeedback;
-               Object.assign(feedbackArea.style, { opacity: 1, background: yellowGradient });
+               Object.assign(feedbackArea.style, { opacity: 1, top: '1090rem', background: yellowGradient });
             }, 500);
          }
 
@@ -1011,17 +1011,17 @@ function sliderFunction() {
 
          // For the end feedbacks
          if (inputSlider.value == -1) {
-            Object.assign(feedbackArea.style, { opacity: 0 });
+            Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
             setTimeout(function () {
                feedbackArea.children[0].innerHTML = hypermetropiaDivergingFeedbackEnd;
-               Object.assign(feedbackArea.style, { opacity: 1, background: yellowGradient });
+               Object.assign(feedbackArea.style, { opacity: 1, top: '1090rem', background: yellowGradient });
             }, 500);
          }
          else if (inputSlider.value != -1 && stateChanged == true) {
-            Object.assign(feedbackArea.style, { opacity: 0 });
+            Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
             setTimeout(function () {
                feedbackArea.children[0].innerHTML = hypermetropiaDivergingFeedback;
-               Object.assign(feedbackArea.style, { opacity: 1, background: yellowGradient });
+               Object.assign(feedbackArea.style, { opacity: 1, top: '1090rem', background: yellowGradient });
             }, 500);
          }
 
@@ -1047,10 +1047,10 @@ function sliderFunction() {
       }
       else if (inputSlider.value == 0) {
          if (stateChanged) {
-            Object.assign(feedbackArea.style, { opacity: 0 });
+            Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
             setTimeout(function () {
                feedbackArea.children[0].innerHTML = planeGlassSlabFeedback;
-               Object.assign(feedbackArea.style, { opacity: 1, background: yellowGradient });
+               Object.assign(feedbackArea.style, { opacity: 1, top: '1090rem', background: yellowGradient });
             }, 500);
          }
 
@@ -1163,7 +1163,7 @@ function changeCanvasVariablesZoomOut() {
    Lens.height = canvasHeight * 0.28;
    Lens.width = canvasWidth * 0.04;
 
-   pointsX = [ray1StartingPositionX, Lens.x, canvasWidth * 0.785, canvasWidth * 0.801, retinaPosition];
+   pointsX = [ray1StartingPositionX, Lens.x + 1, canvasWidth * 0.785 + 1, canvasWidth * 0.801 + 1, retinaPosition];
 
    // Ray variables
    ray1.startX = ray1StartingPositionX;
@@ -1204,7 +1204,7 @@ function changeCanvasVariablesZoomIn() {
    Lens.height = canvasHeight * 0.28 * 1.3;
    Lens.width = canvasWidth * 0.04 * 1.3;
 
-   pointsX = [ray1StartingPositionX, Lens.x, canvasWidth * 0.715, canvasWidth * 0.737, retinaPosition];
+   pointsX = [ray1StartingPositionX, Lens.x + 1, canvasWidth * 0.715 + 1, canvasWidth * 0.737 + 1, retinaPosition];
 
    // Ray variables
    ray1.startX = ray1StartingPositionX;
