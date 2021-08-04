@@ -56,6 +56,12 @@ nextButton.onclick = function () {
 //    question_tab.classList.remove('nav_selected2');
 // });
 
+var windowForThisSim = document.querySelector('.window');
+document.addEventListener('dblclick', function (event) {
+   event.preventDefault();
+   windowForThisSim.requestFullscreen();
+
+});
 
 // visual area heading
 var visualAreaHeading = document.getElementById("visualAreaHeading");
