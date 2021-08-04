@@ -218,7 +218,7 @@ body {
 }
 
 .visual_area .heading {
-    position: relative;
+    position: absolute;
     top: 0rem;
     width: 100%;
     height: 85rem;
@@ -230,7 +230,7 @@ body {
 }
 
 .heading p {
-    position: absolute;
+    position: relative;
     width: 100%;
     font-family: Gotham SSm;
     color: black;
