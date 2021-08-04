@@ -117,13 +117,13 @@ function submitAns() {
     if (rightAnswerStatus == true && wrongAnswerStatus == false && userRespondedAllOptions == false) {
         // correct answer
         Right_ANS.play();
-        Object.assign(feedback_bar.style, { opacity: 1, top: "1000rem" });
+        Object.assign(feedback_bar.style, { opacity: 1, top: "950rem" });
         feedback_bar.children[0].style = "color: #8DD43E;";
         feedback_bar.children[0].innerHTML = "Well Done!";
         feedback_bar.children[1].style = "color: #8DD43E;";
         feedback_bar.children[1].innerHTML = "You got the correct answer!";
         dynamic_panel_window.style = "overflow-y:scroll;";
-        dynamic_panel_window.scroll({ top: 350, behavior: "smooth" });
+        dynamic_panel_window.scroll({ top: 330, behavior: "smooth" });
         footer.style = "bottom:0rem";
 
         // Hiding the submit button
@@ -143,7 +143,7 @@ function submitAns() {
         feedback_bar.children[0].innerHTML = "Almost There!";
         feedback_bar.children[1].innerHTML = `You have partially answered. <br> Try again - there are total ${numberOfCorrectOptions} correct answers.`;
         Object.assign(feedback_bar.children[1].style, { width: '90%' });
-        Object.assign(feedback_bar.style, { opacity: 1, top: "970rem" });
+        Object.assign(feedback_bar.style, { opacity: 1, top: "950rem" });
         Wrong_ANS.play();
         submitButton.innerHTML = 'Retry';
         submitButton.onclick = function () {
@@ -155,7 +155,7 @@ function submitAns() {
         // wrong answer
         feedback_bar.children[0].innerHTML = "Oops!";
         feedback_bar.children[1].innerHTML = `Try again or swipe left to figure out the right answer.`;
-        Object.assign(feedback_bar.style, { opacity: 1, top: "970rem" });
+        Object.assign(feedback_bar.style, { opacity: 1, top: "950rem" });
         Wrong_ANS.play();
         submitButton.innerHTML = 'Retry';
         submitButton.onclick = function () {
