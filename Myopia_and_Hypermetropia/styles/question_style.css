@@ -8,8 +8,8 @@ body {
 
 .background2 .questionImageContainer {
     position: absolute;
-    width: 90%;
-    height: 520rem;
+    width: 984rem;
+    height: 452rem;
     overflow: hidden;
     top: 16%;
     border-radius: 20rem;
@@ -203,7 +203,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(0deg, rgba(54, 167, 92, 0.4), rgba(54, 167, 92, 0.4));
+    /* background: linear-gradient(0deg, rgba(54, 167, 92, 0.4), rgba(54, 167, 92, 0.4)); */
     border-radius: 24rem;
     font-family: Gotham SSm;
     font-style: normal;

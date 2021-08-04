@@ -61,7 +61,7 @@ submitButton.onclick = function () {
 }
 
 // The arrays for checking correct ans and wrong ans
-var correctResponse = [true, false, true];
+var correctResponse = [false, true, true];
 var numberOfOptions = correctResponse.length;
 var numberOfCorrectOptions = 2;
 var userResponse = [false, false, false];

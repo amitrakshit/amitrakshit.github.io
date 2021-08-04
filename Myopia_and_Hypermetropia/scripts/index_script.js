@@ -923,6 +923,9 @@ function sliderFunction() {
                Object.assign(feedbackArea.style, { opacity: 1, top: '1090rem', background: yellowGradient });
             }, 500);
          }
+         else {
+            Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
+         }
 
          // Drawing the lenses
          Lens.clearRect(contexts[1]);
@@ -1053,6 +1056,9 @@ function sliderFunction() {
                Object.assign(feedbackArea.style, { opacity: 1, top: '1090rem', background: yellowGradient });
             }, 500);
          }
+         else {
+            Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
+         }
 
          // Drawing the lens
          Lens.clearRect(contexts[1]);
@@ -1163,12 +1169,12 @@ function changeCanvasVariablesZoomOut() {
    Lens.height = canvasHeight * 0.28;
    Lens.width = canvasWidth * 0.04;
 
-   pointsX = [ray1StartingPositionX, Lens.x + 1, canvasWidth * 0.785 + 1, canvasWidth * 0.801 + 1, retinaPosition];
+   pointsX = [ray1StartingPositionX, Lens.x + 1, canvasWidth * 0.785 + 1, canvasWidth * 0.809 + 1, retinaPosition];
 
    // Ray variables
    ray1.startX = ray1StartingPositionX;
    ray1.startY = ray1StartingPositionY;
-   ray1.spread = canvasHeight * 0.1;
+   ray1.spread = canvasHeight * 0.098;
    ray1.endX = pointsX[1];
 
    ray2.type = 'parallel';
@@ -1180,7 +1186,8 @@ function changeCanvasVariablesZoomOut() {
    ray3.startX = ray2.endX;
    ray3.startY = ray1StartingPositionY;
    ray3.endX = pointsX[3];
-   ray3.focusPoint = ray3.endX + canvasWidth * 0.03;
+   ray3.focusPoint = ray3.endX + canvasWidth * 0.09;
+   ray3.focusPoint = retinaPosition + canvasWidth * 0.3;
    ray3.spread = ray2.getEndSpread();
 
    ray4.startX = ray3.endX;
@@ -1204,7 +1211,7 @@ function changeCanvasVariablesZoomIn() {
    Lens.height = canvasHeight * 0.28 * 1.3;
    Lens.width = canvasWidth * 0.04 * 1.3;
 
-   pointsX = [ray1StartingPositionX, Lens.x + 1, canvasWidth * 0.715 + 1, canvasWidth * 0.737 + 1, retinaPosition];
+   pointsX = [ray1StartingPositionX, Lens.x + 1, canvasWidth * 0.715 + 1, canvasWidth * 0.74 + 1, retinaPosition];
 
    // Ray variables
    ray1.startX = ray1StartingPositionX;
@@ -1221,7 +1228,8 @@ function changeCanvasVariablesZoomIn() {
    ray3.startX = ray2.endX;
    ray3.startY = ray1StartingPositionY;
    ray3.endX = pointsX[3];
-   ray3.focusPoint = ray3.endX + canvasWidth * 0.03 * 1.3;
+   ray3.focusPoint = ray3.endX + canvasWidth * 0.09 * 1.3;
+   ray3.focusPoint = retinaPosition + canvasWidth * 0.3 * 1.3;
    ray3.spread = ray2.getEndSpread();
 
    ray4.startX = ray3.endX;
