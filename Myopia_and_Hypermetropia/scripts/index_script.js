@@ -168,6 +168,9 @@ function inspectMyopia() {
 
    // The images
    rightSideImageArea.classList.remove('zoomRight');
+   for (let i = 0; i < 3; i++) {
+      canvases[i].classList.remove('canvasNotZoomed');
+   }
    Object.assign(rightJuiceCan.style, { opacity: '1' });
    Object.assign(rightTree.style, { opacity: '1' });
    leftBG.classList.add("blur");
@@ -240,6 +243,9 @@ function inspectMyopia() {
 
       // labels and images
       rightSideImageArea.classList.remove('zoomRight');
+      for (let i = 0; i < 3; i++) {
+         canvases[i].classList.remove('canvasNotZoomed');
+      }
       Object.assign(labels[0].style, { backgroundColor: labelColor.red, opacity: '1' });
       Object.assign(labels[1].style, { backgroundColor: labelColor.blue, opacity: '0' });
       Object.assign(labels[2].style, { backgroundColor: labelColor.blue, opacity: '1' });
@@ -315,6 +321,9 @@ function inspectMyopia() {
 
       // labels and images
       rightSideImageArea.classList.add('zoomRight');
+      for (let i = 0; i < 3; i++) {
+         canvases[i].classList.add('canvasNotZoomed');
+      }
       Object.assign(labels[0].style, { backgroundColor: labelColor.red, opacity: '0' });
       Object.assign(labels[1].style, { backgroundColor: labelColor.blue, opacity: '1' });
       Object.assign(labels[2].style, { backgroundColor: labelColor.blue, opacity: '1' });
@@ -365,6 +374,9 @@ function rectifyMyopia() {
 
    // bringing back the tree and removing the juice and the labels
    rightSideImageArea.classList.remove('zoomRight');
+   for (let i = 0; i < 3; i++) {
+      canvases[i].classList.remove('canvasNotZoomed');
+   }
    Object.assign(labels[0].style, { backgroundColor: labelColor.red, opacity: '1' });
    Object.assign(labels[1].style, { backgroundColor: labelColor.blue, opacity: '0' });
    Object.assign(labels[2].style, { backgroundColor: labelColor.blue, opacity: '1' });
@@ -460,6 +472,9 @@ function inspectHypermetropia() {
 
    // The images
    rightSideImageArea.classList.remove('zoomRight');
+   for (let i = 0; i < 3; i++) {
+      canvases[i].classList.remove('canvasNotZoomed');
+   }
    Object.assign(rightJuiceCan.style, { opacity: '1' });
    Object.assign(rightTree.style, { opacity: '1' });
    leftBG.classList.remove("blur");
@@ -530,6 +545,9 @@ function inspectHypermetropia() {
 
       // labels and images
       rightSideImageArea.classList.remove('zoomRight');
+      for (let i = 0; i < 3; i++) {
+         canvases[i].classList.remove('canvasNotZoomed');
+      }
       Object.assign(labels[0].style, { backgroundColor: labelColor.blue, opacity: '1' });
       Object.assign(labels[1].style, { backgroundColor: labelColor.red, opacity: '0' });
       Object.assign(labels[2].style, { backgroundColor: labelColor.blue, opacity: '1' });
@@ -602,6 +620,9 @@ function inspectHypermetropia() {
 
       // labels and images
       rightSideImageArea.classList.add('zoomRight');
+      for (let i = 0; i < 3; i++) {
+         canvases[i].classList.add('canvasNotZoomed');
+      }
       Object.assign(labels[0].style, { backgroundColor: labelColor.blue, opacity: '0' });
       Object.assign(labels[1].style, { backgroundColor: labelColor.red, opacity: '1' });
       Object.assign(labels[2].style, { backgroundColor: labelColor.blue, opacity: '1' });
@@ -653,6 +674,9 @@ function rectifyHypermetropia() {
 
    // labels and images
    rightSideImageArea.classList.add('zoomRight');
+      for (let i = 0; i < 3; i++) {
+         canvases[i].classList.add('canvasNotZoomed');
+      }
    Object.assign(labels[0].style, { backgroundColor: labelColor.blue, opacity: '0' });
    Object.assign(labels[1].style, { backgroundColor: labelColor.red, opacity: '1' });
    Object.assign(labels[2].style, { backgroundColor: labelColor.blue, opacity: '1' });
@@ -1208,6 +1232,9 @@ function changeCanvasVariablesZoomOut() {
 
 function changeCanvasVariablesZoomIn() {
    rightSideImageArea.classList.add('zoomRight');
+      for (let i = 0; i < 3; i++) {
+         canvases[i].classList.add('canvasNotZoomed');
+      }
    // Variables for ray calculation
    retinaPosition = canvasWidth * 0.90;
    focusOffsetValue = canvasWidth * 0.02 * 1.3;
