@@ -498,7 +498,7 @@ return;
      velocity_slider_value_changed++;}
     
      await sleep(2000);
-     document.getElementsByClassName('feedback_bar')[0].style.opacity = 0;
+     document.getElementsByClassName('feedback_bar')[0].style.opacity = 1;
     //  document.getElementById("para").style.color =" black";
         document.getElementsByClassName('feedback_bar')[0].style.background = "linear-gradient(rgb(255, 230, 1) 0%, rgb(232, 136, 47) 100%)";
      
@@ -576,7 +576,7 @@ return;
     //    document.getElementById("para").style.color =" black";
     //    document.getElementsByClassName('feedback_bar')[0].style.background = "linear-gradient(rgb(255, 230, 1) 0%, rgb(232, 136, 47) 100%)";
     document.getElementById("para").style.fontSize =" 36rem";  
-    document.getElementById("para").innerHTML="The ball hits the block it transfers all of its kinetic energy and displaces the block." + " Push ball with different velocities to observe its effect on K.E.".bold();
+    document.getElementById("para").innerHTML="The ball hits the block, it transfers all of its kinetic energy and displaces the block." + " Push ball with different velocities to observe its effect on K.E.".bold();
     //    let content = "Push ball with different velocities to observe its effect on K.E";
     // //    document.getElementById("para").style.fontSize ="40rem";
     //    let TitleElement = document.createElement("b");
@@ -912,7 +912,7 @@ else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 0 && recently_ve
          unfade(document.getElementsByClassName('feedback_bar')[0]);
     //       document.getElementById("para").style.color =" black";
     //  document.getElementsByClassName('feedback_bar')[0].style.background = "linear-gradient(rgb(255, 230, 1) 0%, rgb(232, 136, 47) 100%)";
-         document.getElementById("para").innerHTML=("Vary the velocity of the ball using the slider and press play to observe how the kinetic energy of the ball is affected.");
+         document.getElementById("para").innerHTML=("Vary the velocity of the ball using the slider and press start to observe how the kinetic energy of the ball is affected.");
     //      var output = document.getElementById("v1");
     //  output.innerHTML = (ball_initial_velocity)+"m/s";
     
@@ -941,7 +941,7 @@ else if(velocity_played<0 && velocity_flag == 0 && mass_flag == 0 && recently_ve
                 // velocity_slider_value_changed++;
                 // document.getElementById("para").innerHTML=" ";
                 if (velocity_slider_value_changed>=1)
-            document.getElementsByClassName('feedback_bar')[0].style.opacity = 0;
+            document.getElementsByClassName('feedback_bar')[0].style.opacity = 1;
         //     var output = document.getElementById("v1");
         // output.innerHTML = ((this.value/2)+50)+"m/s";
         if (this.value < 5){
