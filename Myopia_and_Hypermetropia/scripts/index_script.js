@@ -142,10 +142,12 @@ function inspectMyopia() {
    typeOfEyeDefect = 'myopic';
    leftButton.innerHTML = 'Tree';
    rightButton.innerHTML = 'Juice can';
+   // FeedbackArea style
    Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
    setTimeout(function () {
       feedbackArea.children[0].innerHTML = myopiaFeedback;
-      Object.assign(feedbackArea.style, { opacity: 1, top: '1090rem', background: blueGradient })
+      Object.assign(feedbackArea.style, { opacity: 1, top: '1090rem', background: blueGradient });
+      Object.assign(feedbackArea.children[0].style, { width: '80%' }); // paragraph width
    }, 500);
 
    contexts[1].clearRect(0, 0, canvasWidth, canvasHeight);
@@ -430,10 +432,12 @@ function inspectHypermetropia() {
    leftButton.innerHTML = 'Tree';
    rightButton.innerHTML = 'Juice can';
 
+   // FeedbackArea style
    Object.assign(feedbackArea.style, { opacity: 0, top: '1122rem' });
    setTimeout(function () {
       feedbackArea.children[0].innerHTML = hypermetropiaFeedback;
       Object.assign(feedbackArea.style, { opacity: 1, top: '1090rem', background: blueGradient });
+      Object.assign(feedbackArea.children[0].style, { width: '80%' }); //paragraph width
    }, 500); //0.5s
 
    contexts[1].clearRect(0, 0, canvasWidth, canvasHeight);
@@ -815,6 +819,11 @@ function sliderFunction() {
    else {
       stateChanged = false;
    }
+   // Making the width of the paragraph of feedbackArea as 100%
+   setTimeout(function () {
+      Object.assign(feedbackArea.children[0].style, { width: '100%' });
+   }, 500);
+
 
    if (typeOfEyeDefect == 'myopic' && whichObjectSelected == 'far') {
       leftBG.style.setProperty('--blurValue', `${5 + 5 * inputSlider.value}rem`);
