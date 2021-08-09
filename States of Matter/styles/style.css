@@ -331,7 +331,13 @@ position: absolute; width: 100%; height: 100%; z-index: 3; opacity: 1;
 .zoom_container{
     position: absolute; width: 100%; height: 100%; z-index: 4; opacity: 0; border-radius: 24rem;
 }
+.Plus {
+    position: absolute; width: 100%; height: 100%;
+}
 
+.Minus {
+    position: absolute; width: 65%; height: 100%;
+}
 /* For feedback bar */
 
 .feedback_bar {
@@ -345,6 +351,7 @@ position: absolute; width: 100%; height: 100%; z-index: 3; opacity: 1;
     justify-content: center;
     align-items: center;
     opacity: 0;
+    transition: top 0.5s, opacity 0.5s;
 }
 
 .feedback_bar p {
@@ -352,7 +359,7 @@ position: absolute; width: 100%; height: 100%; z-index: 3; opacity: 1;
     font-weight: 80;
     font-size: 36rem;
     margin: 10rem;
-    width: 85%;
+    width: 90%;
     text-align: center;
 }
 
@@ -394,24 +401,13 @@ position: absolute; width: 100%; height: 100%; z-index: 3; opacity: 1;
     left: 5%; */
     position: absolute;
     /* top: 1270rem; */
-    left: 35%;
+    left: 0%;
     
     
     
 }
 
 #marker3 {
-    /* top: 64.3%;
-    left: 5%; */
-    position: absolute;
-    /* top: 1270rem; */
-    left: 0%;
-   
-    
-    
-}
-
-#marker4 {
     /* top: 64.3%;
     left: 5%; */
     position: absolute;
@@ -423,12 +419,13 @@ position: absolute; width: 100%; height: 100%; z-index: 3; opacity: 1;
 }
 
 
+
 #marker2 {
     /* top: 64.3%;
     right: 4%; */
     position: absolute;
     /* top: 1270rem; */
-    right: 33%;
+    right: 50%;
     
 }
 
@@ -445,7 +442,7 @@ position: absolute; width: 100%; height: 100%; z-index: 3; opacity: 1;
     z-index: 1;
     height: 10%;
     border-radius: 6rem;
-    background: linear-gradient(to right, #FFFFFF 0.99%, #00A3FF 0.99%, #00A3FF 34.99%, #ffffFF 34.99%, #ffffFF 36.3%, #FFE600 36.3%, #FFE600 65.48%, #FFFFFF 65.48%,  #FFFFFF 67.2%,  #FF0F00 67.20%, #FF0F00 98.9%, #FFFFFF 98.9%, #FFFFFF 100% );
+    background:#ffffFF;
 
 
 }

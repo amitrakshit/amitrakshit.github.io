@@ -127,7 +127,7 @@ html {
     width: 940rem;
     height: 600rem;
     left: 0rem;
-    top: 130rem;
+    top: 150rem;
     background: #FFFFFF;
     border-radius: 24rem;
 }
@@ -152,7 +152,7 @@ html {
 
 .LO_message .text_container p {
     position: relative;
-    top: 20%;
+    top: 25%;
     width: 90%;
     font-family: Gotham SSm;
     font-style: normal;

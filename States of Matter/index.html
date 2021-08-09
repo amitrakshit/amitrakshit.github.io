@@ -51,7 +51,7 @@
 
                 <!-- For instruction Area. It is always a good practice to put the text in a paragraph element since it can contain inline mathJax. -->
                 <div class="instructino_area">
-                    <p>Tap to select the state of matter, then change the temperature and observe its effect on the particles.
+                    <p>Tap to select the state of matter. Use the slider to change the heat supplied and observe its effect on the particles.
                     </p>
                 </div>
                 <!-- For Visual Area -->
@@ -72,7 +72,7 @@
                     <img class = "gas_container" src = "img/gas_container.png">
                     <img class = "zoom_container" src = "img/Zoombox.png">
                   
-                    <div class = "oven_reading">25&deg;C</div>
+                    <div class = "oven_reading"></div>
                     <div class = "label_matter"></div>
 
                     </div>
@@ -99,18 +99,23 @@
                  
            
                 <div class="temp_slider">
-                    <input type="range" min="25" max="85" value="1" id="temp_change" class="input_slider">
+                    <input type="range" min="25" max="85"  step = "30" id="temp_change" class="input_slider">
                      <div class="marker" id="marker1"></div>
                     <div class="marker" id="marker2"></div>
                     <div class="marker" id="marker3"></div>
-                    <div class="marker" id="marker4"></div>
+                   
                 
                 </div>
 
-                <div class = min_temp>25&deg;C</div>
-                <div class = max_temp>85&deg;C</div>
+                <div class = min_temp>
+                    <img class = "Minus" src = "img/Minus.svg">
+                </div>
+                <div class = max_temp>
+                    <img class = "Plus" src = "img/Plus.svg">
+                   
+                </div>
                 <div class="label">
-                    <span>Temperature</span>
+                    <span>Heat</span>
                 </div>
 
               
@@ -132,7 +137,8 @@
                 <div class="dynamic_panel_window">
                     <div class="scrollable_dynamic_panel">
                         <div class="question_area">
-                            <p> Which of the following statements is correct?
+                            <p> Which of the following statements is/are correct?
+
 
                                 </p><br>
                             
@@ -142,34 +148,65 @@
                             <div id="small">Try again or swipe left to figure out the right answer.
                             </div>
                         </div>
+
                         <div class="option-container">
-                            <div class="options" id="option1" title = "solution"><p>Movement of particles is directly proportional to temperature</p>
+                            <div class="behindText" id="behind1">
+                                <p>You've got this correct, Find out the other correct answer.</p>
                             </div>
-                            <div class="options" id="option2"><p>Movement of particles is inversely proportional to temperature</p>
+                            <div class="behindText" id="behind2">
+                                <p>You've got this correct, Find out the other correct answer.</p>
                             </div>
-                            <div class="options" id="option3"><p>Movement of particles is not related to temperature</p>
+                            <div class="behindText" id="behind3">
+                                <p>You've got this correct, Find out the other correct answer.</p>
                             </div>
-                           
-                            
+                            <div class="behindText" id="behind4">
+                                <p>You've got this correct, Find out the other correct answer.</p>
+                            </div>
+                            <div class="options" id="option1">
+                                <div class="checkBox">
+                                    <div class="innerCheckBox">
+                                    </div>
+                                </div>
+                                <p  class = "option_text"> When heat is added to a substance, its particles move faster.
+                                </p>
+                            </div>
+                            <div class="options" id="option2">
+                                <div class="checkBox">
+                                    <div class="innerCheckBox"></div>
+                                </div>
+                                <p class = "option_text">When heat is removed from a substance, its particles move slower.
+                                </p>
+                            </div>
+                            <div class="options" id="option3">
+                                <div class="checkBox">
+                                    <div class="innerCheckBox"></div>
+                                </div>
+                                <p class = "option_text">The movement of particles is not related to the heat supplied.
+                                </p>
+                            </div>
+                            <div class="options" id="option4">
+                                <div class="checkBox">
+                                    <div class="innerCheckBox"></div>
+                                </div>
+                                <p class = "option_text">B - I</p>
+                            </div>
+
                         </div>
+
+                        <button class="submitButton">Submit</button>
 
                         <div class="solution">
                             <p id="SolHead">Solution</p>
                            
-                            <p id="Soltext">
+                            <ul>
 
-                                &bull;&nbsp;Particles in all states of matter are in &nbsp;&nbsp;&nbsp;constant motion. A rise in temperature &nbsp;&nbsp;&nbsp;increases the kinetic energy and speed &nbsp;&nbsp;&nbsp;of particles.
- <br>
- <br>
-                                &bull;&nbsp;Whereas on decreasing the temperature, &nbsp;&nbsp;&nbsp;the kinetic energy of the particles also &nbsp;&nbsp;&nbsp;decreases. Due to this decrease in kinetic &nbsp;&nbsp;&nbsp;energy, the vibration and movement of &nbsp;&nbsp;&nbsp;the particles also slows down.
- <br>
- <br>                                
-                              &bull;&nbsp;Thus, we can say that the movement of &nbsp;&nbsp;&nbsp;particles is directly proportional to the &nbsp;&nbsp;&nbsp;temperature.
-     <br>
-     <br>                            
-                               
-            
-                            </p>
+                                <li>On adding the heat, the energy of the particles increases. This in turn increases their movement.
+                                </li>
+                                <li>Similarly, on removing the heat, the energy of the particles decreases. Thus, the movement of the particles slows down.
+                                </li>
+                                <li>Thus, we can say that the movement of particles depends on the amount of heat supplied.
+                                </li>
+                               </ul>
                         </div>
                     </div>
                 </div>
@@ -182,7 +219,10 @@
             <section class="LO_message">
                 <div class="popup">
                     <div class="text_container">
-                        <p>You just explored that kinetic energy and movement of the particles are directly proportional to the temperature.
+                        <p>You just explored that the movement of particles gets affected by the heat supply.
+
+
+
 
                             
 
