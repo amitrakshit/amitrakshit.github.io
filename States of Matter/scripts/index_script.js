@@ -622,14 +622,14 @@ function solid_changes() {
 
     if (temp_value == 25)
     {
-    scalar = temp_value / 5;
+    scalar = temp_value / 4;
     plusx = temp_value / 100;
     plusY = temp_value / 5000;
     }
 
     else if (temp_value == 55)
     {
-    scalar = temp_value / 8;
+    scalar = temp_value / 6;
     plusx = temp_value / 100;
     plusY = temp_value / 5000;
     }
@@ -695,7 +695,7 @@ function liquid_changes() {
   }
   else {
 
-    scalar = temp_value / 4.5;
+    scalar = temp_value / 4;
     temp_mult_liquid = (temp_value - 55) * (1 / 30);
     water_normal.style.opacity = 1 - temp_mult_liquid;
     water_hot.style.opacity = temp_mult_liquid;
