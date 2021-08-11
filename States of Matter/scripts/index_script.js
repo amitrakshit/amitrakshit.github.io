@@ -128,8 +128,23 @@ temp_change.oninput = async function () {
 
 
 
+
+      if (temp_value == 55)
+      { 
+ feedback_box.style = "opacity:0; top: 60%;";
+ feedback_box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)"
+ setTimeout(() => {
+
+   remarks.innerHTML = "On addition of heat, the energy of the particles increases and they start to move faster.";
+   feedback_box.style = "opacity:1; top: 58.3%;";
+   feedback_box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)";
+
+ }, 300);
+}
+
     
-            
+           else if (temp_value == 85)
+           { 
       feedback_box.style = "opacity:0; top: 60%;";
       feedback_box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)"
       setTimeout(() => {
@@ -139,7 +154,7 @@ temp_change.oninput = async function () {
         feedback_box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)";
 
       }, 300);
-
+    }
 
         
         
@@ -165,7 +180,7 @@ temp_change.oninput = async function () {
         feedback_box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)"
         setTimeout(() => {
   
-          remarks.innerHTML = "On heating, the particles gain energy and start to vibrate faster.";
+          remarks.innerHTML = "On addition of heat, the energy of the particles increases and they start to vibrate faster.";
           feedback_box.style = "opacity:1; top: 58.3%;";
           feedback_box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)";
   
@@ -217,7 +232,8 @@ temp_change.oninput = async function () {
 
     if (gas_button.disabled == true || liquid_button.disabled == true) {
 
-            
+           if (temp_value == 55) 
+           {
       feedback_box.style = "opacity:0; top: 60%;";
       feedback_box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)"
       setTimeout(() => {
@@ -228,10 +244,22 @@ temp_change.oninput = async function () {
 
       }, 300);
 
-        
+    }
 
         
-       
+    else if (temp_value == 25) 
+    {
+feedback_box.style = "opacity:0; top: 60%;";
+feedback_box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)"
+setTimeout(() => {
+
+ remarks.innerHTML = "On removal of heat, the energy of the particles decreases, hence they move slowly.";
+ feedback_box.style = "opacity:1; top: 58.3%;";
+ feedback_box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)";
+
+}, 300);
+
+}     
 
         
 
@@ -242,6 +270,10 @@ temp_change.oninput = async function () {
 
     else if (solid_button.disabled == true) {
 
+
+      if (temp_value == 55) 
+
+      {
       feedback_box.style = "opacity:0; top: 60%;";
       feedback_box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)"
       setTimeout(() => {
@@ -252,9 +284,24 @@ temp_change.oninput = async function () {
         feedback_box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)";
 
       }, 300);
+    }
+
+    else if (temp_value == 25)
+
+{
+
+  feedback_box.style = "opacity:0; top: 60%;";
+  feedback_box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)"
+  setTimeout(() => {
 
 
+    remarks.innerHTML = "On removal of heat, the energy of the particles decreases, hence they vibrate slowly.";
+    feedback_box.style = "opacity:1; top: 58.3%;";
+    feedback_box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)";
 
+  }, 300);
+
+}
        
 
           
@@ -364,7 +411,7 @@ label_top.innerText = "Particles of Solid";
   feedback_box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)"
   setTimeout(() => {
 
-    remarks.innerHTML = "Due to the strong force of attraction, solid particles show very less movement." + "<br>" + "<b>" + "Move the slider to add/remove heat." + "</b>";
+    remarks.innerHTML = "Due to the strong force of attraction, solid particles show very less movement." + "<br>" + "<b>" + "Move the slider to add and remove heat." + "</b>";
     feedback_box.style = "opacity:1; top: 58.3%;";
     feedback_box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)";
 
@@ -444,7 +491,7 @@ async function liquid_instruction() {
   feedback_box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)"
   setTimeout(() => {
 
-    remarks.innerHTML = "As compared to solids, liquid particles are spaced apart and show a lot of movement." + "<br>" + "<b>" + "Move the slider to add/remove heat." + "</b>";
+    remarks.innerHTML = "As compared to solids, liquid particles are spaced apart and show a lot of movement." + "<br>" + "<b>" + "Move the slider to add and remove heat." + "</b>";
     feedback_box.style = "opacity:1; top: 58.3%;";
     feedback_box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)";
 
@@ -532,7 +579,7 @@ async function gas_instruction() {
   feedback_box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)"
   setTimeout(() => {
 
-    remarks.innerHTML = "As compared to solids & liquids, gas particles are much farther apart and move at much higher speeds." + "<br>" + "<b>" + "Move the slider to add/remove heat." + "</b>";
+    remarks.innerHTML = "As compared to solids & liquids, gas particles are much farther apart and move at much higher speeds." + "<br>" + "<b>" + "Move the slider to add and remove heat." + "</b>";
     feedback_box.style = "opacity:1; top: 58.3%;";
     feedback_box.style.background = "linear-gradient(180deg, #FFE601 0%, #E8882F 100%)";
 
@@ -572,9 +619,23 @@ function solid_changes() {
   }
   if (temp_value <= 55) {
 
+
+    if (temp_value == 25)
+    {
     scalar = temp_value / 5;
     plusx = temp_value / 100;
     plusY = temp_value / 5000;
+    }
+
+    else if (temp_value == 55)
+    {
+    scalar = temp_value / 8;
+    plusx = temp_value / 100;
+    plusY = temp_value / 5000;
+    }
+
+    
+
     temp_mult_solid = (55 - temp_value) * (1 / 30);
     solid_normal.style.opacity = 1 - temp_mult_solid / 1.5;
     solid_cold.style.opacity = temp_mult_solid / 2;
@@ -587,13 +648,13 @@ function solid_changes() {
   }
   else {
 
-    if (temp_value == 82) { temp_value += 1; }
-    else if (temp_value == 75) { temp_value += 1; }
-    else if (temp_value == 69 || temp_value == 70 || temp_value == 71) { temp_value = 68; }
-    else if (temp_value == 65 || temp_value == 66 || temp_value == 67 || temp_value == 61) { temp_value = 64; }
+    // if (temp_value == 82) { temp_value += 1; }
+    // else if (temp_value == 75) { temp_value += 1; }
+    // else if (temp_value == 69 || temp_value == 70 || temp_value == 71) { temp_value = 68; }
+    // else if (temp_value == 65 || temp_value == 66 || temp_value == 67 || temp_value == 61) { temp_value = 64; }
 
-    scalar = temp_value / 3;
-    plusx = temp_value / 60;
+    scalar = temp_value / 5;
+    plusx = temp_value / 70;
     plusY = temp_value / 3500;
 
     temp_mult_solid = (temp_value - 55) * (1 / 30);
@@ -614,9 +675,15 @@ function liquid_changes() {
 
 
   particles_num = 200;
+
+ 
   if (temp_value <= 55) {
 
-    scalar = temp_value / 3;
+    if (temp_value == 25)
+    {scalar = temp_value / 3;}
+    else if (temp_value == 55)
+    {scalar = temp_value / 3.5;}
+   
     temp_mult_liquid = (55 - temp_value) * (1 / 30);
     water_normal.style.opacity = 1 - temp_mult_liquid;
     water_cold.style.opacity = temp_mult_liquid;
@@ -645,9 +712,16 @@ function liquid_changes() {
 function gas_changes() {
 
   particles_num = 75;
+
+  
   if (temp_value <= 55) {
 
-    scalar = temp_value / 2;
+    if (temp_value == 25)
+    {scalar = temp_value / 1.5;}
+    else if (temp_value == 55)
+    {scalar = temp_value / 2;}
+
+    
     temp_mult_gas = (55 - temp_value) * (1 / 30);
     normal_interior.style.opacity = 1 - temp_mult_gas;
     cold_interior.style.opacity = temp_mult_gas / 2;
@@ -655,7 +729,7 @@ function gas_changes() {
   }
   else {
 
-    scalar = temp_value / 3;
+    scalar = temp_value / 2.5;
     temp_mult_gas = (temp_value - 55) * (1 / 30);
     normal_interior.style.opacity = 1 - temp_mult_gas;
     hot_interior.style.opacity = temp_mult_gas / 2;
