@@ -695,7 +695,7 @@ function liquid_changes() {
   }
   else {
 
-    scalar = temp_value / 4;
+    scalar = temp_value / 3;
     temp_mult_liquid = (temp_value - 55) * (1 / 30);
     water_normal.style.opacity = 1 - temp_mult_liquid;
     water_hot.style.opacity = temp_mult_liquid;
@@ -729,7 +729,7 @@ function gas_changes() {
   }
   else {
 
-    scalar = temp_value / 2.5;
+    scalar = temp_value / 2;
     temp_mult_gas = (temp_value - 55) * (1 / 30);
     normal_interior.style.opacity = 1 - temp_mult_gas;
     hot_interior.style.opacity = temp_mult_gas / 2;
