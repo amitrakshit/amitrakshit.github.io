@@ -136,7 +136,7 @@ function submitAns() {
     else if (rightAnswerStatus == true && wrongAnswerStatus == true && userRespondedAllOptions == false) {
         // partially correct answer
         feedback_bar.children[0].innerHTML = "Almost There!";
-        feedback_bar.children[1].innerHTML = `You have partially answered. <br> Try again - there are total ${numberOfCorrectOptions} correct answers.`;
+        feedback_bar.children[1].innerHTML = `You are partially correct. <br> There are a total of ${numberOfCorrectOptions} correct answers. Try again!`;
         Object.assign(feedback_bar.children[1].style, { width: '90%' });
         Object.assign(feedback_bar.style, { opacity: 1, top: "970rem" });
         Wrong_ANS.play();
