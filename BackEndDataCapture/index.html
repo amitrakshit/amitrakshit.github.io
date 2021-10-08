@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/question_style.css">
+    <link rel="stylesheet" href="styles/LO_style.css">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Myopia and Hypermetropia</title>
+
+    <!-- update the version number as needed -->
+    <!-- <script defer src="https://www.gstatic.com/firebase/9.1.1/firebase-app.js"></script> -->
+    <!-- include only the Firebase features as you need -->
+    <!-- <script defer src="/__/firebase/9.1.1/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/9.1.1/firebase-database-compat.js"></script> -->
+    <!-- <script defer src="https://www.gstatic.com/firebase/9.1.1/firebase-firestore.js"></script> -->
+    <!-- <script defer src="/__/firebase/9.1.1/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/9.1.1/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/9.1.1/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/9.1.1/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/9.1.1/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/9.1.1/firebase-performance-compat.js"></script> -->
+
+    
+</head>
+
+<body>
+    <input type="text" placeholder="Type your name" id="username" value="Amit Rakshit">
+    <input type="date" placeholder="Enter your Date of Birth" id="dateOfBirth">
+    <button id="submitCredential">Submit</button>
+    <div class="window">
+        <!-- For the corss mark -->
+        <div class="cross_symbol_container">
+            <div class="cross_oval">
+                <div class="cross_hand" id="hand1"></div>
+                <div class="cross_hand" id="hand2"></div>
+            </div>
+        </div>
+
+        <!-- For Navigation Bar -->
+        <div class="navigation_bar">
+            <div class="observation_bar nav_selected">Observation</div>
+            <div class="question_bar">Question</div>
+        </div>
+
+        <div class="movable_parent">
+            <!-- This section is for the observation -->
+            <section class="background">
+                <img src="img/BG_(Observation)_1_200521.svg" class='BG_svg'>
+
+                <!-- For the background only -->
+                <!-- <div class="bubble bubble1"></div>
+                <div class="bubble bubble2"></div>
+                <div class="bubble bubble3"></div> -->
+
+                <!-- For instruction Area. It is always a good practice to put the text in a paragraph element since it can contain inline mathJax. -->
+                <div class="instructino_area">
+                    <p> Observe why blurred image is formed in different eye defects and then correct them using the
+                        correct type of lens. </p>
+                </div>
+
+                <!-- For Visual Area -->
+                <div class="visual_area">
+                    <!-- <svg width="200" height="100%">
+                        <ellipse cx="50%" cy="50%" rx="50" ry="50" fill="url('#myGradient')" />
+                        <defs>
+                            <radialGradient id="myGradient">
+                                <stop stop-color="black" offset="50%" />
+                                <stop stop-color="white" offset="110%" />
+                            </radialGradient>
+                            <mask id="blurMask">
+                                <rect width="100%" height="100%" fill="url('#myGradient')">
+                                </rect>
+                            <filter id="filtreGaussianBlur">
+                                <feGaussianBlur stdDeviation="1.5" result="blur" width="120%" height="120%"/>
+                            </filter>
+                        </mask>
+                        </defs>
+                    </svg> -->
+
+                    <div class="imageContainer" id="leftSide">
+                        <!-- leftSide BG -->
+                        <img src="./img/leftBackground.png" alt="" id="leftBackground" class="">
+                        <div class="treeImgContainer">
+                            <img src="./img/tree.png" alt="" id="leftTree">
+                        </div>
+                        <div class="foreGroundImgContainer">
+                            <img src="./img/leftForeground.png" alt="" id="leftForeground">
+                        </div>
+                    </div>
+
+                    <div class="imageContainer " id="rightSide">
+
+                        <div class="eyeImageContainer" id="eye">
+                            <img src="./img/eye.png" alt="" id="eyeImg">
+                        </div>
+                        <!-- canvas in visual area -->
+                        <canvas class=visualCanvas id="canvas0"></canvas>
+                        <canvas class=visualCanvas id="canvas1"></canvas>
+                        <canvas class=visualCanvas id="canvas2"></canvas>
+
+                        <div class="treeImgContainerRight">
+                            <img src="./img/tree.png" alt="" id="rightTree">
+                        </div>
+                        <div class="juiceCanImgContainerRight">
+                            <img src="./img/onlyJuiceCan.png" alt="" id="rightJuiceCan">
+                        </div>
+
+                        <!-- Labels -->
+                        <div class="labels" id="label1">
+                            <p>Clear vision</p>
+                            <div class="hTopBar"></div>
+                            <div class="vMiddleBar"></div>
+                            <div class="roundTop"></div>
+                        </div>
+                        <div class="labels" id="label2">
+                            <p>Clear vision</p>
+                            <div class="hTopBar"></div>
+                            <div class="vMiddleBar"></div>
+                            <div class="roundTop"></div>
+                        </div>
+                        <div class="labels" id="label3">
+                            <p></p>
+                            <div class="hTopBar"></div>
+                            <div class="vRightBar" id="vStick3"></div>
+                            <div class="roundTopRight" id="round3"></div>
+                        </div>
+                        <div class="labels zoomOut" id="label4">
+                            <p>Corrective lens</p>
+                            <div class="hBottomBar"></div>
+                            <div class="vRightBarDown zoomOutHand" id="lensLabel">
+                                <div class="roundTopRightDown" id="lensLabelRound"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Light ray diagram arrow and 'light' text -->
+                    <div class="lightArrowContainer">
+                        <div class="rays ray1" id="ray1">
+                            <div class="arrowHead1"></div>
+                            <div class="arrowHead2"></div>
+                        </div>
+                        <div class="textLight">
+                            <p>Light</p>
+                        </div>
+                        <div class="rays ray2" id="ray2">
+                            <div class="arrowHead1"></div>
+                            <div class="arrowHead2"></div>
+                        </div>
+                    </div>
+
+                    <!-- The reset button -->
+                    <div class="resetButtonContainter">
+                        <img src="./img/resetButton.svg" alt="resetButton" id="resetButtonImg">
+                    </div>
+
+                    <!-- The top heading -->
+                    <div class="heading" id="visualAreaHeading">
+                        <p>Normal Condition</p>
+                    </div>
+                </div>
+
+                <div class="statusDotContainer">
+                    <div class="statusDots" id="dot1"></div>
+                    <div class="statusDots"></div>
+                    <div class="statusDots"></div>
+                    <div class="statusDots"></div>
+                    <div class="statusDots"></div>
+                    <div class="statusBar" id="behindBar"></div>
+                    <div class="statusBar" id="frontBar"></div>
+                </div>
+
+                <!-- For Feedback bar -->
+                <div class="feedback_bar">
+                    <p id="para">Inspect the eye defects by tapping the buttons.
+                    </p>
+                </div>
+
+                <!-- For Interaction area -->
+                <div class="interaction_area">
+                    <input type="range" min="-1" max="1" step="0.05" value="0" id="slider1" class="input_slider"
+                        disabled="true">
+                    <div class="marker" id="markerLeft"></div>
+                    <div class="marker" id="markerMiddle"></div>
+                    <div class="marker" id="markerRight"></div>
+                    <div class="interactionAreaText" id="diverging">Diverging</div>
+                    <div class="interactionAreaText" id="converging">Converging</div>
+                    <div class="interactionAreaText" id="curvature">Curvature of the lens</div>
+                    <button class="interactionOptions" id="leftButton">Inspect myopia</button>
+                    <button class="interactionOptions" id="rightButton">Inspect <br> Hypermetropia</button>
+                </div>
+
+                <!-- For the Next Buttons -->
+                <button class="next_button" id="nextButton">Next</button>
+            </section>
+
+            <!-- This section is for the question -->
+            <section class="background2">
+                <img src="img/BG_(Question)_1_200521.svg" class='BG_svg'>
+
+                <div class="dynamic_panel_window">
+                    <div class="scrollable_dynamic_panel">
+                        <div class="question_area">
+                            <p>Choose the option that correctly pairs the vision due to eye defects to its corrective
+                                lens.
+                            </p>
+                        </div>
+                        <div class="questionImageContainer">
+                            <img src="./img/Myopia Question Image.jpg" alt="" id="questionImg">
+                        </div>
+                        <div class="feedback-bar">
+                            <div id="big">Oops!</div>
+                            <div id="small">Try again or swipe left to figure out the right answer.</div>
+                        </div>
+                        <div id="MSQinstruction">More than one option can be correct</div>
+
+                        <div class="option-container">
+                            <div class="behindText" id="behind1">
+                                <p>You've got this correct, Find out the other correct answer.</p>
+                            </div>
+                            <div class="behindText" id="behind2">
+                                <p>You've got this correct, Find out the other correct answer.</p>
+                            </div>
+                            <div class="behindText" id="behind3">
+                                <p>You've got this correct, Find out the other correct answer.</p>
+                            </div>
+                            <div class="behindText" id="behind4">
+                                <p>You've got this correct, Find out the other correct answer.</p>
+                            </div>
+                            <div class="options" id="option1">
+                                <div class="checkBox">
+                                    <div class="innerCheckBox">
+                                    </div>
+                                </div>
+                                <p>A - i</p>
+                            </div>
+                            <div class="options" id="option2">
+                                <div class="checkBox">
+                                    <div class="innerCheckBox"></div>
+                                </div>
+                                <p>A - ii</p>
+                            </div>
+                            <div class="options" id="option3">
+                                <div class="checkBox">
+                                    <div class="innerCheckBox"></div>
+                                </div>
+                                <p>B - i</p>
+                            </div>
+                            <div class="options" id="option4">
+                                <div class="checkBox">
+                                    <div class="innerCheckBox"></div>
+                                </div>
+                                <p>B - ii</p>
+                            </div>
+
+                        </div>
+
+                        <button class="submitButton">Submit</button>
+
+                        <div class="solution">
+                            <p id="SolHead">Solution</p>
+                            <ul>
+                                <li>Faraway objects are not clearly visible in myopia; a concave lens is used to correct
+                                    it.</li>
+                                <li>Nearby objects are not clearly visible in hypermetropia; a convex lens is used to
+                                    correct it.</li>
+                                <li>Hence, A - ii and B - i are the correct answers.</li>
+                            </ul>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+                <footer class="button-container">
+                    <button class="finish-button">Finish</button>
+                </footer>
+            </section>
+
+            <!-- LO message -->
+            <section class="LO_message">
+                <div class="popup">
+                    <div class="text_container">
+                        <p>You just explored that myopia can be corrected using a concave lens, and hypermetropia can be
+                            corrected using a convex lens.</p>
+                    </div>
+                    <div class="tick_mark_container">
+                        <div class="ellipse2"></div>
+                        <svg class="round_stroke" width="200" height="200">
+                            <path d=""></path>
+                        </svg>
+                        <div class="ellipse1"></div>
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                    </div>
+                    <button class="close_button">Close</button>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- This file generates by webpack -->
+    
+    <script type="module" src="./scripts/index.js"></script>
+    <script src="./scripts/lensCreate.js"></script>
+    <script src="./scripts/TouchDragDropscript.js"></script>
+    <script src="scripts/index_script.js"></script>
+    <script type="module" src="scripts/question_script.js"></script>
+    <script src="scripts/LO_script.js"></script>
+    <!-- <script src="./../../../../dist/bundle.js"></script> -->
+
+
+</body>
+
+</html>

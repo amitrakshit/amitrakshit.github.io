@@ -1,0 +1,380 @@
+body {
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background2 .questionImageContainer {
+    position: absolute;
+    width: 984rem;
+    height: 452rem;
+    overflow: hidden;
+    top: 16%;
+    border-radius: 20rem;
+}
+
+.questionImageContainer #questionImg {
+    position: relative;
+    width: auto;
+    height: 100%;
+}
+
+.scrollable_dynamic_panel {
+    position: absolute;
+    width: 1080rem;
+    height: 162%;
+    left: 0rem;
+    top: -249rem;
+    /* outline: 1rem solid rgb(255, 190, 190); */
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+.dynamic_panel_window {
+    position: absolute;
+    top: 13%;
+    left: 0rem;
+    width: 100%;
+    height: 85%;
+    /* outline: 1rem solid wheat; */
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.dynamic_panel_window::-webkit-scrollbar {
+    display: none;
+}
+
+.question_area {
+    position: absolute;
+    width: 90%;
+    height: auto;
+    /* border: 1rem solid black;
+    background: linear-gradient(yellow,orange); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-left: 0rem;
+    top: 8%;
+    color: white;
+    font-size: 39rem;
+    font-weight: 325;
+    font-family: Gotham SSm;
+    line-height: 60rem;
+    transition: opacity 0.5s;
+}
+
+.question_area span {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feedback-bar {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: stretch;
+    width: 1080rem;
+    height: 160rem;
+    left: 0rem;
+    top: 1050rem;
+    opacity: 0;
+    transition: top 0.4s ease-out, opacity 0.4s;
+}
+
+.feedback-bar #big {
+    /* position: absolute; */
+    width: 912rem;
+    height: 56rem;
+    left: 84rem;
+    /* top: 1052rem; */
+    font-family: Gotham SSm;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 45rem;
+    line-height: 54rem;
+    /* or 120% */
+    text-align: center;
+    color: #FF8181;
+}
+
+.feedback-bar #small {
+    /* position: absolute; */
+    width: 60%;
+    height: 88rem;
+    left: 48rem;
+    top: 60rem;
+    font-family: Gotham SSm;
+    font-style: normal;
+    font-weight: 325;
+    font-size: 36rem;
+    line-height: 43rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #FF8F8F;
+}
+
+#MSQinstruction {
+    position: absolute;
+    width: 80%;
+    height: 88rem;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 1000rem;
+    font-family: Gotham SSm;
+    font-style: normal;
+    font-weight: 325;
+    font-size: 36rem;
+    line-height: 43rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    opacity: 1;
+}
+
+.option-container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 724rem;
+    left: 0rem;
+    top: 1150rem;
+    /* 1196rem old value*/
+    /* background: chartreuse; */
+}
+
+.options {
+    position: absolute;
+    width: 1004rem;
+    height: 140rem;
+    /* left: 41rem; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(255, 255, 255);
+    border-radius: 20rem;
+    box-shadow: 0rem 5rem 10rem rgba(0, 0, 0, 0.507);
+    font-family: Gotham SSm;
+    font-style: normal;
+    font-weight: 325;
+    font-size: 50rem;
+    line-height: 120.5%;
+    /* or 43rem */
+    text-align: center;
+    color: #333333;
+    cursor: pointer;
+}
+
+.options#option1 {
+    bottom: 585rem;
+}
+
+#option2 {
+    bottom: 400rem;
+}
+
+#option3 {
+    bottom: 215rem;
+}
+
+#option4 {
+    bottom: 30rem;
+    display: none;
+}
+
+.behindText {
+    position: absolute;
+    width: 1004rem;
+    height: 60rem;
+    /* left: 41rem; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: linear-gradient(0deg, rgba(54, 167, 92, 0.4), rgba(54, 167, 92, 0.4)); */
+    border-radius: 24rem;
+    font-family: Gotham SSm;
+    font-style: normal;
+    font-weight: 325;
+    font-size: 28rem;
+    line-height: 120.5%;
+    /* or 43rem */
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 0;
+    transition: bottom 0.2s;
+}
+
+.behindText p {
+    position: absolute;
+    bottom: -50%;
+}
+
+.behindText#behind1 {
+    --downwardDisplacement: 0rem;
+    bottom: calc(585rem - var(--downwardDisplacement));
+}
+
+.behindText#behind2 {
+    --downwardDisplacement: 0rem;
+    bottom: calc(400rem - var(--downwardDisplacement));
+}
+
+.behindText#behind3 {
+    --downwardDisplacement: 0rem;
+    bottom: calc(215rem - var(--downwardDisplacement));
+}
+
+.behindText#behind4 {
+    --downwardDisplacement: 0rem;
+    bottom: calc(30rem - var(--downwardDisplacement));
+    display: none;
+}
+
+.solution #SolHead {
+    text-align: center;
+    font-size: 46rem;
+}
+
+.solution {
+    position: absolute;
+    width: 984rem;
+    height: auto;
+    top: 1925rem;
+    padding-bottom: 150rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: #D718A1;
+    border-radius: 20rem;
+    font-size: 39rem;
+    font-family: Gotham SSm;
+    font-weight: 300;
+    color: white;
+    transition: top 0.5s ease-out;
+    scrollbar-width: 0;
+}
+
+.solution ul {
+    top: 50%;
+    width: 82%;
+}
+
+.solution li {
+    margin: 20rem 0rem;
+}
+
+footer {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1080rem;
+    height: 240rem;
+    left: 0rem;
+    bottom: -760rem;
+    background: linear-gradient(0deg, #5a19db, #4a13b900);
+    transition: bottom 0.5s ease-out;
+}
+
+.submitButton {
+    border: none;
+    position: absolute;
+    width: 480rem;
+    height: 120rem;
+    top: 1704rem;
+    background: linear-gradient(90deg, #0FDEA0 0%, #3988FF 100%);
+    box-shadow: 3px 4px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 84px;
+    color: white;
+    font-family: Gotham SSm;
+    font-size: 42rem;
+    cursor: pointer;
+}
+
+.submitButton:active {
+    transform: scale(0.95);
+}
+
+.finish-button {
+    width: 45%;
+    height: 128.64rem;
+    border: none;
+    border-radius: 200rem;
+    background: linear-gradient(90deg, #10dca3, #3988fa);
+    color: white;
+    font-family: Gotham SSm;
+    font-weight: 350;
+    font-size: 42rem;
+    cursor: pointer;
+    /* z-index: -1; */
+}
+
+/* The portion is for styling the checkbox */
+
+.checkBox {
+    position: absolute;
+    left: 48rem;
+    border: 4.5rem solid #333333;
+    box-sizing: border-box;
+    border-radius: 12rem;
+    width: 60rem;
+    height: 60rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.answered {
+    border: 4.5rem solid #ffffff;
+}
+
+.innerCheckBox {
+    position: relative;
+    display: block;
+    width: 35rem;
+    height: 35rem;
+    background-color: #33333300;
+    border-radius: 6rem;
+}
+
+.checked {
+    background-color: #333333;
+}
+
+.checkBox .rightAns {
+    display: block;
+    width: 45rem;
+    height: 45rem;
+    background-color: #33333300;
+    background-image: url("../img/MSQ/Right.svg");
+    background-size: 90%;
+    background-repeat: no-repeat;
+    background-position: 30% 50%;
+}
+
+.checkBox .wrongAns {
+    display: block;
+    position: relative;
+    width: 45rem;
+    height: 45rem;
+    /* border: 1rem solid black; */
+    background-color: #33333300;
+    background-image: url("../img/MSQ/Wrong.svg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
